@@ -6,6 +6,6 @@ import currency from './index';
 
 describe('currency', () => {
   it('works', () => {
-    assert.strictEqual(currency(), false);
+    assert.strictEqual(currency(), 2);
   });
 });
