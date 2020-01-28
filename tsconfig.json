@@ -2,6 +2,7 @@
   "extends": "@checkdigit/typescript",
   "compilerOptions": {
     "rootDir": "src",
+    "noEmitOnError": false,
     "outDir": "build"
   },
   "exclude": [
