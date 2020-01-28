@@ -20,11 +20,11 @@
     "@checkdigit/prettier-config": "^1.0.1",
     "@checkdigit/publish": "^1.0.8",
     "@checkdigit/typescript": "^3.7.2",
-    "@types/jest": "^24.9.1",
+    "@types/jest": "^25.1.0",
     "eslint": "^6.8.0",
     "jest": "^25.1.0",
     "prettier": "^1.19.1",
-    "rimraf": "^3.0.0",
+    "rimraf": "^3.0.1",
     "ts-jest": "^25.0.0",
     "ts-node": "^8.6.2"
   },
