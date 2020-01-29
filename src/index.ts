@@ -28,26 +28,29 @@ export function format(
     throw Error('hideDecimal can only be true if hideCurrency and hideGrouping are also true');
   }
 
-  return Intl.NumberFormat(locales, { style: 'currency', currency })
-    .formatToParts((majorUnitAmount as unknown) as number)
-    .reduce((previous: string, current) => {
-      switch (current.type) {
-        case 'minusSign':
-          return previous + current.value;
-        case 'currency':
-          return previous + (options?.hideCurrency ? '' : current.value);
-        case 'integer':
-          return previous + current.value;
-        case 'group':
-          return previous + (options?.hideGrouping ? '' : current.value);
-        case 'decimal':
-          return previous + (options?.hideDecimal ? '' : current.value);
-        case 'fraction':
-          return previous + minorUnitAmount.toString();
-        default:
-          throw Error(`${current.type} unsupported`);
-      }
-    }, '');
+  return (
+    Intl.NumberFormat(locales, { style: 'currency', currency })
+      // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
+      .formatToParts((majorUnitAmount as unknown) as number)
+      .reduce((previous: string, current) => {
+        switch (current.type) {
+          case 'minusSign':
+            return previous + current.value;
+          case 'currency':
+            return previous + (options?.hideCurrency ? '' : current.value);
+          case 'integer':
+            return previous + current.value;
+          case 'group':
+            return previous + (options?.hideGrouping ? '' : current.value);
+          case 'decimal':
+            return previous + (options?.hideDecimal ? '' : current.value);
+          case 'fraction':
+            return previous + minorUnitAmount.toString();
+          default:
+            throw Error(`${current.type} unsupported`);
+        }
+      }, '')
+  );
 }
 
 export function getSymbol(currency: Currency, locales?: string | string[]): string | undefined {
