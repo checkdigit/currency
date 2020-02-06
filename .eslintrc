@@ -1,3 +1,12 @@
 {
-  "extends": ["@checkdigit"]
+  "extends": ["@checkdigit"],
+  "overrides": [
+    {
+      "files": ["src/iso-4217.ts"],
+      "rules": {
+        "max-lines": "off",
+        "sonarjs/no-duplicate-string": "off"
+      }
+    }
+  ]
 }

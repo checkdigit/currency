@@ -1,5 +1,7 @@
 // index.ts
 
+import { default as iso4217, Iso4217 } from './iso-4217';
+
 export type Amount = string | bigint;
 export type Currency = 'USD' | 'JPY';
 
@@ -65,4 +67,8 @@ export function getMinorUnitDigits(currency: Currency, locales?: string | string
       .formatToParts(0)
       .filter(part => part.type === 'fraction')[0]?.value.length ?? 0
   );
+}
+
+export function getIso4217Codes(): Iso4217[] {
+  return iso4217;
 }

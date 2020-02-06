@@ -79,4 +79,9 @@ describe('currency', () => {
       )
     );
   });
+
+  it('getIso4217Codes', () => {
+    const codes = currency.getIso4217Codes();
+    assert.strictEqual(codes.length, 276);
+  });
 });
