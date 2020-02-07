@@ -9,6 +9,7 @@
 
 export interface Country {
   name: string; // CLDR display name
+  officialName: string; // EN official name
   capital: string;
   continent: string;
 }
@@ -69,12 +70,7 @@ const countryDatabase = [
     TLD: '.af',
     WMO: 'AF',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0641\u063a\u0627\u0646\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u963f\u5bcc\u6c57',
-    officialNameEN: 'Afghanistan',
-    officialNameES: 'Afganist\u00e1n',
-    officialNameFR: 'Afghanistan',
-    officialNameRU: '\u0410\u0444\u0433\u0430\u043d\u0438\u0441\u0442\u0430\u043d'
+    officialName: 'Afghanistan'
   },
   {
     name: 'Albania',
@@ -110,12 +106,7 @@ const countryDatabase = [
     TLD: '.al',
     WMO: 'AB',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0644\u0628\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u963f\u5c14\u5df4\u5c3c\u4e9a',
-    officialNameEN: 'Albania',
-    officialNameES: 'Albania',
-    officialNameFR: 'Albanie',
-    officialNameRU: '\u0410\u043b\u0431\u0430\u043d\u0438\u044f'
+    officialName: 'Albania'
   },
   {
     name: 'Algeria',
@@ -151,12 +142,7 @@ const countryDatabase = [
     TLD: '.dz',
     WMO: 'AL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u062c\u0632\u0627\u0626\u0631',
-    officialNameCN: '\u963f\u5c14\u53ca\u5229\u4e9a',
-    officialNameEN: 'Algeria',
-    officialNameES: 'Argelia',
-    officialNameFR: 'Alg\u00e9rie',
-    officialNameRU: '\u0410\u043b\u0436\u0438\u0440'
+    officialName: 'Algeria'
   },
   {
     name: 'American Samoa',
@@ -192,13 +178,7 @@ const countryDatabase = [
     'Sub-region Name': 'Polynesia',
     TLD: '.as',
     isIndependent: 'Territory of US',
-    officialNameAR: '\u0633\u0627\u0645\u0648\u0627 \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a\u0629',
-    officialNameCN: '\u7f8e\u5c5e\u8428\u6469\u4e9a',
-    officialNameEN: 'American Samoa',
-    officialNameES: 'Samoa Americana',
-    officialNameFR: 'Samoa am\u00e9ricaines',
-    officialNameRU:
-      '\u0410\u043c\u0435\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u043e\u0435 \u0421\u0430\u043c\u043e\u0430'
+    officialName: 'American Samoa'
   },
   {
     name: 'Andorra',
@@ -233,12 +213,7 @@ const countryDatabase = [
     'Sub-region Name': 'Southern Europe',
     TLD: '.ad',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0646\u062f\u0648\u0631\u0627',
-    officialNameCN: '\u5b89\u9053\u5c14',
-    officialNameEN: 'Andorra',
-    officialNameES: 'Andorra',
-    officialNameFR: 'Andorre',
-    officialNameRU: '\u0410\u043d\u0434\u043e\u0440\u0440\u0430'
+    officialName: 'Andorra'
   },
   {
     name: 'Angola',
@@ -277,12 +252,7 @@ const countryDatabase = [
     TLD: '.ao',
     WMO: 'AN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0646\u063a\u0648\u0644\u0627',
-    officialNameCN: '\u5b89\u54e5\u62c9',
-    officialNameEN: 'Angola',
-    officialNameES: 'Angola',
-    officialNameFR: 'Angola',
-    officialNameRU: '\u0410\u043d\u0433\u043e\u043b\u0430'
+    officialName: 'Angola'
   },
   {
     name: 'Anguilla',
@@ -319,12 +289,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.ai',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u0623\u0646\u063a\u064a\u0644\u0627',
-    officialNameCN: '\u5b89\u572d\u62c9',
-    officialNameEN: 'Anguilla',
-    officialNameES: 'Anguila',
-    officialNameFR: 'Anguilla',
-    officialNameRU: '\u0410\u043d\u0433\u0438\u043b\u044c\u044f'
+    officialName: 'Anguilla'
   },
   {
     name: 'Antarctica',
@@ -347,12 +312,7 @@ const countryDatabase = [
     TLD: '.aq',
     WMO: 'AA',
     isIndependent: 'International',
-    officialNameAR: '\u0623\u0646\u062a\u0627\u0631\u0643\u062a\u064a\u0643\u0627',
-    officialNameCN: '\u5357\u6781\u6d32',
-    officialNameEN: 'Antarctica',
-    officialNameES: 'Ant\u00e1rtida',
-    officialNameFR: 'Antarctique',
-    officialNameRU: '\u0410\u043d\u0442\u0430\u0440\u043a\u0442\u0438\u043a\u0435'
+    officialName: 'Antarctica'
   },
   {
     name: 'Antigua & Barbuda',
@@ -390,12 +350,7 @@ const countryDatabase = [
     TLD: '.ag',
     WMO: 'AT',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0646\u062a\u064a\u063a\u0648\u0627 \u0648\u0628\u0631\u0628\u0648\u062f\u0627',
-    officialNameCN: '\u5b89\u63d0\u74dc\u548c\u5df4\u5e03\u8fbe',
-    officialNameEN: 'Antigua and Barbuda',
-    officialNameES: 'Antigua y Barbuda',
-    officialNameFR: 'Antigua-et-Barbuda',
-    officialNameRU: '\u0410\u043d\u0442\u0438\u0433\u0443\u0430 \u0438 \u0411\u0430\u0440\u0431\u0443\u0434\u0430'
+    officialName: 'Antigua and Barbuda'
   },
   {
     name: 'Argentina',
@@ -433,12 +388,7 @@ const countryDatabase = [
     TLD: '.ar',
     WMO: 'AG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0623\u0631\u062c\u0646\u062a\u064a\u0646',
-    officialNameCN: '\u963f\u6839\u5ef7',
-    officialNameEN: 'Argentina',
-    officialNameES: 'Argentina',
-    officialNameFR: 'Argentine',
-    officialNameRU: '\u0410\u0440\u0433\u0435\u043d\u0442\u0438\u043d\u0430'
+    officialName: 'Argentina'
   },
   {
     name: 'Armenia',
@@ -475,12 +425,7 @@ const countryDatabase = [
     TLD: '.am',
     WMO: 'AY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0631\u0645\u064a\u0646\u064a\u0627',
-    officialNameCN: '\u4e9a\u7f8e\u5c3c\u4e9a',
-    officialNameEN: 'Armenia',
-    officialNameES: 'Armenia',
-    officialNameFR: 'Arm\u00e9nie',
-    officialNameRU: '\u0410\u0440\u043c\u0435\u043d\u0438\u044f'
+    officialName: 'Armenia'
   },
   {
     name: 'Aruba',
@@ -519,12 +464,7 @@ const countryDatabase = [
     TLD: '.aw',
     WMO: 'NU',
     isIndependent: 'Part of NL',
-    officialNameAR: '\u0623\u0631\u0648\u0628\u0627',
-    officialNameCN: '\u963f\u9c81\u5df4',
-    officialNameEN: 'Aruba',
-    officialNameES: 'Aruba',
-    officialNameFR: 'Aruba',
-    officialNameRU: '\u0410\u0440\u0443\u0431\u0430'
+    officialName: 'Aruba'
   },
   {
     name: 'Australia',
@@ -560,12 +500,7 @@ const countryDatabase = [
     TLD: '.au',
     WMO: 'AU',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0633\u062a\u0631\u0627\u0644\u064a\u0627',
-    officialNameCN: '\u6fb3\u5927\u5229\u4e9a',
-    officialNameEN: 'Australia',
-    officialNameES: 'Australia',
-    officialNameFR: 'Australie',
-    officialNameRU: '\u0410\u0432\u0441\u0442\u0440\u0430\u043b\u0438\u044f'
+    officialName: 'Australia'
   },
   {
     name: 'Austria',
@@ -601,12 +536,7 @@ const countryDatabase = [
     TLD: '.at',
     WMO: 'OS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0646\u0645\u0633\u0627',
-    officialNameCN: '\u5965\u5730\u5229',
-    officialNameEN: 'Austria',
-    officialNameES: 'Austria',
-    officialNameFR: 'Autriche',
-    officialNameRU: '\u0410\u0432\u0441\u0442\u0440\u0438\u044f'
+    officialName: 'Austria'
   },
   {
     name: 'Azerbaijan',
@@ -643,12 +573,7 @@ const countryDatabase = [
     TLD: '.az',
     WMO: 'AJ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0630\u0631\u0628\u064a\u062c\u0627\u0646',
-    officialNameCN: '\u963f\u585e\u62dc\u7586',
-    officialNameEN: 'Azerbaijan',
-    officialNameES: 'Azerbaiy\u00e1n',
-    officialNameFR: 'Azerba\u00efdjan',
-    officialNameRU: '\u0410\u0437\u0435\u0440\u0431\u0430\u0439\u0434\u0436\u0430\u043d'
+    officialName: 'Azerbaijan'
   },
   {
     name: 'Bahamas',
@@ -687,12 +612,7 @@ const countryDatabase = [
     TLD: '.bs',
     WMO: 'BA',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0632\u0631 \u0627\u0644\u0628\u0647\u0627\u0645\u0627',
-    officialNameCN: '\u5df4\u54c8\u9a6c',
-    officialNameEN: 'Bahamas',
-    officialNameES: 'Bahamas',
-    officialNameFR: 'Bahamas',
-    officialNameRU: '\u0411\u0430\u0433\u0430\u043c\u0441\u043a\u0438\u0435 \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Bahamas'
   },
   {
     name: 'Bahrain',
@@ -728,12 +648,7 @@ const countryDatabase = [
     TLD: '.bh',
     WMO: 'BN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0628\u062d\u0631\u064a\u0646',
-    officialNameCN: '\u5df4\u6797',
-    officialNameEN: 'Bahrain',
-    officialNameES: 'Bahrein',
-    officialNameFR: 'Bahre\u00efn',
-    officialNameRU: '\u0411\u0430\u0445\u0440\u0435\u0439\u043d'
+    officialName: 'Bahrain'
   },
   {
     name: 'Bangladesh',
@@ -770,12 +685,7 @@ const countryDatabase = [
     TLD: '.bd',
     WMO: 'BW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0646\u063a\u0644\u0627\u062f\u064a\u0634',
-    officialNameCN: '\u5b5f\u52a0\u62c9\u56fd',
-    officialNameEN: 'Bangladesh',
-    officialNameES: 'Bangladesh',
-    officialNameFR: 'Bangladesh',
-    officialNameRU: '\u0411\u0430\u043d\u0433\u043b\u0430\u0434\u0435\u0448'
+    officialName: 'Bangladesh'
   },
   {
     name: 'Barbados',
@@ -814,12 +724,7 @@ const countryDatabase = [
     TLD: '.bb',
     WMO: 'BR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0631\u0628\u0627\u062f\u0648\u0633',
-    officialNameCN: '\u5df4\u5df4\u591a\u65af',
-    officialNameEN: 'Barbados',
-    officialNameES: 'Barbados',
-    officialNameFR: 'Barbade',
-    officialNameRU: '\u0411\u0430\u0440\u0431\u0430\u0434\u043e\u0441'
+    officialName: 'Barbados'
   },
   {
     name: 'Belarus',
@@ -855,12 +760,7 @@ const countryDatabase = [
     TLD: '.by',
     WMO: 'BY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u064a\u0644\u0627\u0631\u0648\u0633',
-    officialNameCN: '\u767d\u4fc4\u7f57\u65af',
-    officialNameEN: 'Belarus',
-    officialNameES: 'Belar\u00fas',
-    officialNameFR: 'B\u00e9larus',
-    officialNameRU: '\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c'
+    officialName: 'Belarus'
   },
   {
     name: 'Belgium',
@@ -896,12 +796,7 @@ const countryDatabase = [
     TLD: '.be',
     WMO: 'BX',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0644\u062c\u064a\u0643\u0627',
-    officialNameCN: '\u6bd4\u5229\u65f6',
-    officialNameEN: 'Belgium',
-    officialNameES: 'B\u00e9lgica',
-    officialNameFR: 'Belgique',
-    officialNameRU: '\u0411\u0435\u043b\u044c\u0433\u0438\u044f'
+    officialName: 'Belgium'
   },
   {
     name: 'Belize',
@@ -940,12 +835,7 @@ const countryDatabase = [
     TLD: '.bz',
     WMO: 'BH',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0644\u064a\u0632',
-    officialNameCN: '\u4f2f\u5229\u5179',
-    officialNameEN: 'Belize',
-    officialNameES: 'Belice',
-    officialNameFR: 'Belize',
-    officialNameRU: '\u0411\u0435\u043b\u0438\u0437'
+    officialName: 'Belize'
   },
   {
     name: 'Benin',
@@ -984,12 +874,7 @@ const countryDatabase = [
     TLD: '.bj',
     WMO: 'BJ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0646\u0646',
-    officialNameCN: '\u8d1d\u5b81',
-    officialNameEN: 'Benin',
-    officialNameES: 'Benin',
-    officialNameFR: 'B\u00e9nin',
-    officialNameRU: '\u0411\u0435\u043d\u0438\u043d'
+    officialName: 'Benin'
   },
   {
     name: 'Bermuda',
@@ -1025,13 +910,7 @@ const countryDatabase = [
     TLD: '.bm',
     WMO: 'BE',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u0628\u0631\u0645\u0648\u062f\u0627',
-    officialNameCN: '\u767e\u6155\u5927',
-    officialNameEN: 'Bermuda',
-    officialNameES: 'Bermuda',
-    officialNameFR: 'Bermudes',
-    officialNameRU:
-      '\u0411\u0435\u0440\u043c\u0443\u0434\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Bermuda'
   },
   {
     name: 'Bhutan',
@@ -1068,12 +947,7 @@ const countryDatabase = [
     'Sub-region Name': 'Southern Asia',
     TLD: '.bt',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0648\u062a\u0627\u0646',
-    officialNameCN: '\u4e0d\u4e39',
-    officialNameEN: 'Bhutan',
-    officialNameES: 'Bhut\u00e1n',
-    officialNameFR: 'Bhoutan',
-    officialNameRU: '\u0411\u0443\u0442\u0430\u043d'
+    officialName: 'Bhutan'
   },
   {
     name: 'Bolivia',
@@ -1111,14 +985,7 @@ const countryDatabase = [
     TLD: '.bo',
     WMO: 'BO',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0628\u0648\u0644\u064a\u0641\u064a\u0627 (\u062f\u0648\u0644\u0629 - \u0627\u0644\u0645\u062a\u0639\u062f\u062f\u0629 \u0627\u0644\u0642\u0648\u0645\u064a\u0627\u062a)',
-    officialNameCN: '\u73bb\u5229\u7ef4\u4e9a(\u591a\u6c11\u65cf\u56fd)',
-    officialNameEN: 'Bolivia (Plurinational State of)',
-    officialNameES: 'Bolivia (Estado Plurinacional de)',
-    officialNameFR: 'Bolivie (\u00c9tat plurinational de)',
-    officialNameRU:
-      '\u0411\u043e\u043b\u0438\u0432\u0438\u044f (\u041c\u043d\u043e\u0433\u043e\u043d\u0430\u0446\u0438\u043e\u043d\u0430\u043b\u044c\u043d\u043e\u0435 \u0413\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u043e)'
+    officialName: 'Bolivia (Plurinational State of)'
   },
   {
     name: 'Caribbean Netherlands',
@@ -1155,14 +1022,7 @@ const countryDatabase = [
     TLD: '.bq',
     WMO: 'NU',
     isIndependent: 'Part of NL',
-    officialNameAR:
-      '\u0628\u0648\u0646\u064a\u0631 \u0648\u0633\u0627\u0646 \u064a\u0648\u0633\u062a\u0627\u062a\u064a\u0648\u0633 \u0648\u0633\u0627\u0628\u0627',
-    officialNameCN: '\u535a\u7eb3\u5c14,\u5723\u4fc4\u65af\u5854\u4f11\u65af\u548c\u8428\u5df4',
-    officialNameEN: 'Bonaire, Sint Eustatius and Saba',
-    officialNameES: 'Bonaire, San Eustaquio y Saba',
-    officialNameFR: 'Bonaire, Saint-Eustache et Saba',
-    officialNameRU:
-      '\u0411\u043e\u043d\u0430\u0439\u0440\u0435, \u0421\u0430\u0431\u0430 \u0438 \u0421\u0438\u043d\u0442-\u042d\u0441\u0442\u0430\u0442\u0438\u0443\u0441'
+    officialName: 'Bonaire, Sint Eustatius and Saba'
   },
   {
     name: 'Bosnia',
@@ -1198,13 +1058,7 @@ const countryDatabase = [
     TLD: '.ba',
     WMO: 'BG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0628\u0648\u0633\u0646\u0629 \u0648\u0627\u0644\u0647\u0631\u0633\u0643',
-    officialNameCN: '\u6ce2\u65af\u5c3c\u4e9a\u548c\u9ed1\u585e\u54e5\u7ef4\u90a3',
-    officialNameEN: 'Bosnia and Herzegovina',
-    officialNameES: 'Bosnia y Herzegovina',
-    officialNameFR: 'Bosnie-Herz\u00e9govine',
-    officialNameRU:
-      '\u0411\u043e\u0441\u043d\u0438\u044f \u0438 \u0413\u0435\u0440\u0446\u0435\u0433\u043e\u0432\u0438\u043d\u0430'
+    officialName: 'Bosnia and Herzegovina'
   },
   {
     name: 'Botswana',
@@ -1243,12 +1097,7 @@ const countryDatabase = [
     TLD: '.bw',
     WMO: 'BC',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0648\u062a\u0633\u0648\u0627\u0646\u0627',
-    officialNameCN: '\u535a\u8328\u74e6\u7eb3',
-    officialNameEN: 'Botswana',
-    officialNameES: 'Botswana',
-    officialNameFR: 'Botswana',
-    officialNameRU: '\u0411\u043e\u0442\u0441\u0432\u0430\u043d\u0430'
+    officialName: 'Botswana'
   },
   {
     name: 'Bouvet Island',
@@ -1281,12 +1130,7 @@ const countryDatabase = [
     TLD: '.bv',
     WMO: 'BV',
     isIndependent: 'Territory of NO',
-    officialNameAR: '\u062c\u0632\u064a\u0631\u0629 \u0628\u0648\u0641\u064a\u062a',
-    officialNameCN: '\u5e03\u7ef4\u5c9b',
-    officialNameEN: 'Bouvet Island',
-    officialNameES: 'Isla Bouvet',
-    officialNameFR: '\u00cele Bouvet',
-    officialNameRU: '\u041e\u0441\u0442\u0440\u043e\u0432 \u0411\u0443\u0432\u0435'
+    officialName: 'Bouvet Island'
   },
   {
     name: 'Brazil',
@@ -1324,12 +1168,7 @@ const countryDatabase = [
     TLD: '.br',
     WMO: 'BZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0628\u0631\u0627\u0632\u064a\u0644',
-    officialNameCN: '\u5df4\u897f',
-    officialNameEN: 'Brazil',
-    officialNameES: 'Brasil',
-    officialNameFR: 'Br\u00e9sil',
-    officialNameRU: '\u0411\u0440\u0430\u0437\u0438\u043b\u0438\u044f'
+    officialName: 'Brazil'
   },
   {
     name: 'British Indian Ocean Territory',
@@ -1363,14 +1202,7 @@ const countryDatabase = [
     'Sub-region Name': 'Sub-Saharan Africa',
     TLD: '.io',
     isIndependent: 'Territory of GB',
-    officialNameAR:
-      '\u0627\u0644\u0645\u062d\u064a\u0637 \u0627\u0644\u0647\u0646\u062f\u064a \u0627\u0644\u0625\u0642\u0644\u064a\u0645 \u0627\u0644\u0628\u0631\u064a\u0637\u0627\u0646\u064a \u0641\u064a',
-    officialNameCN: '\u82f1\u5c5e\u5370\u5ea6\u6d0b\u9886\u571f',
-    officialNameEN: 'British Indian Ocean Territory',
-    officialNameES: 'Territorio Brit\u00e1nico del Oc\u00e9ano \u00cdndico',
-    officialNameFR: "Territoire britannique de l'oc\u00e9an Indien",
-    officialNameRU:
-      '\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u0430\u044f \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u044f \u0432 \u0418\u043d\u0434\u0438\u0439\u0441\u043a\u043e\u043c \u043e\u043a\u0435\u0430\u043d\u0435'
+    officialName: 'British Indian Ocean Territory'
   },
   {
     name: 'British Virgin Islands',
@@ -1408,14 +1240,7 @@ const countryDatabase = [
     TLD: '.vg',
     WMO: 'VI',
     isIndependent: 'Territory of GB',
-    officialNameAR:
-      '\u062c\u0632\u0631 \u0641\u0631\u062c\u0646 \u0627\u0644\u0628\u0631\u064a\u0637\u0627\u0646\u064a\u0629',
-    officialNameCN: '\u82f1\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b',
-    officialNameEN: 'British Virgin Islands',
-    officialNameES: 'Islas V\u00edrgenes Brit\u00e1nicas',
-    officialNameFR: '\u00celes Vierges britanniques',
-    officialNameRU:
-      '\u0411\u0440\u0438\u0442\u0430\u043d\u0441\u043a\u0438\u0435 \u0412\u0438\u0440\u0433\u0438\u043d\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'British Virgin Islands'
   },
   {
     name: 'Brunei',
@@ -1451,12 +1276,7 @@ const countryDatabase = [
     TLD: '.bn',
     WMO: 'BD',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0631\u0648\u0646\u064a \u062f\u0627\u0631 \u0627\u0644\u0633\u0644\u0627\u0645',
-    officialNameCN: '\u6587\u83b1\u8fbe\u9c81\u8428\u5170\u56fd',
-    officialNameEN: 'Brunei Darussalam',
-    officialNameES: 'Brunei Darussalam',
-    officialNameFR: 'Brun\u00e9i Darussalam',
-    officialNameRU: '\u0411\u0440\u0443\u043d\u0435\u0439-\u0414\u0430\u0440\u0443\u0441\u0441\u0430\u043b\u0430\u043c'
+    officialName: 'Brunei Darussalam'
   },
   {
     name: 'Bulgaria',
@@ -1492,12 +1312,7 @@ const countryDatabase = [
     TLD: '.bg',
     WMO: 'BU',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0644\u063a\u0627\u0631\u064a\u0627',
-    officialNameCN: '\u4fdd\u52a0\u5229\u4e9a',
-    officialNameEN: 'Bulgaria',
-    officialNameES: 'Bulgaria',
-    officialNameFR: 'Bulgarie',
-    officialNameRU: '\u0411\u043e\u043b\u0433\u0430\u0440\u0438\u044f'
+    officialName: 'Bulgaria'
   },
   {
     name: 'Burkina Faso',
@@ -1537,12 +1352,7 @@ const countryDatabase = [
     TLD: '.bf',
     WMO: 'HV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0648\u0631\u0643\u064a\u0646\u0627 \u0641\u0627\u0633\u0648',
-    officialNameCN: '\u5e03\u57fa\u7eb3\u6cd5\u7d22',
-    officialNameEN: 'Burkina Faso',
-    officialNameES: 'Burkina Faso',
-    officialNameFR: 'Burkina Faso',
-    officialNameRU: '\u0411\u0443\u0440\u043a\u0438\u043d\u0430-\u0424\u0430\u0441\u043e'
+    officialName: 'Burkina Faso'
   },
   {
     name: 'Burundi',
@@ -1582,12 +1392,7 @@ const countryDatabase = [
     TLD: '.bi',
     WMO: 'BI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0648\u0631\u0648\u0646\u062f\u064a',
-    officialNameCN: '\u5e03\u9686\u8fea',
-    officialNameEN: 'Burundi',
-    officialNameES: 'Burundi',
-    officialNameFR: 'Burundi',
-    officialNameRU: '\u0411\u0443\u0440\u0443\u043d\u0434\u0438'
+    officialName: 'Burundi'
   },
   {
     name: 'Cape Verde',
@@ -1625,12 +1430,7 @@ const countryDatabase = [
     TLD: '.cv',
     WMO: 'CV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0627\u0628\u0648 \u0641\u064a\u0631\u062f\u064a',
-    officialNameCN: '\u4f5b\u5f97\u89d2',
-    officialNameEN: 'Cabo Verde',
-    officialNameES: 'Cabo Verde',
-    officialNameFR: 'Cabo Verde',
-    officialNameRU: '\u041a\u0430\u0431\u043e-\u0412\u0435\u0440\u0434\u0435'
+    officialName: 'Cabo Verde'
   },
   {
     name: 'Cambodia',
@@ -1667,12 +1467,7 @@ const countryDatabase = [
     TLD: '.kh',
     WMO: 'KP',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0645\u0628\u0648\u062f\u064a\u0627',
-    officialNameCN: '\u67ec\u57d4\u5be8',
-    officialNameEN: 'Cambodia',
-    officialNameES: 'Camboya',
-    officialNameFR: 'Cambodge',
-    officialNameRU: '\u041a\u0430\u043c\u0431\u043e\u0434\u0436\u0430'
+    officialName: 'Cambodia'
   },
   {
     name: 'Cameroon',
@@ -1710,12 +1505,7 @@ const countryDatabase = [
     TLD: '.cm',
     WMO: 'CM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0643\u0627\u0645\u064a\u0631\u0648\u0646',
-    officialNameCN: '\u5580\u9ea6\u9686',
-    officialNameEN: 'Cameroon',
-    officialNameES: 'Camer\u00fan',
-    officialNameFR: 'Cameroun',
-    officialNameRU: '\u041a\u0430\u043c\u0435\u0440\u0443\u043d'
+    officialName: 'Cameroon'
   },
   {
     name: 'Canada',
@@ -1750,12 +1540,7 @@ const countryDatabase = [
     TLD: '.ca',
     WMO: 'CN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0646\u062f\u0627',
-    officialNameCN: '\u52a0\u62ff\u5927',
-    officialNameEN: 'Canada',
-    officialNameES: 'Canad\u00e1',
-    officialNameFR: 'Canada',
-    officialNameRU: '\u041a\u0430\u043d\u0430\u0434\u0430'
+    officialName: 'Canada'
   },
   {
     name: 'Cayman Islands',
@@ -1793,12 +1578,7 @@ const countryDatabase = [
     TLD: '.ky',
     WMO: 'GC',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u062c\u0632\u0631 \u0643\u0627\u064a\u0645\u0627\u0646',
-    officialNameCN: '\u5f00\u66fc\u7fa4\u5c9b',
-    officialNameEN: 'Cayman Islands',
-    officialNameES: 'Islas Caim\u00e1n',
-    officialNameFR: '\u00celes Ca\u00efmanes',
-    officialNameRU: '\u041a\u0430\u0439\u043c\u0430\u043d \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Cayman Islands'
   },
   {
     name: 'Central African Republic',
@@ -1838,14 +1618,7 @@ const countryDatabase = [
     TLD: '.cf',
     WMO: 'CE',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0623\u0641\u0631\u064a\u0642\u064a\u0627 \u0627\u0644\u0648\u0633\u0637\u0649',
-    officialNameCN: '\u4e2d\u975e\u5171\u548c\u56fd',
-    officialNameEN: 'Central African Republic',
-    officialNameES: 'Rep\u00fablica Centroafricana',
-    officialNameFR: 'R\u00e9publique centrafricaine',
-    officialNameRU:
-      '\u0426\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0430\u0444\u0440\u0438\u043a\u0430\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430'
+    officialName: 'Central African Republic'
   },
   {
     name: 'Chad',
@@ -1885,12 +1658,7 @@ const countryDatabase = [
     TLD: '.td',
     WMO: 'CD',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0634\u0627\u062f',
-    officialNameCN: '\u4e4d\u5f97',
-    officialNameEN: 'Chad',
-    officialNameES: 'Chad',
-    officialNameFR: 'Tchad',
-    officialNameRU: '\u0427\u0430\u0434'
+    officialName: 'Chad'
   },
   {
     name: 'Chile',
@@ -1928,12 +1696,7 @@ const countryDatabase = [
     TLD: '.cl',
     WMO: 'CH',
     isIndependent: 'Yes',
-    officialNameAR: '\u0634\u064a\u0644\u064a',
-    officialNameCN: '\u667a\u5229',
-    officialNameEN: 'Chile',
-    officialNameES: 'Chile',
-    officialNameFR: 'Chili',
-    officialNameRU: '\u0427\u0438\u043b\u0438'
+    officialName: 'Chile'
   },
   {
     name: 'China',
@@ -1969,12 +1732,7 @@ const countryDatabase = [
     TLD: '.cn',
     WMO: 'CI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0635\u064a\u0646',
-    officialNameCN: '\u4e2d\u56fd',
-    officialNameEN: 'China',
-    officialNameES: 'China',
-    officialNameFR: 'Chine',
-    officialNameRU: '\u041a\u0438\u0442\u0430\u0439'
+    officialName: 'China'
   },
   {
     name: 'Hong Kong',
@@ -2009,14 +1767,7 @@ const countryDatabase = [
     TLD: '.hk',
     WMO: 'HK',
     isIndependent: 'Part of CN',
-    officialNameAR:
-      '\u0645\u0646\u0637\u0642\u0629 \u0647\u0648\u0646\u063a \u0643\u0648\u0646\u063a \u0627\u0644\u0635\u064a\u0646\u064a\u0629 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 \u0627\u0644\u062e\u0627\u0635\u0629',
-    officialNameCN: '\u4e2d\u56fd\u9999\u6e2f\u7279\u522b\u884c\u653f\u533a',
-    officialNameEN: 'China, Hong Kong Special Administrative Region',
-    officialNameES: 'China, regi\u00f3n administrativa especial de Hong Kong',
-    officialNameFR: 'Chine, r\u00e9gion administrative sp\u00e9ciale de Hong Kong',
-    officialNameRU:
-      '\u041a\u0438\u0442\u0430\u0439, \u0421\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u0440\u0430\u0439\u043e\u043d \u0413\u043e\u043d\u043a\u043e\u043d\u0433'
+    officialName: 'China, Hong Kong Special Administrative Region'
   },
   {
     name: 'Macau',
@@ -2050,14 +1801,7 @@ const countryDatabase = [
     TLD: '.mo',
     WMO: 'MU',
     isIndependent: 'Part of CN',
-    officialNameAR:
-      '\u0645\u0646\u0637\u0642\u0629 \u0645\u0627\u0643\u0627\u0648 \u0627\u0644\u0625\u062f\u0627\u0631\u064a\u0629 \u0627\u0644\u062e\u0627\u0635\u0629 \u0627\u0644\u062a\u0627\u0628\u0639\u0629 \u0644\u0644\u0635\u064a\u0646',
-    officialNameCN: '\u4e2d\u56fd\u6fb3\u95e8\u7279\u522b\u884c\u653f\u533a',
-    officialNameEN: 'China, Macao Special Administrative Region',
-    officialNameES: 'China, regi\u00f3n administrativa especial de Macao',
-    officialNameFR: 'Chine, r\u00e9gion administrative sp\u00e9ciale de Macao',
-    officialNameRU:
-      '\u041a\u0438\u0442\u0430\u0439, \u0421\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u0439 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0439 \u0440\u0430\u0439\u043e\u043d \u041c\u0430\u043a\u0430\u043e'
+    officialName: 'China, Macao Special Administrative Region'
   },
   {
     name: 'Christmas Island',
@@ -2092,12 +1836,7 @@ const countryDatabase = [
     TLD: '.cx',
     WMO: 'KI',
     isIndependent: 'Territory of AU',
-    officialNameAR: '\u062c\u0632\u064a\u0631\u0629 \u0643\u0631\u064a\u0633\u0645\u0627\u0633',
-    officialNameCN: '\u5723\u8bde\u5c9b',
-    officialNameEN: 'Christmas Island',
-    officialNameES: 'Isla de Navidad',
-    officialNameFR: '\u00cele Christmas',
-    officialNameRU: '\u043e\u0441\u0442\u0440\u043e\u0432 \u0420\u043e\u0436\u0434\u0435\u0441\u0442\u0432\u0430'
+    officialName: 'Christmas Island'
   },
   {
     name: 'Cocos (Keeling) Islands',
@@ -2132,13 +1871,7 @@ const countryDatabase = [
     TLD: '.cc',
     WMO: 'KK',
     isIndependent: 'Territory of AU',
-    officialNameAR: '\u062c\u0632\u0631 \u0643\u0648\u0643\u0648\u0633 (\u0643\u064a\u0644\u064a\u0646\u063a)',
-    officialNameCN: '\u79d1\u79d1\u65af(\u57fa\u6797)\u7fa4\u5c9b',
-    officialNameEN: 'Cocos (Keeling) Islands',
-    officialNameES: 'Islas Cocos (Keeling)',
-    officialNameFR: '\u00celes des Cocos (Keeling)',
-    officialNameRU:
-      '\u041a\u043e\u043a\u043e\u0441\u043e\u0432\u044b\u0445 (\u041a\u0438\u043b\u0438\u043d\u0433) \u043e\u0441\u0442\u0440\u043e\u0432\u043e\u0432'
+    officialName: 'Cocos (Keeling) Islands'
   },
   {
     name: 'Colombia',
@@ -2176,12 +1909,7 @@ const countryDatabase = [
     TLD: '.co',
     WMO: 'CO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0648\u0644\u0648\u0645\u0628\u064a\u0627',
-    officialNameCN: '\u54e5\u4f26\u6bd4\u4e9a',
-    officialNameEN: 'Colombia',
-    officialNameES: 'Colombia',
-    officialNameFR: 'Colombie',
-    officialNameRU: '\u041a\u043e\u043b\u0443\u043c\u0431\u0438\u044f'
+    officialName: 'Colombia'
   },
   {
     name: 'Comoros',
@@ -2221,12 +1949,7 @@ const countryDatabase = [
     TLD: '.km',
     WMO: 'IC',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0632\u0631 \u0627\u0644\u0642\u0645\u0631',
-    officialNameCN: '\u79d1\u6469\u7f57',
-    officialNameEN: 'Comoros',
-    officialNameES: 'Comoras',
-    officialNameFR: 'Comores',
-    officialNameRU: '\u041a\u043e\u043c\u043e\u0440\u0441\u043a\u0438\u0435 \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Comoros'
   },
   {
     name: 'Congo - Brazzaville',
@@ -2264,12 +1987,7 @@ const countryDatabase = [
     TLD: '.cg',
     WMO: 'CG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0643\u0648\u0646\u063a\u0648',
-    officialNameCN: '\u521a\u679c',
-    officialNameEN: 'Congo',
-    officialNameES: 'Congo',
-    officialNameFR: 'Congo',
-    officialNameRU: '\u041a\u043e\u043d\u0433\u043e'
+    officialName: 'Congo'
   },
   {
     name: 'Cook Islands',
@@ -2306,12 +2024,7 @@ const countryDatabase = [
     TLD: '.ck',
     WMO: 'KU',
     isIndependent: 'Associated with NZ',
-    officialNameAR: '\u062c\u0632\u0631 \u0643\u0648\u0643',
-    officialNameCN: '\u5e93\u514b\u7fa4\u5c9b',
-    officialNameEN: 'Cook Islands',
-    officialNameES: 'Islas Cook',
-    officialNameFR: '\u00celes Cook',
-    officialNameRU: '\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u041a\u0443\u043a\u0430'
+    officialName: 'Cook Islands'
   },
   {
     name: 'Costa Rica',
@@ -2349,12 +2062,7 @@ const countryDatabase = [
     TLD: '.cr',
     WMO: 'CS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0648\u0633\u062a\u0627\u0631\u064a\u0643\u0627',
-    officialNameCN: '\u54e5\u65af\u8fbe\u9ece\u52a0',
-    officialNameEN: 'Costa Rica',
-    officialNameES: 'Costa Rica',
-    officialNameFR: 'Costa Rica',
-    officialNameRU: '\u041a\u043e\u0441\u0442\u0430-\u0420\u0438\u043a\u0430'
+    officialName: 'Costa Rica'
   },
   {
     name: 'Croatia',
@@ -2390,12 +2098,7 @@ const countryDatabase = [
     TLD: '.hr',
     WMO: 'RH',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0631\u0648\u0627\u062a\u064a\u0627',
-    officialNameCN: '\u514b\u7f57\u5730\u4e9a',
-    officialNameEN: 'Croatia',
-    officialNameES: 'Croacia',
-    officialNameFR: 'Croatie',
-    officialNameRU: '\u0425\u043e\u0440\u0432\u0430\u0442\u0438\u044f'
+    officialName: 'Croatia'
   },
   {
     name: 'Cuba',
@@ -2434,12 +2137,7 @@ const countryDatabase = [
     TLD: '.cu',
     WMO: 'CU',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0648\u0628\u0627',
-    officialNameCN: '\u53e4\u5df4',
-    officialNameEN: 'Cuba',
-    officialNameES: 'Cuba',
-    officialNameFR: 'Cuba',
-    officialNameRU: '\u041a\u0443\u0431\u0430'
+    officialName: 'Cuba'
   },
   {
     name: 'Cura\u00e7ao',
@@ -2471,12 +2169,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.cw',
     isIndependent: 'Part of NL',
-    officialNameAR: '\u0643\u0648\u0631\u0627\u0633\u0627\u0648',
-    officialNameCN: '\u5e93\u62c9\u7d22',
-    officialNameEN: 'Cura\u00e7ao',
-    officialNameES: 'Cura\u00e7ao',
-    officialNameFR: 'Cura\u00e7ao',
-    officialNameRU: '\u041a\u044e\u0440\u0430\u0441\u0430\u043e'
+    officialName: 'Cura\u00e7ao'
   },
   {
     name: 'Cyprus',
@@ -2512,12 +2205,7 @@ const countryDatabase = [
     TLD: '.cy',
     WMO: 'CY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0642\u0628\u0631\u0635',
-    officialNameCN: '\u585e\u6d66\u8def\u65af',
-    officialNameEN: 'Cyprus',
-    officialNameES: 'Chipre',
-    officialNameFR: 'Chypre',
-    officialNameRU: '\u041a\u0438\u043f\u0440'
+    officialName: 'Cyprus'
   },
   {
     name: 'Czechia',
@@ -2552,12 +2240,7 @@ const countryDatabase = [
     TLD: '.cz',
     WMO: 'CZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0634\u064a\u0643\u064a\u0627',
-    officialNameCN: '\u6377\u514b',
-    officialNameEN: 'Czechia',
-    officialNameES: 'Chequia',
-    officialNameFR: 'Tch\u00e9quie',
-    officialNameRU: '\u0427\u0435\u0445\u0438\u044f'
+    officialName: 'Czechia'
   },
   {
     name: 'C\u00f4te d\u2019Ivoire',
@@ -2594,12 +2277,7 @@ const countryDatabase = [
     TLD: '.ci',
     WMO: 'IV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0648\u062a \u062f\u064a\u0641\u0648\u0627\u0631',
-    officialNameCN: '\u79d1\u7279\u8fea\u74e6',
-    officialNameEN: "C\u00f4te d'Ivoire",
-    officialNameES: "C\u00f4te d'Ivoire",
-    officialNameFR: "C\u00f4te d'Ivoire",
-    officialNameRU: "\u041a\u043e\u0442-\u0434'\u0418\u0432\u0443\u0430\u0440"
+    officialName: "C\u00f4te d'Ivoire"
   },
   {
     name: 'North Korea',
@@ -2633,14 +2311,7 @@ const countryDatabase = [
     TLD: '.kp',
     WMO: 'KR',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0643\u0648\u0631\u064a\u0627 \u0627\u0644\u0634\u0639\u0628\u064a\u0629 \u0627\u0644\u062f\u064a\u0645\u0642\u0631\u0627\u0637\u064a\u0629',
-    officialNameCN: '\u671d\u9c9c\u6c11\u4e3b\u4e3b\u4e49\u4eba\u6c11\u5171\u548c\u56fd',
-    officialNameEN: "Democratic People's Republic of Korea",
-    officialNameES: 'Rep\u00fablica Popular Democr\u00e1tica de Corea',
-    officialNameFR: 'R\u00e9publique populaire d\u00e9mocratique de Cor\u00e9e',
-    officialNameRU:
-      '\u041a\u043e\u0440\u0435\u0439\u0441\u043a\u0430\u044f \u041d\u0430\u0440\u043e\u0434\u043d\u043e-\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430'
+    officialName: "Democratic People's Republic of Korea"
   },
   {
     name: 'Congo - Kinshasa',
@@ -2678,14 +2349,7 @@ const countryDatabase = [
     TLD: '.cd',
     WMO: 'ZR',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u0643\u0648\u0646\u063a\u0648 \u0627\u0644\u062f\u064a\u0645\u0642\u0631\u0627\u0637\u064a\u0629',
-    officialNameCN: '\u521a\u679c\u6c11\u4e3b\u5171\u548c\u56fd',
-    officialNameEN: 'Democratic Republic of the Congo',
-    officialNameES: 'Rep\u00fablica Democr\u00e1tica del Congo',
-    officialNameFR: 'R\u00e9publique d\u00e9mocratique du Congo',
-    officialNameRU:
-      '\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u043e\u043d\u0433\u043e'
+    officialName: 'Democratic Republic of the Congo'
   },
   {
     name: 'Denmark',
@@ -2721,12 +2385,7 @@ const countryDatabase = [
     TLD: '.dk',
     WMO: 'DN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u062f\u0627\u0646\u0645\u0631\u0643',
-    officialNameCN: '\u4e39\u9ea6',
-    officialNameEN: 'Denmark',
-    officialNameES: 'Dinamarca',
-    officialNameFR: 'Danemark',
-    officialNameRU: '\u0414\u0430\u043d\u0438\u044f'
+    officialName: 'Denmark'
   },
   {
     name: 'Djibouti',
@@ -2765,12 +2424,7 @@ const countryDatabase = [
     TLD: '.dj',
     WMO: 'DJ',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u064a\u0628\u0648\u062a\u064a',
-    officialNameCN: '\u5409\u5e03\u63d0',
-    officialNameEN: 'Djibouti',
-    officialNameES: 'Djibouti',
-    officialNameFR: 'Djibouti',
-    officialNameRU: '\u0414\u0436\u0438\u0431\u0443\u0442\u0438'
+    officialName: 'Djibouti'
   },
   {
     name: 'Dominica',
@@ -2809,12 +2463,7 @@ const countryDatabase = [
     TLD: '.dm',
     WMO: 'DO',
     isIndependent: 'Yes',
-    officialNameAR: '\u062f\u0648\u0645\u064a\u0646\u064a\u0643\u0627',
-    officialNameCN: '\u591a\u7c73\u5c3c\u514b',
-    officialNameEN: 'Dominica',
-    officialNameES: 'Dominica',
-    officialNameFR: 'Dominique',
-    officialNameRU: '\u0414\u043e\u043c\u0438\u043d\u0438\u043a\u0430'
+    officialName: 'Dominica'
   },
   {
     name: 'Dominican Republic',
@@ -2853,14 +2502,7 @@ const countryDatabase = [
     TLD: '.do',
     WMO: 'DR',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u062f\u0648\u0645\u064a\u0646\u064a\u0643\u064a\u0629',
-    officialNameCN: '\u591a\u7c73\u5c3c\u52a0',
-    officialNameEN: 'Dominican Republic',
-    officialNameES: 'Rep\u00fablica Dominicana',
-    officialNameFR: 'R\u00e9publique dominicaine',
-    officialNameRU:
-      '\u0414\u043e\u043c\u0438\u043d\u0438\u043a\u0430\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430'
+    officialName: 'Dominican Republic'
   },
   {
     name: 'Ecuador',
@@ -2898,12 +2540,7 @@ const countryDatabase = [
     TLD: '.ec',
     WMO: 'EQ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0643\u0648\u0627\u062f\u0648\u0631',
-    officialNameCN: '\u5384\u74dc\u591a\u5c14',
-    officialNameEN: 'Ecuador',
-    officialNameES: 'Ecuador',
-    officialNameFR: '\u00c9quateur',
-    officialNameRU: '\u042d\u043a\u0432\u0430\u0434\u043e\u0440'
+    officialName: 'Ecuador'
   },
   {
     name: 'Egypt',
@@ -2939,12 +2576,7 @@ const countryDatabase = [
     TLD: '.eg',
     WMO: 'EG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0635\u0631',
-    officialNameCN: '\u57c3\u53ca',
-    officialNameEN: 'Egypt',
-    officialNameES: 'Egipto',
-    officialNameFR: '\u00c9gypte',
-    officialNameRU: '\u0415\u0433\u0438\u043f\u0435\u0442'
+    officialName: 'Egypt'
   },
   {
     name: 'El Salvador',
@@ -2982,12 +2614,7 @@ const countryDatabase = [
     TLD: '.sv',
     WMO: 'ES',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0633\u0644\u0641\u0627\u062f\u0648\u0631',
-    officialNameCN: '\u8428\u5c14\u74e6\u591a',
-    officialNameEN: 'El Salvador',
-    officialNameES: 'El Salvador',
-    officialNameFR: 'El Salvador',
-    officialNameRU: '\u0421\u0430\u043b\u044c\u0432\u0430\u0434\u043e\u0440'
+    officialName: 'El Salvador'
   },
   {
     name: 'Equatorial Guinea',
@@ -3026,13 +2653,7 @@ const countryDatabase = [
     TLD: '.gq',
     WMO: 'GQ',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u064a\u0646\u064a\u0627 \u0627\u0644\u0627\u0633\u062a\u0648\u0627\u0626\u064a\u0629',
-    officialNameCN: '\u8d64\u9053\u51e0\u5185\u4e9a',
-    officialNameEN: 'Equatorial Guinea',
-    officialNameES: 'Guinea Ecuatorial',
-    officialNameFR: 'Guin\u00e9e \u00e9quatoriale',
-    officialNameRU:
-      '\u042d\u043a\u0432\u0430\u0442\u043e\u0440\u0438\u0430\u043b\u044c\u043d\u0430\u044f \u0413\u0432\u0438\u043d\u0435\u044f'
+    officialName: 'Equatorial Guinea'
   },
   {
     name: 'Eritrea',
@@ -3070,12 +2691,7 @@ const countryDatabase = [
     'Sub-region Name': 'Sub-Saharan Africa',
     TLD: '.er',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0631\u064a\u062a\u0631\u064a\u0627',
-    officialNameCN: '\u5384\u7acb\u7279\u91cc\u4e9a',
-    officialNameEN: 'Eritrea',
-    officialNameES: 'Eritrea',
-    officialNameFR: '\u00c9rythr\u00e9e',
-    officialNameRU: '\u042d\u0440\u0438\u0442\u0440\u0435\u044f'
+    officialName: 'Eritrea'
   },
   {
     name: 'Estonia',
@@ -3111,12 +2727,7 @@ const countryDatabase = [
     TLD: '.ee',
     WMO: 'EO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0633\u062a\u0648\u0646\u064a\u0627',
-    officialNameCN: '\u7231\u6c99\u5c3c\u4e9a',
-    officialNameEN: 'Estonia',
-    officialNameES: 'Estonia',
-    officialNameFR: 'Estonie',
-    officialNameRU: '\u042d\u0441\u0442\u043e\u043d\u0438\u044f'
+    officialName: 'Estonia'
   },
   {
     name: 'Ethiopia',
@@ -3156,12 +2767,7 @@ const countryDatabase = [
     TLD: '.et',
     WMO: 'ET',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u062b\u064a\u0648\u0628\u064a\u0627',
-    officialNameCN: '\u57c3\u585e\u4fc4\u6bd4\u4e9a',
-    officialNameEN: 'Ethiopia',
-    officialNameES: 'Etiop\u00eda',
-    officialNameFR: '\u00c9thiopie',
-    officialNameRU: '\u042d\u0444\u0438\u043e\u043f\u0438\u044f'
+    officialName: 'Ethiopia'
   },
   {
     name: 'Falkland Islands',
@@ -3192,14 +2798,7 @@ const countryDatabase = [
     TLD: '.fk',
     WMO: 'FK',
     isIndependent: 'Territory of GB',
-    officialNameAR:
-      '\u062c\u0632\u0631 \u0641\u0648\u0643\u0644\u0627\u0646\u062f (\u0645\u0627\u0644\u0641\u064a\u0646\u0627\u0633)',
-    officialNameCN: '\u798f\u514b\u5170\u7fa4\u5c9b(\u9a6c\u5c14\u7ef4\u7eb3\u65af)',
-    officialNameEN: 'Falkland Islands (Malvinas)',
-    officialNameES: 'Islas Malvinas (Falkland)',
-    officialNameFR: '\u00celes Falkland (Malvinas)',
-    officialNameRU:
-      '\u0424\u043e\u043b\u043a\u043b\u0435\u043d\u0434\u0441\u043a\u0438\u0435 (\u041c\u0430\u043b\u044c\u0432\u0438\u043d\u0441\u043a\u0438\u0435) \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Falkland Islands (Malvinas)'
   },
   {
     name: 'Faroe Islands',
@@ -3235,12 +2834,7 @@ const countryDatabase = [
     TLD: '.fo',
     WMO: 'FA',
     isIndependent: 'Part of DK',
-    officialNameAR: '\u062c\u0632\u0631 \u0641\u0627\u064a\u0631\u0648',
-    officialNameCN: '\u6cd5\u7f57\u7fa4\u5c9b',
-    officialNameEN: 'Faroe Islands',
-    officialNameES: 'Islas Feroe',
-    officialNameFR: '\u00celes F\u00e9ro\u00e9',
-    officialNameRU: '\u0424\u0430\u0440\u0435\u0440\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Faroe Islands'
   },
   {
     name: 'Fiji',
@@ -3277,12 +2871,7 @@ const countryDatabase = [
     TLD: '.fj',
     WMO: 'FJ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0641\u064a\u062c\u064a',
-    officialNameCN: '\u6590\u6d4e',
-    officialNameEN: 'Fiji',
-    officialNameES: 'Fiji',
-    officialNameFR: 'Fidji',
-    officialNameRU: '\u0424\u0438\u0434\u0436\u0438'
+    officialName: 'Fiji'
   },
   {
     name: 'Finland',
@@ -3318,12 +2907,7 @@ const countryDatabase = [
     TLD: '.fi',
     WMO: 'FI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0641\u0646\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u82ac\u5170',
-    officialNameEN: 'Finland',
-    officialNameES: 'Finlandia',
-    officialNameFR: 'Finlande',
-    officialNameRU: '\u0424\u0438\u043d\u043b\u044f\u043d\u0434\u0438\u044f'
+    officialName: 'Finland'
   },
   {
     name: 'France',
@@ -3359,12 +2943,7 @@ const countryDatabase = [
     TLD: '.fr',
     WMO: 'FR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0641\u0631\u0646\u0633\u0627',
-    officialNameCN: '\u6cd5\u56fd',
-    officialNameEN: 'France',
-    officialNameES: 'Francia',
-    officialNameFR: 'France',
-    officialNameRU: '\u0424\u0440\u0430\u043d\u0446\u0438\u044f'
+    officialName: 'France'
   },
   {
     name: 'French Guiana',
@@ -3402,13 +2981,7 @@ const countryDatabase = [
     TLD: '.gf',
     WMO: 'FG',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u063a\u064a\u0627\u0646\u0627 \u0627\u0644\u0641\u0631\u0646\u0633\u064a\u0629',
-    officialNameCN: '\u6cd5\u5c5e\u572d\u4e9a\u90a3',
-    officialNameEN: 'French Guiana',
-    officialNameES: 'Guayana Francesa',
-    officialNameFR: 'Guyane fran\u00e7aise',
-    officialNameRU:
-      '\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0430\u044f \u0413\u0432\u0438\u0430\u043d\u0430'
+    officialName: 'French Guiana'
   },
   {
     name: 'French Polynesia',
@@ -3445,14 +3018,7 @@ const countryDatabase = [
     TLD: '.pf',
     WMO: 'PF',
     isIndependent: 'Territory of FR',
-    officialNameAR:
-      '\u0628\u0648\u0644\u064a\u0646\u064a\u0632\u064a\u0627 \u0627\u0644\u0641\u0631\u0646\u0633\u064a\u0629',
-    officialNameCN: '\u6cd5\u5c5e\u6ce2\u5229\u5c3c\u897f\u4e9a',
-    officialNameEN: 'French Polynesia',
-    officialNameES: 'Polinesia Francesa',
-    officialNameFR: 'Polyn\u00e9sie fran\u00e7aise',
-    officialNameRU:
-      '\u0424\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0430\u044f \u041f\u043e\u043b\u0438\u043d\u0435\u0437\u0438\u044f'
+    officialName: 'French Polynesia'
   },
   {
     name: 'French Southern Territories',
@@ -3486,14 +3052,7 @@ const countryDatabase = [
     'Sub-region Name': 'Sub-Saharan Africa',
     TLD: '.tf',
     isIndependent: 'Territory of FR',
-    officialNameAR:
-      '\u0627\u0644\u0623\u0631\u0627\u0636\u064a \u0627\u0644\u0641\u0631\u0646\u0633\u064a\u0629 \u0627\u0644\u062c\u0646\u0648\u0628\u064a\u0629 \u0627\u0644\u062c\u0646\u0648\u0628\u064a\u0629',
-    officialNameCN: '\u6cd5\u5c5e\u5357\u65b9\u9886\u5730',
-    officialNameEN: 'French Southern Territories',
-    officialNameES: 'Territorio de las Tierras Australes Francesas',
-    officialNameFR: 'Terres australes fran\u00e7aises',
-    officialNameRU:
-      '\u042e\u0436\u043d\u044b\u0435 \u0437\u0435\u043c\u043b\u0438 (\u0444\u0440\u0430\u043d\u0446\u0443\u0437\u0441\u043a\u0430\u044f \u0437\u0430\u043c\u043e\u0440\u0441\u043a\u0430\u044f \u0442\u0435\u0440\u0440\u0438\u0442\u043e\u0440\u0438\u044f)'
+    officialName: 'French Southern Territories'
   },
   {
     name: 'Gabon',
@@ -3531,12 +3090,7 @@ const countryDatabase = [
     TLD: '.ga',
     WMO: 'GO',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u0627\u0628\u0648\u0646',
-    officialNameCN: '\u52a0\u84ec',
-    officialNameEN: 'Gabon',
-    officialNameES: 'Gab\u00f3n',
-    officialNameFR: 'Gabon',
-    officialNameRU: '\u0413\u0430\u0431\u043e\u043d'
+    officialName: 'Gabon'
   },
   {
     name: 'Gambia',
@@ -3575,12 +3129,7 @@ const countryDatabase = [
     TLD: '.gm',
     WMO: 'GB',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u0627\u0645\u0628\u064a\u0627',
-    officialNameCN: '\u5188\u6bd4\u4e9a',
-    officialNameEN: 'Gambia',
-    officialNameES: 'Gambia',
-    officialNameFR: 'Gambie',
-    officialNameRU: '\u0413\u0430\u043c\u0431\u0438\u044f'
+    officialName: 'Gambia'
   },
   {
     name: 'Georgia',
@@ -3616,12 +3165,7 @@ const countryDatabase = [
     TLD: '.ge',
     WMO: 'GG',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0648\u0631\u062c\u064a\u0627',
-    officialNameCN: '\u683c\u9c81\u5409\u4e9a',
-    officialNameEN: 'Georgia',
-    officialNameES: 'Georgia',
-    officialNameFR: 'G\u00e9orgie',
-    officialNameRU: '\u0413\u0440\u0443\u0437\u0438\u044f'
+    officialName: 'Georgia'
   },
   {
     name: 'Germany',
@@ -3657,12 +3201,7 @@ const countryDatabase = [
     TLD: '.de',
     WMO: 'DL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0644\u0645\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u5fb7\u56fd',
-    officialNameEN: 'Germany',
-    officialNameES: 'Alemania',
-    officialNameFR: 'Allemagne',
-    officialNameRU: '\u0413\u0435\u0440\u043c\u0430\u043d\u0438\u044f'
+    officialName: 'Germany'
   },
   {
     name: 'Ghana',
@@ -3700,12 +3239,7 @@ const countryDatabase = [
     TLD: '.gh',
     WMO: 'GH',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u0627\u0646\u0627',
-    officialNameCN: '\u52a0\u7eb3',
-    officialNameEN: 'Ghana',
-    officialNameES: 'Ghana',
-    officialNameFR: 'Ghana',
-    officialNameRU: '\u0413\u0430\u043d\u0430'
+    officialName: 'Ghana'
   },
   {
     name: 'Gibraltar',
@@ -3741,12 +3275,7 @@ const countryDatabase = [
     TLD: '.gi',
     WMO: 'GI',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u062c\u0628\u0644 \u0637\u0627\u0631\u0642',
-    officialNameCN: '\u76f4\u5e03\u7f57\u9640',
-    officialNameEN: 'Gibraltar',
-    officialNameES: 'Gibraltar',
-    officialNameFR: 'Gibraltar',
-    officialNameRU: '\u0413\u0438\u0431\u0440\u0430\u043b\u0442\u0430\u0440'
+    officialName: 'Gibraltar'
   },
   {
     name: 'Greece',
@@ -3782,12 +3311,7 @@ const countryDatabase = [
     TLD: '.gr',
     WMO: 'GR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u064a\u0648\u0646\u0627\u0646',
-    officialNameCN: '\u5e0c\u814a',
-    officialNameEN: 'Greece',
-    officialNameES: 'Grecia',
-    officialNameFR: 'Gr\u00e8ce',
-    officialNameRU: '\u0413\u0440\u0435\u0446\u0438\u044f'
+    officialName: 'Greece'
   },
   {
     name: 'Greenland',
@@ -3823,12 +3347,7 @@ const countryDatabase = [
     TLD: '.gl',
     WMO: 'GL',
     isIndependent: 'Part of DK',
-    officialNameAR: '\u063a\u0631\u064a\u0646\u0644\u0646\u062f',
-    officialNameCN: '\u683c\u9675\u5170',
-    officialNameEN: 'Greenland',
-    officialNameES: 'Groenlandia',
-    officialNameFR: 'Groenland',
-    officialNameRU: '\u0413\u0440\u0435\u043d\u043b\u0430\u043d\u0434\u0438\u044f'
+    officialName: 'Greenland'
   },
   {
     name: 'Grenada',
@@ -3867,12 +3386,7 @@ const countryDatabase = [
     TLD: '.gd',
     WMO: 'GD',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u0631\u064a\u0646\u0627\u062f\u0627',
-    officialNameCN: '\u683c\u6797\u7eb3\u8fbe',
-    officialNameEN: 'Grenada',
-    officialNameES: 'Granada',
-    officialNameFR: 'Grenade',
-    officialNameRU: '\u0413\u0440\u0435\u043d\u0430\u0434\u0430'
+    officialName: 'Grenada'
   },
   {
     name: 'Guadeloupe',
@@ -3910,12 +3424,7 @@ const countryDatabase = [
     TLD: '.gp',
     WMO: 'MF',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u063a\u0648\u0627\u062f\u064a\u0644\u0648\u0628',
-    officialNameCN: '\u74dc\u5fb7\u7f57\u666e',
-    officialNameEN: 'Guadeloupe',
-    officialNameES: 'Guadalupe',
-    officialNameFR: 'Guadeloupe',
-    officialNameRU: '\u0413\u0432\u0430\u0434\u0435\u043b\u0443\u043f\u0430'
+    officialName: 'Guadeloupe'
   },
   {
     name: 'Guam',
@@ -3952,12 +3461,7 @@ const countryDatabase = [
     TLD: '.gu',
     WMO: 'GM',
     isIndependent: 'Territory of US',
-    officialNameAR: '\u063a\u0648\u0627\u0645',
-    officialNameCN: '\u5173\u5c9b',
-    officialNameEN: 'Guam',
-    officialNameES: 'Guam',
-    officialNameFR: 'Guam',
-    officialNameRU: '\u0413\u0443\u0430\u043c'
+    officialName: 'Guam'
   },
   {
     name: 'Guatemala',
@@ -3995,12 +3499,7 @@ const countryDatabase = [
     TLD: '.gt',
     WMO: 'GU',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u0648\u0627\u062a\u064a\u0645\u0627\u0644\u0627',
-    officialNameCN: '\u5371\u5730\u9a6c\u62c9',
-    officialNameEN: 'Guatemala',
-    officialNameES: 'Guatemala',
-    officialNameFR: 'Guatemala',
-    officialNameRU: '\u0413\u0432\u0430\u0442\u0435\u043c\u0430\u043b\u0430'
+    officialName: 'Guatemala'
   },
   {
     name: 'Guernsey',
@@ -4035,12 +3534,7 @@ const countryDatabase = [
     'Sub-region Name': 'Northern Europe',
     TLD: '.gg',
     isIndependent: 'Crown dependency of GB',
-    officialNameAR: '\u063a\u064a\u0631\u0646\u0632\u064a',
-    officialNameCN: '\u6839\u897f',
-    officialNameEN: 'Guernsey',
-    officialNameES: 'Guernsey',
-    officialNameFR: 'Guernesey',
-    officialNameRU: '\u0413\u0435\u0440\u043d\u0441\u0438'
+    officialName: 'Guernsey'
   },
   {
     name: 'Guinea',
@@ -4079,12 +3573,7 @@ const countryDatabase = [
     TLD: '.gn',
     WMO: 'GN',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u064a\u0646\u064a\u0627',
-    officialNameCN: '\u51e0\u5185\u4e9a',
-    officialNameEN: 'Guinea',
-    officialNameES: 'Guinea',
-    officialNameFR: 'Guin\u00e9e',
-    officialNameRU: '\u0413\u0432\u0438\u043d\u0435\u044f'
+    officialName: 'Guinea'
   },
   {
     name: 'Guinea-Bissau',
@@ -4124,12 +3613,7 @@ const countryDatabase = [
     TLD: '.gw',
     WMO: 'GW',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u064a\u0646\u064a\u0627 - \u0628\u064a\u0633\u0627\u0648',
-    officialNameCN: '\u51e0\u5185\u4e9a\u6bd4\u7ecd',
-    officialNameEN: 'Guinea-Bissau',
-    officialNameES: 'Guinea-Bissau',
-    officialNameFR: 'Guin\u00e9e-Bissau',
-    officialNameRU: '\u0413\u0432\u0438\u043d\u0435\u044f-\u0411\u0438\u0441\u0430\u0443'
+    officialName: 'Guinea-Bissau'
   },
   {
     name: 'Guyana',
@@ -4168,12 +3652,7 @@ const countryDatabase = [
     TLD: '.gy',
     WMO: 'GY',
     isIndependent: 'Yes',
-    officialNameAR: '\u063a\u064a\u0627\u0646\u0627',
-    officialNameCN: '\u572d\u4e9a\u90a3',
-    officialNameEN: 'Guyana',
-    officialNameES: 'Guyana',
-    officialNameFR: 'Guyana',
-    officialNameRU: '\u0413\u0430\u0439\u0430\u043d\u0430'
+    officialName: 'Guyana'
   },
   {
     name: 'Haiti',
@@ -4213,12 +3692,7 @@ const countryDatabase = [
     TLD: '.ht',
     WMO: 'HA',
     isIndependent: 'Yes',
-    officialNameAR: '\u0647\u0627\u064a\u062a\u064a',
-    officialNameCN: '\u6d77\u5730',
-    officialNameEN: 'Haiti',
-    officialNameES: 'Hait\u00ed',
-    officialNameFR: 'Ha\u00efti',
-    officialNameRU: '\u0413\u0430\u0438\u0442\u0438'
+    officialName: 'Haiti'
   },
   {
     name: 'Heard & McDonald Islands',
@@ -4248,14 +3722,7 @@ const countryDatabase = [
     'Sub-region Name': 'Australia and New Zealand',
     TLD: '.hm',
     isIndependent: 'Territory of AU',
-    officialNameAR:
-      '\u062c\u0632\u064a\u0631\u0629 \u0647\u064a\u0631\u062f \u0648\u062c\u0632\u0631 \u0645\u0627\u0643\u062f\u0648\u0646\u0627\u0644\u062f',
-    officialNameCN: '\u8d6b\u5fb7\u5c9b\u548c\u9ea6\u514b\u5510\u7eb3\u5c9b',
-    officialNameEN: 'Heard Island and McDonald Islands',
-    officialNameES: 'Islas Heard y McDonald',
-    officialNameFR: '\u00cele Heard-et-\u00celes MacDonald',
-    officialNameRU:
-      '\u041e\u0441\u0442\u0440\u043e\u0432 \u0425\u0435\u0440\u0434 \u0438 \u043e\u0441\u0442\u0440\u043e\u0432\u0430 \u041c\u0430\u043a\u0434\u043e\u043d\u0430\u043b\u044c\u0434'
+    officialName: 'Heard Island and McDonald Islands'
   },
   {
     name: 'Vatican City',
@@ -4288,12 +3755,7 @@ const countryDatabase = [
     'Sub-region Name': 'Southern Europe',
     TLD: '.va',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0643\u0631\u0633\u064a \u0627\u0644\u0631\u0633\u0648\u0644\u064a',
-    officialNameCN: '\u6559\u5ef7',
-    officialNameEN: 'Holy See',
-    officialNameES: 'Santa Sede',
-    officialNameFR: 'Saint-Si\u00e8ge',
-    officialNameRU: '\u0421\u0432\u044f\u0442\u043e\u0439 \u041f\u0440\u0435\u0441\u0442\u043e\u043b'
+    officialName: 'Holy See'
   },
   {
     name: 'Honduras',
@@ -4330,12 +3792,7 @@ const countryDatabase = [
     TLD: '.hn',
     WMO: 'HO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0647\u0646\u062f\u0648\u0631\u0627\u0633',
-    officialNameCN: '\u6d2a\u90fd\u62c9\u65af',
-    officialNameEN: 'Honduras',
-    officialNameES: 'Honduras',
-    officialNameFR: 'Honduras',
-    officialNameRU: '\u0413\u043e\u043d\u0434\u0443\u0440\u0430\u0441'
+    officialName: 'Honduras'
   },
   {
     name: 'Hungary',
@@ -4371,12 +3828,7 @@ const countryDatabase = [
     TLD: '.hu',
     WMO: 'HU',
     isIndependent: 'Yes',
-    officialNameAR: '\u0647\u0646\u063a\u0627\u0631\u064a\u0627',
-    officialNameCN: '\u5308\u7259\u5229',
-    officialNameEN: 'Hungary',
-    officialNameES: 'Hungr\u00eda',
-    officialNameFR: 'Hongrie',
-    officialNameRU: '\u0412\u0435\u043d\u0433\u0440\u0438\u044f'
+    officialName: 'Hungary'
   },
   {
     name: 'Iceland',
@@ -4412,12 +3864,7 @@ const countryDatabase = [
     TLD: '.is',
     WMO: 'IL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0622\u064a\u0633\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u51b0\u5c9b',
-    officialNameEN: 'Iceland',
-    officialNameES: 'Islandia',
-    officialNameFR: 'Islande',
-    officialNameRU: '\u0418\u0441\u043b\u0430\u043d\u0434\u0438\u044f'
+    officialName: 'Iceland'
   },
   {
     name: 'India',
@@ -4453,12 +3900,7 @@ const countryDatabase = [
     TLD: '.in',
     WMO: 'IN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0647\u0646\u062f',
-    officialNameCN: '\u5370\u5ea6',
-    officialNameEN: 'India',
-    officialNameES: 'India',
-    officialNameFR: 'Inde',
-    officialNameRU: '\u0418\u043d\u0434\u0438\u044f'
+    officialName: 'India'
   },
   {
     name: 'Indonesia',
@@ -4494,12 +3936,7 @@ const countryDatabase = [
     TLD: '.id',
     WMO: 'ID',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0646\u062f\u0648\u0646\u064a\u0633\u064a\u0627',
-    officialNameCN: '\u5370\u5ea6\u5c3c\u897f\u4e9a',
-    officialNameEN: 'Indonesia',
-    officialNameES: 'Indonesia',
-    officialNameFR: 'Indon\u00e9sie',
-    officialNameRU: '\u0418\u043d\u0434\u043e\u043d\u0435\u0437\u0438\u044f'
+    officialName: 'Indonesia'
   },
   {
     name: 'Iran',
@@ -4534,14 +3971,7 @@ const countryDatabase = [
     TLD: '.ir',
     WMO: 'IR',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0625\u064a\u0631\u0627\u0646 (\u062c\u0645\u0647\u0648\u0631\u064a\u0629 - \u0627\u0644\u0625\u0633\u0644\u0627\u0645\u064a\u0629)',
-    officialNameCN: '\u4f0a\u6717(\u4f0a\u65af\u5170\u5171\u548c\u56fd)',
-    officialNameEN: 'Iran (Islamic Republic of)',
-    officialNameES: 'Ir\u00e1n (Rep\u00fablica Isl\u00e1mica del)',
-    officialNameFR: "Iran (R\u00e9publique islamique d')",
-    officialNameRU:
-      '\u0418\u0440\u0430\u043d (\u0418\u0441\u043b\u0430\u043c\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430)'
+    officialName: 'Iran (Islamic Republic of)'
   },
   {
     name: 'Iraq',
@@ -4577,12 +4007,7 @@ const countryDatabase = [
     TLD: '.iq',
     WMO: 'IQ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0639\u0631\u0627\u0642',
-    officialNameCN: '\u4f0a\u62c9\u514b',
-    officialNameEN: 'Iraq',
-    officialNameES: 'Iraq',
-    officialNameFR: 'Iraq',
-    officialNameRU: '\u0418\u0440\u0430\u043a'
+    officialName: 'Iraq'
   },
   {
     name: 'Ireland',
@@ -4618,12 +4043,7 @@ const countryDatabase = [
     TLD: '.ie',
     WMO: 'IE',
     isIndependent: 'Yes',
-    officialNameAR: '\u0622\u064a\u0631\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u7231\u5c14\u5170',
-    officialNameEN: 'Ireland',
-    officialNameES: 'Irlanda',
-    officialNameFR: 'Irlande',
-    officialNameRU: '\u0418\u0440\u043b\u0430\u043d\u0434\u0438\u044f'
+    officialName: 'Ireland'
   },
   {
     name: 'Isle of Man',
@@ -4656,12 +4076,7 @@ const countryDatabase = [
     'Sub-region Name': 'Northern Europe',
     TLD: '.im',
     isIndependent: 'Crown dependency of GB',
-    officialNameAR: '\u062c\u0632\u064a\u0631\u0629 \u0645\u0627\u0646',
-    officialNameCN: '\u9a6c\u6069\u5c9b',
-    officialNameEN: 'Isle of Man',
-    officialNameES: 'Isla de Man',
-    officialNameFR: '\u00cele de Man',
-    officialNameRU: '\u041e\u0441\u0442\u0440\u043e\u0432 \u041c\u044d\u043d'
+    officialName: 'Isle of Man'
   },
   {
     name: 'Israel',
@@ -4697,12 +4112,7 @@ const countryDatabase = [
     TLD: '.il',
     WMO: 'IS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0633\u0631\u0627\u0626\u064a\u0644',
-    officialNameCN: '\u4ee5\u8272\u5217',
-    officialNameEN: 'Israel',
-    officialNameES: 'Israel',
-    officialNameFR: 'Isra\u00ebl',
-    officialNameRU: '\u0418\u0437\u0440\u0430\u0438\u043b\u044c'
+    officialName: 'Israel'
   },
   {
     name: 'Italy',
@@ -4738,12 +4148,7 @@ const countryDatabase = [
     TLD: '.it',
     WMO: 'IY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u064a\u0637\u0627\u0644\u064a\u0627',
-    officialNameCN: '\u610f\u5927\u5229',
-    officialNameEN: 'Italy',
-    officialNameES: 'Italia',
-    officialNameFR: 'Italie',
-    officialNameRU: '\u0418\u0442\u0430\u043b\u0438\u044f'
+    officialName: 'Italy'
   },
   {
     name: 'Jamaica',
@@ -4782,12 +4187,7 @@ const countryDatabase = [
     TLD: '.jm',
     WMO: 'JM',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0627\u0645\u0627\u064a\u0643\u0627',
-    officialNameCN: '\u7259\u4e70\u52a0',
-    officialNameEN: 'Jamaica',
-    officialNameES: 'Jamaica',
-    officialNameFR: 'Jama\u00efque',
-    officialNameRU: '\u042f\u043c\u0430\u0439\u043a\u0430'
+    officialName: 'Jamaica'
   },
   {
     name: 'Japan',
@@ -4823,12 +4223,7 @@ const countryDatabase = [
     TLD: '.jp',
     WMO: 'JP',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u064a\u0627\u0628\u0627\u0646',
-    officialNameCN: '\u65e5\u672c',
-    officialNameEN: 'Japan',
-    officialNameES: 'Jap\u00f3n',
-    officialNameFR: 'Japon',
-    officialNameRU: '\u042f\u043f\u043e\u043d\u0438\u044f'
+    officialName: 'Japan'
   },
   {
     name: 'Jersey',
@@ -4863,12 +4258,7 @@ const countryDatabase = [
     'Sub-region Name': 'Northern Europe',
     TLD: '.je',
     isIndependent: 'Crown dependency of GB',
-    officialNameAR: '\u062c\u064a\u0631\u0632\u064a',
-    officialNameCN: '\u6cfd\u897f',
-    officialNameEN: 'Jersey',
-    officialNameES: 'Jersey',
-    officialNameFR: 'Jersey',
-    officialNameRU: '\u0414\u0436\u0435\u0440\u0441\u0438'
+    officialName: 'Jersey'
   },
   {
     name: 'Jordan',
@@ -4904,12 +4294,7 @@ const countryDatabase = [
     TLD: '.jo',
     WMO: 'JD',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0623\u0631\u062f\u0646',
-    officialNameCN: '\u7ea6\u65e6',
-    officialNameEN: 'Jordan',
-    officialNameES: 'Jordania',
-    officialNameFR: 'Jordanie',
-    officialNameRU: '\u0418\u043e\u0440\u0434\u0430\u043d\u0438\u044f'
+    officialName: 'Jordan'
   },
   {
     name: 'Kazakhstan',
@@ -4945,12 +4330,7 @@ const countryDatabase = [
     TLD: '.kz',
     WMO: 'KZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u0627\u0632\u0627\u062e\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u54c8\u8428\u514b\u65af\u5766',
-    officialNameEN: 'Kazakhstan',
-    officialNameES: 'Kazajst\u00e1n',
-    officialNameFR: 'Kazakhstan',
-    officialNameRU: '\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d'
+    officialName: 'Kazakhstan'
   },
   {
     name: 'Kenya',
@@ -4988,12 +4368,7 @@ const countryDatabase = [
     TLD: '.ke',
     WMO: 'KN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u064a\u0646\u064a\u0627',
-    officialNameCN: '\u80af\u5c3c\u4e9a',
-    officialNameEN: 'Kenya',
-    officialNameES: 'Kenya',
-    officialNameFR: 'Kenya',
-    officialNameRU: '\u041a\u0435\u043d\u0438\u044f'
+    officialName: 'Kenya'
   },
   {
     name: 'Kiribati',
@@ -5030,12 +4405,7 @@ const countryDatabase = [
     TLD: '.ki',
     WMO: 'KB',
     isIndependent: 'Yes',
-    officialNameAR: '\u0643\u064a\u0631\u064a\u0628\u0627\u0633',
-    officialNameCN: '\u57fa\u91cc\u5df4\u65af',
-    officialNameEN: 'Kiribati',
-    officialNameES: 'Kiribati',
-    officialNameFR: 'Kiribati',
-    officialNameRU: '\u041a\u0438\u0440\u0438\u0431\u0430\u0442\u0438'
+    officialName: 'Kiribati'
   },
   {
     name: 'Kuwait',
@@ -5071,12 +4441,7 @@ const countryDatabase = [
     TLD: '.kw',
     WMO: 'KW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0643\u0648\u064a\u062a',
-    officialNameCN: '\u79d1\u5a01\u7279',
-    officialNameEN: 'Kuwait',
-    officialNameES: 'Kuwait',
-    officialNameFR: 'Kowe\u00eft',
-    officialNameRU: '\u041a\u0443\u0432\u0435\u0439\u0442'
+    officialName: 'Kuwait'
   },
   {
     name: 'Kyrgyzstan',
@@ -5113,12 +4478,7 @@ const countryDatabase = [
     TLD: '.kg',
     WMO: 'KG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0642\u064a\u0631\u063a\u064a\u0632\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u5409\u5c14\u5409\u65af\u65af\u5766',
-    officialNameEN: 'Kyrgyzstan',
-    officialNameES: 'Kirguist\u00e1n',
-    officialNameFR: 'Kirghizistan',
-    officialNameRU: '\u041a\u044b\u0440\u0433\u044b\u0437\u0441\u0442\u0430\u043d'
+    officialName: 'Kyrgyzstan'
   },
   {
     name: 'Laos',
@@ -5155,14 +4515,7 @@ const countryDatabase = [
     TLD: '.la',
     WMO: 'LA',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0644\u0627\u0648 \u0627\u0644\u062f\u064a\u0645\u0642\u0631\u0627\u0637\u064a\u0629 \u0627\u0644\u0634\u0639\u0628\u064a\u0629',
-    officialNameCN: '\u8001\u631d\u4eba\u6c11\u6c11\u4e3b\u5171\u548c\u56fd',
-    officialNameEN: "Lao People's Democratic Republic",
-    officialNameES: 'Rep\u00fablica Democr\u00e1tica Popular Lao',
-    officialNameFR: 'R\u00e9publique d\u00e9mocratique populaire lao',
-    officialNameRU:
-      '\u041b\u0430\u043e\u0441\u0441\u043a\u0430\u044f \u041d\u0430\u0440\u043e\u0434\u043d\u043e-\u0414\u0435\u043c\u043e\u043a\u0440\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430'
+    officialName: "Lao People's Democratic Republic"
   },
   {
     name: 'Latvia',
@@ -5198,12 +4551,7 @@ const countryDatabase = [
     TLD: '.lv',
     WMO: 'LV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u0627\u062a\u0641\u064a\u0627',
-    officialNameCN: '\u62c9\u8131\u7ef4\u4e9a',
-    officialNameEN: 'Latvia',
-    officialNameES: 'Letonia',
-    officialNameFR: 'Lettonie',
-    officialNameRU: '\u041b\u0430\u0442\u0432\u0438\u044f'
+    officialName: 'Latvia'
   },
   {
     name: 'Lebanon',
@@ -5239,12 +4587,7 @@ const countryDatabase = [
     TLD: '.lb',
     WMO: 'LB',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u0628\u0646\u0627\u0646',
-    officialNameCN: '\u9ece\u5df4\u5ae9',
-    officialNameEN: 'Lebanon',
-    officialNameES: 'L\u00edbano',
-    officialNameFR: 'Liban',
-    officialNameRU: '\u041b\u0438\u0432\u0430\u043d'
+    officialName: 'Lebanon'
   },
   {
     name: 'Lesotho',
@@ -5284,12 +4627,7 @@ const countryDatabase = [
     TLD: '.ls',
     WMO: 'LS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u064a\u0633\u0648\u062a\u0648',
-    officialNameCN: '\u83b1\u7d22\u6258',
-    officialNameEN: 'Lesotho',
-    officialNameES: 'Lesotho',
-    officialNameFR: 'Lesotho',
-    officialNameRU: '\u041b\u0435\u0441\u043e\u0442\u043e'
+    officialName: 'Lesotho'
   },
   {
     name: 'Liberia',
@@ -5328,12 +4666,7 @@ const countryDatabase = [
     TLD: '.lr',
     WMO: 'LI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u064a\u0628\u0631\u064a\u0627',
-    officialNameCN: '\u5229\u6bd4\u91cc\u4e9a',
-    officialNameEN: 'Liberia',
-    officialNameES: 'Liberia',
-    officialNameFR: 'Lib\u00e9ria',
-    officialNameRU: '\u041b\u0438\u0431\u0435\u0440\u0438\u044f'
+    officialName: 'Liberia'
   },
   {
     name: 'Libya',
@@ -5368,12 +4701,7 @@ const countryDatabase = [
     TLD: '.ly',
     WMO: 'LY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u064a\u0628\u064a\u0627',
-    officialNameCN: '\u5229\u6bd4\u4e9a',
-    officialNameEN: 'Libya',
-    officialNameES: 'Libia',
-    officialNameFR: 'Libye',
-    officialNameRU: '\u041b\u0438\u0432\u0438\u044f'
+    officialName: 'Libya'
   },
   {
     name: 'Liechtenstein',
@@ -5408,12 +4736,7 @@ const countryDatabase = [
     'Sub-region Name': 'Western Europe',
     TLD: '.li',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u064a\u062e\u062a\u0646\u0634\u062a\u0627\u064a\u0646',
-    officialNameCN: '\u5217\u652f\u6566\u58eb\u767b',
-    officialNameEN: 'Liechtenstein',
-    officialNameES: 'Liechtenstein',
-    officialNameFR: 'Liechtenstein',
-    officialNameRU: '\u041b\u0438\u0445\u0442\u0435\u043d\u0448\u0442\u0435\u0439\u043d'
+    officialName: 'Liechtenstein'
   },
   {
     name: 'Lithuania',
@@ -5449,12 +4772,7 @@ const countryDatabase = [
     TLD: '.lt',
     WMO: 'LT',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u064a\u062a\u0648\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u7acb\u9676\u5b9b',
-    officialNameEN: 'Lithuania',
-    officialNameES: 'Lituania',
-    officialNameFR: 'Lituanie',
-    officialNameRU: '\u041b\u0438\u0442\u0432\u0430'
+    officialName: 'Lithuania'
   },
   {
     name: 'Luxembourg',
@@ -5490,12 +4808,7 @@ const countryDatabase = [
     TLD: '.lu',
     WMO: 'BX',
     isIndependent: 'Yes',
-    officialNameAR: '\u0644\u0643\u0633\u0645\u0628\u0631\u063a',
-    officialNameCN: '\u5362\u68ee\u5821',
-    officialNameEN: 'Luxembourg',
-    officialNameES: 'Luxemburgo',
-    officialNameFR: 'Luxembourg',
-    officialNameRU: '\u041b\u044e\u043a\u0441\u0435\u043c\u0431\u0443\u0440\u0433'
+    officialName: 'Luxembourg'
   },
   {
     name: 'Madagascar',
@@ -5534,12 +4847,7 @@ const countryDatabase = [
     TLD: '.mg',
     WMO: 'MG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u062f\u063a\u0634\u0642\u0631',
-    officialNameCN: '\u9a6c\u8fbe\u52a0\u65af\u52a0',
-    officialNameEN: 'Madagascar',
-    officialNameES: 'Madagascar',
-    officialNameFR: 'Madagascar',
-    officialNameRU: '\u041c\u0430\u0434\u0430\u0433\u0430\u0441\u043a\u0430\u0440'
+    officialName: 'Madagascar'
   },
   {
     name: 'Malawi',
@@ -5579,12 +4887,7 @@ const countryDatabase = [
     TLD: '.mw',
     WMO: 'MW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0644\u0627\u0648\u064a',
-    officialNameCN: '\u9a6c\u62c9\u7ef4',
-    officialNameEN: 'Malawi',
-    officialNameES: 'Malawi',
-    officialNameFR: 'Malawi',
-    officialNameRU: '\u041c\u0430\u043b\u0430\u0432\u0438'
+    officialName: 'Malawi'
   },
   {
     name: 'Malaysia',
@@ -5620,12 +4923,7 @@ const countryDatabase = [
     TLD: '.my',
     WMO: 'MS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0627\u0644\u064a\u0632\u064a\u0627',
-    officialNameCN: '\u9a6c\u6765\u897f\u4e9a',
-    officialNameEN: 'Malaysia',
-    officialNameES: 'Malasia',
-    officialNameFR: 'Malaisie',
-    officialNameRU: '\u041c\u0430\u043b\u0430\u0439\u0437\u0438\u044f'
+    officialName: 'Malaysia'
   },
   {
     name: 'Maldives',
@@ -5662,13 +4960,7 @@ const countryDatabase = [
     TLD: '.mv',
     WMO: 'MV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0644\u062f\u064a\u0641',
-    officialNameCN: '\u9a6c\u5c14\u4ee3\u592b',
-    officialNameEN: 'Maldives',
-    officialNameES: 'Maldivas',
-    officialNameFR: 'Maldives',
-    officialNameRU:
-      '\u041c\u0430\u043b\u044c\u0434\u0438\u0432\u0441\u043a\u0438\u0435 \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Maldives'
   },
   {
     name: 'Mali',
@@ -5708,12 +5000,7 @@ const countryDatabase = [
     TLD: '.ml',
     WMO: 'MI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0627\u0644\u064a',
-    officialNameCN: '\u9a6c\u91cc',
-    officialNameEN: 'Mali',
-    officialNameES: 'Mal\u00ed',
-    officialNameFR: 'Mali',
-    officialNameRU: '\u041c\u0430\u043b\u0438'
+    officialName: 'Mali'
   },
   {
     name: 'Malta',
@@ -5749,12 +5036,7 @@ const countryDatabase = [
     TLD: '.mt',
     WMO: 'ML',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0627\u0644\u0637\u0629',
-    officialNameCN: '\u9a6c\u8033\u4ed6',
-    officialNameEN: 'Malta',
-    officialNameES: 'Malta',
-    officialNameFR: 'Malte',
-    officialNameRU: '\u041c\u0430\u043b\u044c\u0442\u0430'
+    officialName: 'Malta'
   },
   {
     name: 'Marshall Islands',
@@ -5790,13 +5072,7 @@ const countryDatabase = [
     TLD: '.mh',
     WMO: 'MH',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0632\u0631 \u0645\u0627\u0631\u0634\u0627\u0644',
-    officialNameCN: '\u9a6c\u7ecd\u5c14\u7fa4\u5c9b',
-    officialNameEN: 'Marshall Islands',
-    officialNameES: 'Islas Marshall',
-    officialNameFR: '\u00celes Marshall',
-    officialNameRU:
-      '\u041c\u0430\u0440\u0448\u0430\u043b\u043b\u043e\u0432\u044b \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Marshall Islands'
   },
   {
     name: 'Martinique',
@@ -5834,12 +5110,7 @@ const countryDatabase = [
     TLD: '.mq',
     WMO: 'MR',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u0645\u0627\u0631\u062a\u064a\u0646\u064a\u0643',
-    officialNameCN: '\u9a6c\u63d0\u5c3c\u514b',
-    officialNameEN: 'Martinique',
-    officialNameES: 'Martinica',
-    officialNameFR: 'Martinique',
-    officialNameRU: '\u041c\u0430\u0440\u0442\u0438\u043d\u0438\u043a\u0430'
+    officialName: 'Martinique'
   },
   {
     name: 'Mauritania',
@@ -5878,12 +5149,7 @@ const countryDatabase = [
     TLD: '.mr',
     WMO: 'MT',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0648\u0631\u064a\u062a\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u6bdb\u91cc\u5854\u5c3c\u4e9a',
-    officialNameEN: 'Mauritania',
-    officialNameES: 'Mauritania',
-    officialNameFR: 'Mauritanie',
-    officialNameRU: '\u041c\u0430\u0432\u0440\u0438\u0442\u0430\u043d\u0438\u044f'
+    officialName: 'Mauritania'
   },
   {
     name: 'Mauritius',
@@ -5922,12 +5188,7 @@ const countryDatabase = [
     TLD: '.mu',
     WMO: 'MA',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0648\u0631\u064a\u0634\u064a\u0648\u0633',
-    officialNameCN: '\u6bdb\u91cc\u6c42\u65af',
-    officialNameEN: 'Mauritius',
-    officialNameES: 'Mauricio',
-    officialNameFR: 'Maurice',
-    officialNameRU: '\u041c\u0430\u0432\u0440\u0438\u043a\u0438\u0439'
+    officialName: 'Mauritius'
   },
   {
     name: 'Mayotte',
@@ -5963,12 +5224,7 @@ const countryDatabase = [
     'Sub-region Name': 'Sub-Saharan Africa',
     TLD: '.yt',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u062c\u0632\u064a\u0631\u0629 \u0645\u0627\u064a\u0648\u062a',
-    officialNameCN: '\u9a6c\u7ea6\u7279',
-    officialNameEN: 'Mayotte',
-    officialNameES: 'Mayotte',
-    officialNameFR: 'Mayotte',
-    officialNameRU: '\u041e\u0441\u0442\u0440\u043e\u0432\u0435 \u041c\u0430\u0439\u043e\u0442\u0442\u0430'
+    officialName: 'Mayotte'
   },
   {
     name: 'Mexico',
@@ -6006,12 +5262,7 @@ const countryDatabase = [
     TLD: '.mx',
     WMO: 'MX',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0645\u0643\u0633\u064a\u0643',
-    officialNameCN: '\u58a8\u897f\u54e5',
-    officialNameEN: 'Mexico',
-    officialNameES: 'M\u00e9xico',
-    officialNameFR: 'Mexique',
-    officialNameRU: '\u041c\u0435\u043a\u0441\u0438\u043a\u0430'
+    officialName: 'Mexico'
   },
   {
     name: 'Micronesia',
@@ -6045,14 +5296,7 @@ const countryDatabase = [
     'Sub-region Name': 'Micronesia',
     TLD: '.fm',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0645\u064a\u0643\u0631\u0648\u0646\u064a\u0632\u064a\u0627 (\u0648\u0644\u0627\u064a\u0627\u062a - \u0627\u0644\u0645\u0648\u062d\u062f\u0629)',
-    officialNameCN: '\u5bc6\u514b\u7f57\u5c3c\u897f\u4e9a(\u8054\u90a6)',
-    officialNameEN: 'Micronesia (Federated States of)',
-    officialNameES: 'Micronesia (Estados Federados de)',
-    officialNameFR: 'Micron\u00e9sie (\u00c9tats f\u00e9d\u00e9r\u00e9s de)',
-    officialNameRU:
-      '\u041c\u0438\u043a\u0440\u043e\u043d\u0435\u0437\u0438\u044f (\u0424\u0435\u0434\u0435\u0440\u0430\u0442\u0438\u0432\u043d\u044b\u0435 \u0428\u0442\u0430\u0442\u044b)'
+    officialName: 'Micronesia (Federated States of)'
   },
   {
     name: 'Monaco',
@@ -6087,12 +5331,7 @@ const countryDatabase = [
     'Sub-region Name': 'Western Europe',
     TLD: '.mc',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0648\u0646\u0627\u0643\u0648',
-    officialNameCN: '\u6469\u7eb3\u54e5',
-    officialNameEN: 'Monaco',
-    officialNameES: 'M\u00f3naco',
-    officialNameFR: 'Monaco',
-    officialNameRU: '\u041c\u043e\u043d\u0430\u043a\u043e'
+    officialName: 'Monaco'
   },
   {
     name: 'Mongolia',
@@ -6129,12 +5368,7 @@ const countryDatabase = [
     TLD: '.mn',
     WMO: 'MO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0646\u063a\u0648\u0644\u064a\u0627',
-    officialNameCN: '\u8499\u53e4',
-    officialNameEN: 'Mongolia',
-    officialNameES: 'Mongolia',
-    officialNameFR: 'Mongolie',
-    officialNameRU: '\u041c\u043e\u043d\u0433\u043e\u043b\u0438\u044f'
+    officialName: 'Mongolia'
   },
   {
     name: 'Montenegro',
@@ -6169,12 +5403,7 @@ const countryDatabase = [
     'Sub-region Name': 'Southern Europe',
     TLD: '.me',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u062c\u0628\u0644 \u0627\u0644\u0623\u0633\u0648\u062f',
-    officialNameCN: '\u9ed1\u5c71',
-    officialNameEN: 'Montenegro',
-    officialNameES: 'Montenegro',
-    officialNameFR: 'Mont\u00e9n\u00e9gro',
-    officialNameRU: '\u0427\u0435\u0440\u043d\u043e\u0433\u043e\u0440\u0438\u044f'
+    officialName: 'Montenegro'
   },
   {
     name: 'Montserrat',
@@ -6211,12 +5440,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.ms',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u0645\u0648\u0646\u062a\u0633\u064a\u0631\u0627\u062a',
-    officialNameCN: '\u8499\u7279\u585e\u62c9\u7279',
-    officialNameEN: 'Montserrat',
-    officialNameES: 'Montserrat',
-    officialNameFR: 'Montserrat',
-    officialNameRU: '\u041c\u043e\u043d\u0442\u0441\u0435\u0440\u0440\u0430\u0442'
+    officialName: 'Montserrat'
   },
   {
     name: 'Morocco',
@@ -6252,12 +5476,7 @@ const countryDatabase = [
     TLD: '.ma',
     WMO: 'MC',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0645\u063a\u0631\u0628',
-    officialNameCN: '\u6469\u6d1b\u54e5',
-    officialNameEN: 'Morocco',
-    officialNameES: 'Marruecos',
-    officialNameFR: 'Maroc',
-    officialNameRU: '\u041c\u0430\u0440\u043e\u043a\u043a\u043e'
+    officialName: 'Morocco'
   },
   {
     name: 'Mozambique',
@@ -6296,12 +5515,7 @@ const countryDatabase = [
     TLD: '.mz',
     WMO: 'MZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u0648\u0632\u0627\u0645\u0628\u064a\u0642',
-    officialNameCN: '\u83ab\u6851\u6bd4\u514b',
-    officialNameEN: 'Mozambique',
-    officialNameES: 'Mozambique',
-    officialNameFR: 'Mozambique',
-    officialNameRU: '\u041c\u043e\u0437\u0430\u043c\u0431\u0438\u043a'
+    officialName: 'Mozambique'
   },
   {
     name: 'Myanmar',
@@ -6338,12 +5552,7 @@ const countryDatabase = [
     TLD: '.mm',
     WMO: 'BM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0645\u064a\u0627\u0646\u0645\u0627\u0631',
-    officialNameCN: '\u7f05\u7538',
-    officialNameEN: 'Myanmar',
-    officialNameES: 'Myanmar',
-    officialNameFR: 'Myanmar',
-    officialNameRU: '\u041c\u044c\u044f\u043d\u043c\u0430'
+    officialName: 'Myanmar'
   },
   {
     name: 'Namibia',
@@ -6381,12 +5590,7 @@ const countryDatabase = [
     TLD: '.na',
     WMO: 'NM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u0627\u0645\u064a\u0628\u064a\u0627',
-    officialNameCN: '\u7eb3\u7c73\u6bd4\u4e9a',
-    officialNameEN: 'Namibia',
-    officialNameES: 'Namibia',
-    officialNameFR: 'Namibie',
-    officialNameRU: '\u041d\u0430\u043c\u0438\u0431\u0438\u044f'
+    officialName: 'Namibia'
   },
   {
     name: 'Nauru',
@@ -6423,12 +5627,7 @@ const countryDatabase = [
     TLD: '.nr',
     WMO: 'NW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u0627\u0648\u0631\u0648',
-    officialNameCN: '\u7459\u9c81',
-    officialNameEN: 'Nauru',
-    officialNameES: 'Nauru',
-    officialNameFR: 'Nauru',
-    officialNameRU: '\u041d\u0430\u0443\u0440\u0443'
+    officialName: 'Nauru'
   },
   {
     name: 'Nepal',
@@ -6466,12 +5665,7 @@ const countryDatabase = [
     TLD: '.np',
     WMO: 'NP',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u064a\u0628\u0627\u0644',
-    officialNameCN: '\u5c3c\u6cca\u5c14',
-    officialNameEN: 'Nepal',
-    officialNameES: 'Nepal',
-    officialNameFR: 'N\u00e9pal',
-    officialNameRU: '\u041d\u0435\u043f\u0430\u043b'
+    officialName: 'Nepal'
   },
   {
     name: 'Netherlands',
@@ -6507,12 +5701,7 @@ const countryDatabase = [
     TLD: '.nl',
     WMO: 'NL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0647\u0648\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u8377\u5170',
-    officialNameEN: 'Netherlands',
-    officialNameES: 'Pa\u00edses Bajos',
-    officialNameFR: 'Pays-Bas',
-    officialNameRU: '\u041d\u0438\u0434\u0435\u0440\u043b\u0430\u043d\u0434\u044b'
+    officialName: 'Netherlands'
   },
   {
     name: 'New Caledonia',
@@ -6549,12 +5738,7 @@ const countryDatabase = [
     TLD: '.nc',
     WMO: 'NC',
     isIndependent: 'Territory of FR',
-    officialNameAR: '\u0643\u0627\u0644\u064a\u062f\u0648\u0646\u064a\u0627 \u0627\u0644\u062c\u062f\u064a\u062f\u0629',
-    officialNameCN: '\u65b0\u5580\u91cc\u591a\u5c3c\u4e9a',
-    officialNameEN: 'New Caledonia',
-    officialNameES: 'Nueva Caledonia',
-    officialNameFR: 'Nouvelle-Cal\u00e9donie',
-    officialNameRU: '\u041d\u043e\u0432\u0430\u044f \u041a\u0430\u043b\u0435\u0434\u043e\u043d\u0438\u044f'
+    officialName: 'New Caledonia'
   },
   {
     name: 'New Zealand',
@@ -6590,12 +5774,7 @@ const countryDatabase = [
     TLD: '.nz',
     WMO: 'NZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u064a\u0648\u0632\u064a\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u65b0\u897f\u5170',
-    officialNameEN: 'New Zealand',
-    officialNameES: 'Nueva Zelandia',
-    officialNameFR: 'Nouvelle-Z\u00e9lande',
-    officialNameRU: '\u041d\u043e\u0432\u0430\u044f \u0417\u0435\u043b\u0430\u043d\u0434\u0438\u044f'
+    officialName: 'New Zealand'
   },
   {
     name: 'Nicaragua',
@@ -6633,12 +5812,7 @@ const countryDatabase = [
     TLD: '.ni',
     WMO: 'NK',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u064a\u0643\u0627\u0631\u0627\u063a\u0648\u0627',
-    officialNameCN: '\u5c3c\u52a0\u62c9\u74dc',
-    officialNameEN: 'Nicaragua',
-    officialNameES: 'Nicaragua',
-    officialNameFR: 'Nicaragua',
-    officialNameRU: '\u041d\u0438\u043a\u0430\u0440\u0430\u0433\u0443\u0430'
+    officialName: 'Nicaragua'
   },
   {
     name: 'Niger',
@@ -6678,12 +5852,7 @@ const countryDatabase = [
     TLD: '.ne',
     WMO: 'NR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0646\u064a\u062c\u0631',
-    officialNameCN: '\u5c3c\u65e5\u5c14',
-    officialNameEN: 'Niger',
-    officialNameES: 'N\u00edger',
-    officialNameFR: 'Niger',
-    officialNameRU: '\u041d\u0438\u0433\u0435\u0440'
+    officialName: 'Niger'
   },
   {
     name: 'Nigeria',
@@ -6721,12 +5890,7 @@ const countryDatabase = [
     TLD: '.ng',
     WMO: 'NI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0646\u064a\u062c\u064a\u0631\u064a\u0627',
-    officialNameCN: '\u5c3c\u65e5\u5229\u4e9a',
-    officialNameEN: 'Nigeria',
-    officialNameES: 'Nigeria',
-    officialNameFR: 'Nig\u00e9ria',
-    officialNameRU: '\u041d\u0438\u0433\u0435\u0440\u0438\u044f'
+    officialName: 'Nigeria'
   },
   {
     name: 'Niue',
@@ -6762,12 +5926,7 @@ const countryDatabase = [
     'Sub-region Name': 'Polynesia',
     TLD: '.nu',
     isIndependent: 'Associated with NZ',
-    officialNameAR: '\u0646\u064a\u0648\u064a',
-    officialNameCN: '\u7ebd\u57c3',
-    officialNameEN: 'Niue',
-    officialNameES: 'Niue',
-    officialNameFR: 'Niou\u00e9',
-    officialNameRU: '\u041d\u0438\u0443\u044d'
+    officialName: 'Niue'
   },
   {
     name: 'Norfolk Island',
@@ -6803,12 +5962,7 @@ const countryDatabase = [
     TLD: '.nf',
     WMO: 'NF',
     isIndependent: 'Territory of AU',
-    officialNameAR: '\u062c\u0632\u064a\u0631\u0629 \u0646\u0648\u0631\u0641\u0644\u0643',
-    officialNameCN: '\u8bfa\u798f\u514b\u5c9b',
-    officialNameEN: 'Norfolk Island',
-    officialNameES: 'Islas Norfolk',
-    officialNameFR: '\u00cele Norfolk',
-    officialNameRU: '\u041e\u0441\u0442\u0440\u043e\u0432 \u041d\u043e\u0440\u0444\u043e\u043b\u043a'
+    officialName: 'Norfolk Island'
   },
   {
     name: 'Northern Mariana Islands',
@@ -6845,14 +5999,7 @@ const countryDatabase = [
     TLD: '.mp',
     WMO: 'MY',
     isIndependent: 'Commonwealth of US',
-    officialNameAR:
-      '\u062c\u0632\u0631 \u0645\u0627\u0631\u064a\u0627\u0646\u0627 \u0627\u0644\u0634\u0645\u0627\u0644\u064a\u0629',
-    officialNameCN: '\u5317\u9a6c\u91cc\u4e9a\u7eb3\u7fa4\u5c9b',
-    officialNameEN: 'Northern Mariana Islands',
-    officialNameES: 'Islas Marianas Septentrionales',
-    officialNameFR: '\u00celes Mariannes du Nord',
-    officialNameRU:
-      '\u0421\u0435\u0432\u0435\u0440\u043d\u044b\u0435 \u041c\u0430\u0440\u0438\u0430\u043d\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Northern Mariana Islands'
   },
   {
     name: 'Norway',
@@ -6888,12 +6035,7 @@ const countryDatabase = [
     TLD: '.no',
     WMO: 'NO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0646\u0631\u0648\u064a\u062c',
-    officialNameCN: '\u632a\u5a01',
-    officialNameEN: 'Norway',
-    officialNameES: 'Noruega',
-    officialNameFR: 'Norv\u00e8ge',
-    officialNameRU: '\u041d\u043e\u0440\u0432\u0435\u0433\u0438\u044f'
+    officialName: 'Norway'
   },
   {
     name: 'Oman',
@@ -6928,12 +6070,7 @@ const countryDatabase = [
     TLD: '.om',
     WMO: 'OM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0639\u0645\u0627\u0646',
-    officialNameCN: '\u963f\u66fc',
-    officialNameEN: 'Oman',
-    officialNameES: 'Om\u00e1n',
-    officialNameFR: 'Oman',
-    officialNameRU: '\u041e\u043c\u0430\u043d'
+    officialName: 'Oman'
   },
   {
     name: 'Pakistan',
@@ -6969,12 +6106,7 @@ const countryDatabase = [
     TLD: '.pk',
     WMO: 'PK',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0627\u0643\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u5df4\u57fa\u65af\u5766',
-    officialNameEN: 'Pakistan',
-    officialNameES: 'Pakist\u00e1n',
-    officialNameFR: 'Pakistan',
-    officialNameRU: '\u041f\u0430\u043a\u0438\u0441\u0442\u0430\u043d'
+    officialName: 'Pakistan'
   },
   {
     name: 'Palau',
@@ -7009,12 +6141,7 @@ const countryDatabase = [
     'Sub-region Name': 'Micronesia',
     TLD: '.pw',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0627\u0644\u0627\u0648',
-    officialNameCN: '\u5e15\u52b3',
-    officialNameEN: 'Palau',
-    officialNameES: 'Palau',
-    officialNameFR: 'Palaos',
-    officialNameRU: '\u041f\u0430\u043b\u0430\u0443'
+    officialName: 'Palau'
   },
   {
     name: 'Panama',
@@ -7052,12 +6179,7 @@ const countryDatabase = [
     TLD: '.pa',
     WMO: 'PM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0646\u0645\u0627',
-    officialNameCN: '\u5df4\u62ff\u9a6c',
-    officialNameEN: 'Panama',
-    officialNameES: 'Panam\u00e1',
-    officialNameFR: 'Panama',
-    officialNameRU: '\u041f\u0430\u043d\u0430\u043c\u0430'
+    officialName: 'Panama'
   },
   {
     name: 'Papua New Guinea',
@@ -7094,13 +6216,7 @@ const countryDatabase = [
     TLD: '.pg',
     WMO: 'NG',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0628\u0627\u0628\u0648\u0627 \u063a\u064a\u0646\u064a\u0627 \u0627\u0644\u062c\u062f\u064a\u062f\u0629',
-    officialNameCN: '\u5df4\u5e03\u4e9a\u65b0\u51e0\u5185\u4e9a',
-    officialNameEN: 'Papua New Guinea',
-    officialNameES: 'Papua Nueva Guinea',
-    officialNameFR: 'Papouasie-Nouvelle-Guin\u00e9e',
-    officialNameRU: '\u041f\u0430\u043f\u0443\u0430-\u041d\u043e\u0432\u0430\u044f \u0413\u0432\u0438\u043d\u0435\u044f'
+    officialName: 'Papua New Guinea'
   },
   {
     name: 'Paraguay',
@@ -7139,12 +6255,7 @@ const countryDatabase = [
     TLD: '.py',
     WMO: 'PY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0627\u0631\u0627\u063a\u0648\u0627\u064a',
-    officialNameCN: '\u5df4\u62c9\u572d',
-    officialNameEN: 'Paraguay',
-    officialNameES: 'Paraguay',
-    officialNameFR: 'Paraguay',
-    officialNameRU: '\u041f\u0430\u0440\u0430\u0433\u0432\u0430\u0439'
+    officialName: 'Paraguay'
   },
   {
     name: 'Peru',
@@ -7182,12 +6293,7 @@ const countryDatabase = [
     TLD: '.pe',
     WMO: 'PR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u064a\u0631\u0648',
-    officialNameCN: '\u79d8\u9c81',
-    officialNameEN: 'Peru',
-    officialNameES: 'Per\u00fa',
-    officialNameFR: 'P\u00e9rou',
-    officialNameRU: '\u041f\u0435\u0440\u0443'
+    officialName: 'Peru'
   },
   {
     name: 'Philippines',
@@ -7223,12 +6329,7 @@ const countryDatabase = [
     TLD: '.ph',
     WMO: 'PH',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0641\u0644\u0628\u064a\u0646',
-    officialNameCN: '\u83f2\u5f8b\u5bbe',
-    officialNameEN: 'Philippines',
-    officialNameES: 'Filipinas',
-    officialNameFR: 'Philippines',
-    officialNameRU: '\u0424\u0438\u043b\u0438\u043f\u043f\u0438\u043d\u044b'
+    officialName: 'Philippines'
   },
   {
     name: 'Pitcairn Islands',
@@ -7262,12 +6363,7 @@ const countryDatabase = [
     TLD: '.pn',
     WMO: 'PT',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u0628\u064a\u062a\u0643\u064a\u0631\u0646',
-    officialNameCN: '\u76ae\u7279\u51ef\u6069',
-    officialNameEN: 'Pitcairn',
-    officialNameES: 'Pitcairn',
-    officialNameFR: 'Pitcairn',
-    officialNameRU: '\u041f\u0438\u0442\u043a\u044d\u0440\u043d'
+    officialName: 'Pitcairn'
   },
   {
     name: 'Poland',
@@ -7303,12 +6399,7 @@ const countryDatabase = [
     TLD: '.pl',
     WMO: 'PL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0628\u0648\u0644\u0646\u062f\u0627',
-    officialNameCN: '\u6ce2\u5170',
-    officialNameEN: 'Poland',
-    officialNameES: 'Polonia',
-    officialNameFR: 'Pologne',
-    officialNameRU: '\u041f\u043e\u043b\u044c\u0448\u0430'
+    officialName: 'Poland'
   },
   {
     name: 'Portugal',
@@ -7344,12 +6435,7 @@ const countryDatabase = [
     TLD: '.pt',
     WMO: 'PO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0628\u0631\u062a\u063a\u0627\u0644',
-    officialNameCN: '\u8461\u8404\u7259',
-    officialNameEN: 'Portugal',
-    officialNameES: 'Portugal',
-    officialNameFR: 'Portugal',
-    officialNameRU: '\u041f\u043e\u0440\u0442\u0443\u0433\u0430\u043b\u0438\u044f'
+    officialName: 'Portugal'
   },
   {
     name: 'Puerto Rico',
@@ -7388,12 +6474,7 @@ const countryDatabase = [
     TLD: '.pr',
     WMO: 'PU',
     isIndependent: 'Commonwealth of US',
-    officialNameAR: '\u0628\u0648\u0631\u062a\u0648\u0631\u064a\u0643\u0648',
-    officialNameCN: '\u6ce2\u591a\u9ece\u5404',
-    officialNameEN: 'Puerto Rico',
-    officialNameES: 'Puerto Rico',
-    officialNameFR: 'Porto Rico',
-    officialNameRU: '\u041f\u0443\u044d\u0440\u0442\u043e-\u0420\u0438\u043a\u043e'
+    officialName: 'Puerto Rico'
   },
   {
     name: 'Qatar',
@@ -7429,12 +6510,7 @@ const countryDatabase = [
     TLD: '.qa',
     WMO: 'QT',
     isIndependent: 'Yes',
-    officialNameAR: '\u0642\u0637\u0631',
-    officialNameCN: '\u5361\u5854\u5c14',
-    officialNameEN: 'Qatar',
-    officialNameES: 'Qatar',
-    officialNameFR: 'Qatar',
-    officialNameRU: '\u041a\u0430\u0442\u0430\u0440'
+    officialName: 'Qatar'
   },
   {
     name: 'South Korea',
@@ -7469,12 +6545,7 @@ const countryDatabase = [
     TLD: '.kr',
     WMO: 'KO',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0643\u0648\u0631\u064a\u0627',
-    officialNameCN: '\u5927\u97e9\u6c11\u56fd',
-    officialNameEN: 'Republic of Korea',
-    officialNameES: 'Rep\u00fablica de Corea',
-    officialNameFR: 'R\u00e9publique de Cor\u00e9e',
-    officialNameRU: '\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041a\u043e\u0440\u0435\u044f'
+    officialName: 'Republic of Korea'
   },
   {
     name: 'Moldova',
@@ -7510,13 +6581,7 @@ const countryDatabase = [
     TLD: '.md',
     WMO: 'RM',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0645\u0648\u0644\u062f\u0648\u0641\u0627',
-    officialNameCN: '\u6469\u5c14\u591a\u74e6\u5171\u548c\u56fd',
-    officialNameEN: 'Republic of Moldova',
-    officialNameES: 'Rep\u00fablica de Moldova',
-    officialNameFR: 'R\u00e9publique de Moldova',
-    officialNameRU:
-      '\u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041c\u043e\u043b\u0434\u043e\u0432\u0430'
+    officialName: 'Republic of Moldova'
   },
   {
     name: 'Romania',
@@ -7552,12 +6617,7 @@ const countryDatabase = [
     TLD: '.ro',
     WMO: 'RO',
     isIndependent: 'Yes',
-    officialNameAR: '\u0631\u0648\u0645\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u7f57\u9a6c\u5c3c\u4e9a',
-    officialNameEN: 'Romania',
-    officialNameES: 'Rumania',
-    officialNameFR: 'Roumanie',
-    officialNameRU: '\u0420\u0443\u043c\u044b\u043d\u0438\u044f'
+    officialName: 'Romania'
   },
   {
     name: 'Russia',
@@ -7593,13 +6653,7 @@ const countryDatabase = [
     TLD: '.ru',
     WMO: 'RS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0627\u062a\u062d\u0627\u062f \u0627\u0644\u0631\u0648\u0633\u064a',
-    officialNameCN: '\u4fc4\u7f57\u65af\u8054\u90a6',
-    officialNameEN: 'Russian Federation',
-    officialNameES: 'Federaci\u00f3n de Rusia',
-    officialNameFR: 'F\u00e9d\u00e9ration de Russie',
-    officialNameRU:
-      '\u0420\u043e\u0441\u0441\u0438\u0439\u0441\u043a\u0430\u044f \u0424\u0435\u0434\u0435\u0440\u0430\u0446\u0438\u044f'
+    officialName: 'Russian Federation'
   },
   {
     name: 'Rwanda',
@@ -7639,12 +6693,7 @@ const countryDatabase = [
     TLD: '.rw',
     WMO: 'RW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0631\u0648\u0627\u0646\u062f\u0627',
-    officialNameCN: '\u5362\u65fa\u8fbe',
-    officialNameEN: 'Rwanda',
-    officialNameES: 'Rwanda',
-    officialNameFR: 'Rwanda',
-    officialNameRU: '\u0420\u0443\u0430\u043d\u0434\u0430'
+    officialName: 'Rwanda'
   },
   {
     name: 'R\u00e9union',
@@ -7681,12 +6730,7 @@ const countryDatabase = [
     TLD: '.re',
     WMO: 'RE',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u0631\u064a\u0648\u0646\u064a\u0648\u0646',
-    officialNameCN: '\u7559\u5c3c\u6c6a',
-    officialNameEN: 'R\u00e9union',
-    officialNameES: 'Reuni\u00f3n',
-    officialNameFR: 'R\u00e9union',
-    officialNameRU: '\u0420\u0435\u044e\u043d\u044c\u043e\u043d'
+    officialName: 'R\u00e9union'
   },
   {
     name: 'St. Barth\u00e9lemy',
@@ -7717,12 +6761,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.gp',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u0633\u0627\u0646 \u0628\u0627\u0631\u062a\u0644\u064a\u0645\u064a',
-    officialNameCN: '\u5723\u5df4\u6cf0\u52d2\u7c73',
-    officialNameEN: 'Saint Barth\u00e9lemy',
-    officialNameES: 'San Bartolom\u00e9',
-    officialNameFR: 'Saint-Barth\u00e9lemy',
-    officialNameRU: '\u0421\u0432\u044f\u0442\u043e\u0439 \u0412\u0430\u0440\u0444\u043e\u043b\u043e\u043c\u0435\u0439'
+    officialName: 'Saint Barth\u00e9lemy'
   },
   {
     name: 'St. Helena',
@@ -7759,13 +6798,7 @@ const countryDatabase = [
     TLD: '.sh',
     WMO: 'HE',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u0633\u0627\u0646\u062a \u0647\u064a\u0644\u0627\u0646\u0629',
-    officialNameCN: '\u5723\u8d6b\u52d2\u62ff',
-    officialNameEN: 'Saint Helena',
-    officialNameES: 'Santa Elena',
-    officialNameFR: 'Sainte-H\u00e9l\u00e8ne',
-    officialNameRU:
-      '\u041e\u0441\u0442\u0440\u043e\u0432 \u0421\u0432\u044f\u0442\u043e\u0439 \u0415\u043b\u0435\u043d\u044b'
+    officialName: 'Saint Helena'
   },
   {
     name: 'St. Kitts & Nevis',
@@ -7804,12 +6837,7 @@ const countryDatabase = [
     TLD: '.kn',
     WMO: 'AT',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0627\u0646\u062a \u0643\u064a\u062a\u0633 \u0648\u0646\u064a\u0641\u0633',
-    officialNameCN: '\u5723\u57fa\u8328\u548c\u5c3c\u7ef4\u65af',
-    officialNameEN: 'Saint Kitts and Nevis',
-    officialNameES: 'Saint Kitts y Nevis',
-    officialNameFR: 'Saint-Kitts-et-Nevis',
-    officialNameRU: '\u0421\u0435\u043d\u0442-\u041a\u0438\u0442\u0441 \u0438 \u041d\u0435\u0432\u0438\u0441'
+    officialName: 'Saint Kitts and Nevis'
   },
   {
     name: 'St. Lucia',
@@ -7848,12 +6876,7 @@ const countryDatabase = [
     TLD: '.lc',
     WMO: 'LC',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0627\u0646\u062a \u0644\u0648\u0633\u064a\u0627',
-    officialNameCN: '\u5723\u5362\u897f\u4e9a',
-    officialNameEN: 'Saint Lucia',
-    officialNameES: 'Santa Luc\u00eda',
-    officialNameFR: 'Sainte-Lucie',
-    officialNameRU: '\u0421\u0435\u043d\u0442-\u041b\u044e\u0441\u0438\u044f'
+    officialName: 'Saint Lucia'
   },
   {
     name: 'St. Martin',
@@ -7884,12 +6907,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.gp',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u0633\u0627\u0646 \u0645\u0627\u0631\u062a\u0646',
-    officialNameCN: '\u5723\u9a6c\u4e01(\u6cd5\u5c5e)',
-    officialNameEN: 'Saint Martin (French Part)',
-    officialNameES: 'San Mart\u00edn (parte francesa)',
-    officialNameFR: 'Saint-Martin (partie fran\u00e7aise)',
-    officialNameRU: '\u0421\u0435\u043d-\u041c\u0430\u0440\u0442\u0435\u043d'
+    officialName: 'Saint Martin (French Part)'
   },
   {
     name: 'St. Pierre & Miquelon',
@@ -7925,12 +6943,7 @@ const countryDatabase = [
     TLD: '.pm',
     WMO: 'FP',
     isIndependent: 'Part of FR',
-    officialNameAR: '\u0633\u0627\u0646 \u0628\u064a\u0627\u0631 \u0648\u0645\u064a\u0643\u0644\u0648\u0646',
-    officialNameCN: '\u5723\u76ae\u57c3\u5c14\u548c\u5bc6\u514b\u9686',
-    officialNameEN: 'Saint Pierre and Miquelon',
-    officialNameES: 'Saint Pierre y Miquelon',
-    officialNameFR: 'Saint-Pierre-et-Miquelon',
-    officialNameRU: '\u0421\u0435\u043d-\u041f\u044c\u0435\u0440 \u0438 \u041c\u0438\u043a\u0435\u043b\u043e\u043d'
+    officialName: 'Saint Pierre and Miquelon'
   },
   {
     name: 'St. Vincent & Grenadines',
@@ -7969,14 +6982,7 @@ const countryDatabase = [
     TLD: '.vc',
     WMO: 'VG',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0633\u0627\u0646\u062a \u0641\u0646\u0633\u0646\u062a \u0648\u062c\u0632\u0631 \u063a\u0631\u064a\u0646\u0627\u062f\u064a\u0646',
-    officialNameCN: '\u5723\u6587\u68ee\u7279\u548c\u683c\u6797\u7eb3\u4e01\u65af',
-    officialNameEN: 'Saint Vincent and the Grenadines',
-    officialNameES: 'San Vicente y las Granadinas',
-    officialNameFR: 'Saint-Vincent-et-les Grenadines',
-    officialNameRU:
-      '\u0421\u0435\u043d\u0442-\u0412\u0438\u043d\u0441\u0435\u043d\u0442 \u0438 \u0413\u0440\u0435\u043d\u0430\u0434\u0438\u043d\u044b'
+    officialName: 'Saint Vincent and the Grenadines'
   },
   {
     name: 'Samoa',
@@ -8013,12 +7019,7 @@ const countryDatabase = [
     TLD: '.ws',
     WMO: 'ZM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0627\u0645\u0648\u0627',
-    officialNameCN: '\u8428\u6469\u4e9a',
-    officialNameEN: 'Samoa',
-    officialNameES: 'Samoa',
-    officialNameFR: 'Samoa',
-    officialNameRU: '\u0421\u0430\u043c\u043e\u0430'
+    officialName: 'Samoa'
   },
   {
     name: 'San Marino',
@@ -8053,12 +7054,7 @@ const countryDatabase = [
     'Sub-region Name': 'Southern Europe',
     TLD: '.sm',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0627\u0646 \u0645\u0627\u0631\u064a\u0646\u0648',
-    officialNameCN: '\u5723\u9a6c\u529b\u8bfa',
-    officialNameEN: 'San Marino',
-    officialNameES: 'San Marino',
-    officialNameFR: 'Saint-Marin',
-    officialNameRU: '\u0421\u0430\u043d-\u041c\u0430\u0440\u0438\u043d\u043e'
+    officialName: 'San Marino'
   },
   {
     name: 'S\u00e3o Tom\u00e9 & Pr\u00edncipe',
@@ -8098,14 +7094,7 @@ const countryDatabase = [
     TLD: '.st',
     WMO: 'TP',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0633\u0627\u0646 \u062a\u0648\u0645\u064a \u0648\u0628\u0631\u064a\u0646\u0633\u064a\u0628\u064a',
-    officialNameCN: '\u5723\u591a\u7f8e\u548c\u666e\u6797\u897f\u6bd4',
-    officialNameEN: 'Sao Tome and Principe',
-    officialNameES: 'Santo Tom\u00e9 y Pr\u00edncipe',
-    officialNameFR: 'Sao Tom\u00e9-et-Principe',
-    officialNameRU:
-      '\u0421\u0430\u043d-\u0422\u043e\u043c\u0435 \u0438 \u041f\u0440\u0438\u043d\u0441\u0438\u043f\u0438'
+    officialName: 'Sao Tome and Principe'
   },
   {
     'Developed / Developing Countries': 'Developed',
@@ -8118,12 +7107,7 @@ const countryDatabase = [
     'Region Name': 'Europe',
     'Sub-region Code': '154',
     'Sub-region Name': 'Northern Europe',
-    officialNameAR: '\u0633\u0627\u0631\u0643',
-    officialNameCN: '\u8428\u514b',
-    officialNameEN: 'Sark',
-    officialNameES: 'Sark',
-    officialNameFR: 'Sercq',
-    officialNameRU: '\u0421\u0430\u0440\u043a'
+    officialName: 'Sark'
   },
   {
     name: 'Saudi Arabia',
@@ -8159,13 +7143,7 @@ const countryDatabase = [
     TLD: '.sa',
     WMO: 'SD',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0639\u0648\u062f\u064a\u0629',
-    officialNameCN: '\u6c99\u7279\u963f\u62c9\u4f2f',
-    officialNameEN: 'Saudi Arabia',
-    officialNameES: 'Arabia Saudita',
-    officialNameFR: 'Arabie saoudite',
-    officialNameRU: '\u0421\u0430\u0443\u0434\u043e\u0432\u0441\u043a\u0430\u044f \u0410\u0440\u0430\u0432\u0438\u044f'
+    officialName: 'Saudi Arabia'
   },
   {
     name: 'Senegal',
@@ -8204,12 +7182,7 @@ const countryDatabase = [
     TLD: '.sn',
     WMO: 'SG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0633\u0646\u063a\u0627\u0644',
-    officialNameCN: '\u585e\u5185\u52a0\u5c14',
-    officialNameEN: 'Senegal',
-    officialNameES: 'Senegal',
-    officialNameFR: 'S\u00e9n\u00e9gal',
-    officialNameRU: '\u0421\u0435\u043d\u0435\u0433\u0430\u043b'
+    officialName: 'Senegal'
   },
   {
     name: 'Serbia',
@@ -8245,12 +7218,7 @@ const countryDatabase = [
     TLD: '.rs',
     WMO: 'YG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0635\u0631\u0628\u064a\u0627',
-    officialNameCN: '\u585e\u5c14\u7ef4\u4e9a',
-    officialNameEN: 'Serbia',
-    officialNameES: 'Serbia',
-    officialNameFR: 'Serbie',
-    officialNameRU: '\u0421\u0435\u0440\u0431\u0438\u044f'
+    officialName: 'Serbia'
   },
   {
     name: 'Seychelles',
@@ -8289,13 +7257,7 @@ const countryDatabase = [
     TLD: '.sc',
     WMO: 'SC',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u064a\u0634\u064a\u0644',
-    officialNameCN: '\u585e\u820c\u5c14',
-    officialNameEN: 'Seychelles',
-    officialNameES: 'Seychelles',
-    officialNameFR: 'Seychelles',
-    officialNameRU:
-      '\u0421\u0435\u0439\u0448\u0435\u043b\u044c\u0441\u043a\u0438\u0435 \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Seychelles'
   },
   {
     name: 'Sierra Leone',
@@ -8334,12 +7296,7 @@ const countryDatabase = [
     TLD: '.sl',
     WMO: 'SL',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u064a\u0631\u0627\u0644\u064a\u0648\u0646',
-    officialNameCN: '\u585e\u62c9\u5229\u6602',
-    officialNameEN: 'Sierra Leone',
-    officialNameES: 'Sierra Leona',
-    officialNameFR: 'Sierra Leone',
-    officialNameRU: '\u0421\u044c\u0435\u0440\u0440\u0430-\u041b\u0435\u043e\u043d\u0435'
+    officialName: 'Sierra Leone'
   },
   {
     name: 'Singapore',
@@ -8376,12 +7333,7 @@ const countryDatabase = [
     TLD: '.sg',
     WMO: 'SR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0646\u063a\u0627\u0641\u0648\u0631\u0629',
-    officialNameCN: '\u65b0\u52a0\u5761',
-    officialNameEN: 'Singapore',
-    officialNameES: 'Singapur',
-    officialNameFR: 'Singapour',
-    officialNameRU: '\u0421\u0438\u043d\u0433\u0430\u043f\u0443\u0440'
+    officialName: 'Singapore'
   },
   {
     name: 'Sint Maarten',
@@ -8413,12 +7365,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.sx',
     isIndependent: 'Part of NL',
-    officialNameAR: '\u0633\u0627\u0646\u062a \u0645\u0627\u0631\u062a\u0646',
-    officialNameCN: '\u5723\u9a6c\u4e01(\u8377\u5c5e)',
-    officialNameEN: 'Sint Maarten (Dutch part)',
-    officialNameES: 'San Mart\u00edn (parte holand\u00e9s)',
-    officialNameFR: 'Saint-Martin (partie n\u00e9erlandaise)',
-    officialNameRU: '\u0421\u0438\u043d\u0442-\u041c\u0430\u0440\u0442\u0435\u043d'
+    officialName: 'Sint Maarten (Dutch part)'
   },
   {
     name: 'Slovakia',
@@ -8454,12 +7401,7 @@ const countryDatabase = [
     TLD: '.sk',
     WMO: 'SQ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0644\u0648\u0641\u0627\u0643\u064a\u0627',
-    officialNameCN: '\u65af\u6d1b\u4f10\u514b',
-    officialNameEN: 'Slovakia',
-    officialNameES: 'Eslovaquia',
-    officialNameFR: 'Slovaquie',
-    officialNameRU: '\u0421\u043b\u043e\u0432\u0430\u043a\u0438\u044f'
+    officialName: 'Slovakia'
   },
   {
     name: 'Slovenia',
@@ -8495,12 +7437,7 @@ const countryDatabase = [
     TLD: '.si',
     WMO: 'LJ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0644\u0648\u0641\u064a\u0646\u064a\u0627',
-    officialNameCN: '\u65af\u6d1b\u6587\u5c3c\u4e9a',
-    officialNameEN: 'Slovenia',
-    officialNameES: 'Eslovenia',
-    officialNameFR: 'Slov\u00e9nie',
-    officialNameRU: '\u0421\u043b\u043e\u0432\u0435\u043d\u0438\u044f'
+    officialName: 'Slovenia'
   },
   {
     name: 'Solomon Islands',
@@ -8538,13 +7475,7 @@ const countryDatabase = [
     TLD: '.sb',
     WMO: 'SO',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0632\u0631 \u0633\u0644\u064a\u0645\u0627\u0646',
-    officialNameCN: '\u6240\u7f57\u95e8\u7fa4\u5c9b',
-    officialNameEN: 'Solomon Islands',
-    officialNameES: 'Islas Salom\u00f3n',
-    officialNameFR: '\u00celes Salomon',
-    officialNameRU:
-      '\u0421\u043e\u043b\u043e\u043c\u043e\u043d\u043e\u0432\u044b \u041e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'Solomon Islands'
   },
   {
     name: 'Somalia',
@@ -8583,12 +7514,7 @@ const countryDatabase = [
     TLD: '.so',
     WMO: 'SI',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0635\u0648\u0645\u0627\u0644',
-    officialNameCN: '\u7d22\u9a6c\u91cc',
-    officialNameEN: 'Somalia',
-    officialNameES: 'Somalia',
-    officialNameFR: 'Somalie',
-    officialNameRU: '\u0421\u043e\u043c\u0430\u043b\u0438'
+    officialName: 'Somalia'
   },
   {
     name: 'South Africa',
@@ -8626,12 +7552,7 @@ const countryDatabase = [
     TLD: '.za',
     WMO: 'ZA',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0646\u0648\u0628 \u0623\u0641\u0631\u064a\u0642\u064a\u0627',
-    officialNameCN: '\u5357\u975e',
-    officialNameEN: 'South Africa',
-    officialNameES: 'Sud\u00e1frica',
-    officialNameFR: 'Afrique du Sud',
-    officialNameRU: '\u042e\u0436\u043d\u0430\u044f \u0410\u0444\u0440\u0438\u043a\u0430'
+    officialName: 'South Africa'
   },
   {
     name: 'South Georgia & South Sandwich Islands',
@@ -8661,14 +7582,7 @@ const countryDatabase = [
     'Sub-region Name': 'Latin America and the Caribbean',
     TLD: '.gs',
     isIndependent: 'Territory of GB',
-    officialNameAR:
-      '\u062c\u0648\u0631\u062c\u064a\u0627 \u0627\u0644\u062c\u0646\u0648\u0628\u064a\u0629 \u0648\u062c\u0632\u0631 \u0633\u0627\u0646\u062f\u0648\u064a\u062a\u0634 \u0627\u0644\u062c\u0646\u0648\u0628\u064a\u0629',
-    officialNameCN: '\u5357\u4e54\u6cbb\u4e9a\u5c9b\u548c\u5357\u6851\u5fb7\u97e6\u5947\u5c9b',
-    officialNameEN: 'South Georgia and the South Sandwich Islands',
-    officialNameES: 'Georgia del Sur y las Islas Sandwich del Sur',
-    officialNameFR: 'G\u00e9orgie du Sud-et-les \u00celes Sandwich du Sud',
-    officialNameRU:
-      '\u042e\u0436\u043d\u0430\u044f \u0414\u0436\u043e\u0440\u0434\u0436\u0438\u044f \u0438 \u042e\u0436\u043d\u044b\u0435 \u0421\u0430\u043d\u0434\u0432\u0438\u0447\u0435\u0432\u044b \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: 'South Georgia and the South Sandwich Islands'
   },
   {
     name: 'South Sudan',
@@ -8701,12 +7615,7 @@ const countryDatabase = [
     'Sub-region Code': '202',
     'Sub-region Name': 'Sub-Saharan Africa',
     isIndependent: 'Yes',
-    officialNameAR: '\u062c\u0646\u0648\u0628 \u0627\u0644\u0633\u0648\u062f\u0627\u0646',
-    officialNameCN: '\u5357\u82cf\u4e39',
-    officialNameEN: 'South Sudan',
-    officialNameES: 'Sud\u00e1n del Sur',
-    officialNameFR: 'Soudan du Sud',
-    officialNameRU: '\u042e\u0436\u043d\u044b\u0439 \u0421\u0443\u0434\u0430\u043d'
+    officialName: 'South Sudan'
   },
   {
     name: 'Spain',
@@ -8742,12 +7651,7 @@ const countryDatabase = [
     TLD: '.es',
     WMO: 'SP',
     isIndependent: 'Yes',
-    officialNameAR: '\u0625\u0633\u0628\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u897f\u73ed\u7259',
-    officialNameEN: 'Spain',
-    officialNameES: 'Espa\u00f1a',
-    officialNameFR: 'Espagne',
-    officialNameRU: '\u0418\u0441\u043f\u0430\u043d\u0438\u044f'
+    officialName: 'Spain'
   },
   {
     name: 'Sri Lanka',
@@ -8783,12 +7687,7 @@ const countryDatabase = [
     TLD: '.lk',
     WMO: 'SB',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0631\u064a \u0644\u0627\u0646\u0643\u0627',
-    officialNameCN: '\u65af\u91cc\u5170\u5361',
-    officialNameEN: 'Sri Lanka',
-    officialNameES: 'Sri Lanka',
-    officialNameFR: 'Sri Lanka',
-    officialNameRU: '\u0428\u0440\u0438-\u041b\u0430\u043d\u043a\u0430'
+    officialName: 'Sri Lanka'
   },
   {
     name: 'Palestine',
@@ -8817,13 +7716,7 @@ const countryDatabase = [
     'Sub-region Name': 'Western Asia',
     TLD: '.ps',
     isIndependent: 'In contention',
-    officialNameAR: '\u062f\u0648\u0644\u0629 \u0641\u0644\u0633\u0637\u064a\u0646',
-    officialNameCN: '\u5df4\u52d2\u65af\u5766\u56fd',
-    officialNameEN: 'State of Palestine',
-    officialNameES: 'Estado de Palestina',
-    officialNameFR: '\u00c9tat de Palestine',
-    officialNameRU:
-      '\u0413\u043e\u0441\u0443\u0434\u0430\u0440\u0441\u0442\u0432\u043e \u041f\u0430\u043b\u0435\u0441\u0442\u0438\u043d\u0430'
+    officialName: 'State of Palestine'
   },
   {
     name: 'Sudan',
@@ -8860,12 +7753,7 @@ const countryDatabase = [
     TLD: '.sd',
     WMO: 'SU',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0633\u0648\u062f\u0627\u0646',
-    officialNameCN: '\u82cf\u4e39',
-    officialNameEN: 'Sudan',
-    officialNameES: 'Sud\u00e1n',
-    officialNameFR: 'Soudan',
-    officialNameRU: '\u0421\u0443\u0434\u0430\u043d'
+    officialName: 'Sudan'
   },
   {
     name: 'Suriname',
@@ -8904,12 +7792,7 @@ const countryDatabase = [
     TLD: '.sr',
     WMO: 'SM',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0648\u0631\u064a\u0646\u0627\u0645',
-    officialNameCN: '\u82cf\u91cc\u5357',
-    officialNameEN: 'Suriname',
-    officialNameES: 'Suriname',
-    officialNameFR: 'Suriname',
-    officialNameRU: '\u0421\u0443\u0440\u0438\u043d\u0430\u043c'
+    officialName: 'Suriname'
   },
   {
     name: 'Svalbard & Jan Mayen',
@@ -8941,14 +7824,7 @@ const countryDatabase = [
     TLD: '.sj',
     WMO: 'SZ',
     isIndependent: 'Territory of NO',
-    officialNameAR:
-      '\u062c\u0632\u0631 \u0633\u0641\u0627\u0644\u0628\u0627\u0631\u062f \u0648\u062c\u0627\u0646 \u0645\u0627\u064a\u0646',
-    officialNameCN: '\u65af\u74e6\u5c14\u5df4\u5c9b\u548c\u626c\u9a6c\u5ef6\u5c9b',
-    officialNameEN: 'Svalbard and Jan Mayen Islands',
-    officialNameES: 'Islas Svalbard y Jan Mayen',
-    officialNameFR: '\u00celes Svalbard-et-Jan Mayen',
-    officialNameRU:
-      '\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0421\u0432\u0430\u043b\u044c\u0431\u0430\u0440\u0434 \u0438 \u042f\u043d-\u041c\u0430\u0439\u0435\u043d'
+    officialName: 'Svalbard and Jan Mayen Islands'
   },
   {
     name: 'Swaziland',
@@ -8987,12 +7863,7 @@ const countryDatabase = [
     TLD: '.sz',
     WMO: 'SV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0648\u0627\u0632\u064a\u0644\u0646\u062f',
-    officialNameCN: '\u65af\u5a01\u58eb\u5170',
-    officialNameEN: 'Swaziland',
-    officialNameES: 'Swazilandia',
-    officialNameFR: 'Swaziland',
-    officialNameRU: '\u0421\u0432\u0430\u0437\u0438\u043b\u0435\u043d\u0434'
+    officialName: 'Swaziland'
   },
   {
     name: 'Sweden',
@@ -9028,12 +7899,7 @@ const countryDatabase = [
     TLD: '.se',
     WMO: 'SN',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u0633\u0648\u064a\u062f',
-    officialNameCN: '\u745e\u5178',
-    officialNameEN: 'Sweden',
-    officialNameES: 'Suecia',
-    officialNameFR: 'Su\u00e8de',
-    officialNameRU: '\u0428\u0432\u0435\u0446\u0438\u044f'
+    officialName: 'Sweden'
   },
   {
     name: 'Switzerland',
@@ -9069,12 +7935,7 @@ const countryDatabase = [
     TLD: '.ch',
     WMO: 'SW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0633\u0648\u064a\u0633\u0631\u0627',
-    officialNameCN: '\u745e\u58eb',
-    officialNameEN: 'Switzerland',
-    officialNameES: 'Suiza',
-    officialNameFR: 'Suisse',
-    officialNameRU: '\u0428\u0432\u0435\u0439\u0446\u0430\u0440\u0438\u044f'
+    officialName: 'Switzerland'
   },
   {
     name: 'Syria',
@@ -9110,14 +7971,7 @@ const countryDatabase = [
     TLD: '.sy',
     WMO: 'SY',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0633\u0648\u0631\u064a\u0629',
-    officialNameCN: '\u963f\u62c9\u4f2f\u53d9\u5229\u4e9a\u5171\u548c\u56fd',
-    officialNameEN: 'Syrian Arab Republic',
-    officialNameES: 'Rep\u00fablica \u00c1rabe Siria',
-    officialNameFR: 'R\u00e9publique arabe syrienne',
-    officialNameRU:
-      '\u0421\u0438\u0440\u0438\u0439\u0441\u043a\u0430\u044f \u0410\u0440\u0430\u0431\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430'
+    officialName: 'Syrian Arab Republic'
   },
   {
     name: 'Tajikistan',
@@ -9154,12 +8008,7 @@ const countryDatabase = [
     TLD: '.tj',
     WMO: 'TA',
     isIndependent: 'Yes',
-    officialNameAR: '\u0637\u0627\u062c\u064a\u0643\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u5854\u5409\u514b\u65af\u5766',
-    officialNameEN: 'Tajikistan',
-    officialNameES: 'Tayikist\u00e1n',
-    officialNameFR: 'Tadjikistan',
-    officialNameRU: '\u0422\u0430\u0434\u0436\u0438\u043a\u0438\u0441\u0442\u0430\u043d'
+    officialName: 'Tajikistan'
   },
   {
     name: 'Thailand',
@@ -9195,12 +8044,7 @@ const countryDatabase = [
     TLD: '.th',
     WMO: 'TH',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0627\u064a\u0644\u0646\u062f',
-    officialNameCN: '\u6cf0\u56fd',
-    officialNameEN: 'Thailand',
-    officialNameES: 'Tailandia',
-    officialNameFR: 'Tha\u00eflande',
-    officialNameRU: '\u0422\u0430\u0438\u043b\u0430\u043d\u0434'
+    officialName: 'Thailand'
   },
   {
     name: 'Macedonia',
@@ -9236,14 +8080,7 @@ const countryDatabase = [
     TLD: '.mk',
     WMO: 'MJ',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u0645\u0642\u062f\u0648\u0646\u064a\u0627 \u0627\u0644\u064a\u0648\u063a\u0648\u0633\u0644\u0627\u0641\u064a\u0629 \u0633\u0627\u0628\u0642\u0627\u064b',
-    officialNameCN: '\u524d\u5357\u65af\u62c9\u592b\u7684\u9a6c\u5176\u987f\u5171\u548c\u56fd',
-    officialNameEN: 'The former Yugoslav Republic of Macedonia',
-    officialNameES: 'ex Rep\u00fablica Yugoslava de Macedonia',
-    officialNameFR: 'ex-R\u00e9publique yougoslave de Mac\u00e9doine',
-    officialNameRU:
-      '\u0431\u044b\u0432\u0448\u0430\u044f \u044e\u0433\u043e\u0441\u043b\u0430\u0432\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u041c\u0430\u043a\u0435\u0434\u043e\u043d\u0438\u044f'
+    officialName: 'The former Yugoslav Republic of Macedonia'
   },
   {
     name: 'Timor-Leste',
@@ -9281,12 +8118,7 @@ const countryDatabase = [
     TLD: '.tl',
     WMO: 'TM',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u064a\u0645\u0648\u0631- \u0644\u064a\u0634\u062a\u064a',
-    officialNameCN: '\u4e1c\u5e1d\u6c76',
-    officialNameEN: 'Timor-Leste',
-    officialNameES: 'Timor-Leste',
-    officialNameFR: 'Timor-Leste',
-    officialNameRU: '\u0422\u0438\u043c\u043e\u0440-\u041b\u0435\u0448\u0442\u0438'
+    officialName: 'Timor-Leste'
   },
   {
     name: 'Togo',
@@ -9325,12 +8157,7 @@ const countryDatabase = [
     TLD: '.tg',
     WMO: 'TG',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0648\u063a\u0648',
-    officialNameCN: '\u591a\u54e5',
-    officialNameEN: 'Togo',
-    officialNameES: 'Togo',
-    officialNameFR: 'Togo',
-    officialNameRU: '\u0422\u043e\u0433\u043e'
+    officialName: 'Togo'
   },
   {
     name: 'Tokelau',
@@ -9364,12 +8191,7 @@ const countryDatabase = [
     TLD: '.tk',
     WMO: 'TK',
     isIndependent: 'Territory of NZ',
-    officialNameAR: '\u062a\u0648\u0643\u064a\u0644\u0627\u0648',
-    officialNameCN: '\u6258\u514b\u52b3',
-    officialNameEN: 'Tokelau',
-    officialNameES: 'Tokelau',
-    officialNameFR: 'Tok\u00e9laou',
-    officialNameRU: '\u0422\u043e\u043a\u0435\u043b\u0430\u0443'
+    officialName: 'Tokelau'
   },
   {
     name: 'Tonga',
@@ -9406,12 +8228,7 @@ const countryDatabase = [
     TLD: '.to',
     WMO: 'TO',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0648\u0646\u063a\u0627',
-    officialNameCN: '\u6c64\u52a0',
-    officialNameEN: 'Tonga',
-    officialNameES: 'Tonga',
-    officialNameFR: 'Tonga',
-    officialNameRU: '\u0422\u043e\u043d\u0433\u0430'
+    officialName: 'Tonga'
   },
   {
     name: 'Trinidad & Tobago',
@@ -9450,12 +8267,7 @@ const countryDatabase = [
     TLD: '.tt',
     WMO: 'TD',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0631\u064a\u0646\u064a\u062f\u0627\u062f \u0648\u062a\u0648\u0628\u0627\u063a\u0648',
-    officialNameCN: '\u7279\u7acb\u5c3c\u8fbe\u548c\u591a\u5df4\u54e5',
-    officialNameEN: 'Trinidad and Tobago',
-    officialNameES: 'Trinidad y Tabago',
-    officialNameFR: 'Trinit\u00e9-et-Tobago',
-    officialNameRU: '\u0422\u0440\u0438\u043d\u0438\u0434\u0430\u0434 \u0438 \u0422\u043e\u0431\u0430\u0433\u043e'
+    officialName: 'Trinidad and Tobago'
   },
   {
     name: 'Tunisia',
@@ -9491,12 +8303,7 @@ const countryDatabase = [
     TLD: '.tn',
     WMO: 'TS',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0648\u0646\u0633',
-    officialNameCN: '\u7a81\u5c3c\u65af',
-    officialNameEN: 'Tunisia',
-    officialNameES: 'T\u00fanez',
-    officialNameFR: 'Tunisie',
-    officialNameRU: '\u0422\u0443\u043d\u0438\u0441'
+    officialName: 'Tunisia'
   },
   {
     name: 'Turkey',
@@ -9532,12 +8339,7 @@ const countryDatabase = [
     TLD: '.tr',
     WMO: 'TU',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0631\u0643\u064a\u0627',
-    officialNameCN: '\u571f\u8033\u5176',
-    officialNameEN: 'Turkey',
-    officialNameES: 'Turqu\u00eda',
-    officialNameFR: 'Turquie',
-    officialNameRU: '\u0422\u0443\u0440\u0446\u0438\u044f'
+    officialName: 'Turkey'
   },
   {
     name: 'Turkmenistan',
@@ -9574,12 +8376,7 @@ const countryDatabase = [
     TLD: '.tm',
     WMO: 'TR',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0631\u0643\u0645\u0627\u0646\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u571f\u5e93\u66fc\u65af\u5766',
-    officialNameEN: 'Turkmenistan',
-    officialNameES: 'Turkmenist\u00e1n',
-    officialNameFR: 'Turkm\u00e9nistan',
-    officialNameRU: '\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0438\u0441\u0442\u0430\u043d'
+    officialName: 'Turkmenistan'
   },
   {
     name: 'Turks & Caicos Islands',
@@ -9616,13 +8413,7 @@ const countryDatabase = [
     TLD: '.tc',
     WMO: 'TI',
     isIndependent: 'Territory of GB',
-    officialNameAR: '\u062c\u0632\u0631 \u062a\u0631\u0643\u0633 \u0648\u0643\u0627\u064a\u0643\u0648\u0633',
-    officialNameCN: '\u7279\u514b\u65af\u548c\u51ef\u79d1\u65af\u7fa4\u5c9b',
-    officialNameEN: 'Turks and Caicos Islands',
-    officialNameES: 'Islas Turcas y Caicos',
-    officialNameFR: '\u00celes Turques-et-Ca\u00efques',
-    officialNameRU:
-      '\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0422\u0451\u0440\u043a\u0441 \u0438 \u041a\u0430\u0439\u043a\u043e\u0441'
+    officialName: 'Turks and Caicos Islands'
   },
   {
     name: 'Tuvalu',
@@ -9660,12 +8451,7 @@ const countryDatabase = [
     TLD: '.tv',
     WMO: 'TV',
     isIndependent: 'Yes',
-    officialNameAR: '\u062a\u0648\u0641\u0627\u0644\u0648',
-    officialNameCN: '\u56fe\u74e6\u5362',
-    officialNameEN: 'Tuvalu',
-    officialNameES: 'Tuvalu',
-    officialNameFR: 'Tuvalu',
-    officialNameRU: '\u0422\u0443\u0432\u0430\u043b\u0443'
+    officialName: 'Tuvalu'
   },
   {
     name: 'Uganda',
@@ -9705,12 +8491,7 @@ const countryDatabase = [
     TLD: '.ug',
     WMO: 'UG',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0648\u063a\u0646\u062f\u0627',
-    officialNameCN: '\u4e4c\u5e72\u8fbe',
-    officialNameEN: 'Uganda',
-    officialNameES: 'Uganda',
-    officialNameFR: 'Ouganda',
-    officialNameRU: '\u0423\u0433\u0430\u043d\u0434\u0430'
+    officialName: 'Uganda'
   },
   {
     name: 'Ukraine',
@@ -9746,12 +8527,7 @@ const countryDatabase = [
     TLD: '.ua',
     WMO: 'UR',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0648\u0643\u0631\u0627\u0646\u064a\u0627',
-    officialNameCN: '\u4e4c\u514b\u5170',
-    officialNameEN: 'Ukraine',
-    officialNameES: 'Ucrania',
-    officialNameFR: 'Ukraine',
-    officialNameRU: '\u0423\u043a\u0440\u0430\u0438\u043d\u0430'
+    officialName: 'Ukraine'
   },
   {
     name: 'United Arab Emirates',
@@ -9786,14 +8562,7 @@ const countryDatabase = [
     TLD: '.ae',
     WMO: 'ER',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u0625\u0645\u0627\u0631\u0627\u062a \u0627\u0644\u0639\u0631\u0628\u064a\u0629 \u0627\u0644\u0645\u062a\u062d\u062f\u0629',
-    officialNameCN: '\u963f\u62c9\u4f2f\u8054\u5408\u914b\u957f\u56fd',
-    officialNameEN: 'United Arab Emirates',
-    officialNameES: 'Emiratos \u00c1rabes Unidos',
-    officialNameFR: '\u00c9mirats arabes unis',
-    officialNameRU:
-      '\u041e\u0431\u044a\u0435\u0434\u0438\u043d\u0435\u043d\u043d\u044b\u0435 \u0410\u0440\u0430\u0431\u0441\u043a\u0438\u0435 \u042d\u043c\u0438\u0440\u0430\u0442\u044b'
+    officialName: 'United Arab Emirates'
   },
   {
     name: 'UK',
@@ -9828,14 +8597,7 @@ const countryDatabase = [
     TLD: '.uk',
     WMO: 'UK',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u0645\u0645\u0644\u0643\u0629 \u0627\u0644\u0645\u062a\u062d\u062f\u0629 \u0644\u0628\u0631\u064a\u0637\u0627\u0646\u064a\u0627 \u0627\u0644\u0639\u0638\u0645\u0649 \u0648\u0622\u064a\u0631\u0644\u0646\u062f\u0627 \u0627\u0644\u0634\u0645\u0627\u0644\u064a\u0629',
-    officialNameCN: '\u5927\u4e0d\u5217\u98a0\u53ca\u5317\u7231\u5c14\u5170\u8054\u5408\u738b\u56fd',
-    officialNameEN: 'United Kingdom of Great Britain and Northern Ireland',
-    officialNameES: 'Reino Unido de Gran Breta\u00f1a e Irlanda del Norte',
-    officialNameFR: "Royaume-Uni de Grande-Bretagne et d'Irlande du Nord",
-    officialNameRU:
-      '\u0421\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u043d\u043e\u0435 \u041a\u043e\u0440\u043e\u043b\u0435\u0432\u0441\u0442\u0432\u043e \u0412\u0435\u043b\u0438\u043a\u043e\u0431\u0440\u0438\u0442\u0430\u043d\u0438\u0438 \u0438 \u0421\u0435\u0432\u0435\u0440\u043d\u043e\u0439 \u0418\u0440\u043b\u0430\u043d\u0434\u0438\u0438'
+    officialName: 'United Kingdom of Great Britain and Northern Ireland'
   },
   {
     name: 'Tanzania',
@@ -9874,14 +8636,7 @@ const countryDatabase = [
     TLD: '.tz',
     WMO: 'TN',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u062c\u0645\u0647\u0648\u0631\u064a\u0629 \u062a\u0646\u0632\u0627\u0646\u064a\u0627 \u0627\u0644\u0645\u062a\u062d\u062f\u0629',
-    officialNameCN: '\u5766\u6851\u5c3c\u4e9a\u8054\u5408\u5171\u548c\u56fd',
-    officialNameEN: 'United Republic of Tanzania',
-    officialNameES: 'Rep\u00fablica Unida de Tanzan\u00eda',
-    officialNameFR: 'R\u00e9publique-Unie de Tanzanie',
-    officialNameRU:
-      '\u041e\u0431\u044a\u0435\u0434\u0438\u043d\u0435\u043d\u043d\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430 \u0422\u0430\u043d\u0437\u0430\u043d\u0438\u044f'
+    officialName: 'United Republic of Tanzania'
   },
   {
     name: 'U.S. Outlying Islands',
@@ -9910,14 +8665,7 @@ const countryDatabase = [
     'Sub-region Name': 'Micronesia',
     TLD: '.um',
     isIndependent: 'Territories of US',
-    officialNameAR:
-      '\u0646\u0627\u0626\u064a\u0629 \u0627\u0644\u062a\u0627\u0628\u0639\u0629 \u0644\u0644\u0648\u0644\u0627\u064a\u0627\u062a \u0627\u0644\u0645\u062a\u062d\u062f\u0629',
-    officialNameCN: '\u7f8e\u56fd\u672c\u571f\u5916\u5c0f\u5c9b\u5c7f',
-    officialNameEN: 'United States Minor Outlying Islands',
-    officialNameES: 'Islas menores alejadas de Estados Unidos',
-    officialNameFR: '\u00celes mineures \u00e9loign\u00e9es des \u00c9tats-Unis',
-    officialNameRU:
-      '\u0412\u043d\u0435\u0448\u043d\u0438\u0435 \u043c\u0430\u043b\u044b\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430 Coe\u0434\u0438\u043de\u043d\u043d\u044bx \u0428\u0442a\u0442o\u0432'
+    officialName: 'United States Minor Outlying Islands'
   },
   {
     name: 'U.S. Virgin Islands',
@@ -9955,14 +8703,7 @@ const countryDatabase = [
     TLD: '.vi',
     WMO: 'VI',
     isIndependent: 'Territory of US',
-    officialNameAR:
-      '\u062c\u0632\u0631 \u0641\u0631\u062c\u0646 \u0627\u0644\u062a\u0627\u0628\u0639\u0629 \u0644\u0644\u0648\u0644\u0627\u064a\u0627\u062a \u0627\u0644\u0645\u062a\u062d\u062f\u0629',
-    officialNameCN: '\u7f8e\u5c5e\u7ef4\u5c14\u4eac\u7fa4\u5c9b',
-    officialNameEN: 'United States Virgin Islands',
-    officialNameES: 'Islas V\u00edrgenes de los Estados Unidos',
-    officialNameFR: '\u00celes Vierges am\u00e9ricaines',
-    officialNameRU:
-      '\u0412\u0438\u0440\u0433\u0438\u043d\u0441\u043a\u0438\u0435 o\u0441\u0442\u0440\u043e\u0432\u0430 Coe\u0434\u0438\u043de\u043d\u043d\u044bx \u0428\u0442a\u0442o\u0432'
+    officialName: 'United States Virgin Islands'
   },
   {
     name: 'US',
@@ -9997,14 +8738,7 @@ const countryDatabase = [
     TLD: '.us',
     WMO: 'US',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0627\u0644\u0648\u0644\u0627\u064a\u0627\u062a \u0627\u0644\u0645\u062a\u062d\u062f\u0629 \u0627\u0644\u0623\u0645\u0631\u064a\u0643\u064a\u0629',
-    officialNameCN: '\u7f8e\u5229\u575a\u5408\u4f17\u56fd',
-    officialNameEN: 'United States of America',
-    officialNameES: 'Estados Unidos de Am\u00e9rica',
-    officialNameFR: "\u00c9tats-Unis d'Am\u00e9rique",
-    officialNameRU:
-      '\u0421\u043e\u0435\u0434\u0438\u043d\u0435\u043d\u043d\u044b\u0435 \u0428\u0442\u0430\u0442\u044b \u0410\u043c\u0435\u0440\u0438\u043a\u0438'
+    officialName: 'United States of America'
   },
   {
     name: 'Uruguay',
@@ -10042,12 +8776,7 @@ const countryDatabase = [
     TLD: '.uy',
     WMO: 'UY',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0648\u0631\u0648\u063a\u0648\u0627\u064a',
-    officialNameCN: '\u4e4c\u62c9\u572d',
-    officialNameEN: 'Uruguay',
-    officialNameES: 'Uruguay',
-    officialNameFR: 'Uruguay',
-    officialNameRU: '\u0423\u0440\u0443\u0433\u0432\u0430\u0439'
+    officialName: 'Uruguay'
   },
   {
     name: 'Uzbekistan',
@@ -10084,12 +8813,7 @@ const countryDatabase = [
     TLD: '.uz',
     WMO: 'UZ',
     isIndependent: 'Yes',
-    officialNameAR: '\u0623\u0648\u0632\u0628\u0643\u0633\u062a\u0627\u0646',
-    officialNameCN: '\u4e4c\u5179\u522b\u514b\u65af\u5766',
-    officialNameEN: 'Uzbekistan',
-    officialNameES: 'Uzbekist\u00e1n',
-    officialNameFR: 'Ouzb\u00e9kistan',
-    officialNameRU: '\u0423\u0437\u0431\u0435\u043a\u0438\u0441\u0442\u0430\u043d'
+    officialName: 'Uzbekistan'
   },
   {
     name: 'Vanuatu',
@@ -10127,12 +8851,7 @@ const countryDatabase = [
     TLD: '.vu',
     WMO: 'NV',
     isIndependent: 'Yes',
-    officialNameAR: '\u0641\u0627\u0646\u0648\u0627\u062a\u0648',
-    officialNameCN: '\u74e6\u52aa\u963f\u56fe',
-    officialNameEN: 'Vanuatu',
-    officialNameES: 'Vanuatu',
-    officialNameFR: 'Vanuatu',
-    officialNameRU: '\u0412\u0430\u043d\u0443\u0430\u0442\u0443'
+    officialName: 'Vanuatu'
   },
   {
     name: 'Venezuela',
@@ -10169,14 +8888,7 @@ const countryDatabase = [
     TLD: '.ve',
     WMO: 'VN',
     isIndependent: 'Yes',
-    officialNameAR:
-      '\u0641\u0646\u0632\u0648\u064a\u0644\u0627 (\u062c\u0645\u0647\u0648\u0631\u064a\u0629 - \u0627\u0644\u0628\u0648\u0644\u064a\u0641\u0627\u0631\u064a\u0629)',
-    officialNameCN: '\u59d4\u5185\u745e\u62c9(\u73bb\u5229\u74e6\u5c14\u5171\u548c\u56fd)',
-    officialNameEN: 'Venezuela (Bolivarian Republic of)',
-    officialNameES: 'Venezuela (Rep\u00fablica Bolivariana de)',
-    officialNameFR: 'Venezuela (R\u00e9publique bolivarienne du)',
-    officialNameRU:
-      '\u0412\u0435\u043d\u0435\u0441\u0443\u044d\u043b\u0430 (\u0411\u043e\u043b\u0438\u0432\u0430\u0440\u0438\u0430\u043d\u0441\u043a\u0430\u044f \u0420\u0435\u0441\u043f\u0443\u0431\u043b\u0438\u043a\u0430)'
+    officialName: 'Venezuela (Bolivarian Republic of)'
   },
   {
     name: 'Vietnam',
@@ -10212,12 +8924,7 @@ const countryDatabase = [
     TLD: '.vn',
     WMO: 'VS',
     isIndependent: 'Yes',
-    officialNameAR: '\u0641\u064a\u064a\u062a \u0646\u0627\u0645',
-    officialNameCN: '\u8d8a\u5357',
-    officialNameEN: 'Viet Nam',
-    officialNameES: 'Viet Nam',
-    officialNameFR: 'Viet Nam',
-    officialNameRU: '\u0412\u044c\u0435\u0442\u043d\u0430\u043c'
+    officialName: 'Viet Nam'
   },
   {
     name: 'Wallis & Futuna',
@@ -10253,13 +8960,7 @@ const countryDatabase = [
     TLD: '.wf',
     WMO: 'FW',
     isIndependent: 'Territory of FR',
-    officialNameAR: '\u062c\u0632\u0631 \u0648\u0627\u0644\u064a\u0633 \u0648\u0641\u0648\u062a\u0648\u0646\u0627',
-    officialNameCN: '\u74e6\u5229\u65af\u7fa4\u5c9b\u548c\u5bcc\u56fe\u7eb3\u7fa4\u5c9b',
-    officialNameEN: 'Wallis and Futuna Islands',
-    officialNameES: 'Islas Wallis y Futuna',
-    officialNameFR: '\u00celes Wallis-et-Futuna',
-    officialNameRU:
-      '\u041e\u0441\u0442\u0440\u043e\u0432\u0430 \u0423\u043e\u043b\u043b\u0438\u0441 \u0438 \u0424\u0443\u0442\u0443\u043d\u0430'
+    officialName: 'Wallis and Futuna Islands'
   },
   {
     name: 'Western Sahara',
@@ -10292,12 +8993,7 @@ const countryDatabase = [
     'Sub-region Name': 'Northern Africa',
     TLD: '.eh',
     isIndependent: 'In contention',
-    officialNameAR: '\u0627\u0644\u0635\u062d\u0631\u0627\u0621 \u0627\u0644\u063a\u0631\u0628\u064a\u0629',
-    officialNameCN: '\u897f\u6492\u54c8\u62c9',
-    officialNameEN: 'Western Sahara',
-    officialNameES: 'S\u00e1hara Occidental',
-    officialNameFR: 'Sahara occidental',
-    officialNameRU: '\u0417\u0430\u043f\u0430\u0434\u043d\u0430\u044f \u0421\u0430\u0445\u0430\u0440\u0430'
+    officialName: 'Western Sahara'
   },
   {
     name: 'Yemen',
@@ -10334,12 +9030,7 @@ const countryDatabase = [
     TLD: '.ye',
     WMO: 'YE',
     isIndependent: 'Yes',
-    officialNameAR: '\u0627\u0644\u064a\u0645\u0646',
-    officialNameCN: '\u4e5f\u95e8',
-    officialNameEN: 'Yemen',
-    officialNameES: 'Yemen',
-    officialNameFR: 'Y\u00e9men',
-    officialNameRU: '\u0419\u0435\u043c\u0435\u043d'
+    officialName: 'Yemen'
   },
   {
     name: 'Zambia',
@@ -10379,12 +9070,7 @@ const countryDatabase = [
     TLD: '.zm',
     WMO: 'ZB',
     isIndependent: 'Yes',
-    officialNameAR: '\u0632\u0627\u0645\u0628\u064a\u0627',
-    officialNameCN: '\u8d5e\u6bd4\u4e9a',
-    officialNameEN: 'Zambia',
-    officialNameES: 'Zambia',
-    officialNameFR: 'Zambie',
-    officialNameRU: '\u0417\u0430\u043c\u0431\u0438\u044f'
+    officialName: 'Zambia'
   },
   {
     name: 'Zimbabwe',
@@ -10423,12 +9109,7 @@ const countryDatabase = [
     TLD: '.zw',
     WMO: 'ZW',
     isIndependent: 'Yes',
-    officialNameAR: '\u0632\u0645\u0628\u0627\u0628\u0648\u064a',
-    officialNameCN: '\u6d25\u5df4\u5e03\u97e6',
-    officialNameEN: 'Zimbabwe',
-    officialNameES: 'Zimbabwe',
-    officialNameFR: 'Zimbabwe',
-    officialNameRU: '\u0417\u0438\u043c\u0431\u0430\u0431\u0432\u0435'
+    officialName: 'Zimbabwe'
   },
   {
     name: '\u00c5land Islands',
@@ -10458,12 +9139,7 @@ const countryDatabase = [
     'Sub-region Name': 'Northern Europe',
     TLD: '.ax',
     isIndependent: 'Part of FI',
-    officialNameAR: '\u062c\u0632\u0631 \u0623\u0644\u0627\u0646\u062f',
-    officialNameCN: '\u5965\u5170\u7fa4\u5c9b',
-    officialNameEN: '\u00c5land Islands',
-    officialNameES: 'Islas \u00c5land',
-    officialNameFR: "\u00celes d'\u00c5land",
-    officialNameRU: '\u0410\u043b\u0430\u043d\u0434\u0441\u043a\u0438\u0435 \u043e\u0441\u0442\u0440\u043e\u0432\u0430'
+    officialName: '\u00c5land Islands'
   }
 ];
 
