@@ -2,6 +2,8 @@
 
 import * as assert from 'assert';
 
+import country from './country';
+
 import * as currency from './index';
 
 describe('currency', () => {
@@ -83,5 +85,9 @@ describe('currency', () => {
   it('getIso4217Codes', () => {
     const codes = currency.getIso4217Codes();
     assert.strictEqual(codes.length, 276);
+  });
+
+  it('country', () => {
+    assert.strictEqual(country.length, 250);
   });
 });
