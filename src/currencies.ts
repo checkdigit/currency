@@ -1,20 +1,825 @@
-// codes.ts
+// currencies.ts
 
 /*
  * Table generated from ISO 4217 Currency Codes XML at https://www.iso.org/iso-4217-currency-codes.html,
  * published 2018-08-29.
  */
 
-export interface Code {
-  country: string;
-  name: string;
-  alphabeticCode: string;
-  numericCode: string;
+export type CurrencyAlphabeticCode =
+  | 'AED'
+  | 'AFN'
+  | 'ALL'
+  | 'AMD'
+  | 'ANG'
+  | 'AOA'
+  | 'ARS'
+  | 'AUD'
+  | 'AWG'
+  | 'AZN'
+  | 'BAM'
+  | 'BBD'
+  | 'BDT'
+  | 'BGN'
+  | 'BHD'
+  | 'BIF'
+  | 'BMD'
+  | 'BND'
+  | 'BOB'
+  | 'BOV'
+  | 'BRL'
+  | 'BSD'
+  | 'BTN'
+  | 'BWP'
+  | 'BYN'
+  | 'BZD'
+  | 'CAD'
+  | 'CDF'
+  | 'CHE'
+  | 'CHF'
+  | 'CHW'
+  | 'CLF'
+  | 'CLP'
+  | 'CNY'
+  | 'COP'
+  | 'COU'
+  | 'CRC'
+  | 'CUC'
+  | 'CUP'
+  | 'CVE'
+  | 'CZK'
+  | 'DJF'
+  | 'DKK'
+  | 'DOP'
+  | 'DZD'
+  | 'EGP'
+  | 'ERN'
+  | 'ETB'
+  | 'EUR'
+  | 'FJD'
+  | 'FKP'
+  | 'GBP'
+  | 'GEL'
+  | 'GHS'
+  | 'GIP'
+  | 'GMD'
+  | 'GNF'
+  | 'GTQ'
+  | 'GYD'
+  | 'HKD'
+  | 'HNL'
+  | 'HRK'
+  | 'HTG'
+  | 'HUF'
+  | 'IDR'
+  | 'ILS'
+  | 'INR'
+  | 'IQD'
+  | 'IRR'
+  | 'ISK'
+  | 'JMD'
+  | 'JOD'
+  | 'JPY'
+  | 'KES'
+  | 'KGS'
+  | 'KHR'
+  | 'KMF'
+  | 'KPW'
+  | 'KRW'
+  | 'KWD'
+  | 'KYD'
+  | 'KZT'
+  | 'LAK'
+  | 'LBP'
+  | 'LKR'
+  | 'LRD'
+  | 'LSL'
+  | 'LYD'
+  | 'MAD'
+  | 'MDL'
+  | 'MGA'
+  | 'MKD'
+  | 'MMK'
+  | 'MNT'
+  | 'MOP'
+  | 'MRU'
+  | 'MUR'
+  | 'MVR'
+  | 'MWK'
+  | 'MXN'
+  | 'MXV'
+  | 'MYR'
+  | 'MZN'
+  | 'NAD'
+  | 'NGN'
+  | 'NIO'
+  | 'NOK'
+  | 'NPR'
+  | 'NZD'
+  | 'OMR'
+  | 'PAB'
+  | 'PEN'
+  | 'PGK'
+  | 'PHP'
+  | 'PKR'
+  | 'PLN'
+  | 'PYG'
+  | 'QAR'
+  | 'RON'
+  | 'RSD'
+  | 'RUB'
+  | 'RWF'
+  | 'SAR'
+  | 'SBD'
+  | 'SCR'
+  | 'SDG'
+  | 'SEK'
+  | 'SGD'
+  | 'SHP'
+  | 'SLL'
+  | 'SOS'
+  | 'SRD'
+  | 'SSP'
+  | 'STN'
+  | 'SVC'
+  | 'SYP'
+  | 'SZL'
+  | 'THB'
+  | 'TJS'
+  | 'TMT'
+  | 'TND'
+  | 'TOP'
+  | 'TRY'
+  | 'TTD'
+  | 'TWD'
+  | 'TZS'
+  | 'UAH'
+  | 'UGX'
+  | 'USD'
+  | 'USN'
+  | 'UYI'
+  | 'UYU'
+  | 'UYW'
+  | 'UZS'
+  | 'VES'
+  | 'VND'
+  | 'VUV'
+  | 'WST'
+  | 'XAF'
+  | 'XAG'
+  | 'XAU'
+  | 'XBA'
+  | 'XBB'
+  | 'XBC'
+  | 'XBD'
+  | 'XCD'
+  | 'XDR'
+  | 'XOF'
+  | 'XPD'
+  | 'XPF'
+  | 'XPT'
+  | 'XSU'
+  | 'XTS'
+  | 'XUA'
+  | 'XXX'
+  | 'YER'
+  | 'ZAR'
+  | 'ZMW'
+  | 'ZWL';
+
+export type CurrencyNumericCode =
+  | '008'
+  | '012'
+  | '032'
+  | '036'
+  | '044'
+  | '048'
+  | '050'
+  | '051'
+  | '052'
+  | '060'
+  | '064'
+  | '068'
+  | '072'
+  | '084'
+  | '090'
+  | '096'
+  | '104'
+  | '108'
+  | '116'
+  | '124'
+  | '132'
+  | '136'
+  | '144'
+  | '152'
+  | '156'
+  | '170'
+  | '174'
+  | '188'
+  | '191'
+  | '192'
+  | '203'
+  | '208'
+  | '214'
+  | '222'
+  | '230'
+  | '232'
+  | '238'
+  | '242'
+  | '262'
+  | '270'
+  | '292'
+  | '320'
+  | '324'
+  | '328'
+  | '332'
+  | '340'
+  | '344'
+  | '348'
+  | '352'
+  | '356'
+  | '360'
+  | '364'
+  | '368'
+  | '376'
+  | '388'
+  | '392'
+  | '398'
+  | '400'
+  | '404'
+  | '408'
+  | '410'
+  | '414'
+  | '417'
+  | '418'
+  | '422'
+  | '426'
+  | '430'
+  | '434'
+  | '446'
+  | '454'
+  | '458'
+  | '462'
+  | '480'
+  | '484'
+  | '496'
+  | '498'
+  | '504'
+  | '512'
+  | '516'
+  | '524'
+  | '532'
+  | '533'
+  | '548'
+  | '554'
+  | '558'
+  | '566'
+  | '578'
+  | '586'
+  | '590'
+  | '598'
+  | '600'
+  | '604'
+  | '608'
+  | '634'
+  | '643'
+  | '646'
+  | '654'
+  | '682'
+  | '690'
+  | '694'
+  | '702'
+  | '704'
+  | '706'
+  | '710'
+  | '728'
+  | '748'
+  | '752'
+  | '756'
+  | '760'
+  | '764'
+  | '776'
+  | '780'
+  | '784'
+  | '788'
+  | '800'
+  | '807'
+  | '818'
+  | '826'
+  | '834'
+  | '840'
+  | '858'
+  | '860'
+  | '882'
+  | '886'
+  | '901'
+  | '927'
+  | '928'
+  | '929'
+  | '930'
+  | '931'
+  | '932'
+  | '933'
+  | '934'
+  | '936'
+  | '938'
+  | '940'
+  | '941'
+  | '943'
+  | '944'
+  | '946'
+  | '947'
+  | '948'
+  | '949'
+  | '950'
+  | '951'
+  | '952'
+  | '953'
+  | '955'
+  | '956'
+  | '957'
+  | '958'
+  | '959'
+  | '960'
+  | '961'
+  | '962'
+  | '963'
+  | '964'
+  | '965'
+  | '967'
+  | '968'
+  | '969'
+  | '970'
+  | '971'
+  | '972'
+  | '973'
+  | '975'
+  | '976'
+  | '977'
+  | '978'
+  | '979'
+  | '980'
+  | '981'
+  | '984'
+  | '985'
+  | '986'
+  | '990'
+  | '994'
+  | '997'
+  | '999';
+
+export type CurrencyCountry =
+  | `AFGHANISTAN`
+  | `ALBANIA`
+  | `ALGERIA`
+  | `AMERICAN SAMOA`
+  | `ANDORRA`
+  | `ANGOLA`
+  | `ANGUILLA`
+  | `ANTIGUA AND BARBUDA`
+  | `ARGENTINA`
+  | `ARMENIA`
+  | `ARUBA`
+  | `AUSTRALIA`
+  | `AUSTRIA`
+  | `AZERBAIJAN`
+  | `BAHAMAS (THE)`
+  | `BAHRAIN`
+  | `BANGLADESH`
+  | `BARBADOS`
+  | `BELARUS`
+  | `BELGIUM`
+  | `BELIZE`
+  | `BENIN`
+  | `BERMUDA`
+  | `BHUTAN`
+  | `BOLIVIA (PLURINATIONAL STATE OF)`
+  | `BONAIRE, SINT EUSTATIUS AND SABA`
+  | `BOSNIA AND HERZEGOVINA`
+  | `BOTSWANA`
+  | `BOUVET ISLAND`
+  | `BRAZIL`
+  | `BRITISH INDIAN OCEAN TERRITORY (THE)`
+  | `BRUNEI DARUSSALAM`
+  | `BULGARIA`
+  | `BURKINA FASO`
+  | `BURUNDI`
+  | `CABO VERDE`
+  | `CAMBODIA`
+  | `CAMEROON`
+  | `CANADA`
+  | `CAYMAN ISLANDS (THE)`
+  | `CENTRAL AFRICAN REPUBLIC (THE)`
+  | `CHAD`
+  | `CHILE`
+  | `CHINA`
+  | `CHRISTMAS ISLAND`
+  | `COCOS (KEELING) ISLANDS (THE)`
+  | `COLOMBIA`
+  | `COMOROS (THE)`
+  | `CONGO (THE DEMOCRATIC REPUBLIC OF THE)`
+  | `CONGO (THE)`
+  | `COOK ISLANDS (THE)`
+  | `COSTA RICA`
+  | `CROATIA`
+  | `CUBA`
+  | `CURAÇAO`
+  | `CYPRUS`
+  | `CZECHIA`
+  | `CÔTE D'IVOIRE`
+  | `DENMARK`
+  | `DJIBOUTI`
+  | `DOMINICAN REPUBLIC (THE)`
+  | `DOMINICA`
+  | `ECUADOR`
+  | `EGYPT`
+  | `EL SALVADOR`
+  | `EQUATORIAL GUINEA`
+  | `ERITREA`
+  | `ESTONIA`
+  | `ESWATINI`
+  | `ETHIOPIA`
+  | `EUROPEAN UNION`
+  | `FALKLAND ISLANDS (THE) [MALVINAS]`
+  | `FAROE ISLANDS (THE)`
+  | `FIJI`
+  | `FINLAND`
+  | `FRANCE`
+  | `FRENCH GUIANA`
+  | `FRENCH POLYNESIA`
+  | `FRENCH SOUTHERN TERRITORIES (THE)`
+  | `GABON`
+  | `GAMBIA (THE)`
+  | `GEORGIA`
+  | `GERMANY`
+  | `GHANA`
+  | `GIBRALTAR`
+  | `GREECE`
+  | `GREENLAND`
+  | `GRENADA`
+  | `GUADELOUPE`
+  | `GUAM`
+  | `GUATEMALA`
+  | `GUERNSEY`
+  | `GUINEA-BISSAU`
+  | `GUINEA`
+  | `GUYANA`
+  | `HAITI`
+  | `HEARD ISLAND AND McDONALD ISLANDS`
+  | `HOLY SEE (THE)`
+  | `HONDURAS`
+  | `HONG KONG`
+  | `HUNGARY`
+  | `ICELAND`
+  | `INDIA`
+  | `INDONESIA`
+  | `INTERNATIONAL MONETARY FUND (IMF) `
+  | `IRAN (ISLAMIC REPUBLIC OF)`
+  | `IRAQ`
+  | `IRELAND`
+  | `ISLE OF MAN`
+  | `ISRAEL`
+  | `ITALY`
+  | `JAMAICA`
+  | `JAPAN`
+  | `JERSEY`
+  | `JORDAN`
+  | `KAZAKHSTAN`
+  | `KENYA`
+  | `KIRIBATI`
+  | `KOREA (THE DEMOCRATIC PEOPLE’S REPUBLIC OF)`
+  | `KOREA (THE REPUBLIC OF)`
+  | `KUWAIT`
+  | `KYRGYZSTAN`
+  | `LAO PEOPLE’S DEMOCRATIC REPUBLIC (THE)`
+  | `LATVIA`
+  | `LEBANON`
+  | `LESOTHO`
+  | `LIBERIA`
+  | `LIBYA`
+  | `LIECHTENSTEIN`
+  | `LITHUANIA`
+  | `LUXEMBOURG`
+  | `MACAO`
+  | `MACEDONIA (THE FORMER YUGOSLAV REPUBLIC OF)`
+  | `MADAGASCAR`
+  | `MALAWI`
+  | `MALAYSIA`
+  | `MALDIVES`
+  | `MALI`
+  | `MALTA`
+  | `MARSHALL ISLANDS (THE)`
+  | `MARTINIQUE`
+  | `MAURITANIA`
+  | `MAURITIUS`
+  | `MAYOTTE`
+  | `MEMBER COUNTRIES OF THE AFRICAN DEVELOPMENT BANK GROUP`
+  | `MEXICO`
+  | `MICRONESIA (FEDERATED STATES OF)`
+  | `MOLDOVA (THE REPUBLIC OF)`
+  | `MONACO`
+  | `MONGOLIA`
+  | `MONTENEGRO`
+  | `MONTSERRAT`
+  | `MOROCCO`
+  | `MOZAMBIQUE`
+  | `MYANMAR`
+  | `NAMIBIA`
+  | `NAURU`
+  | `NEPAL`
+  | `NETHERLANDS (THE)`
+  | `NEW CALEDONIA`
+  | `NEW ZEALAND`
+  | `NICARAGUA`
+  | `NIGER (THE)`
+  | `NIGERIA`
+  | `NIUE`
+  | `NORFOLK ISLAND`
+  | `NORTHERN MARIANA ISLANDS (THE)`
+  | `NORWAY`
+  | `OMAN`
+  | `PAKISTAN`
+  | `PALAU`
+  | `PANAMA`
+  | `PAPUA NEW GUINEA`
+  | `PARAGUAY`
+  | `PERU`
+  | `PHILIPPINES (THE)`
+  | `PITCAIRN`
+  | `POLAND`
+  | `PORTUGAL`
+  | `PUERTO RICO`
+  | `QATAR`
+  | `ROMANIA`
+  | `RUSSIAN FEDERATION (THE)`
+  | `RWANDA`
+  | `RÉUNION`
+  | `SAINT BARTHÉLEMY`
+  | `SAINT HELENA, ASCENSION AND TRISTAN DA CUNHA`
+  | `SAINT KITTS AND NEVIS`
+  | `SAINT LUCIA`
+  | `SAINT MARTIN (FRENCH PART)`
+  | `SAINT PIERRE AND MIQUELON`
+  | `SAINT VINCENT AND THE GRENADINES`
+  | `SAMOA`
+  | `SAN MARINO`
+  | `SAO TOME AND PRINCIPE`
+  | `SAUDI ARABIA`
+  | `SENEGAL`
+  | `SERBIA`
+  | `SEYCHELLES`
+  | `SIERRA LEONE`
+  | `SINGAPORE`
+  | `SINT MAARTEN (DUTCH PART)`
+  | `SISTEMA UNITARIO DE COMPENSACION REGIONAL DE PAGOS "SUCRE"`
+  | `SLOVAKIA`
+  | `SLOVENIA`
+  | `SOLOMON ISLANDS`
+  | `SOMALIA`
+  | `SOUTH AFRICA`
+  | `SOUTH SUDAN`
+  | `SPAIN`
+  | `SRI LANKA`
+  | `SUDAN (THE)`
+  | `SURINAME`
+  | `SVALBARD AND JAN MAYEN`
+  | `SWEDEN`
+  | `SWITZERLAND`
+  | `SYRIAN ARAB REPUBLIC`
+  | `TAIWAN (PROVINCE OF CHINA)`
+  | `TAJIKISTAN`
+  | `TANZANIA, UNITED REPUBLIC OF`
+  | `THAILAND`
+  | `TIMOR-LESTE`
+  | `TOGO`
+  | `TOKELAU`
+  | `TONGA`
+  | `TRINIDAD AND TOBAGO`
+  | `TUNISIA`
+  | `TURKEY`
+  | `TURKMENISTAN`
+  | `TURKS AND CAICOS ISLANDS (THE)`
+  | `TUVALU`
+  | `UGANDA`
+  | `UKRAINE`
+  | `UNITED ARAB EMIRATES (THE)`
+  | `UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND (THE)`
+  | `UNITED STATES MINOR OUTLYING ISLANDS (THE)`
+  | `UNITED STATES OF AMERICA (THE)`
+  | `URUGUAY`
+  | `UZBEKISTAN`
+  | `VANUATU`
+  | `VENEZUELA (BOLIVARIAN REPUBLIC OF)`
+  | `VIET NAM`
+  | `VIRGIN ISLANDS (BRITISH)`
+  | `VIRGIN ISLANDS (U.S.)`
+  | `WALLIS AND FUTUNA`
+  | `WESTERN SAHARA`
+  | `YEMEN`
+  | `ZAMBIA`
+  | `ZIMBABWE`
+  | `ZZ01_Bond Markets Unit European_EURCO`
+  | `ZZ02_Bond Markets Unit European_EMU-6`
+  | `ZZ03_Bond Markets Unit European_EUA-9`
+  | `ZZ04_Bond Markets Unit European_EUA-17`
+  | `ZZ06_Testing_Code`
+  | `ZZ07_No_Currency`
+  | `ZZ08_Gold`
+  | `ZZ09_Palladium`
+  | `ZZ10_Platinum`
+  | `ZZ11_Silver`
+  | `ÅLAND ISLANDS`;
+
+export type CurrencyName =
+  | 'ADB Unit of Account'
+  | 'Afghani'
+  | 'Algerian Dinar'
+  | 'Argentine Peso'
+  | 'Armenian Dram'
+  | 'Aruban Florin'
+  | 'Australian Dollar'
+  | 'Azerbaijan Manat'
+  | 'Bahamian Dollar'
+  | 'Bahraini Dinar'
+  | 'Baht'
+  | 'Balboa'
+  | 'Barbados Dollar'
+  | 'Belarusian Ruble'
+  | 'Belize Dollar'
+  | 'Bermudian Dollar'
+  | 'Boliviano'
+  | 'Bolívar Soberano'
+  | 'Bond Markets Unit European Composite Unit (EURCO)'
+  | 'Bond Markets Unit European Monetary Unit (E.M.U.-6)'
+  | 'Bond Markets Unit European Unit of Account 17 (E.U.A.-17)'
+  | 'Bond Markets Unit European Unit of Account 9 (E.U.A.-9)'
+  | 'Brazilian Real'
+  | 'Brunei Dollar'
+  | 'Bulgarian Lev'
+  | 'Burundi Franc'
+  | 'CFA Franc BCEAO'
+  | 'CFA Franc BEAC'
+  | 'CFP Franc'
+  | 'Cabo Verde Escudo'
+  | 'Canadian Dollar'
+  | 'Cayman Islands Dollar'
+  | 'Chilean Peso'
+  | 'Codes specifically reserved for testing purposes'
+  | 'Colombian Peso'
+  | 'Comorian Franc'
+  | 'Congolese Franc'
+  | 'Convertible Mark'
+  | 'Cordoba Oro'
+  | 'Costa Rican Colon'
+  | 'Cuban Peso'
+  | 'Czech Koruna'
+  | 'Dalasi'
+  | 'Danish Krone'
+  | 'Denar'
+  | 'Djibouti Franc'
+  | 'Dobra'
+  | 'Dominican Peso'
+  | 'Dong'
+  | 'East Caribbean Dollar'
+  | 'Egyptian Pound'
+  | 'El Salvador Colon'
+  | 'Ethiopian Birr'
+  | 'Euro'
+  | 'Falkland Islands Pound'
+  | 'Fiji Dollar'
+  | 'Forint'
+  | 'Ghana Cedi'
+  | 'Gibraltar Pound'
+  | 'Gold'
+  | 'Gourde'
+  | 'Guarani'
+  | 'Guinean Franc'
+  | 'Guyana Dollar'
+  | 'Hong Kong Dollar'
+  | 'Hryvnia'
+  | 'Iceland Krona'
+  | 'Indian Rupee'
+  | 'Iranian Rial'
+  | 'Iraqi Dinar'
+  | 'Jamaican Dollar'
+  | 'Jordanian Dinar'
+  | 'Kenyan Shilling'
+  | 'Kina'
+  | 'Kuna'
+  | 'Kuwaiti Dinar'
+  | 'Kwanza'
+  | 'Kyat'
+  | 'Lao Kip'
+  | 'Lari'
+  | 'Lebanese Pound'
+  | 'Lek'
+  | 'Lempira'
+  | 'Leone'
+  | 'Liberian Dollar'
+  | 'Libyan Dinar'
+  | 'Lilangeni'
+  | 'Loti'
+  | 'Malagasy Ariary'
+  | 'Malawi Kwacha'
+  | 'Malaysian Ringgit'
+  | 'Mauritius Rupee'
+  | 'Mexican Peso'
+  | 'Mexican Unidad de Inversion (UDI)'
+  | 'Moldovan Leu'
+  | 'Moroccan Dirham'
+  | 'Mozambique Metical'
+  | 'Mvdol'
+  | 'Naira'
+  | 'Nakfa'
+  | 'Namibia Dollar'
+  | 'Nepalese Rupee'
+  | 'Netherlands Antillean Guilder'
+  | 'New Israeli Sheqel'
+  | 'New Taiwan Dollar'
+  | 'New Zealand Dollar'
+  | 'Ngultrum'
+  | 'North Korean Won'
+  | 'Norwegian Krone'
+  | 'Ouguiya'
+  | 'Pakistan Rupee'
+  | 'Palladium'
+  | 'Pataca'
+  | 'Pa’anga'
+  | 'Peso Convertible'
+  | 'Peso Uruguayo'
+  | 'Philippine Peso'
+  | 'Platinum'
+  | 'Pound Sterling'
+  | 'Pula'
+  | 'Qatari Rial'
+  | 'Quetzal'
+  | 'Rand'
+  | 'Rial Omani'
+  | 'Riel'
+  | 'Romanian Leu'
+  | 'Rufiyaa'
+  | 'Rupiah'
+  | 'Russian Ruble'
+  | 'Rwanda Franc'
+  | 'SDR (Special Drawing Right)'
+  | 'Saint Helena Pound'
+  | 'Saudi Riyal'
+  | 'Serbian Dinar'
+  | 'Seychelles Rupee'
+  | 'Silver'
+  | 'Singapore Dollar'
+  | 'Sol'
+  | 'Solomon Islands Dollar'
+  | 'Som'
+  | 'Somali Shilling'
+  | 'Somoni'
+  | 'South Sudanese Pound'
+  | 'Sri Lanka Rupee'
+  | 'Sucre'
+  | 'Sudanese Pound'
+  | 'Surinam Dollar'
+  | 'Swedish Krona'
+  | 'Swiss Franc'
+  | 'Syrian Pound'
+  | 'Taka'
+  | 'Tala'
+  | 'Tanzanian Shilling'
+  | 'Tenge'
+  | 'The codes assigned for transactions where no currency is involved'
+  | 'Trinidad and Tobago Dollar'
+  | 'Tugrik'
+  | 'Tunisian Dinar'
+  | 'Turkish Lira'
+  | 'Turkmenistan New Manat'
+  | 'UAE Dirham'
+  | 'US Dollar (Next day)'
+  | 'US Dollar'
+  | 'Uganda Shilling'
+  | 'Unidad Previsional'
+  | 'Unidad de Fomento'
+  | 'Unidad de Valor Real'
+  | 'Uruguay Peso en Unidades Indexadas (UI)'
+  | 'Uzbekistan Sum'
+  | 'Vatu'
+  | 'WIR Euro'
+  | 'WIR Franc'
+  | 'Won'
+  | 'Yemeni Rial'
+  | 'Yen'
+  | 'Yuan Renminbi'
+  | 'Zambian Kwacha'
+  | 'Zimbabwe Dollar'
+  | 'Zloty';
+
+export interface Currency {
+  country: CurrencyCountry;
+  name: CurrencyName;
+  alphabeticCode: CurrencyAlphabeticCode;
+  numericCode: CurrencyNumericCode;
   minorUnits?: number;
   isFund?: true;
 }
 
-const codes: Code[] = [
+const currencies: Currency[] = [
   {
     country: 'AFGHANISTAN',
     name: 'Afghani',
@@ -1944,4 +2749,4 @@ const codes: Code[] = [
   }
 ];
 
-export default codes;
+export default currencies;

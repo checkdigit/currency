@@ -4,16 +4,759 @@
  * ISO 3166 country database with links to ISO 4217 currency information.
  */
 
+import { CurrencyAlphabeticCode, CurrencyCountry } from './currencies';
+
+export type CountryAlpha2 =
+  | 'TW'
+  | 'AF'
+  | 'AL'
+  | 'DZ'
+  | 'AS'
+  | 'AD'
+  | 'AO'
+  | 'AI'
+  | 'AG'
+  | 'AR'
+  | 'AM'
+  | 'AW'
+  | 'AU'
+  | 'AT'
+  | 'AZ'
+  | 'BS'
+  | 'BH'
+  | 'BD'
+  | 'BB'
+  | 'BY'
+  | 'BE'
+  | 'BZ'
+  | 'BJ'
+  | 'BM'
+  | 'BT'
+  | 'BO'
+  | 'BQ'
+  | 'BA'
+  | 'BW'
+  | 'BV'
+  | 'BR'
+  | 'IO'
+  | 'VG'
+  | 'BN'
+  | 'BG'
+  | 'BF'
+  | 'BI'
+  | 'CV'
+  | 'KH'
+  | 'CM'
+  | 'CA'
+  | 'KY'
+  | 'CF'
+  | 'TD'
+  | 'CL'
+  | 'CN'
+  | 'HK'
+  | 'MO'
+  | 'CX'
+  | 'CC'
+  | 'CO'
+  | 'KM'
+  | 'CG'
+  | 'CK'
+  | 'CR'
+  | 'HR'
+  | 'CU'
+  | 'CW'
+  | 'CY'
+  | 'CZ'
+  | 'CI'
+  | 'KP'
+  | 'CD'
+  | 'DK'
+  | 'DJ'
+  | 'DM'
+  | 'DO'
+  | 'EC'
+  | 'EG'
+  | 'SV'
+  | 'GQ'
+  | 'ER'
+  | 'EE'
+  | 'ET'
+  | 'FO'
+  | 'FJ'
+  | 'FI'
+  | 'FR'
+  | 'GF'
+  | 'PF'
+  | 'TF'
+  | 'GA'
+  | 'GM'
+  | 'GE'
+  | 'DE'
+  | 'GH'
+  | 'GI'
+  | 'GR'
+  | 'GL'
+  | 'GD'
+  | 'GP'
+  | 'GU'
+  | 'GT'
+  | 'GG'
+  | 'GN'
+  | 'GW'
+  | 'GY'
+  | 'HT'
+  | 'HM'
+  | 'VA'
+  | 'HN'
+  | 'HU'
+  | 'IS'
+  | 'IN'
+  | 'ID'
+  | 'IR'
+  | 'IQ'
+  | 'IE'
+  | 'IM'
+  | 'IL'
+  | 'IT'
+  | 'JM'
+  | 'JP'
+  | 'JE'
+  | 'JO'
+  | 'KZ'
+  | 'KE'
+  | 'KI'
+  | 'KW'
+  | 'KG'
+  | 'LA'
+  | 'LV'
+  | 'LB'
+  | 'LS'
+  | 'LR'
+  | 'LY'
+  | 'LI'
+  | 'LT'
+  | 'LU'
+  | 'MG'
+  | 'MW'
+  | 'MY'
+  | 'MV'
+  | 'ML'
+  | 'MT'
+  | 'MH'
+  | 'MQ'
+  | 'MR'
+  | 'MU'
+  | 'YT'
+  | 'MX'
+  | 'FM'
+  | 'MC'
+  | 'MN'
+  | 'ME'
+  | 'MS'
+  | 'MA'
+  | 'MZ'
+  | 'MM'
+  | 'NA'
+  | 'NR'
+  | 'NP'
+  | 'NL'
+  | 'NC'
+  | 'NZ'
+  | 'NI'
+  | 'NE'
+  | 'NG'
+  | 'NU'
+  | 'NF'
+  | 'MP'
+  | 'NO'
+  | 'OM'
+  | 'PK'
+  | 'PW'
+  | 'PA'
+  | 'PG'
+  | 'PY'
+  | 'PE'
+  | 'PH'
+  | 'PN'
+  | 'PL'
+  | 'PT'
+  | 'PR'
+  | 'QA'
+  | 'KR'
+  | 'MD'
+  | 'RO'
+  | 'RU'
+  | 'RW'
+  | 'RE'
+  | 'BL'
+  | 'SH'
+  | 'KN'
+  | 'LC'
+  | 'MF'
+  | 'PM'
+  | 'VC'
+  | 'WS'
+  | 'SM'
+  | 'ST'
+  | 'SA'
+  | 'SN'
+  | 'RS'
+  | 'SC'
+  | 'SL'
+  | 'SG'
+  | 'SX'
+  | 'SK'
+  | 'SI'
+  | 'SB'
+  | 'SO'
+  | 'ZA'
+  | 'SS'
+  | 'ES'
+  | 'LK'
+  | 'SD'
+  | 'SR'
+  | 'SJ'
+  | 'SZ'
+  | 'SE'
+  | 'CH'
+  | 'SY'
+  | 'TJ'
+  | 'TH'
+  | 'MK'
+  | 'TL'
+  | 'TG'
+  | 'TK'
+  | 'TO'
+  | 'TT'
+  | 'TN'
+  | 'TR'
+  | 'TM'
+  | 'TC'
+  | 'TV'
+  | 'UG'
+  | 'UA'
+  | 'AE'
+  | 'GB'
+  | 'TZ'
+  | 'UM'
+  | 'VI'
+  | 'US'
+  | 'UY'
+  | 'UZ'
+  | 'VU'
+  | 'VE'
+  | 'VN'
+  | 'WF'
+  | 'EH'
+  | 'YE'
+  | 'ZM'
+  | 'ZW'
+  | 'AX';
+
+export type CountryAlpha3 =
+  | 'TWN'
+  | 'AFG'
+  | 'ALB'
+  | 'DZA'
+  | 'ASM'
+  | 'AND'
+  | 'AGO'
+  | 'AIA'
+  | 'ATG'
+  | 'ARG'
+  | 'ARM'
+  | 'ABW'
+  | 'AUS'
+  | 'AUT'
+  | 'AZE'
+  | 'BHS'
+  | 'BHR'
+  | 'BGD'
+  | 'BRB'
+  | 'BLR'
+  | 'BEL'
+  | 'BLZ'
+  | 'BEN'
+  | 'BMU'
+  | 'BTN'
+  | 'BOL'
+  | 'BES'
+  | 'BIH'
+  | 'BWA'
+  | 'BVT'
+  | 'BRA'
+  | 'IOT'
+  | 'VGB'
+  | 'BRN'
+  | 'BGR'
+  | 'BFA'
+  | 'BDI'
+  | 'CPV'
+  | 'KHM'
+  | 'CMR'
+  | 'CAN'
+  | 'CYM'
+  | 'CAF'
+  | 'TCD'
+  | 'CHL'
+  | 'CHN'
+  | 'HKG'
+  | 'MAC'
+  | 'CXR'
+  | 'CCK'
+  | 'COL'
+  | 'COM'
+  | 'COG'
+  | 'COK'
+  | 'CRI'
+  | 'HRV'
+  | 'CUB'
+  | 'CUW'
+  | 'CYP'
+  | 'CZE'
+  | 'CIV'
+  | 'PRK'
+  | 'COD'
+  | 'DNK'
+  | 'DJI'
+  | 'DMA'
+  | 'DOM'
+  | 'ECU'
+  | 'EGY'
+  | 'SLV'
+  | 'GNQ'
+  | 'ERI'
+  | 'EST'
+  | 'ETH'
+  | 'FRO'
+  | 'FJI'
+  | 'FIN'
+  | 'FRA'
+  | 'GUF'
+  | 'PYF'
+  | 'ATF'
+  | 'GAB'
+  | 'GMB'
+  | 'GEO'
+  | 'DEU'
+  | 'GHA'
+  | 'GIB'
+  | 'GRC'
+  | 'GRL'
+  | 'GRD'
+  | 'GLP'
+  | 'GUM'
+  | 'GTM'
+  | 'GGY'
+  | 'GIN'
+  | 'GNB'
+  | 'GUY'
+  | 'HTI'
+  | 'HMD'
+  | 'VAT'
+  | 'HND'
+  | 'HUN'
+  | 'ISL'
+  | 'IND'
+  | 'IDN'
+  | 'IRN'
+  | 'IRQ'
+  | 'IRL'
+  | 'IMN'
+  | 'ISR'
+  | 'ITA'
+  | 'JAM'
+  | 'JPN'
+  | 'JEY'
+  | 'JOR'
+  | 'KAZ'
+  | 'KEN'
+  | 'KIR'
+  | 'KWT'
+  | 'KGZ'
+  | 'LAO'
+  | 'LVA'
+  | 'LBN'
+  | 'LSO'
+  | 'LBR'
+  | 'LBY'
+  | 'LIE'
+  | 'LTU'
+  | 'LUX'
+  | 'MDG'
+  | 'MWI'
+  | 'MYS'
+  | 'MDV'
+  | 'MLI'
+  | 'MLT'
+  | 'MHL'
+  | 'MTQ'
+  | 'MRT'
+  | 'MUS'
+  | 'MYT'
+  | 'MEX'
+  | 'FSM'
+  | 'MCO'
+  | 'MNG'
+  | 'MNE'
+  | 'MSR'
+  | 'MAR'
+  | 'MOZ'
+  | 'MMR'
+  | 'NAM'
+  | 'NRU'
+  | 'NPL'
+  | 'NLD'
+  | 'NCL'
+  | 'NZL'
+  | 'NIC'
+  | 'NER'
+  | 'NGA'
+  | 'NIU'
+  | 'NFK'
+  | 'MNP'
+  | 'NOR'
+  | 'OMN'
+  | 'PAK'
+  | 'PLW'
+  | 'PAN'
+  | 'PNG'
+  | 'PRY'
+  | 'PER'
+  | 'PHL'
+  | 'PCN'
+  | 'POL'
+  | 'PRT'
+  | 'PRI'
+  | 'QAT'
+  | 'KOR'
+  | 'MDA'
+  | 'ROU'
+  | 'RUS'
+  | 'RWA'
+  | 'REU'
+  | 'BLM'
+  | 'SHN'
+  | 'KNA'
+  | 'LCA'
+  | 'MAF'
+  | 'SPM'
+  | 'VCT'
+  | 'WSM'
+  | 'SMR'
+  | 'STP'
+  | 'SAU'
+  | 'SEN'
+  | 'SRB'
+  | 'SYC'
+  | 'SLE'
+  | 'SGP'
+  | 'SXM'
+  | 'SVK'
+  | 'SVN'
+  | 'SLB'
+  | 'SOM'
+  | 'ZAF'
+  | 'SSD'
+  | 'ESP'
+  | 'LKA'
+  | 'SDN'
+  | 'SUR'
+  | 'SJM'
+  | 'SWZ'
+  | 'SWE'
+  | 'CHE'
+  | 'SYR'
+  | 'TJK'
+  | 'THA'
+  | 'MKD'
+  | 'TLS'
+  | 'TGO'
+  | 'TKL'
+  | 'TON'
+  | 'TTO'
+  | 'TUN'
+  | 'TUR'
+  | 'TKM'
+  | 'TCA'
+  | 'TUV'
+  | 'UGA'
+  | 'UKR'
+  | 'ARE'
+  | 'GBR'
+  | 'TZA'
+  | 'UMI'
+  | 'VIR'
+  | 'USA'
+  | 'URY'
+  | 'UZB'
+  | 'VUT'
+  | 'VEN'
+  | 'VNM'
+  | 'WLF'
+  | 'ESH'
+  | 'YEM'
+  | 'ZMB'
+  | 'ZWE'
+  | 'ALA';
+
+export type CountryNumeric =
+  | '158'
+  | '004'
+  | '008'
+  | '012'
+  | '016'
+  | '020'
+  | '024'
+  | '660'
+  | '028'
+  | '032'
+  | '051'
+  | '533'
+  | '036'
+  | '040'
+  | '031'
+  | '044'
+  | '048'
+  | '050'
+  | '052'
+  | '112'
+  | '056'
+  | '084'
+  | '204'
+  | '060'
+  | '064'
+  | '068'
+  | '535'
+  | '070'
+  | '072'
+  | '074'
+  | '076'
+  | '086'
+  | '092'
+  | '096'
+  | '100'
+  | '854'
+  | '108'
+  | '132'
+  | '116'
+  | '120'
+  | '124'
+  | '136'
+  | '140'
+  | '148'
+  | '152'
+  | '156'
+  | '344'
+  | '446'
+  | '162'
+  | '166'
+  | '170'
+  | '174'
+  | '178'
+  | '184'
+  | '188'
+  | '191'
+  | '192'
+  | '531'
+  | '196'
+  | '203'
+  | '384'
+  | '408'
+  | '180'
+  | '208'
+  | '262'
+  | '212'
+  | '214'
+  | '218'
+  | '818'
+  | '222'
+  | '226'
+  | '232'
+  | '233'
+  | '231'
+  | '234'
+  | '242'
+  | '246'
+  | '250'
+  | '254'
+  | '258'
+  | '260'
+  | '266'
+  | '270'
+  | '268'
+  | '276'
+  | '288'
+  | '292'
+  | '300'
+  | '304'
+  | '308'
+  | '312'
+  | '316'
+  | '320'
+  | '831'
+  | '324'
+  | '624'
+  | '328'
+  | '332'
+  | '334'
+  | '336'
+  | '340'
+  | '348'
+  | '352'
+  | '356'
+  | '360'
+  | '364'
+  | '368'
+  | '372'
+  | '833'
+  | '376'
+  | '380'
+  | '388'
+  | '392'
+  | '832'
+  | '400'
+  | '398'
+  | '404'
+  | '296'
+  | '414'
+  | '417'
+  | '418'
+  | '428'
+  | '422'
+  | '426'
+  | '430'
+  | '434'
+  | '438'
+  | '440'
+  | '442'
+  | '450'
+  | '454'
+  | '458'
+  | '462'
+  | '466'
+  | '470'
+  | '584'
+  | '474'
+  | '478'
+  | '480'
+  | '175'
+  | '484'
+  | '583'
+  | '492'
+  | '496'
+  | '499'
+  | '500'
+  | '504'
+  | '508'
+  | '104'
+  | '516'
+  | '520'
+  | '524'
+  | '528'
+  | '540'
+  | '554'
+  | '558'
+  | '562'
+  | '566'
+  | '570'
+  | '574'
+  | '580'
+  | '578'
+  | '512'
+  | '586'
+  | '585'
+  | '591'
+  | '598'
+  | '600'
+  | '604'
+  | '608'
+  | '612'
+  | '616'
+  | '620'
+  | '630'
+  | '634'
+  | '410'
+  | '498'
+  | '642'
+  | '643'
+  | '646'
+  | '638'
+  | '652'
+  | '654'
+  | '659'
+  | '662'
+  | '663'
+  | '666'
+  | '670'
+  | '882'
+  | '674'
+  | '678'
+  | '682'
+  | '686'
+  | '688'
+  | '690'
+  | '694'
+  | '702'
+  | '534'
+  | '703'
+  | '705'
+  | '090'
+  | '706'
+  | '710'
+  | '728'
+  | '724'
+  | '144'
+  | '729'
+  | '740'
+  | '744'
+  | '748'
+  | '752'
+  | '756'
+  | '760'
+  | '762'
+  | '764'
+  | '807'
+  | '626'
+  | '768'
+  | '772'
+  | '776'
+  | '780'
+  | '788'
+  | '792'
+  | '795'
+  | '796'
+  | '798'
+  | '800'
+  | '804'
+  | '784'
+  | '826'
+  | '834'
+  | '581'
+  | '850'
+  | '840'
+  | '858'
+  | '860'
+  | '548'
+  | '862'
+  | '704'
+  | '876'
+  | '732'
+  | '887'
+  | '894'
+  | '716'
+  | '248';
+
 export interface Country {
   // ISO 3166 country display name, alpha2/3 and numeric codes
   name: string;
-  alpha2: string;
-  alpha3: string;
-  numeric: string;
+  alpha2: CountryAlpha2;
+  alpha3: CountryAlpha3;
+  numeric: CountryNumeric;
 
   // ISO 4217 currencies
-  currencyCodes: string[];
-  currencyCountryName: string;
+  currencyCodes: CurrencyAlphabeticCode[];
+  currencyCountryName: CurrencyCountry;
 }
 
 const countries: Country[] = [
@@ -143,7 +886,7 @@ const countries: Country[] = [
     alpha3: 'BHS',
     numeric: '044',
     currencyCodes: ['BSD'],
-    currencyCountryName: 'BAHAMAS'
+    currencyCountryName: 'BAHAMAS (THE)'
   },
   {
     name: 'Bahrain',
@@ -271,7 +1014,7 @@ const countries: Country[] = [
     alpha3: 'IOT',
     numeric: '086',
     currencyCodes: ['USD'],
-    currencyCountryName: 'BRITISH INDIAN OCEAN TERRITORY'
+    currencyCountryName: 'BRITISH INDIAN OCEAN TERRITORY (THE)'
   },
   {
     name: 'British Virgin Islands',
@@ -351,7 +1094,7 @@ const countries: Country[] = [
     alpha3: 'CYM',
     numeric: '136',
     currencyCodes: ['KYD'],
-    currencyCountryName: 'CAYMAN ISLANDS'
+    currencyCountryName: 'CAYMAN ISLANDS (THE)'
   },
   {
     name: 'Central African Republic',
@@ -359,7 +1102,7 @@ const countries: Country[] = [
     alpha3: 'CAF',
     numeric: '140',
     currencyCodes: ['XAF'],
-    currencyCountryName: 'CENTRAL AFRICAN REPUBLIC'
+    currencyCountryName: 'CENTRAL AFRICAN REPUBLIC (THE)'
   },
   {
     name: 'Chad',
@@ -415,7 +1158,7 @@ const countries: Country[] = [
     alpha3: 'CCK',
     numeric: '166',
     currencyCodes: ['AUD'],
-    currencyCountryName: 'COCOS (KEELING) ISLANDS'
+    currencyCountryName: 'COCOS (KEELING) ISLANDS (THE)'
   },
   {
     name: 'Colombia',
@@ -431,7 +1174,7 @@ const countries: Country[] = [
     alpha3: 'COM',
     numeric: '174',
     currencyCodes: ['KMF'],
-    currencyCountryName: 'COMOROS'
+    currencyCountryName: 'COMOROS (THE)'
   },
   {
     name: 'Congo - Brazzaville',
@@ -439,7 +1182,7 @@ const countries: Country[] = [
     alpha3: 'COG',
     numeric: '178',
     currencyCodes: ['XAF'],
-    currencyCountryName: 'CONGO'
+    currencyCountryName: 'CONGO (THE)'
   },
   {
     name: 'Cook Islands',
@@ -447,7 +1190,7 @@ const countries: Country[] = [
     alpha3: 'COK',
     numeric: '184',
     currencyCodes: ['NZD'],
-    currencyCountryName: 'COOK ISLANDS'
+    currencyCountryName: 'COOK ISLANDS (THE)'
   },
   {
     name: 'Costa Rica',
@@ -551,7 +1294,7 @@ const countries: Country[] = [
     alpha3: 'DOM',
     numeric: '214',
     currencyCodes: ['DOP'],
-    currencyCountryName: 'DOMINICAN REPUBLIC'
+    currencyCountryName: 'DOMINICAN REPUBLIC (THE)'
   },
   {
     name: 'Ecuador',
@@ -615,7 +1358,7 @@ const countries: Country[] = [
     alpha3: 'FRO',
     numeric: '234',
     currencyCodes: ['DKK'],
-    currencyCountryName: 'FAROE ISLANDS'
+    currencyCountryName: 'FAROE ISLANDS (THE)'
   },
   {
     name: 'Fiji',
@@ -663,7 +1406,7 @@ const countries: Country[] = [
     alpha3: 'ATF',
     numeric: '260',
     currencyCodes: ['EUR'],
-    currencyCountryName: 'FRENCH SOUTHERN TERRITORIES'
+    currencyCountryName: 'FRENCH SOUTHERN TERRITORIES (THE)'
   },
   {
     name: 'Gabon',
@@ -679,7 +1422,7 @@ const countries: Country[] = [
     alpha3: 'GMB',
     numeric: '270',
     currencyCodes: ['GMD'],
-    currencyCountryName: 'GAMBIA'
+    currencyCountryName: 'GAMBIA (THE)'
   },
   {
     name: 'Georgia',
@@ -807,7 +1550,7 @@ const countries: Country[] = [
     alpha3: 'HMD',
     numeric: '334',
     currencyCodes: ['AUD'],
-    currencyCountryName: 'HEARD ISLAND AND MCDONALD ISLANDS'
+    currencyCountryName: 'HEARD ISLAND AND McDONALD ISLANDS'
   },
   {
     name: 'Vatican City',
@@ -815,7 +1558,7 @@ const countries: Country[] = [
     alpha3: 'VAT',
     numeric: '336',
     currencyCodes: ['EUR'],
-    currencyCountryName: 'HOLY SEE'
+    currencyCountryName: 'HOLY SEE (THE)'
   },
   {
     name: 'Honduras',
@@ -983,7 +1726,7 @@ const countries: Country[] = [
     alpha3: 'LAO',
     numeric: '418',
     currencyCodes: ['LAK'],
-    currencyCountryName: 'LAO PEOPLE\u2019S DEMOCRATIC REPUBLIC'
+    currencyCountryName: 'LAO PEOPLE\u2019S DEMOCRATIC REPUBLIC (THE)'
   },
   {
     name: 'Latvia',
@@ -1103,7 +1846,7 @@ const countries: Country[] = [
     alpha3: 'MHL',
     numeric: '584',
     currencyCodes: ['USD'],
-    currencyCountryName: 'MARSHALL ISLANDS'
+    currencyCountryName: 'MARSHALL ISLANDS (THE)'
   },
   {
     name: 'Martinique',
@@ -1118,7 +1861,7 @@ const countries: Country[] = [
     alpha2: 'MR',
     alpha3: 'MRT',
     numeric: '478',
-    currencyCodes: ['MRO'],
+    currencyCodes: ['MRU'],
     currencyCountryName: 'MAURITANIA'
   },
   {
@@ -1239,7 +1982,7 @@ const countries: Country[] = [
     alpha3: 'NLD',
     numeric: '528',
     currencyCodes: ['EUR'],
-    currencyCountryName: 'NETHERLANDS'
+    currencyCountryName: 'NETHERLANDS (THE)'
   },
   {
     name: 'New Caledonia',
@@ -1271,7 +2014,7 @@ const countries: Country[] = [
     alpha3: 'NER',
     numeric: '562',
     currencyCodes: ['XOF'],
-    currencyCountryName: 'NIGER'
+    currencyCountryName: 'NIGER (THE)'
   },
   {
     name: 'Nigeria',
@@ -1303,7 +2046,7 @@ const countries: Country[] = [
     alpha3: 'MNP',
     numeric: '580',
     currencyCodes: ['USD'],
-    currencyCountryName: 'NORTHERN MARIANA ISLANDS'
+    currencyCountryName: 'NORTHERN MARIANA ISLANDS (THE)'
   },
   {
     name: 'Norway',
@@ -1375,7 +2118,7 @@ const countries: Country[] = [
     alpha3: 'PHL',
     numeric: '608',
     currencyCodes: ['PHP'],
-    currencyCountryName: 'PHILIPPINES'
+    currencyCountryName: 'PHILIPPINES (THE)'
   },
   {
     name: 'Pitcairn Islands',
@@ -1447,7 +2190,7 @@ const countries: Country[] = [
     alpha3: 'RUS',
     numeric: '643',
     currencyCodes: ['RUB'],
-    currencyCountryName: 'RUSSIAN FEDERATION'
+    currencyCountryName: 'RUSSIAN FEDERATION (THE)'
   },
   {
     name: 'Rwanda',
@@ -1542,11 +2285,9 @@ const countries: Country[] = [
     alpha2: 'ST',
     alpha3: 'STP',
     numeric: '678',
-    currencyCodes: ['STD'],
+    currencyCodes: ['STN'],
     currencyCountryName: 'SAO TOME AND PRINCIPE'
   },
-  // {
-  // },
   {
     name: 'Saudi Arabia',
     alpha2: 'SA',
@@ -1673,7 +2414,7 @@ const countries: Country[] = [
     alpha3: 'SDN',
     numeric: '729',
     currencyCodes: ['SDG'],
-    currencyCountryName: 'SUDAN'
+    currencyCountryName: 'SUDAN (THE)'
   },
   {
     name: 'Suriname',
@@ -1697,7 +2438,7 @@ const countries: Country[] = [
     alpha3: 'SWZ',
     numeric: '748',
     currencyCodes: ['SZL'],
-    currencyCountryName: 'SWAZILAND'
+    currencyCountryName: 'ESWATINI'
   },
   {
     name: 'Sweden',
@@ -1817,7 +2558,7 @@ const countries: Country[] = [
     alpha3: 'TCA',
     numeric: '796',
     currencyCodes: ['USD'],
-    currencyCountryName: 'TURKS AND CAICOS ISLANDS'
+    currencyCountryName: 'TURKS AND CAICOS ISLANDS (THE)'
   },
   {
     name: 'Tuvalu',
@@ -1849,7 +2590,7 @@ const countries: Country[] = [
     alpha3: 'ARE',
     numeric: '784',
     currencyCodes: ['AED'],
-    currencyCountryName: 'UNITED ARAB EMIRATES'
+    currencyCountryName: 'UNITED ARAB EMIRATES (THE)'
   },
   {
     name: 'UK',
@@ -1857,7 +2598,7 @@ const countries: Country[] = [
     alpha3: 'GBR',
     numeric: '826',
     currencyCodes: ['GBP'],
-    currencyCountryName: 'UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND'
+    currencyCountryName: 'UNITED KINGDOM OF GREAT BRITAIN AND NORTHERN IRELAND (THE)'
   },
   {
     name: 'Tanzania',
@@ -1873,7 +2614,7 @@ const countries: Country[] = [
     alpha3: 'UMI',
     numeric: '581',
     currencyCodes: ['USD'],
-    currencyCountryName: 'UNITED STATES MINOR OUTLYING ISLANDS'
+    currencyCountryName: 'UNITED STATES MINOR OUTLYING ISLANDS (THE)'
   },
   {
     name: 'U.S. Virgin Islands',
@@ -1889,7 +2630,7 @@ const countries: Country[] = [
     alpha3: 'USA',
     numeric: '840',
     currencyCodes: ['USD'],
-    currencyCountryName: 'UNITED STATES OF AMERICA'
+    currencyCountryName: 'UNITED STATES OF AMERICA (THE)'
   },
   {
     name: 'Uruguay',
@@ -1920,7 +2661,7 @@ const countries: Country[] = [
     alpha2: 'VE',
     alpha3: 'VEN',
     numeric: '862',
-    currencyCodes: ['VEF'],
+    currencyCodes: ['VES'],
     currencyCountryName: 'VENEZUELA (BOLIVARIAN REPUBLIC OF)'
   },
   {

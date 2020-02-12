@@ -2,7 +2,7 @@
   "extends": ["@checkdigit"],
   "overrides": [
     {
-      "files": ["src/codes.ts", "src/countries.ts"],
+      "files": ["src/currencies.ts", "src/countries.ts"],
       "rules": {
         "max-lines": "off",
         "sonarjs/no-duplicate-string": "off"

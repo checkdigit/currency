@@ -1,13 +1,12 @@
 // index.ts
 
-import { Code, default as codes } from './codes';
+import { default as currencies, Currency, CurrencyAlphabeticCode } from './currencies';
 
 export type Amount = string | bigint;
-export type Currency = 'USD' | 'JPY';
 
 export interface Money {
   amount: Amount;
-  currency: Currency;
+  currency: CurrencyAlphabeticCode;
 }
 
 interface CurrencyFormatOptions {
@@ -55,13 +54,13 @@ export function format(
   );
 }
 
-export function getSymbol(currency: Currency, locales?: string | string[]): string | undefined {
+export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
   return Intl.NumberFormat(locales, { style: 'currency', currency })
     .formatToParts(0)
     .filter(part => part.type === 'currency')[0]?.value;
 }
 
-export function getMinorUnitDigits(currency: Currency, locales?: string | string[]) {
+export function getMinorUnitDigits(currency: CurrencyAlphabeticCode, locales?: string | string[]) {
   return (
     Intl.NumberFormat(locales, { style: 'currency', currency })
       .formatToParts(0)
@@ -69,6 +68,6 @@ export function getMinorUnitDigits(currency: Currency, locales?: string | string
   );
 }
 
-export function getIso4217Codes(): Code[] {
-  return codes;
+export function getIso4217Codes(): Currency[] {
+  return currencies;
 }
