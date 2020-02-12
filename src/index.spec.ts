@@ -88,6 +88,6 @@ describe('currency', () => {
   });
 
   it('country', () => {
-    assert.strictEqual(country.length, 249);
+    assert.strictEqual(country.length, 245);
   });
 });
