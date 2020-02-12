@@ -1,6 +1,6 @@
 // index.ts
 
-import { default as iso4217, Iso4217 } from './iso-4217';
+import { Code, default as codes } from './codes';
 
 export type Amount = string | bigint;
 export type Currency = 'USD' | 'JPY';
@@ -69,6 +69,6 @@ export function getMinorUnitDigits(currency: Currency, locales?: string | string
   );
 }
 
-export function getIso4217Codes(): Iso4217[] {
-  return iso4217;
+export function getIso4217Codes(): Code[] {
+  return codes;
 }

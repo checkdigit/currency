@@ -2,7 +2,7 @@
 
 import * as assert from 'assert';
 
-import country from './country';
+import countries from './countries';
 
 import * as currency from './index';
 
@@ -88,6 +88,6 @@ describe('currency', () => {
   });
 
   it('country', () => {
-    assert.strictEqual(country.length, 245);
+    assert.strictEqual(countries.length, 245);
   });
 });

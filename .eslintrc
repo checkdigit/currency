@@ -2,7 +2,7 @@
   "extends": ["@checkdigit"],
   "overrides": [
     {
-      "files": ["src/iso-4217.ts", "src/country.ts"],
+      "files": ["src/codes.ts", "src/countries.ts"],
       "rules": {
         "max-lines": "off",
         "sonarjs/no-duplicate-string": "off"
