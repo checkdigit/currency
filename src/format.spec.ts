@@ -1,17 +1,10 @@
-// index.spec.ts
+// format.spec.ts
 
 import * as assert from 'assert';
 
-import countries from './countries';
-
 import * as currency from './index';
 
-describe('currency', () => {
-  it('minorUnitDigits returns correct number for each currency', () => {
-    assert.strictEqual(currency.getMinorUnitDigits('USD'), 2);
-    assert.strictEqual(currency.getMinorUnitDigits('JPY'), 0);
-  });
-
+describe('format', () => {
   it('getSymbol', () => {
     assert.strictEqual(currency.getSymbol('USD'), '$');
     assert.strictEqual(currency.getSymbol('JPY'), '¥');
@@ -80,14 +73,5 @@ describe('currency', () => {
         }
       )
     );
-  });
-
-  it('getIso4217Codes', () => {
-    const codes = currency.getIso4217Codes();
-    assert.strictEqual(codes.length, 276);
-  });
-
-  it('country', () => {
-    assert.strictEqual(countries.length, 245);
   });
 });
