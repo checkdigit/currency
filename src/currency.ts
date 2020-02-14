@@ -4,6 +4,10 @@ import { default as currencies, Currency, CurrencyAlphabeticCode, CurrencyNumeri
 
 export { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
+export function all(): Currency[] {
+  return currencies;
+}
+
 export function find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency {
   const currency = currencies.find(
     ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode
@@ -15,6 +19,6 @@ export function find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Curren
   return currency;
 }
 
-export function getMinorUnitDigits(currency: CurrencyAlphabeticCode) {
-  return find(currency).minorUnits;
+export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
+  return find(currency).minorUnits ?? 2;
 }

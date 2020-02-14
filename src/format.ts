@@ -2,7 +2,7 @@
 
 import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
-export type Amount = string | bigint;
+export type Amount = string | bigint | -0;
 
 export interface Money {
   amount: Amount;
@@ -22,12 +22,21 @@ export function format(
 ): string {
   const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
 
-  const minorUnit = BigInt(10) ** BigInt(getMinorUnitDigits(currency));
-  const majorUnitAmount = amountInteger / minorUnit;
+  const minorUnitDigits = getMinorUnitDigits(currency);
+  const minorUnit = BigInt(10) ** BigInt(minorUnitDigits);
   const minorUnitAmount = (amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit;
+
+  // this code is required to handle the case of negative zero, since bigints do not support negative zero
+  let majorUnitAmount: number | bigint =
+    Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
 
   if (options?.hideDecimal && !(options?.hideCurrency && options?.hideGrouping)) {
     throw Error('hideDecimal can only be true if hideCurrency and hideGrouping are also true');
+  }
+
+  if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
+    // since we lose the sign if the major unit amount is zero, need to switch to floating point for negative zero
+    majorUnitAmount = -0;
   }
 
   return (
@@ -47,8 +56,16 @@ export function format(
           case 'decimal':
             return previous + (options?.hideDecimal ? '' : current.value);
           case 'fraction':
-            return previous + minorUnitAmount.toString();
+            return previous + minorUnitAmount.toString().padStart(minorUnitDigits, '0');
+          case 'literal':
+            return previous + current.value;
           default:
+            // console.log(currency);
+            // console.log(`'${current.value}'`);
+            // case 'infinity':
+            // case 'nan':
+            // case 'plusSign':
+            // case 'percentSign':
             throw Error(`${current.type} unsupported`);
         }
       }, '')
