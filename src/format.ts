@@ -10,6 +10,7 @@ export interface Money {
 }
 
 export interface CurrencyFormatOptions {
+  currencyDisplay?: 'code' | 'symbol' | 'name'; // default value 'symbol'
   hideCurrency?: boolean;
   hideGrouping?: boolean;
   hideDecimal?: boolean;
