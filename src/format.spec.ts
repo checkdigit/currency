@@ -30,7 +30,7 @@ describe('format', () => {
   /**
    * Until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
    */
-  xit('format supports full ICU', () => {
+  xit('supports full ICU', () => {
     // console.log(Intl.NumberFormat('de-DE', { style: 'currency', currencyDisplay: 'code', currency: 'USD' }).format(1234567.89));
     assert.strictEqual(
       format.format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
@@ -39,8 +39,8 @@ describe('format', () => {
     assert.strictEqual(format.format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'), '1.234.567,89 €');
   });
 
-  it('format matches Intl implementation for all known locales', () => {
-    const locales = [
+  it('matches Intl implementation for all known locales', () => {
+    [
       'af-ZA',
       'am-ET',
       'ar-AE',
@@ -251,11 +251,10 @@ describe('format', () => {
       'zh-SG',
       'zh-TW',
       'zu-ZA'
-    ];
-    locales.map(locale => check('USD', 100000000, locale));
+    ].forEach(locale => check('USD', 100000000, locale));
   });
 
-  it('format matches Intl number implementation for all supported currencies', () => {
+  it('matches Intl number implementation for all supported currencies', () => {
     for (const code of all().map(({ alphabeticCode }) => alphabeticCode)) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
@@ -269,7 +268,7 @@ describe('format', () => {
     }
   });
 
-  it('format supports zero-based edge cases', () => {
+  it('support zero-based edge cases', () => {
     assert.strictEqual(format.format({ amount: -0, currency: 'USD' }), '-$0.00');
     assert.strictEqual(format.format({ amount: '-0', currency: 'USD' }), '-$0.00');
     assert.strictEqual(format.format({ amount: 0, currency: 'USD' }), '$0.00');
@@ -277,7 +276,38 @@ describe('format', () => {
     assert.strictEqual(format.format({ amount: '0', currency: 'USD' }), '$0.00');
   });
 
-  it('format supports edge cases', () => {
+  it('support currencyDisplay', () => {
+    assert.strictEqual(format.format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.strictEqual(
+      format.format(
+        { amount: '0', currency: 'USD' },
+        {
+          currencyDisplay: 'symbol'
+        }
+      ),
+      '$0.00'
+    );
+    assert.strictEqual(
+      format.format(
+        { amount: '0', currency: 'USD' },
+        {
+          currencyDisplay: 'code'
+        }
+      ),
+      'USD 0.00'
+    );
+    assert.strictEqual(
+      format.format(
+        { amount: '0', currency: 'USD' },
+        {
+          currencyDisplay: 'name'
+        }
+      ),
+      '0.00 US dollars'
+    );
+  });
+
+  it('support edge cases', () => {
     assert.strictEqual(
       format.format({ amount: BigInt('123456789012345678901234567890'), currency: 'USD' }),
       '$1,234,567,890,123,456,789,012,345,678.90'
@@ -290,7 +320,7 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideGrouping: true
+          useGrouping: false
         }
       ),
       '$1234.56'
@@ -299,8 +329,8 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideCurrency: true,
-          hideGrouping: true
+          useCurrency: false,
+          useGrouping: false
         }
       ),
       '1234.56'
@@ -309,9 +339,9 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideCurrency: true,
-          hideGrouping: true,
-          hideDecimal: true
+          useCurrency: false,
+          useGrouping: false,
+          useDecimal: false
         }
       ),
       '123456'
@@ -320,7 +350,7 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideDecimal: true
+          useDecimal: false
         }
       )
     );
@@ -328,8 +358,8 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideGrouping: true,
-          hideDecimal: true
+          useGrouping: false,
+          useDecimal: false
         }
       )
     );
@@ -337,8 +367,8 @@ describe('format', () => {
       format.format(
         { amount: '123456', currency: 'USD' },
         {
-          hideCurrency: true,
-          hideDecimal: true
+          useCurrency: false,
+          useDecimal: false
         }
       )
     );

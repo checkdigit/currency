@@ -9,30 +9,38 @@ export interface Money {
   currency: CurrencyAlphabeticCode;
 }
 
-export interface CurrencyFormatOptions {
-  currencyDisplay?: 'code' | 'symbol' | 'name'; // default value 'symbol'
-  hideCurrency?: boolean;
-  hideGrouping?: boolean;
-  hideDecimal?: boolean;
+export interface CurrencyFormatOptions extends Pick<Intl.NumberFormatOptions, 'useGrouping'> {
+  currencyDisplay?: 'code' | 'symbol' | 'name';
+  useCurrency?: boolean;
+  useDecimal?: boolean;
 }
+
+export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = {
+  currencyDisplay: 'symbol',
+  useCurrency: true,
+  useGrouping: true,
+  useDecimal: true
+};
 
 export function format(
   { amount, currency }: Money,
   options?: CurrencyFormatOptions,
   locales?: string | string[]
 ): string {
+  const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };
   const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
-
   const minorUnitDigits = getMinorUnitDigits(currency);
   const minorUnit = BigInt(10) ** BigInt(minorUnitDigits);
-  const minorUnitAmount = (amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit;
+  const minorUnitAmount = ((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit)
+    .toString()
+    .padStart(minorUnitDigits, '0');
 
   // this code is required to handle the case of negative zero, since bigints do not support negative zero
   let majorUnitAmount: number | bigint =
     Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
 
-  if (options?.hideDecimal && !(options?.hideCurrency && options?.hideGrouping)) {
-    throw Error('hideDecimal can only be true if hideCurrency and hideGrouping are also true');
+  if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && !resolvedOptions.useGrouping)) {
+    throw Error('useDecimal can only be false if useCurrency and useGrouping are also false');
   }
 
   if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
@@ -41,35 +49,20 @@ export function format(
   }
 
   return (
-    Intl.NumberFormat(locales, { style: 'currency', currency })
+    Intl.NumberFormat(locales, {
+      style: 'currency',
+      currency,
+      useGrouping: resolvedOptions.useGrouping,
+      currencyDisplay: resolvedOptions.currencyDisplay
+    })
       // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
       .formatToParts((majorUnitAmount as unknown) as number)
-      .reduce((previous: string, current) => {
-        switch (current.type) {
-          case 'minusSign':
-            return previous + current.value;
-          case 'currency':
-            return previous + (options?.hideCurrency ? '' : current.value);
-          case 'integer':
-            return previous + current.value;
-          case 'group':
-            return previous + (options?.hideGrouping ? '' : current.value);
-          case 'decimal':
-            return previous + (options?.hideDecimal ? '' : current.value);
-          case 'fraction':
-            return previous + minorUnitAmount.toString().padStart(minorUnitDigits, '0');
-          case 'literal':
-            return previous + current.value;
-          default:
-            // console.log(currency);
-            // console.log(`'${current.value}'`);
-            // case 'infinity':
-            // case 'nan':
-            // case 'plusSign':
-            // case 'percentSign':
-            throw Error(`${current.type} unsupported`);
-        }
-      }, '')
+      .filter(
+        ({ type }) =>
+          (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal)
+      )
+      .map(part => (part.type === 'fraction' ? minorUnitAmount : part.value))
+      .join('')
   );
 }
 
