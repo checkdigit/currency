@@ -4,7 +4,7 @@ import { default as currencies, Currency, CurrencyAlphabeticCode, CurrencyNumeri
 
 export { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
-export function all(): Currency[] {
+export function allCurrencies(): Currency[] {
   return currencies;
 }
 
@@ -21,4 +21,10 @@ export function find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Curren
 
 export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
   return find(currency).minorUnits ?? 2;
+}
+
+export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string {
+  return Intl.NumberFormat(locales, { style: 'currency', currency })
+    .formatToParts(0)
+    .filter(part => part.type === 'currency')[0].value;
 }

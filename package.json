@@ -16,7 +16,7 @@
   },
   "homepage": "https://github.com/checkdigit/currency#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "^3.1.5",
+    "@checkdigit/eslint-config": "^3.1.6",
     "@checkdigit/prettier-config": "^1.0.1",
     "@checkdigit/publish": "^1.0.9",
     "@checkdigit/typescript": "^3.7.5",
@@ -30,7 +30,11 @@
   },
   "jest": {
     "collectCoverage": true,
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "<rootDir>/build/",
+      "<rootDir>/node_modules/"
+    ]
   },
   "scripts": {
     "prepublishOnly": "publish --beautify",

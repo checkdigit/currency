@@ -15,12 +15,12 @@ export interface CurrencyFormatOptions extends Pick<Intl.NumberFormatOptions, 'u
   useDecimal?: boolean;
 }
 
-export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = {
+export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Object.freeze({
   currencyDisplay: 'symbol',
   useCurrency: true,
   useGrouping: true,
   useDecimal: true
-};
+});
 
 export function format(
   { amount, currency }: Money,
@@ -31,9 +31,13 @@ export function format(
   const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
   const minorUnitDigits = getMinorUnitDigits(currency);
   const minorUnit = BigInt(10) ** BigInt(minorUnitDigits);
-  const minorUnitAmount = ((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit)
-    .toString()
-    .padStart(minorUnitDigits, '0');
+
+  /*
+   * Calculate the minor unit amount, while also handling locales that use different digit symbols than 0 thru 9.
+   */
+  const minorUnitAmount = Intl.NumberFormat(locales, { useGrouping: false })
+    .format(Number((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit))
+    .padStart(minorUnitDigits, Intl.NumberFormat(locales, { useGrouping: false }).format(0));
 
   // this code is required to handle the case of negative zero, since bigints do not support negative zero
   let majorUnitAmount: number | bigint =
@@ -64,10 +68,4 @@ export function format(
       .map(part => (part.type === 'fraction' ? minorUnitAmount : part.value))
       .join('')
   );
-}
-
-export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
-  return Intl.NumberFormat(locales, { style: 'currency', currency })
-    .formatToParts(0)
-    .filter(part => part.type === 'currency')[0]?.value;
 }

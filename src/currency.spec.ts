@@ -2,11 +2,10 @@
 
 import * as assert from 'assert';
 
-import countries from './countries';
-import { CurrencyAlphabeticCode, find, getMinorUnitDigits } from './currency';
+import { allCurrencies, CurrencyAlphabeticCode, find, getMinorUnitDigits, getSymbol } from './index';
 
 describe('currency', () => {
-  it('minorUnitDigits returns correct number for each currency', () => {
+  it('getMinorUnitDigits returns correct number for each currency', () => {
     assert.strictEqual(getMinorUnitDigits('USD'), 2);
     assert.strictEqual(getMinorUnitDigits('JPY'), 0);
   });
@@ -42,7 +41,21 @@ describe('currency', () => {
     assert.throws(() => find('INVALID' as CurrencyAlphabeticCode), /^Error: Currency not found for code 'INVALID'$/u);
   });
 
-  it('country', () => {
-    assert.strictEqual(countries.length, 245);
+  it('getSymbol', () => {
+    const currencies = allCurrencies().map(({ alphabeticCode }) => getSymbol(alphabeticCode));
+    assert.ok(currencies.every(currency => typeof currency === 'string' && currency.length > 0));
+    assert.strictEqual(getSymbol('USD'), '$');
+    assert.strictEqual(getSymbol('CAD'), 'CA$');
+    assert.strictEqual(getSymbol('NZD'), 'NZ$');
+    assert.strictEqual(getSymbol('JPY'), '¥');
+  });
+
+  /**
+   * TODO: until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
+   */
+  xit('getSymbol for non-US locales', () => {
+    assert.strictEqual(getSymbol('JPY', 'ja-JP'), '￥');
+    assert.strictEqual(getSymbol('NZD', 'en-NZ'), '$');
+    assert.strictEqual(getSymbol('CAD', 'en-CA'), '$');
   });
 });

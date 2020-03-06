@@ -2,41 +2,27 @@
 
 import * as assert from 'assert';
 
-import { all, CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
-import * as format from './format';
+import { allCurrencies, CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
 
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
   const minorUnitDigits = getMinorUnitDigits(code);
   const minorUnit = 10 ** minorUnitDigits;
-  const internal = format.format({ amount: amount === 0 ? amount : BigInt(amount), currency: code }, {}, locale);
+  const internal = format({ amount: amount === 0 ? amount : BigInt(amount), currency: code }, {}, locale);
   const reference = Intl.NumberFormat(locale, { style: 'currency', currency: code }).format(amount / minorUnit);
-  if (internal !== reference) {
-    // console.log(locale);
-    // console.log(code);
-    // console.log(amount);
-    // console.log(internal);
-    // console.log(amount / minorUnit);
-    // console.log(reference);
-  }
-  assert.strictEqual(internal, reference);
+  assert.strictEqual(internal, reference, `${code} ${amount} ${locale ?? ''}`);
 }
 
 describe('format', () => {
-  it('getSymbol', () => {
-    assert.strictEqual(format.getSymbol('USD'), '$');
-    assert.strictEqual(format.getSymbol('JPY'), '¥');
-  });
-
   /**
-   * Until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
+   * TODO: until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
    */
   xit('supports full ICU', () => {
     // console.log(Intl.NumberFormat('de-DE', { style: 'currency', currencyDisplay: 'code', currency: 'USD' }).format(1234567.89));
     assert.strictEqual(
-      format.format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
+      format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
       '1.234.567,89 USD'
     );
-    assert.strictEqual(format.format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'), '1.234.567,89 €');
+    assert.strictEqual(format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'), '1.234.567,89 €');
   });
 
   it('matches Intl implementation for all known locales', () => {
@@ -255,7 +241,7 @@ describe('format', () => {
   });
 
   it('matches Intl number implementation for all supported currencies', () => {
-    for (const code of all().map(({ alphabeticCode }) => alphabeticCode)) {
+    for (const code of allCurrencies().map(({ alphabeticCode }) => alphabeticCode)) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
         check(code, base - 1);
@@ -269,17 +255,17 @@ describe('format', () => {
   });
 
   it('support zero-based edge cases', () => {
-    assert.strictEqual(format.format({ amount: -0, currency: 'USD' }), '-$0.00');
-    assert.strictEqual(format.format({ amount: '-0', currency: 'USD' }), '-$0.00');
-    assert.strictEqual(format.format({ amount: 0, currency: 'USD' }), '$0.00');
-    assert.strictEqual(format.format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
-    assert.strictEqual(format.format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.strictEqual(format({ amount: -0, currency: 'USD' }), '-$0.00');
+    assert.strictEqual(format({ amount: '-0', currency: 'USD' }), '-$0.00');
+    assert.strictEqual(format({ amount: 0, currency: 'USD' }), '$0.00');
+    assert.strictEqual(format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
+    assert.strictEqual(format({ amount: '0', currency: 'USD' }), '$0.00');
   });
 
   it('support currencyDisplay', () => {
-    assert.strictEqual(format.format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.strictEqual(format({ amount: '0', currency: 'USD' }), '$0.00');
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'symbol'
@@ -288,7 +274,7 @@ describe('format', () => {
       '$0.00'
     );
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'code'
@@ -297,7 +283,7 @@ describe('format', () => {
       'USD 0.00'
     );
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'name'
@@ -309,15 +295,15 @@ describe('format', () => {
 
   it('support edge cases', () => {
     assert.strictEqual(
-      format.format({ amount: BigInt('123456789012345678901234567890'), currency: 'USD' }),
+      format({ amount: BigInt('123456789012345678901234567890'), currency: 'USD' }),
       '$1,234,567,890,123,456,789,012,345,678.90'
     );
     assert.strictEqual(
-      format.format({ amount: BigInt('-123456789012345678901234567890'), currency: 'USD' }),
+      format({ amount: BigInt('-123456789012345678901234567890'), currency: 'USD' }),
       '-$1,234,567,890,123,456,789,012,345,678.90'
     );
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false
@@ -326,7 +312,7 @@ describe('format', () => {
       '$1234.56'
     );
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
@@ -336,7 +322,7 @@ describe('format', () => {
       '1234.56'
     );
     assert.strictEqual(
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
@@ -347,7 +333,7 @@ describe('format', () => {
       '123456'
     );
     assert.throws(() =>
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useDecimal: false
@@ -355,7 +341,7 @@ describe('format', () => {
       )
     );
     assert.throws(() =>
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false,
@@ -364,7 +350,7 @@ describe('format', () => {
       )
     );
     assert.throws(() =>
-      format.format(
+      format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
