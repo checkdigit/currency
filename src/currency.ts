@@ -8,8 +8,8 @@ export function allCurrencies(): Currency[] {
   return currencies;
 }
 
-export function find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency {
-  const currency = currencies.find(
+export function getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency {
+  const currency = allCurrencies().find(
     ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode
   );
   if (typeof currency === 'undefined') {
@@ -20,7 +20,7 @@ export function find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Curren
 }
 
 export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
-  return find(currency).minorUnits ?? 2;
+  return getCurrency(currency).minorUnits ?? 2;
 }
 
 export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string {

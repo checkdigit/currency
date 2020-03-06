@@ -2,7 +2,7 @@
 
 import * as assert from 'assert';
 
-import { allCurrencies, CurrencyAlphabeticCode, find, getMinorUnitDigits, getSymbol } from './index';
+import { allCurrencies, CurrencyAlphabeticCode, getCurrency, getMinorUnitDigits, getSymbol } from './index';
 
 describe('currency', () => {
   it('getMinorUnitDigits returns correct number for each currency', () => {
@@ -10,35 +10,38 @@ describe('currency', () => {
     assert.strictEqual(getMinorUnitDigits('JPY'), 0);
   });
 
-  it('find currencies based on numeric or alphabetic codes', () => {
-    assert.deepStrictEqual(find('NZD'), {
+  it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
+    assert.deepStrictEqual(getCurrency('NZD'), {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
       numericCode: '554'
     });
-    assert.deepStrictEqual(find('USD'), {
+    assert.deepStrictEqual(getCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840'
     });
-    assert.deepStrictEqual(find('AUD'), find('036'));
-    assert.deepStrictEqual(find('CAD'), find('124'));
-    assert.deepStrictEqual(find('NZD'), find('554'));
-    assert.deepStrictEqual(find('EUR'), find('978'));
-    assert.deepStrictEqual(find('KRW'), find('410'));
-    assert.deepStrictEqual(find('USD'), find('840'));
+    assert.deepStrictEqual(getCurrency('AUD'), getCurrency('036'));
+    assert.deepStrictEqual(getCurrency('CAD'), getCurrency('124'));
+    assert.deepStrictEqual(getCurrency('NZD'), getCurrency('554'));
+    assert.deepStrictEqual(getCurrency('EUR'), getCurrency('978'));
+    assert.deepStrictEqual(getCurrency('KRW'), getCurrency('410'));
+    assert.deepStrictEqual(getCurrency('USD'), getCurrency('840'));
     assert.throws(
-      () => find((undefined as unknown) as CurrencyAlphabeticCode),
+      () => getCurrency((undefined as unknown) as CurrencyAlphabeticCode),
       /^Error: Currency not found for code 'undefined'$/u
     );
-    assert.throws(() => find('' as CurrencyAlphabeticCode), /^Error: Currency not found for code ''$/u);
+    assert.throws(() => getCurrency('' as CurrencyAlphabeticCode), /^Error: Currency not found for code ''$/u);
     assert.throws(
-      () => find((840 as unknown) as CurrencyAlphabeticCode),
+      () => getCurrency((840 as unknown) as CurrencyAlphabeticCode),
       /^Error: Currency not found for code '840'$/u
     );
-    assert.throws(() => find('INVALID' as CurrencyAlphabeticCode), /^Error: Currency not found for code 'INVALID'$/u);
+    assert.throws(
+      () => getCurrency('INVALID' as CurrencyAlphabeticCode),
+      /^Error: Currency not found for code 'INVALID'$/u
+    );
   });
 
   it('getSymbol', () => {

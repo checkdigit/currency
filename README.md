@@ -58,11 +58,12 @@ export interface Currency {
 * `format({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]): string`
 #### Currencies
 * `allCurrencies(): Currency[]`
-* `find(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency`
+* `getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency`
 * `getMinorUnitDigits(currency: CurrencyAlphabeticCode)`
 * `getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string`
 #### Countries
 * `allCountries(): Country[]`
+* `getCountry(code: CountryAlpha2 | CountryAlpha3 | CountryNumeric): Country`
 
 ### Usage examples
 
@@ -125,9 +126,9 @@ getMinorUnitDigits('JPY');
 // 0
 ```
 
-### `find`
+### `getCurrency`
 ```
-find('840');
+getCurrency('840');
 // {
 //   name: 'US Dollar',
 //   alphabeticCode: 'USD',
@@ -135,7 +136,7 @@ find('840');
 //   minorUnits: 2
 // }
 
-find('NZD');
+getCurrency('NZD');
 // {
 //   name: 'New Zealand Dollar',
 //   alphabeticCode: 'NZD',
