@@ -1,6 +1,7 @@
 // country.ts
 
 import countries, { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+import { CurrencyAlphabeticCode } from './currencies';
 
 export { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
@@ -17,4 +18,11 @@ export function getCountry(code: CountryAlpha2 | CountryAlpha3 | CountryNumeric)
     throw Error(`Country not found for code '${code}'`);
   }
   return country;
+}
+
+export function getCountriesForCurrency(code: CurrencyAlphabeticCode): CountryAlpha3[] {
+  return allCountries()
+    .filter(({ currencyCodes }) => currencyCodes.includes(code))
+    .map(({ alpha3 }) => alpha3)
+    .sort();
 }

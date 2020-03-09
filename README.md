@@ -6,8 +6,13 @@ The Check Digit currency library is the officially sanctioned method for Check D
 * currency formatting of Check Digit-standard Money objects, with a variety of options
 * tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 * tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
-* multi-locale (if ICU is supported, i.e. any modern browser, Node 14+, or Node 12 built with full ICU)
+* multi-locale (if the underlying JS engine is built with full [ICU](http://icu-project.org)
 * uses built-in JS engine Intl implementation, no dependencies
+
+### Notes
+
+* full [ICU](http://icu-project.org) is supported on all major modern browsers, and Node 14+.  On Node 12 and below, only the locale en-US is supported.
+* Safari does not fully support ES2020, in particular BigInt, so this library should not be used for browser-based UI work until it does.
 
 ### Installing
 
@@ -23,6 +28,14 @@ The four core types in the currency library are
 * Money, which is an Amount combined with currency of type CurrencyAlphabeticCode (e.g. 'USD')
 * Country, which is an object containing a country's ISO 3166 information and currencies
 * Currency, which is an object containing a currency's ISO 4217 information
+
+There are defined literal types for country and currency codes:
+* CurrencyAlphabeticCode
+* CurrencyNumericCode
+* CurrencyName
+* CountryAlpha2
+* CountryAlpha3
+* CountryNumeric
 
 ```
 export type Amount = string | bigint | -0;
@@ -64,24 +77,25 @@ export interface Currency {
 #### Countries
 * `allCountries(): Country[]`
 * `getCountry(code: CountryAlpha2 | CountryAlpha3 | CountryNumeric): Country`
+* `getCountriesForCurrency(code: CurrencyAlphabeticCode): CountryAlpha3[]`
 
 ### Usage examples
 
 #### `format`
 ```
-currency.format({amount: BigInt('123456789012345678901234567890'), currency: 'USD'});
+currency.format({amount: 123456789012345678901234567890n, currency: 'USD'});
 // $1,234,567,890,123,456,789,012,345,678.90
 
-currency.format({amount: BigInt(123456), currency: 'USD'});
+currency.format({amount: 123456n, currency: 'USD'});
 // $1234.56
 
-currency.format({amount: BigInt(123456), currency: 'USD'}, {
+currency.format({amount: 123456n, currency: 'USD'}, {
   useGrouping: false,
   useCurrency: false
 }));
 // 1234.56
 
-currency.format({amount: BigInt(123456), currency: 'USD'}, {
+currency.format({amount: 123456n, currency: 'USD'}, {
   useGrouping: false,
   useCurrency: false,
   useDecimal: false
@@ -91,17 +105,19 @@ currency.format({amount: BigInt(123456), currency: 'USD'}, {
 currency.format({amount: -0, currency: 'USD'});
 // -$0.00
 
-currency.format({ amount: BigInt('123456789'), currency: 'USD' }, {
+currency.format({ amount: 123456789n, currency: 'USD' }, {
   currencyDisplay: 'code'
 }, 'de-DE');
-// 1.234.567,89 USD (Node 14+)
+// 1.234.567,89 USD
+// (Node 14+ only)
 
-currency.format({ amount: BigInt(123456), currency: 'USD' }, {
+currency.format({ amount: 123456n, currency: 'USD' }, {
   useDecimal: false,
   useGrouping: false,
   useCurrency: false
 }, 'as-IN');
-// ১২৩৪৫৬ (Node 14+)
+// ১২৩৪৫৬
+(Node 14+ only)
 ```
 
 #### `getSymbol`
@@ -113,11 +129,12 @@ currency.getSymbol('NZD');
 // NZ$
 
 currency.getSymbol('NZD', 'en-NZ');
-// $ (Node 14+)
+// $
+// (Node 14+ only)
 
 ```
 
-### `getMinorUnitDigits`
+#### `getMinorUnitDigits`
 ```
 getMinorUnitDigits('USD');
 // 2
@@ -126,7 +143,7 @@ getMinorUnitDigits('JPY');
 // 0
 ```
 
-### `getCurrency`
+#### `getCurrency`
 ```
 getCurrency('840');
 // {
@@ -143,4 +160,22 @@ getCurrency('NZD');
 //   numericCode: '554',
 //   minorUnits: 2
 // }
+```
+
+#### `getCountry`
+```
+getCountry('USA');
+// {
+//   name: 'US',
+//   alpha2: 'US',
+//   alpha3: 'USA',
+//   numeric: '840',
+//   currencyCodes: [ 'USD' ]
+// }
+```
+
+#### `getCountriesForCurrency`
+```
+getCountriesForCurrency('NZD');
+// [ 'COK', 'NIU', 'NZL', 'PCN', 'TKL' ]
 ```

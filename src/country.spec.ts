@@ -2,7 +2,7 @@
 
 import * as assert from 'assert';
 
-import { allCountries, CountryAlpha2, getCountry } from './index';
+import { allCountries, CountryAlpha2, CurrencyAlphabeticCode, getCountriesForCurrency, getCountry } from './index';
 
 describe('country', () => {
   it('getAll returns all countries', () => {
@@ -46,5 +46,73 @@ describe('country', () => {
     assert.throws(() => getCountry('' as CountryAlpha2), /^Error: Country not found for code ''$/u);
     assert.throws(() => getCountry((840 as unknown) as CountryAlpha2), /^Error: Country not found for code '840'$/u);
     assert.throws(() => getCountry('INVALID' as CountryAlpha2), /^Error: Country not found for code 'INVALID'$/u);
+  });
+
+  it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency', () => {
+    assert.deepStrictEqual(getCountriesForCurrency('JPY'), ['JPN']);
+    assert.deepStrictEqual(getCountriesForCurrency('CAD'), ['CAN']);
+    assert.deepStrictEqual(getCountriesForCurrency('NZD'), ['COK', 'NIU', 'NZL', 'PCN', 'TKL']);
+    assert.deepStrictEqual(getCountriesForCurrency('AUD'), ['AUS', 'CCK', 'CXR', 'HMD', 'KIR', 'NFK', 'NRU', 'TUV']);
+    assert.deepStrictEqual(getCountriesForCurrency('USD'), [
+      'ASM',
+      'BES',
+      'ECU',
+      'FSM',
+      'GUM',
+      'HTI',
+      'IOT',
+      'MHL',
+      'MNP',
+      'PAN',
+      'PLW',
+      'PRI',
+      'SLV',
+      'TCA',
+      'TLS',
+      'UMI',
+      'USA',
+      'VGB',
+      'VIR'
+    ]);
+    assert.deepStrictEqual(getCountriesForCurrency('EUR'), [
+      'ALA',
+      'AND',
+      'ATF',
+      'AUT',
+      'BEL',
+      'BLM',
+      'CYP',
+      'DEU',
+      'ESP',
+      'EST',
+      'FIN',
+      'FRA',
+      'GLP',
+      'GRC',
+      'GUF',
+      'IRL',
+      'ITA',
+      'LTU',
+      'LUX',
+      'LVA',
+      'MAF',
+      'MCO',
+      'MLT',
+      'MNE',
+      'MTQ',
+      'MYT',
+      'NLD',
+      'PRT',
+      'REU',
+      'SMR',
+      'SPM',
+      'SVK',
+      'SVN',
+      'VAT'
+    ]);
+
+    assert.deepStrictEqual(getCountriesForCurrency('XXX'), []);
+    assert.deepStrictEqual(getCountriesForCurrency('' as CurrencyAlphabeticCode), []);
+    assert.deepStrictEqual(getCountriesForCurrency((undefined as unknown) as CurrencyAlphabeticCode), []);
   });
 });
