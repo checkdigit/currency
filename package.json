@@ -18,7 +18,7 @@
   "devDependencies": {
     "@checkdigit/eslint-config": "^3.1.6",
     "@checkdigit/prettier-config": "^1.0.1",
-    "@checkdigit/publish": "^1.0.9",
+    "@checkdigit/publish": "^1.0.10",
     "@checkdigit/typescript": "^3.7.5",
     "@types/jest": "^25.1.4",
     "eslint": "^6.8.0",
@@ -37,7 +37,7 @@
     ]
   },
   "scripts": {
-    "prepublishOnly": "publish --beautify",
+    "prepublishOnly": "publish",
     "postpublish": "rimraf dist .npmignore",
     "preversion": "npm test",
     "postversion": "git push && git push --tags",
