@@ -1,6 +1,6 @@
 // format.ts
 
-import { CurrencyAlphabeticCode, getMinorUnitDigits } from './index';
+import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
 export type Amount = string | bigint | -0;
 
