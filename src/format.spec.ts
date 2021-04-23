@@ -14,7 +14,6 @@ function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
 
 describe('format', () => {
   it('supports full ICU', () => {
-    // console.log(Intl.NumberFormat('de-DE', { style: 'currency', currencyDisplay: 'code', currency: 'USD' }).format(1234567.89));
     assert.strictEqual(
       format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
       '1.234.567,89 USD'
