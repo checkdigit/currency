@@ -23,8 +23,8 @@ export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
   return getCurrency(currency).minorUnits ?? 2;
 }
 
-export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string {
+export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
   return Intl.NumberFormat(locales, { style: 'currency', currency })
     .formatToParts(0)
-    .filter(part => part.type === 'currency')[0].value;
+    .filter((part) => part.type === 'currency')[0]?.value;
 }

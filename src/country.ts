@@ -1,7 +1,7 @@
 // country.ts
 
 import countries, { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
-import { CurrencyAlphabeticCode } from './currencies';
+import type { CurrencyAlphabeticCode } from './currencies';
 
 export { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
