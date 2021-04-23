@@ -104,7 +104,6 @@ currency.format({ amount: 123456789n, currency: 'USD' }, {
   currencyDisplay: 'code'
 }, 'de-DE');
 // 1.234.567,89 USD
-// (Node 14+ only)
 
 currency.format({ amount: 123456n, currency: 'USD' }, {
   useDecimal: false,
@@ -112,7 +111,6 @@ currency.format({ amount: 123456n, currency: 'USD' }, {
   useCurrency: false
 }, 'as-IN');
 // ১২৩৪৫৬
-(Node 14+ only)
 ```
 
 #### `getSymbol`
@@ -125,7 +123,6 @@ currency.getSymbol('NZD');
 
 currency.getSymbol('NZD', 'en-NZ');
 // $
-// (Node 14+ only)
 
 ```
 
