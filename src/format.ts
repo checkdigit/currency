@@ -1,5 +1,11 @@
 // format.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
 export type Amount = string | bigint | -0;

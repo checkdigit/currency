@@ -6,7 +6,7 @@ The Check Digit currency library is the officially sanctioned method for Check D
 * currency formatting of Check Digit-standard Money objects, with a variety of options
 * tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 * tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
-* multi-locale (Node 14+ includes full [ICU](http://icu-project.org)
+* multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
 * uses built-in JS engine Intl implementation, no dependencies
 
 ### Installing
@@ -171,3 +171,7 @@ getCountry('USA');
 getCountriesForCurrency('NZD');
 // [ 'COK', 'NIU', 'NZL', 'PCN', 'TKL' ]
 ```
+
+## License
+
+MIT

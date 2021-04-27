@@ -1,5 +1,11 @@
 // currency.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import { default as currencies, Currency, CurrencyAlphabeticCode, CurrencyNumericCode } from './currencies';
 
 export { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';

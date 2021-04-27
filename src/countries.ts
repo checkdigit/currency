@@ -1,6 +1,12 @@
 // countries.ts
 
 /*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
+/*
  * ISO 3166 country database with links to ISO 4217 currency information.
  */
 

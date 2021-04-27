@@ -1,6 +1,12 @@
 // currencies.ts
 
 /*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
+/*
  * Table generated from ISO 4217 Currency Codes XML at https://www.iso.org/iso-4217-currency-codes.html,
  * published 2018-08-29.
  */
