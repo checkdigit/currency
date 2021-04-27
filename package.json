@@ -13,7 +13,7 @@
     "node": ">=14"
   },
   "author": "Check Digit, LLC",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/checkdigit/currency/issues"
   },
