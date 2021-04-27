@@ -1,5 +1,11 @@
 // currency.spec.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import * as assert from 'assert';
 
 import { allCurrencies, CurrencyAlphabeticCode, getCurrency, getMinorUnitDigits, getSymbol } from './index';
@@ -15,13 +21,13 @@ describe('currency', () => {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
-      numericCode: '554'
+      numericCode: '554',
     });
     assert.deepStrictEqual(getCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
-      numericCode: '840'
+      numericCode: '840',
     });
     assert.deepStrictEqual(getCurrency('AUD'), getCurrency('036'));
     assert.deepStrictEqual(getCurrency('CAD'), getCurrency('124'));
@@ -46,17 +52,14 @@ describe('currency', () => {
 
   it('getSymbol', () => {
     const currencies = allCurrencies().map(({ alphabeticCode }) => getSymbol(alphabeticCode));
-    assert.ok(currencies.every(currency => typeof currency === 'string' && currency.length > 0));
+    assert.ok(currencies.every((currency) => typeof currency === 'string' && currency.length > 0));
     assert.strictEqual(getSymbol('USD'), '$');
     assert.strictEqual(getSymbol('CAD'), 'CA$');
     assert.strictEqual(getSymbol('NZD'), 'NZ$');
     assert.strictEqual(getSymbol('JPY'), '¥');
   });
 
-  /**
-   * TODO: until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
-   */
-  xit('getSymbol for non-US locales', () => {
+  it('getSymbol for non-US locales', () => {
     assert.strictEqual(getSymbol('JPY', 'ja-JP'), '￥');
     assert.strictEqual(getSymbol('NZD', 'en-NZ'), '$');
     assert.strictEqual(getSymbol('CAD', 'en-CA'), '$');

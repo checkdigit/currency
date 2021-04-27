@@ -1,6 +1,12 @@
 // currencies.ts
 
 /*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
+/*
  * Table generated from ISO 4217 Currency Codes XML at https://www.iso.org/iso-4217-currency-codes.html,
  * published 2018-08-29.
  */
@@ -722,7 +728,7 @@ const currencies: Currency[] = [
     name: 'Uruguay Peso en Unidades Indexadas (UI)',
     alphabeticCode: 'UYI',
     numericCode: '940',
-    minorUnits: 0
+    minorUnits: 0,
   },
   { name: 'Unidad Previsional', alphabeticCode: 'UYW', numericCode: '927', minorUnits: 4 },
   { name: 'Uzbekistan Sum', alphabeticCode: 'UZS', numericCode: '860', minorUnits: 2 },
@@ -740,12 +746,12 @@ const currencies: Currency[] = [
   {
     name: 'The codes assigned for transactions where no currency is involved',
     alphabeticCode: 'XXX',
-    numericCode: '999'
+    numericCode: '999',
   },
   { name: 'Gold', alphabeticCode: 'XAU', numericCode: '959' },
   { name: 'Palladium', alphabeticCode: 'XPD', numericCode: '964' },
   { name: 'Platinum', alphabeticCode: 'XPT', numericCode: '962' },
-  { name: 'Silver', alphabeticCode: 'XAG', numericCode: '961' }
+  { name: 'Silver', alphabeticCode: 'XAG', numericCode: '961' },
 ];
 
 export default currencies;

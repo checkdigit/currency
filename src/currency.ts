@@ -1,5 +1,11 @@
 // currency.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import { default as currencies, Currency, CurrencyAlphabeticCode, CurrencyNumericCode } from './currencies';
 
 export { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
@@ -23,8 +29,8 @@ export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
   return getCurrency(currency).minorUnits ?? 2;
 }
 
-export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string {
+export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
   return Intl.NumberFormat(locales, { style: 'currency', currency })
     .formatToParts(0)
-    .filter(part => part.type === 'currency')[0].value;
+    .filter((part) => part.type === 'currency')[0]?.value;
 }

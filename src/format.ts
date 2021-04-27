@@ -1,5 +1,11 @@
 // format.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
 export type Amount = string | bigint | -0;
@@ -19,7 +25,7 @@ export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Obj
   currencyDisplay: 'symbol',
   useCurrency: true,
   useGrouping: true,
-  useDecimal: true
+  useDecimal: true,
 });
 
 export function format(
@@ -57,7 +63,7 @@ export function format(
       style: 'currency',
       currency,
       useGrouping: resolvedOptions.useGrouping,
-      currencyDisplay: resolvedOptions.currencyDisplay
+      currencyDisplay: resolvedOptions.currencyDisplay,
     })
       // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
       .formatToParts((majorUnitAmount as unknown) as number)
@@ -65,7 +71,7 @@ export function format(
         ({ type }) =>
           (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal)
       )
-      .map(part => (part.type === 'fraction' ? minorUnitAmount : part.value))
+      .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
       .join('')
   );
 }

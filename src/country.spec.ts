@@ -1,5 +1,11 @@
 // country.spec.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import * as assert from 'assert';
 
 import { allCountries, CountryAlpha2, CurrencyAlphabeticCode, getCountriesForCurrency, getCountry } from './index';
@@ -15,7 +21,7 @@ describe('country', () => {
       alpha3: 'USA',
       currencyCodes: ['USD'],
       name: 'US',
-      numeric: '840'
+      numeric: '840',
     });
 
     assert.deepStrictEqual(getCountry('NZ'), {
@@ -23,7 +29,7 @@ describe('country', () => {
       alpha3: 'NZL',
       currencyCodes: ['NZD'],
       name: 'New Zealand',
-      numeric: '554'
+      numeric: '554',
     });
 
     assert.deepStrictEqual(getCountry('332'), {
@@ -31,7 +37,7 @@ describe('country', () => {
       alpha3: 'HTI',
       currencyCodes: ['HTG', 'USD'],
       name: 'Haiti',
-      numeric: '332'
+      numeric: '332',
     });
 
     assert.deepStrictEqual(getCountry('AUS'), getCountry('036'));
@@ -72,7 +78,7 @@ describe('country', () => {
       'UMI',
       'USA',
       'VGB',
-      'VIR'
+      'VIR',
     ]);
     assert.deepStrictEqual(getCountriesForCurrency('EUR'), [
       'ALA',
@@ -108,7 +114,7 @@ describe('country', () => {
       'SPM',
       'SVK',
       'SVN',
-      'VAT'
+      'VAT',
     ]);
 
     assert.deepStrictEqual(getCountriesForCurrency('XXX'), []);

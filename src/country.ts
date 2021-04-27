@@ -1,7 +1,13 @@
 // country.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import countries, { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
-import { CurrencyAlphabeticCode } from './currencies';
+import type { CurrencyAlphabeticCode } from './currencies';
 
 export { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 

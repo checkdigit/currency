@@ -6,13 +6,8 @@ The Check Digit currency library is the officially sanctioned method for Check D
 * currency formatting of Check Digit-standard Money objects, with a variety of options
 * tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 * tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
-* multi-locale (if the underlying JS engine is built with full [ICU](http://icu-project.org)
+* multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
 * uses built-in JS engine Intl implementation, no dependencies
-
-### Notes
-
-* full [ICU](http://icu-project.org) is supported on all major modern browsers, and Node 14+.  On Node 12 and below, only the locale en-US is supported.
-* Safari does not fully support ES2020, in particular BigInt, so this library should not be used for browser-based UI work until it does.
 
 ### Installing
 
@@ -109,7 +104,6 @@ currency.format({ amount: 123456789n, currency: 'USD' }, {
   currencyDisplay: 'code'
 }, 'de-DE');
 // 1.234.567,89 USD
-// (Node 14+ only)
 
 currency.format({ amount: 123456n, currency: 'USD' }, {
   useDecimal: false,
@@ -117,7 +111,6 @@ currency.format({ amount: 123456n, currency: 'USD' }, {
   useCurrency: false
 }, 'as-IN');
 // ১২৩৪৫৬
-(Node 14+ only)
 ```
 
 #### `getSymbol`
@@ -130,7 +123,6 @@ currency.getSymbol('NZD');
 
 currency.getSymbol('NZD', 'en-NZ');
 // $
-// (Node 14+ only)
 
 ```
 
@@ -179,3 +171,7 @@ getCountry('USA');
 getCountriesForCurrency('NZD');
 // [ 'COK', 'NIU', 'NZL', 'PCN', 'TKL' ]
 ```
+
+## License
+
+MIT

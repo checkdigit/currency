@@ -1,5 +1,11 @@
 // format.spec.ts
 
+/*
+ * Copyright (c) 2021 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
+
 import * as assert from 'assert';
 
 import { allCurrencies, CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
@@ -13,11 +19,7 @@ function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
 }
 
 describe('format', () => {
-  /**
-   * TODO: until Node 14 (which will contain the full ICU), only en-US locale is supported.  Re-enable this test then.
-   */
-  xit('supports full ICU', () => {
-    // console.log(Intl.NumberFormat('de-DE', { style: 'currency', currencyDisplay: 'code', currency: 'USD' }).format(1234567.89));
+  it('supports full ICU', () => {
     assert.strictEqual(
       format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
       '1.234.567,89 USD'
@@ -236,8 +238,8 @@ describe('format', () => {
       'zh-MO',
       'zh-SG',
       'zh-TW',
-      'zu-ZA'
-    ].forEach(locale => check('USD', 100000000, locale));
+      'zu-ZA',
+    ].forEach((locale) => check('USD', 100000000, locale));
   });
 
   it('matches Intl number implementation for all supported currencies', () => {
@@ -268,7 +270,7 @@ describe('format', () => {
       format(
         { amount: '0', currency: 'USD' },
         {
-          currencyDisplay: 'symbol'
+          currencyDisplay: 'symbol',
         }
       ),
       '$0.00'
@@ -277,7 +279,7 @@ describe('format', () => {
       format(
         { amount: '0', currency: 'USD' },
         {
-          currencyDisplay: 'code'
+          currencyDisplay: 'code',
         }
       ),
       'USD 0.00'
@@ -286,7 +288,7 @@ describe('format', () => {
       format(
         { amount: '0', currency: 'USD' },
         {
-          currencyDisplay: 'name'
+          currencyDisplay: 'name',
         }
       ),
       '0.00 US dollars'
@@ -306,7 +308,7 @@ describe('format', () => {
       format(
         { amount: '123456', currency: 'USD' },
         {
-          useGrouping: false
+          useGrouping: false,
         }
       ),
       '$1234.56'
@@ -316,7 +318,7 @@ describe('format', () => {
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
-          useGrouping: false
+          useGrouping: false,
         }
       ),
       '1234.56'
@@ -327,7 +329,7 @@ describe('format', () => {
         {
           useCurrency: false,
           useGrouping: false,
-          useDecimal: false
+          useDecimal: false,
         }
       ),
       '123456'
@@ -336,7 +338,7 @@ describe('format', () => {
       format(
         { amount: '123456', currency: 'USD' },
         {
-          useDecimal: false
+          useDecimal: false,
         }
       )
     );
@@ -345,7 +347,7 @@ describe('format', () => {
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false,
-          useDecimal: false
+          useDecimal: false,
         }
       )
     );
@@ -354,7 +356,7 @@ describe('format', () => {
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
-          useDecimal: false
+          useDecimal: false,
         }
       )
     );
