@@ -20,7 +20,7 @@ export function getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode):
   );
   if (typeof currency === 'undefined') {
     // this should not happen unless an invalid string is coerced into the code parameter
-    throw Error(`Currency not found for code '${code}'`);
+    throw new TypeError(`Currency not found for code '${code}'`);
   }
   return currency;
 }
@@ -32,5 +32,5 @@ export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
 export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
   return Intl.NumberFormat(locales, { style: 'currency', currency })
     .formatToParts(0)
-    .filter((part) => part.type === 'currency')[0]?.value;
+    .find((part) => part.type === 'currency')?.value;
 }

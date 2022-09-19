@@ -19,9 +19,9 @@ export function getCountry(code: CountryAlpha2 | CountryAlpha3 | CountryNumeric)
   const country = allCountries().find(
     ({ alpha2, alpha3, numeric }) => code === alpha2 || code === alpha3 || code === numeric
   );
-  if (typeof country === 'undefined') {
+  if (country === undefined) {
     // this should not happen unless an invalid string is coerced into the code parameter
-    throw Error(`Country not found for code '${code}'`);
+    throw new TypeError(`Country not found for code '${code}'`);
   }
   return country;
 }

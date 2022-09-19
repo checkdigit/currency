@@ -50,7 +50,7 @@ export function format(
     Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
 
   if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && !resolvedOptions.useGrouping)) {
-    throw Error('useDecimal can only be false if useCurrency and useGrouping are also false');
+    throw new Error('useDecimal can only be false if useCurrency and useGrouping are also false');
   }
 
   if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
@@ -66,7 +66,7 @@ export function format(
       currencyDisplay: resolvedOptions.currencyDisplay,
     })
       // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
-      .formatToParts((majorUnitAmount as unknown) as number)
+      .formatToParts(majorUnitAmount as unknown as number)
       .filter(
         ({ type }) =>
           (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal)
