@@ -10,6 +10,8 @@
  * ISO 3166 country database with links to ISO 4217 currency information.
  */
 
+/* eslint-disable max-lines */
+
 import type { CurrencyAlphabeticCode } from './currencies';
 
 export type CountryAlpha2 =
@@ -1165,7 +1167,7 @@ const countries: Country[] = [
     currencyCodes: ['CUP', 'CUC'],
   },
   {
-    name: 'Cura\u00e7ao',
+    name: 'Cura\u00E7ao',
     alpha2: 'CW',
     alpha3: 'CUW',
     numeric: '531',
@@ -1186,7 +1188,7 @@ const countries: Country[] = [
     currencyCodes: ['CZK'],
   },
   {
-    name: 'C\u00f4te d\u2019Ivoire',
+    name: 'C\u00F4te d\u2019Ivoire',
     alpha2: 'CI',
     alpha3: 'CIV',
     numeric: '384',
@@ -2026,14 +2028,14 @@ const countries: Country[] = [
     currencyCodes: ['RWF'],
   },
   {
-    name: 'R\u00e9union',
+    name: 'R\u00E9union',
     alpha2: 'RE',
     alpha3: 'REU',
     numeric: '638',
     currencyCodes: ['EUR'],
   },
   {
-    name: 'St. Barth\u00e9lemy',
+    name: 'St. Barth\u00E9lemy',
     alpha2: 'BL',
     alpha3: 'BLM',
     numeric: '652',
@@ -2096,7 +2098,7 @@ const countries: Country[] = [
     currencyCodes: ['EUR'],
   },
   {
-    name: 'S\u00e3o Tom\u00e9 & Pr\u00edncipe',
+    name: 'S\u00E3o Tom\u00E9 & Pr\u00EDncipe',
     alpha2: 'ST',
     alpha3: 'STP',
     numeric: '678',
@@ -2474,7 +2476,7 @@ const countries: Country[] = [
     currencyCodes: ['ZWL'],
   },
   {
-    name: '\u00c5land Islands',
+    name: '\u00C5land Islands',
     alpha2: 'AX',
     alpha3: 'ALA',
     numeric: '248',
@@ -2483,3 +2485,5 @@ const countries: Country[] = [
 ];
 
 export default countries;
+
+/* eslint-enable max-lines */
