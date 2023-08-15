@@ -1,14 +1,20 @@
 // country.spec.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 import { strict as assert } from 'node:assert';
 
-import { allCountries, CountryAlpha2, CurrencyAlphabeticCode, getCountriesForCurrency, getCountry } from './index';
+import {
+  allCountries,
+  type CountryAlpha2,
+  type CurrencyAlphabeticCode,
+  getCountriesForCurrency,
+  getCountry,
+} from './index';
 
 describe('country', () => {
   it('getAll returns all countries', () => {
@@ -47,7 +53,7 @@ describe('country', () => {
 
     assert.throws(
       () => getCountry(undefined as unknown as CountryAlpha2),
-      /^TypeError: Country not found for code 'undefined'$/u
+      /^TypeError: Country not found for code 'undefined'$/u,
     );
     assert.throws(() => getCountry('' as CountryAlpha2), /^TypeError: Country not found for code ''$/u);
     assert.throws(() => getCountry(840 as unknown as CountryAlpha2), /^TypeError: Country not found for code '840'$/u);

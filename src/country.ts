@@ -1,15 +1,15 @@
 // country.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import countries, { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+import countries, { type Country, type CountryAlpha2, type CountryAlpha3, type CountryNumeric } from './countries';
 import type { CurrencyAlphabeticCode } from './currencies';
 
-export { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
 export function allCountries(): Country[] {
   return countries;
@@ -17,7 +17,7 @@ export function allCountries(): Country[] {
 
 export function getCountry(code: CountryAlpha2 | CountryAlpha3 | CountryNumeric): Country {
   const country = allCountries().find(
-    ({ alpha2, alpha3, numeric }) => code === alpha2 || code === alpha3 || code === numeric
+    ({ alpha2, alpha3, numeric }) => code === alpha2 || code === alpha3 || code === numeric,
   );
   if (country === undefined) {
     // this should not happen unless an invalid string is coerced into the code parameter

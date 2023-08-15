@@ -1,12 +1,12 @@
 // format.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
+import { type CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
 export type Amount = string | bigint | -0;
 
@@ -31,12 +31,12 @@ export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Obj
 export function format(
   { amount, currency }: Money,
   options?: CurrencyFormatOptions,
-  locales?: string | string[]
+  locales?: string | string[],
 ): string {
   const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };
   const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
   const minorUnitDigits = getMinorUnitDigits(currency);
-  const minorUnit = BigInt(10) ** BigInt(minorUnitDigits);
+  const minorUnit = 10n ** BigInt(minorUnitDigits);
 
   /*
    * Calculate the minor unit amount, while also handling locales that use different digit symbols than 0 thru 9.
@@ -69,7 +69,7 @@ export function format(
       .formatToParts(majorUnitAmount as unknown as number)
       .filter(
         ({ type }) =>
-          (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal)
+          (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal),
       )
       .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
       .join('')

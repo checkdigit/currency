@@ -1,14 +1,14 @@
 // format.spec.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 import { strict as assert } from 'node:assert';
 
-import { allCurrencies, CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
+import { allCurrencies, type CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
 
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
   const minorUnitDigits = getMinorUnitDigits(code);
@@ -22,7 +22,7 @@ describe('format', () => {
   it('supports full ICU', () => {
     assert.equal(
       format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
-      '1.234.567,89 USD'
+      '1.234.567,89 USD',
     );
     assert.equal(format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'), '1.234.567,89 €');
   });
@@ -239,7 +239,9 @@ describe('format', () => {
       'zh-SG',
       'zh-TW',
       'zu-ZA',
-    ].forEach((locale) => check('USD', 100_000_000, locale));
+    ].forEach((locale) => {
+      check('USD', 100_000_000, locale);
+    });
   });
 
   it('matches Intl number implementation for all supported currencies', () => {
@@ -290,57 +292,47 @@ describe('format', () => {
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'symbol',
-        }
+        },
       ),
-      '$0.00'
+      '$0.00',
     );
     assert.equal(
       format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'code',
-        }
+        },
       ),
-      'USD 0.00'
+      'USD 0.00',
     );
     assert.equal(
       format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'name',
-        }
+        },
       ),
-      '0.00 US dollars'
+      '0.00 US dollars',
     );
   });
 
   it('support edge cases', () => {
     assert.equal(
       format({ amount: BigInt('123456789012345678901234567890'), currency: 'USD' }),
-      '$1,234,567,890,123,456,789,012,345,678.90'
+      '$1,234,567,890,123,456,789,012,345,678.90',
     );
     assert.equal(
       format({ amount: BigInt('-123456789012345678901234567890'), currency: 'USD' }),
-      '-$1,234,567,890,123,456,789,012,345,678.90'
+      '-$1,234,567,890,123,456,789,012,345,678.90',
     );
     assert.equal(
       format(
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false,
-        }
+        },
       ),
-      '$1234.56'
-    );
-    assert.equal(
-      format(
-        { amount: '123456', currency: 'USD' },
-        {
-          useCurrency: false,
-          useGrouping: false,
-        }
-      ),
-      '1234.56'
+      '$1234.56',
     );
     assert.equal(
       format(
@@ -348,18 +340,28 @@ describe('format', () => {
         {
           useCurrency: false,
           useGrouping: false,
-          useDecimal: false,
-        }
+        },
       ),
-      '123456'
+      '1234.56',
+    );
+    assert.equal(
+      format(
+        { amount: '123456', currency: 'USD' },
+        {
+          useCurrency: false,
+          useGrouping: false,
+          useDecimal: false,
+        },
+      ),
+      '123456',
     );
     assert.throws(() =>
       format(
         { amount: '123456', currency: 'USD' },
         {
           useDecimal: false,
-        }
-      )
+        },
+      ),
     );
     assert.throws(() =>
       format(
@@ -367,8 +369,8 @@ describe('format', () => {
         {
           useGrouping: false,
           useDecimal: false,
-        }
-      )
+        },
+      ),
     );
     assert.throws(() =>
       format(
@@ -376,8 +378,8 @@ describe('format', () => {
         {
           useCurrency: false,
           useDecimal: false,
-        }
-      )
+        },
+      ),
     );
   });
 });
