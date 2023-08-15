@@ -1,7 +1,7 @@
 // country.spec.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -47,7 +47,7 @@ describe('country', () => {
 
     assert.throws(
       () => getCountry(undefined as unknown as CountryAlpha2),
-      /^TypeError: Country not found for code 'undefined'$/u
+      /^TypeError: Country not found for code 'undefined'$/u,
     );
     assert.throws(() => getCountry('' as CountryAlpha2), /^TypeError: Country not found for code ''$/u);
     assert.throws(() => getCountry(840 as unknown as CountryAlpha2), /^TypeError: Country not found for code '840'$/u);

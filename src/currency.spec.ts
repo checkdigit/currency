@@ -1,7 +1,7 @@
 // currency.spec.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -37,16 +37,16 @@ describe('currency', () => {
     assert.deepEqual(getCurrency('USD'), getCurrency('840'));
     assert.throws(
       () => getCurrency(undefined as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'undefined'$/u
+      /^TypeError: Currency not found for code 'undefined'$/u,
     );
     assert.throws(() => getCurrency('' as CurrencyAlphabeticCode), /^TypeError: Currency not found for code ''$/u);
     assert.throws(
       () => getCurrency(840 as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code '840'$/u
+      /^TypeError: Currency not found for code '840'$/u,
     );
     assert.throws(
       () => getCurrency('INVALID' as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'INVALID'$/u
+      /^TypeError: Currency not found for code 'INVALID'$/u,
     );
   });
 

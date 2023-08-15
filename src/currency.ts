@@ -1,7 +1,7 @@
 // currency.ts
 
 /*
- * Copyright (c) 2021 Check Digit, LLC
+ * Copyright (c) 2021-2023 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -16,9 +16,9 @@ export function allCurrencies(): Currency[] {
 
 export function getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency {
   const currency = allCurrencies().find(
-    ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode
+    ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode,
   );
-  if (typeof currency === 'undefined') {
+  if (currency === undefined) {
     // this should not happen unless an invalid string is coerced into the code parameter
     throw new TypeError(`Currency not found for code '${code}'`);
   }
