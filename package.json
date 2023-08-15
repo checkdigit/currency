@@ -25,6 +25,7 @@
     "!dist-mjs/**/*.spec.mjs",
     "SECURITY.md"
   ],
+  "sideEffects": false,
   "prettier": "@checkdigit/prettier-config",
   "repository": {
     "type": "git",

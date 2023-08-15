@@ -2,6 +2,8 @@
   "extends": "@checkdigit/typescript-config",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "build"
+    "outDir": "build",
+    "module": "esnext",
+    "moduleResolution": "bundler"
   }
 }
