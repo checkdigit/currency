@@ -8,7 +8,13 @@
 
 import { strict as assert } from 'node:assert';
 
-import { allCountries, CountryAlpha2, CurrencyAlphabeticCode, getCountriesForCurrency, getCountry } from './index';
+import {
+  allCountries,
+  type CountryAlpha2,
+  type CurrencyAlphabeticCode,
+  getCountriesForCurrency,
+  getCountry,
+} from './index';
 
 describe('country', () => {
   it('getAll returns all countries', () => {

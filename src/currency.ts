@@ -6,9 +6,14 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { default as currencies, Currency, CurrencyAlphabeticCode, CurrencyNumericCode } from './currencies';
+import {
+  default as currencies,
+  type Currency,
+  type CurrencyAlphabeticCode,
+  type CurrencyNumericCode,
+} from './currencies';
 
-export { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
+export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
 export function allCurrencies(): Currency[] {
   return currencies;

@@ -6,7 +6,7 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
+import { type CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
 
 export type Amount = string | bigint | -0;
 

@@ -8,7 +8,7 @@
 
 import { strict as assert } from 'node:assert';
 
-import { allCurrencies, CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
+import { allCurrencies, type CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
 
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
   const minorUnitDigits = getMinorUnitDigits(code);

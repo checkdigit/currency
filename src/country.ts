@@ -6,10 +6,10 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import countries, { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+import countries, { type Country, type CountryAlpha2, type CountryAlpha3, type CountryNumeric } from './countries';
 import type { CurrencyAlphabeticCode } from './currencies';
 
-export { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
 export function allCountries(): Country[] {
   return countries;

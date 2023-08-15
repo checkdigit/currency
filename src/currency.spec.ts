@@ -8,7 +8,7 @@
 
 import * as assert from 'node:assert';
 
-import { allCurrencies, CurrencyAlphabeticCode, getCurrency, getMinorUnitDigits, getSymbol } from './index';
+import { allCurrencies, type CurrencyAlphabeticCode, getCurrency, getMinorUnitDigits, getSymbol } from './index';
 
 describe('currency', () => {
   it('getMinorUnitDigits returns correct number for each currency', () => {
