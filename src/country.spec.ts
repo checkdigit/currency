@@ -18,7 +18,7 @@ import {
 
 describe('country', () => {
   it('getAll returns all countries', () => {
-    assert.equal(allCountries().length, 245);
+    assert.equal(allCountries().length, 246);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code', () => {
@@ -78,6 +78,7 @@ describe('country', () => {
       'PAN',
       'PLW',
       'PRI',
+      'PSE',
       'SLV',
       'TCA',
       'TLS',

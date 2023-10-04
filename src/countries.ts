@@ -259,7 +259,8 @@ export type CountryAlpha2 =
   | 'YE'
   | 'ZM'
   | 'ZW'
-  | 'AX';
+  | 'AX'
+  | 'PS';
 
 export type CountryAlpha3 =
   | 'TWN'
@@ -506,7 +507,8 @@ export type CountryAlpha3 =
   | 'YEM'
   | 'ZMB'
   | 'ZWE'
-  | 'ALA';
+  | 'ALA'
+  | 'PSE';
 
 export type CountryNumeric =
   | '158'
@@ -753,7 +755,8 @@ export type CountryNumeric =
   | '887'
   | '894'
   | '716'
-  | '248';
+  | '248'
+  | '275';
 
 export interface Country {
   // ISO 3166 country display name, alpha2/3 and numeric codes
@@ -2481,6 +2484,13 @@ const countries: Country[] = [
     alpha3: 'ALA',
     numeric: '248',
     currencyCodes: ['EUR'],
+  },
+  {
+    name: 'Palestine, State of',
+    alpha2: 'PS',
+    alpha3: 'PSE',
+    numeric: '275',
+    currencyCodes: ['USD'],
   },
 ];
 

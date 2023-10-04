@@ -1,6 +1,6 @@
 {
   "name": "@checkdigit/currency",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "Standard currency handling",
   "exports": {
     ".": {
@@ -41,10 +41,10 @@
   },
   "homepage": "https://github.com/checkdigit/currency#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "^8.1.0",
-    "@checkdigit/jest-config": "^3.0.0",
-    "@checkdigit/prettier-config": "^4.0.0",
-    "@checkdigit/typescript-config": "4.0.0"
+    "@checkdigit/eslint-config": "^8.3.0",
+    "@checkdigit/jest-config": "^3.1.0",
+    "@checkdigit/prettier-config": "^4.1.0",
+    "@checkdigit/typescript-config": "5.1.0"
   },
   "eslintConfig": {
     "extends": [
@@ -55,14 +55,14 @@
     "preset": "@checkdigit/jest-config"
   },
   "scripts": {
-    "prepublishOnly": "npm run build:dist-types && npm run build:dist-cjs && npm run build:dist-esm",
+    "prepublishOnly": "npm run build:dist-types && npm run build:dist-cjs && npm run build:dist-mjs",
     "build:dist-types": "rimraf dist-types && npx builder --type=types --outDir=dist-types",
     "build:dist-cjs": "rimraf dist-cjs && npx builder --type=commonjs --sourceMap --outDir=dist-cjs && node dist-cjs/index.cjs",
-    "build:dist-esm": "rimraf dist-esm && npx builder --type=module --sourceMap --outDir=dist-mjs && node dist-mjs/index.mjs",
+    "build:dist-mjs": "rimraf dist-mjs && npx builder --type=module --sourceMap --outDir=dist-mjs && node dist-mjs/index.mjs",
     "prettier": "prettier --ignore-path .gitignore --list-different .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
-    "lint:fix": "eslint --ignore-path .gitignore -f unix --ext .ts,.mts src --fix",
-    "lint": "eslint --ignore-path .gitignore -f unix --ext .ts,.mts src",
+    "lint": "eslint --max-warnings 0 --ignore-path .gitignore .",
+    "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:lint && npm run ci:style",
     "ci:compile": "tsc --noEmit",
     "ci:test": "jest --coverage=false",
