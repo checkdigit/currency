@@ -8,39 +8,26 @@ on:
 jobs:
   publishBeta:
     runs-on: ubuntu-latest
-    name: Publish Beta
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
         with:
           ref: ${{ github.event.pull_request.head.sha }}
-      - name: Setup Node.js
+      - name: Use Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
-      - name: Check Label
-        uses: checkdigit/github-actions/check-label@main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check Imports
-        uses: checkdigit/github-actions/check-imports@main
-      - name: Install dependencies
+          cache: 'npm'
+      - name: Install Dependencies
         run: npm ci --ignore-scripts
-      - name: Audit Signatures
-        run: npm audit signatures
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          CI: true
+      - name: Prepare
+        run: npm run prepare
       - name: Run Test
         run: npm run ci:test
-      - name: Prepare Beta
-        id: prepare-beta
-        uses: checkdigit/github-actions/prepare-beta@main
       - name: Publish Beta
-        run: npm publish --tag beta
+        uses: checkdigit/github-actions/publish-beta@main
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN_PUBLISH }}
-      - name: Comment npm publish result
-        uses: checkdigit/github-actions/comment-npm-publish@main
-        with:
-          betaPackage: ${{ steps.prepare-beta.outputs.betaPackage }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN_PUBLISH }}
