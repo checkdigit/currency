@@ -22,8 +22,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           CI: true
-      - name: Prepare
-        run: npm run prepare
       - name: Run Test
         run: npm run ci:test
       - name: Publish Beta
