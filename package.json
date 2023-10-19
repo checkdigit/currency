@@ -1,6 +1,6 @@
 {
   "name": "@checkdigit/currency",
-  "version": "4.0.1",
+  "version": "5.0.0",
   "description": "Standard currency handling",
   "exports": {
     ".": {
