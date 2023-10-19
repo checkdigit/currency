@@ -28,9 +28,11 @@ export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Obj
   useDecimal: true,
 });
 
-export default function (at: string): {
+interface FormatLibrary {
   format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => string;
-} {
+}
+
+export default function (at: string): FormatLibrary {
   return {
     format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => {
       const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };

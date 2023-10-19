@@ -18,11 +18,13 @@ import { getItemsFromOperations } from './operation';
 
 export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
-export default function (at: string): {
+interface CountryLibrary {
   allCountries: () => Country[];
   getCountry: (code: CountryAlpha2 | CountryAlpha3 | CountryNumeric) => Country;
   getCountriesForCurrency: (code: CurrencyAlphabeticCode) => CountryAlpha3[];
-} {
+}
+
+export default function (at: string): CountryLibrary {
   const countries = getItemsFromOperations(countryOperations, at);
   return {
     allCountries: () => countries,

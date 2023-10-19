@@ -16,12 +16,13 @@ import { getItemsFromOperations } from './operation';
 
 export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
-export default function (at: string): {
+interface CurrencyLibrary {
   allCurrencies: () => Currency[];
   getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
   getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;
   getSymbol: (currencyCode: CurrencyAlphabeticCode, locales?: string | string[]) => string | undefined;
-} {
+}
+export default function (at: string): CurrencyLibrary {
   const currencies = getItemsFromOperations(currencyOperations, at);
   const currencyLibrary = {
     allCurrencies: () => currencies,
