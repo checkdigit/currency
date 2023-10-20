@@ -27,9 +27,14 @@ export function getItemsFromOperations<Item extends { name: string }>(
 ): Item[] {
   const itemMap = new Map<string, Item>();
 
-  for (const operation of operations) {
+  const sortedOperations = operations.sort((operation1, operation2) =>
+    operation1.createdOn.localeCompare(operation2.createdOn),
+  );
+  for (const operation of sortedOperations) {
     if (operation.type === 'create' && operation.createdOn <= at) {
       itemMap.set(operation.item.name, operation.item);
+    } else if (operation.type === 'delete' && operation.createdOn <= at) {
+      itemMap.delete(operation.name);
     }
   }
 
