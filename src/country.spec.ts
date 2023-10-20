@@ -14,12 +14,13 @@ import { type CurrencyAlphabeticCode } from './currency';
 import { default as country } from './index';
 
 describe('country', () => {
+  const at = new Date().toISOString();
   it('getAll returns all countries', () => {
-    assert.equal(country(new Date().toISOString()).allCountries().length, 246);
+    assert.equal(country(at).allCountries().length, 246);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code', () => {
-    assert.deepEqual(country(new Date().toISOString()).getCountry('USA'), {
+    assert.deepEqual(country(at).getCountry('USA'), {
       alpha2: 'US',
       alpha3: 'USA',
       currencyCodes: ['USD'],
@@ -27,7 +28,7 @@ describe('country', () => {
       numeric: '840',
     });
 
-    assert.deepEqual(country(new Date().toISOString()).getCountry('NZ'), {
+    assert.deepEqual(country(at).getCountry('NZ'), {
       alpha2: 'NZ',
       alpha3: 'NZL',
       currencyCodes: ['NZD'],
@@ -35,7 +36,7 @@ describe('country', () => {
       numeric: '554',
     });
 
-    assert.deepEqual(country(new Date().toISOString()).getCountry('332'), {
+    assert.deepEqual(country(at).getCountry('332'), {
       alpha2: 'HT',
       alpha3: 'HTI',
       currencyCodes: ['HTG', 'USD'],
@@ -43,52 +44,31 @@ describe('country', () => {
       numeric: '332',
     });
 
-    assert.deepEqual(
-      country(new Date().toISOString()).getCountry('AUS'),
-      country(new Date().toISOString()).getCountry('036'),
-    );
-    assert.deepEqual(
-      country(new Date().toISOString()).getCountry('036'),
-      country(new Date().toISOString()).getCountry('AU'),
-    );
-    assert.deepEqual(
-      country(new Date().toISOString()).getCountry('USA'),
-      country(new Date().toISOString()).getCountry('840'),
-    );
-    assert.deepEqual(
-      country(new Date().toISOString()).getCountry('840'),
-      country(new Date().toISOString()).getCountry('US'),
-    );
+    assert.deepEqual(country(at).getCountry('AUS'), country(at).getCountry('036'));
+    assert.deepEqual(country(at).getCountry('036'), country(at).getCountry('AU'));
+    assert.deepEqual(country(at).getCountry('USA'), country(at).getCountry('840'));
+    assert.deepEqual(country(at).getCountry('840'), country(at).getCountry('US'));
 
     assert.throws(
-      () => country(new Date().toISOString()).getCountry(undefined as unknown as CountryAlpha2),
+      () => country(at).getCountry(undefined as unknown as CountryAlpha2),
       /^TypeError: Country not found for code 'undefined'$/u,
     );
+    assert.throws(() => country(at).getCountry('' as CountryAlpha2), /^TypeError: Country not found for code ''$/u);
     assert.throws(
-      () => country(new Date().toISOString()).getCountry('' as CountryAlpha2),
-      /^TypeError: Country not found for code ''$/u,
-    );
-    assert.throws(
-      () => country(new Date().toISOString()).getCountry(840 as unknown as CountryAlpha2),
+      () => country(at).getCountry(840 as unknown as CountryAlpha2),
       /^TypeError: Country not found for code '840'$/u,
     );
     assert.throws(
-      () => country(new Date().toISOString()).getCountry('INVALID' as CountryAlpha2),
+      () => country(at).getCountry('INVALID' as CountryAlpha2),
       /^TypeError: Country not found for code 'INVALID'$/u,
     );
   });
 
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency', () => {
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('JPY'), ['JPN']);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('CAD'), ['CAN']);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('NZD'), [
-      'COK',
-      'NIU',
-      'NZL',
-      'PCN',
-      'TKL',
-    ]);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('AUD'), [
+    assert.deepEqual(country(at).getCountriesForCurrency('JPY'), ['JPN']);
+    assert.deepEqual(country(at).getCountriesForCurrency('CAD'), ['CAN']);
+    assert.deepEqual(country(at).getCountriesForCurrency('NZD'), ['COK', 'NIU', 'NZL', 'PCN', 'TKL']);
+    assert.deepEqual(country(at).getCountriesForCurrency('AUD'), [
       'AUS',
       'CCK',
       'CXR',
@@ -98,7 +78,7 @@ describe('country', () => {
       'NRU',
       'TUV',
     ]);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('USD'), [
+    assert.deepEqual(country(at).getCountriesForCurrency('USD'), [
       'ASM',
       'BES',
       'ECU',
@@ -120,7 +100,7 @@ describe('country', () => {
       'VGB',
       'VIR',
     ]);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('EUR'), [
+    assert.deepEqual(country(at).getCountriesForCurrency('EUR'), [
       'ALA',
       'AND',
       'ATF',
@@ -158,12 +138,9 @@ describe('country', () => {
       'VAT',
     ]);
 
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('XXX'), []);
-    assert.deepEqual(country(new Date().toISOString()).getCountriesForCurrency('' as CurrencyAlphabeticCode), []);
-    assert.deepEqual(
-      country(new Date().toISOString()).getCountriesForCurrency(undefined as unknown as CurrencyAlphabeticCode),
-      [],
-    );
+    assert.deepEqual(country(at).getCountriesForCurrency('XXX'), []);
+    assert.deepEqual(country(at).getCountriesForCurrency('' as CurrencyAlphabeticCode), []);
+    assert.deepEqual(country(at).getCountriesForCurrency(undefined as unknown as CurrencyAlphabeticCode), []);
   });
 
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency at specific time', () => {
@@ -205,7 +182,23 @@ describe('country', () => {
     ]);
   });
 
-  it('getCurrency for a alphabeticCode or numericCode at specific time', () => {
+  it('getCountry will find a country based on alpha2, alpha3 or numeric code pre-1970', () => {
+    assert.throws(() => {
+      country('1969-12-31T23:59:00.000Z').getCountry('HR');
+    }, /Country not found for code 'HR'/u);
+  });
+
+  it('getCountry will find a country based on alpha2, alpha3 or numeric code at 1970-01-01T00:00:59', () => {
+    assert.deepEqual(country('1970-01-01T00:00:59.000Z').getCountry('HR'), {
+      name: 'Croatia',
+      alpha2: 'HR',
+      alpha3: 'HRV',
+      numeric: '191',
+      currencyCodes: ['HRK'],
+    });
+  });
+
+  it('getCountry will find a country based on alpha2, alpha3 or numeric code at specific time', () => {
     assert.deepEqual(country('2023-01-16T00:00:00.000Z').getCountry('HR'), {
       name: 'Croatia',
       alpha2: 'HR',
@@ -230,7 +223,7 @@ describe('country', () => {
       currencyCodes: ['ISK'],
     });
 
-    assert.deepEqual(country(new Date().toISOString()).getCountry('352'), {
+    assert.deepEqual(country(at).getCountry('352'), {
       name: 'Iceland',
       alpha2: 'IS',
       alpha3: 'ISL',

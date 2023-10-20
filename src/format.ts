@@ -28,7 +28,7 @@ export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Obj
   useDecimal: true,
 });
 
-interface FormatLibrary {
+export interface FormatLibrary {
   format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => string;
 }
 

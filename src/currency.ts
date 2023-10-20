@@ -16,7 +16,7 @@ import { getItemsFromOperations } from './operation';
 
 export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
-interface CurrencyLibrary {
+export interface CurrencyLibrary {
   allCurrencies: () => Currency[];
   getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
   getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;

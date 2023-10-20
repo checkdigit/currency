@@ -18,7 +18,7 @@ import { getItemsFromOperations } from './operation';
 
 export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
 
-interface CountryLibrary {
+export interface CountryLibrary {
   allCountries: () => Country[];
   getCountry: (code: CountryAlpha2 | CountryAlpha3 | CountryNumeric) => Country;
   getCountriesForCurrency: (code: CurrencyAlphabeticCode) => CountryAlpha3[];

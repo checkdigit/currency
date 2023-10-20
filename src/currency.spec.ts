@@ -12,62 +12,45 @@ import type { CurrencyAlphabeticCode } from './currencies';
 import { default as currency } from './index';
 
 describe('currency', () => {
+  const at = new Date().toISOString();
   it('getMinorUnitDigits returns correct number for each currency', () => {
-    assert.equal(currency(new Date().toISOString()).getMinorUnitDigits('USD'), 2);
-    assert.equal(currency(new Date().toISOString()).getMinorUnitDigits('JPY'), 0);
+    assert.equal(currency(at).getMinorUnitDigits('USD'), 2);
+    assert.equal(currency(at).getMinorUnitDigits('JPY'), 0);
   });
 
   it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
-    assert.deepEqual(currency(new Date().toISOString()).getCurrency('NZD'), {
+    assert.deepEqual(currency(at).getCurrency('NZD'), {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
       numericCode: '554',
     });
-    assert.deepEqual(currency(new Date().toISOString()).getCurrency('USD'), {
+    assert.deepEqual(currency(at).getCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('AUD'),
-      currency(new Date().toISOString()).getCurrency('036'),
-    );
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('CAD'),
-      currency(new Date().toISOString()).getCurrency('124'),
-    );
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('NZD'),
-      currency(new Date().toISOString()).getCurrency('554'),
-    );
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('EUR'),
-      currency(new Date().toISOString()).getCurrency('978'),
-    );
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('KRW'),
-      currency(new Date().toISOString()).getCurrency('410'),
-    );
-    assert.deepEqual(
-      currency(new Date().toISOString()).getCurrency('USD'),
-      currency(new Date().toISOString()).getCurrency('840'),
-    );
+    assert.deepEqual(currency(at).getCurrency('AUD'), currency(at).getCurrency('036'));
+    assert.deepEqual(currency(at).getCurrency('CAD'), currency(at).getCurrency('124'));
+    assert.deepEqual(currency(at).getCurrency('NZD'), currency(at).getCurrency('554'));
+    assert.deepEqual(currency(at).getCurrency('EUR'), currency(at).getCurrency('978'));
+    assert.deepEqual(currency(at).getCurrency('KRW'), currency(at).getCurrency('410'));
+    assert.deepEqual(currency(at).getCurrency('USD'), currency(at).getCurrency('840'));
     assert.throws(
-      () => currency(new Date().toISOString()).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code 'undefined'$/u,
     );
     assert.throws(
-      () => currency(new Date().toISOString()).getCurrency('' as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency('' as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code ''$/u,
     );
     assert.throws(
-      () => currency(new Date().toISOString()).getCurrency(840 as unknown as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency(840 as unknown as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code '840'$/u,
     );
     assert.throws(
-      () => currency(new Date().toISOString()).getCurrency('INVALID' as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency('INVALID' as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code 'INVALID'$/u,
     );
   });
@@ -75,18 +58,33 @@ describe('currency', () => {
   it('getSymbol', () => {
     const currencies = currency(new Date().toISOString())
       .allCurrencies()
-      .map(({ alphabeticCode }) => currency(new Date().toISOString()).getSymbol(alphabeticCode));
+      .map(({ alphabeticCode }) => currency(at).getSymbol(alphabeticCode));
     assert.ok(currencies.every((item) => typeof item === 'string' && item.length > 0));
-    assert.equal(currency(new Date().toISOString()).getSymbol('USD'), '$');
-    assert.equal(currency(new Date().toISOString()).getSymbol('CAD'), 'CA$');
-    assert.equal(currency(new Date().toISOString()).getSymbol('NZD'), 'NZ$');
-    assert.equal(currency(new Date().toISOString()).getSymbol('JPY'), '¥');
+    assert.equal(currency(at).getSymbol('USD'), '$');
+    assert.equal(currency(at).getSymbol('CAD'), 'CA$');
+    assert.equal(currency(at).getSymbol('NZD'), 'NZ$');
+    assert.equal(currency(at).getSymbol('JPY'), '¥');
   });
 
   it('getSymbol for non-US locales', () => {
-    assert.equal(currency(new Date().toISOString()).getSymbol('JPY', 'ja-JP'), '￥');
-    assert.equal(currency(new Date().toISOString()).getSymbol('NZD', 'en-NZ'), '$');
-    assert.equal(currency(new Date().toISOString()).getSymbol('CAD', 'en-CA'), '$');
+    assert.equal(currency(at).getSymbol('JPY', 'ja-JP'), '￥');
+    assert.equal(currency(at).getSymbol('NZD', 'en-NZ'), '$');
+    assert.equal(currency(at).getSymbol('CAD', 'en-CA'), '$');
+  });
+
+  it('getCurrency for a alphabeticCode or numericCode pre-1970', () => {
+    assert.throws(() => {
+      currency('1969-12-31T23:59:00.000Z').getCurrency('ISK');
+    }, /Currency not found for code 'ISK'/u);
+  });
+
+  it('getCurrency for a alphabeticCode or numericCode at 1970-01-01T00:00:59', () => {
+    assert.deepEqual(currency('1970-01-01T00:00:59.000Z').getCurrency('ISK'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 2,
+    });
   });
 
   it('getCurrency for a alphabeticCode or numericCode at specific time', () => {
@@ -111,7 +109,7 @@ describe('currency', () => {
       minorUnits: 2,
     });
 
-    assert.deepEqual(currency(new Date().toISOString()).getCurrency('191'), {
+    assert.deepEqual(currency(at).getCurrency('191'), {
       name: 'Kuna',
       alphabeticCode: 'HRK',
       numericCode: '191',
@@ -132,7 +130,7 @@ describe('currency', () => {
       minorUnits: 2,
     });
 
-    assert.deepEqual(currency(new Date().toISOString()).getCurrency('352'), {
+    assert.deepEqual(currency(at).getCurrency('352'), {
       name: 'Iceland Krona',
       alphabeticCode: 'ISK',
       numericCode: '352',
