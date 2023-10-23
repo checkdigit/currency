@@ -31,9 +31,9 @@ export function getItemsFromOperations<Item extends { name: string }>(
     operation1.createdOn.localeCompare(operation2.createdOn),
   );
   for (const operation of sortedOperations) {
-    if (operation.type === 'create' && operation.createdOn <= at) {
+    if (operation.type === 'create' && operation.createdOn < at) {
       itemMap.set(operation.item.name, operation.item);
-    } else if (operation.type === 'delete' && operation.createdOn <= at) {
+    } else if (operation.type === 'delete' && operation.createdOn < at) {
       itemMap.delete(operation.name);
     }
   }
