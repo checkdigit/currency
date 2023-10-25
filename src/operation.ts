@@ -25,18 +25,18 @@ export function getItemsFromOperations<Item extends { name: string }>(
   operations: Operation<Item>[],
   at: string,
 ): Item[] {
-  const itemMap = new Map<string, Item>();
+  const itemMap = new Map<string, { item: Item; createdOn: string }>();
 
-  const sortedOperations = operations.sort((operation1, operation2) =>
-    operation1.createdOn.localeCompare(operation2.createdOn),
-  );
-  for (const operation of sortedOperations) {
+  for (const operation of operations) {
     if (operation.type === 'create' && operation.createdOn < at) {
-      itemMap.set(operation.item.name, operation.item);
+      itemMap.set(operation.item.name, { item: operation.item, createdOn: operation.createdOn });
     } else if (operation.type === 'delete' && operation.createdOn < at) {
-      itemMap.delete(operation.name);
+      const item = itemMap.get(operation.name);
+      if (item && item.createdOn === operation.previousCreatedOn) {
+        itemMap.delete(operation.name);
+      }
     }
   }
 
-  return [...itemMap.values()];
+  return [...itemMap.values()].map((entry) => entry.item);
 }
