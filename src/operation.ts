@@ -25,18 +25,17 @@ export function getItemsFromOperations<Item extends { name: string }>(
   operations: Operation<Item>[],
   at: string,
 ): Item[] {
-  const itemMap = new Map<string, { item: Item; createdOn: string }>();
+  const itemMap = new Map<string, Item>();
 
   for (const operation of operations) {
     if (operation.type === 'create' && operation.createdOn < at) {
-      itemMap.set(operation.item.name, { item: operation.item, createdOn: operation.createdOn });
+      const key = `${operation.item.name}-${operation.createdOn}`;
+      itemMap.set(key, operation.item);
     } else if (operation.type === 'delete' && operation.createdOn < at) {
-      const item = itemMap.get(operation.name);
-      if (item && item.createdOn === operation.previousCreatedOn) {
-        itemMap.delete(operation.name);
-      }
+      const key = `${operation.name}-${operation.previousCreatedOn}`;
+      itemMap.delete(key);
     }
   }
 
-  return [...itemMap.values()].map((entry) => entry.item);
+  return [...itemMap.values()];
 }
