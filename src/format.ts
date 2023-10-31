@@ -60,23 +60,19 @@ export default function (at: string): FormatLibrary {
         majorUnitAmount = -0;
       }
 
-      return (
-        Intl.NumberFormat(locales, {
-          style: 'currency',
-          currency,
-          useGrouping: resolvedOptions.useGrouping,
-          currencyDisplay: resolvedOptions.currencyDisplay,
-        })
-          // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
-          .formatToParts(majorUnitAmount as unknown as number)
-          .filter(
-            ({ type }) =>
-              (type !== 'currency' || resolvedOptions.useCurrency) &&
-              (type !== 'decimal' || resolvedOptions.useDecimal),
-          )
-          .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
-          .join('')
-      );
+      return Intl.NumberFormat(locales, {
+        style: 'currency',
+        currency,
+        useGrouping: resolvedOptions.useGrouping,
+        currencyDisplay: resolvedOptions.currencyDisplay,
+      })
+        .formatToParts(majorUnitAmount)
+        .filter(
+          ({ type }) =>
+            (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal),
+        )
+        .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
+        .join('');
     },
   };
 }

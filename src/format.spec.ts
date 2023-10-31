@@ -399,7 +399,7 @@ describe('format', () => {
     );
   });
 
-  it('getCountry will find a country based on alpha2, alpha3 or numeric code pre-1970', () => {
+  it('format will throw an error if we pass any date pre-1970', () => {
     assert.throws(() => {
       formatLibrary('1969-12-31T23:59:00.000Z').format(
         { amount: BigInt('123456789'), currency: 'USD' },
