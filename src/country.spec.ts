@@ -182,10 +182,10 @@ describe('country', () => {
     ]);
   });
 
-  it('getCountry will find a country based on alpha2, alpha3 or numeric code pre-1970', () => {
+  it('getCountry  based on alpha2, alpha3 or numeric code will throw an error if we pass any date pre-1970', () => {
     assert.throws(() => {
       country('1969-12-31T23:59:00.000Z').getCountry('HR');
-    }, /Country not found for code 'HR'/u);
+    }, /^TypeError: Country not found for code 'HR'$/u);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code at 1970-01-01T00:00:59', () => {

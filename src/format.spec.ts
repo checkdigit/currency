@@ -406,6 +406,6 @@ describe('format', () => {
         { currencyDisplay: 'code' },
         'de-DE',
       );
-    }, /Currency not found for code 'USD'/u);
+    }, /^TypeError: Currency not found for code 'USD'$/u);
   });
 });

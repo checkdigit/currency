@@ -72,10 +72,10 @@ describe('currency', () => {
     assert.equal(currency(at).getSymbol('CAD', 'en-CA'), '$');
   });
 
-  it('getCurrency for a alphabeticCode or numericCode pre-1970', () => {
+  it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-1970', () => {
     assert.throws(() => {
       currency('1969-12-31T23:59:00.000Z').getCurrency('ISK');
-    }, /Currency not found for code 'ISK'/u);
+    }, /^TypeError: Currency not found for code 'ISK'$/u);
   });
 
   it('getCurrency for a alphabeticCode or numericCode at 1970-01-01T00:00:59', () => {
