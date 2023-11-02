@@ -1,8 +1,8 @@
 # Check Digit Currency Library
 
-The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships. Features:
+The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships at a particular date/time. Features:
 
-- various currency and country lookup functions
+- various currency and country lookup functions at a particular date/time starting '1970-01-01T00:00:00.001Z'
 - Typescript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
 - currency formatting of Check Digit-standard Money objects, with a variety of options
 - tests to ensure compliance with number-based Intl.NumberFormat currency implementation
@@ -88,34 +88,34 @@ export interface Currency {
 #### `format`
 
 ```
-currency.format({amount: 123456789012345678901234567890n, currency: 'USD'});
+currency('2023-11-02T15:35:47.191Z').format({amount: 123456789012345678901234567890n, currency: 'USD'});
 // $1,234,567,890,123,456,789,012,345,678.90
 
-currency.format({amount: 123456n, currency: 'USD'});
+currency('2023-11-02T15:35:47.191Z').format({amount: 123456n, currency: 'USD'});
 // $1234.56
 
-currency.format({amount: 123456n, currency: 'USD'}, {
+currency('2023-11-02T15:35:47.191Z').format({amount: 123456n, currency: 'USD'}, {
   useGrouping: false,
   useCurrency: false
 }));
 // 1234.56
 
-currency.format({amount: 123456n, currency: 'USD'}, {
+currency('2023-11-02T15:35:47.191Z').format({amount: 123456n, currency: 'USD'}, {
   useGrouping: false,
   useCurrency: false,
   useDecimal: false
 }));
 // 123456
 
-currency.format({amount: -0, currency: 'USD'});
+currency('2023-11-02T15:35:47.191Z').format({amount: -0, currency: 'USD'});
 // -$0.00
 
-currency.format({ amount: 123456789n, currency: 'USD' }, {
+currency('2023-11-02T15:35:47.191Z').format({ amount: 123456789n, currency: 'USD' }, {
   currencyDisplay: 'code'
 }, 'de-DE');
 // 1.234.567,89 USD
 
-currency.format({ amount: 123456n, currency: 'USD' }, {
+currency('2023-11-02T15:35:47.191Z').format({ amount: 123456n, currency: 'USD' }, {
   useDecimal: false,
   useGrouping: false,
   useCurrency: false
@@ -126,13 +126,13 @@ currency.format({ amount: 123456n, currency: 'USD' }, {
 #### `getSymbol`
 
 ```
-currency.getSymbol('USD');
+currency('2023-11-02T15:35:47.191Z').getSymbol('USD');
 // $
 
-currency.getSymbol('NZD');
+currency('2023-11-02T15:35:47.191Z').getSymbol('NZD');
 // NZ$
 
-currency.getSymbol('NZD', 'en-NZ');
+currency('2023-11-02T15:35:47.191Z').getSymbol('NZD', 'en-NZ');
 // $
 
 ```
@@ -140,17 +140,17 @@ currency.getSymbol('NZD', 'en-NZ');
 #### `getMinorUnitDigits`
 
 ```
-getMinorUnitDigits('USD');
+currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('USD');
 // 2
 
-getMinorUnitDigits('JPY');
+currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('JPY');
 // 0
 ```
 
 #### `getCurrency`
 
 ```
-getCurrency('840');
+currency('2023-11-02T15:35:47.191Z').getCurrency('840');
 // {
 //   name: 'US Dollar',
 //   alphabeticCode: 'USD',
@@ -158,7 +158,7 @@ getCurrency('840');
 //   minorUnits: 2
 // }
 
-getCurrency('NZD');
+currency('2023-11-02T15:35:47.191Z').getCurrency('NZD');
 // {
 //   name: 'New Zealand Dollar',
 //   alphabeticCode: 'NZD',
@@ -170,7 +170,7 @@ getCurrency('NZD');
 #### `getCountry`
 
 ```
-getCountry('USA');
+currency('2023-11-02T15:35:47.191Z').getCountry('USA');
 // {
 //   name: 'US',
 //   alpha2: 'US',
@@ -183,7 +183,7 @@ getCountry('USA');
 #### `getCountriesForCurrency`
 
 ```
-getCountriesForCurrency('NZD');
+currency('2023-11-02T15:35:47.191Z').getCountriesForCurrency('NZD');
 // [ 'COK', 'NIU', 'NZL', 'PCN', 'TKL' ]
 ```
 
