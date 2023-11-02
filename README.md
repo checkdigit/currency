@@ -2,7 +2,7 @@
 
 The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships at a particular date/time. Features:
 
-- various currency and country lookup functions at a particular date/time starting '1970-01-01T00:00:00.001Z'
+- various currency and country lookup functions at a particular date/time
 - Typescript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
 - currency formatting of Check Digit-standard Money objects, with a variety of options
 - tests to ensure compliance with number-based Intl.NumberFormat currency implementation
