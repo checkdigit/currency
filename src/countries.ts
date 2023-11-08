@@ -781,7 +781,7 @@ const countries: Operation<Country>[] = [
       numeric: '158',
       currencyCodes: ['TWD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -792,7 +792,7 @@ const countries: Operation<Country>[] = [
       numeric: '004',
       currencyCodes: ['AFN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -803,7 +803,7 @@ const countries: Operation<Country>[] = [
       numeric: '008',
       currencyCodes: ['ALL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -814,7 +814,7 @@ const countries: Operation<Country>[] = [
       numeric: '012',
       currencyCodes: ['DZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -825,7 +825,7 @@ const countries: Operation<Country>[] = [
       numeric: '016',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -836,7 +836,7 @@ const countries: Operation<Country>[] = [
       numeric: '020',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -847,7 +847,7 @@ const countries: Operation<Country>[] = [
       numeric: '024',
       currencyCodes: ['AOA'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -858,7 +858,7 @@ const countries: Operation<Country>[] = [
       numeric: '660',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -869,7 +869,7 @@ const countries: Operation<Country>[] = [
       numeric: '028',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -880,7 +880,7 @@ const countries: Operation<Country>[] = [
       numeric: '032',
       currencyCodes: ['ARS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -891,7 +891,7 @@ const countries: Operation<Country>[] = [
       numeric: '051',
       currencyCodes: ['AMD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -902,7 +902,7 @@ const countries: Operation<Country>[] = [
       numeric: '533',
       currencyCodes: ['AWG'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -913,7 +913,7 @@ const countries: Operation<Country>[] = [
       numeric: '036',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -924,7 +924,7 @@ const countries: Operation<Country>[] = [
       numeric: '040',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -935,7 +935,7 @@ const countries: Operation<Country>[] = [
       numeric: '031',
       currencyCodes: ['AZN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -946,7 +946,7 @@ const countries: Operation<Country>[] = [
       numeric: '044',
       currencyCodes: ['BSD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -957,7 +957,7 @@ const countries: Operation<Country>[] = [
       numeric: '048',
       currencyCodes: ['BHD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -968,7 +968,7 @@ const countries: Operation<Country>[] = [
       numeric: '050',
       currencyCodes: ['BDT'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -979,7 +979,7 @@ const countries: Operation<Country>[] = [
       numeric: '052',
       currencyCodes: ['BBD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -990,7 +990,7 @@ const countries: Operation<Country>[] = [
       numeric: '112',
       currencyCodes: ['BYN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1001,7 +1001,7 @@ const countries: Operation<Country>[] = [
       numeric: '056',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1012,7 +1012,7 @@ const countries: Operation<Country>[] = [
       numeric: '084',
       currencyCodes: ['BZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1023,7 +1023,7 @@ const countries: Operation<Country>[] = [
       numeric: '204',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1034,7 +1034,7 @@ const countries: Operation<Country>[] = [
       numeric: '060',
       currencyCodes: ['BMD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1045,7 +1045,7 @@ const countries: Operation<Country>[] = [
       numeric: '064',
       currencyCodes: ['INR', 'BTN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1056,7 +1056,7 @@ const countries: Operation<Country>[] = [
       numeric: '068',
       currencyCodes: ['BOB'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1067,7 +1067,7 @@ const countries: Operation<Country>[] = [
       numeric: '535',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1078,7 +1078,7 @@ const countries: Operation<Country>[] = [
       numeric: '070',
       currencyCodes: ['BAM'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1089,7 +1089,7 @@ const countries: Operation<Country>[] = [
       numeric: '072',
       currencyCodes: ['BWP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
 
   {
@@ -1101,7 +1101,7 @@ const countries: Operation<Country>[] = [
       numeric: '074',
       currencyCodes: ['NOK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1112,7 +1112,7 @@ const countries: Operation<Country>[] = [
       numeric: '076',
       currencyCodes: ['BRL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1123,7 +1123,7 @@ const countries: Operation<Country>[] = [
       numeric: '086',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1134,7 +1134,7 @@ const countries: Operation<Country>[] = [
       numeric: '092',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1145,7 +1145,7 @@ const countries: Operation<Country>[] = [
       numeric: '096',
       currencyCodes: ['BND'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1156,7 +1156,7 @@ const countries: Operation<Country>[] = [
       numeric: '100',
       currencyCodes: ['BGN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1167,7 +1167,7 @@ const countries: Operation<Country>[] = [
       numeric: '854',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1178,7 +1178,7 @@ const countries: Operation<Country>[] = [
       numeric: '108',
       currencyCodes: ['BIF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1189,7 +1189,7 @@ const countries: Operation<Country>[] = [
       numeric: '132',
       currencyCodes: ['CVE'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1200,7 +1200,7 @@ const countries: Operation<Country>[] = [
       numeric: '116',
       currencyCodes: ['KHR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1211,7 +1211,7 @@ const countries: Operation<Country>[] = [
       numeric: '120',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1222,7 +1222,7 @@ const countries: Operation<Country>[] = [
       numeric: '124',
       currencyCodes: ['CAD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1233,7 +1233,7 @@ const countries: Operation<Country>[] = [
       numeric: '136',
       currencyCodes: ['KYD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1244,7 +1244,7 @@ const countries: Operation<Country>[] = [
       numeric: '140',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1255,7 +1255,7 @@ const countries: Operation<Country>[] = [
       numeric: '148',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1266,7 +1266,7 @@ const countries: Operation<Country>[] = [
       numeric: '152',
       currencyCodes: ['CLP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1277,7 +1277,7 @@ const countries: Operation<Country>[] = [
       numeric: '156',
       currencyCodes: ['CNY'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1288,7 +1288,7 @@ const countries: Operation<Country>[] = [
       numeric: '344',
       currencyCodes: ['HKD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1299,7 +1299,7 @@ const countries: Operation<Country>[] = [
       numeric: '446',
       currencyCodes: ['MOP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1310,7 +1310,7 @@ const countries: Operation<Country>[] = [
       numeric: '162',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1321,7 +1321,7 @@ const countries: Operation<Country>[] = [
       numeric: '166',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1332,7 +1332,7 @@ const countries: Operation<Country>[] = [
       numeric: '170',
       currencyCodes: ['COP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1343,7 +1343,7 @@ const countries: Operation<Country>[] = [
       numeric: '174',
       currencyCodes: ['KMF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1354,7 +1354,7 @@ const countries: Operation<Country>[] = [
       numeric: '178',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1365,7 +1365,7 @@ const countries: Operation<Country>[] = [
       numeric: '184',
       currencyCodes: ['NZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1376,7 +1376,7 @@ const countries: Operation<Country>[] = [
       numeric: '188',
       currencyCodes: ['CRC'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1387,12 +1387,12 @@ const countries: Operation<Country>[] = [
       numeric: '191',
       currencyCodes: ['HRK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'delete',
     name: 'Croatia',
-    previousCreatedOn: '1970-01-01T00:00:00.000Z',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
     createdOn: '2023-01-01T00:00:00.000Z',
   },
   {
@@ -1415,7 +1415,7 @@ const countries: Operation<Country>[] = [
       numeric: '192',
       currencyCodes: ['CUP', 'CUC'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1426,7 +1426,7 @@ const countries: Operation<Country>[] = [
       numeric: '531',
       currencyCodes: ['ANG'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1437,7 +1437,7 @@ const countries: Operation<Country>[] = [
       numeric: '196',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1448,7 +1448,7 @@ const countries: Operation<Country>[] = [
       numeric: '203',
       currencyCodes: ['CZK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1459,7 +1459,7 @@ const countries: Operation<Country>[] = [
       numeric: '384',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1470,7 +1470,7 @@ const countries: Operation<Country>[] = [
       numeric: '408',
       currencyCodes: ['KPW'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1481,7 +1481,7 @@ const countries: Operation<Country>[] = [
       numeric: '180',
       currencyCodes: ['CDF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1492,7 +1492,7 @@ const countries: Operation<Country>[] = [
       numeric: '208',
       currencyCodes: ['DKK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1503,7 +1503,7 @@ const countries: Operation<Country>[] = [
       numeric: '262',
       currencyCodes: ['DJF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1514,7 +1514,7 @@ const countries: Operation<Country>[] = [
       numeric: '212',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1525,7 +1525,7 @@ const countries: Operation<Country>[] = [
       numeric: '214',
       currencyCodes: ['DOP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1536,7 +1536,7 @@ const countries: Operation<Country>[] = [
       numeric: '218',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1547,7 +1547,7 @@ const countries: Operation<Country>[] = [
       numeric: '818',
       currencyCodes: ['EGP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1558,7 +1558,7 @@ const countries: Operation<Country>[] = [
       numeric: '222',
       currencyCodes: ['SVC', 'USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1569,7 +1569,7 @@ const countries: Operation<Country>[] = [
       numeric: '226',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1580,7 +1580,7 @@ const countries: Operation<Country>[] = [
       numeric: '232',
       currencyCodes: ['ERN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1591,7 +1591,7 @@ const countries: Operation<Country>[] = [
       numeric: '233',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1602,7 +1602,7 @@ const countries: Operation<Country>[] = [
       numeric: '231',
       currencyCodes: ['ETB'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1613,7 +1613,7 @@ const countries: Operation<Country>[] = [
       numeric: '234',
       currencyCodes: ['DKK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1624,7 +1624,7 @@ const countries: Operation<Country>[] = [
       numeric: '242',
       currencyCodes: ['FJD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1635,7 +1635,7 @@ const countries: Operation<Country>[] = [
       numeric: '246',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1646,7 +1646,7 @@ const countries: Operation<Country>[] = [
       numeric: '250',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1657,7 +1657,7 @@ const countries: Operation<Country>[] = [
       numeric: '254',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1668,7 +1668,7 @@ const countries: Operation<Country>[] = [
       numeric: '258',
       currencyCodes: ['XPF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1679,7 +1679,7 @@ const countries: Operation<Country>[] = [
       numeric: '260',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1690,7 +1690,7 @@ const countries: Operation<Country>[] = [
       numeric: '266',
       currencyCodes: ['XAF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1701,7 +1701,7 @@ const countries: Operation<Country>[] = [
       numeric: '270',
       currencyCodes: ['GMD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1712,7 +1712,7 @@ const countries: Operation<Country>[] = [
       numeric: '268',
       currencyCodes: ['GEL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1723,7 +1723,7 @@ const countries: Operation<Country>[] = [
       numeric: '276',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1734,7 +1734,7 @@ const countries: Operation<Country>[] = [
       numeric: '288',
       currencyCodes: ['GHS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1745,7 +1745,7 @@ const countries: Operation<Country>[] = [
       numeric: '292',
       currencyCodes: ['GIP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1756,7 +1756,7 @@ const countries: Operation<Country>[] = [
       numeric: '300',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1767,7 +1767,7 @@ const countries: Operation<Country>[] = [
       numeric: '304',
       currencyCodes: ['DKK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1778,7 +1778,7 @@ const countries: Operation<Country>[] = [
       numeric: '308',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1789,7 +1789,7 @@ const countries: Operation<Country>[] = [
       numeric: '312',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1800,7 +1800,7 @@ const countries: Operation<Country>[] = [
       numeric: '316',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1811,7 +1811,7 @@ const countries: Operation<Country>[] = [
       numeric: '320',
       currencyCodes: ['GTQ'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1822,7 +1822,7 @@ const countries: Operation<Country>[] = [
       numeric: '831',
       currencyCodes: ['GBP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1833,7 +1833,7 @@ const countries: Operation<Country>[] = [
       numeric: '324',
       currencyCodes: ['GNF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1844,7 +1844,7 @@ const countries: Operation<Country>[] = [
       numeric: '624',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1855,7 +1855,7 @@ const countries: Operation<Country>[] = [
       numeric: '328',
       currencyCodes: ['GYD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1866,7 +1866,7 @@ const countries: Operation<Country>[] = [
       numeric: '332',
       currencyCodes: ['HTG', 'USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1877,7 +1877,7 @@ const countries: Operation<Country>[] = [
       numeric: '334',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1888,7 +1888,7 @@ const countries: Operation<Country>[] = [
       numeric: '336',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1899,7 +1899,7 @@ const countries: Operation<Country>[] = [
       numeric: '340',
       currencyCodes: ['HNL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1910,7 +1910,7 @@ const countries: Operation<Country>[] = [
       numeric: '348',
       currencyCodes: ['HUF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1921,7 +1921,7 @@ const countries: Operation<Country>[] = [
       numeric: '352',
       currencyCodes: ['ISK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1932,7 +1932,7 @@ const countries: Operation<Country>[] = [
       numeric: '356',
       currencyCodes: ['INR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1943,7 +1943,7 @@ const countries: Operation<Country>[] = [
       numeric: '360',
       currencyCodes: ['IDR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1954,7 +1954,7 @@ const countries: Operation<Country>[] = [
       numeric: '364',
       currencyCodes: ['IRR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1965,7 +1965,7 @@ const countries: Operation<Country>[] = [
       numeric: '368',
       currencyCodes: ['IQD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1976,7 +1976,7 @@ const countries: Operation<Country>[] = [
       numeric: '372',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1987,7 +1987,7 @@ const countries: Operation<Country>[] = [
       numeric: '833',
       currencyCodes: ['GBP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -1998,7 +1998,7 @@ const countries: Operation<Country>[] = [
       numeric: '376',
       currencyCodes: ['ILS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2009,7 +2009,7 @@ const countries: Operation<Country>[] = [
       numeric: '380',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2020,7 +2020,7 @@ const countries: Operation<Country>[] = [
       numeric: '388',
       currencyCodes: ['JMD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2031,7 +2031,7 @@ const countries: Operation<Country>[] = [
       numeric: '392',
       currencyCodes: ['JPY'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2042,7 +2042,7 @@ const countries: Operation<Country>[] = [
       numeric: '832',
       currencyCodes: ['GBP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2053,7 +2053,7 @@ const countries: Operation<Country>[] = [
       numeric: '400',
       currencyCodes: ['JOD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2064,7 +2064,7 @@ const countries: Operation<Country>[] = [
       numeric: '398',
       currencyCodes: ['KZT'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2075,7 +2075,7 @@ const countries: Operation<Country>[] = [
       numeric: '404',
       currencyCodes: ['KES'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2086,7 +2086,7 @@ const countries: Operation<Country>[] = [
       numeric: '296',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2097,7 +2097,7 @@ const countries: Operation<Country>[] = [
       numeric: '414',
       currencyCodes: ['KWD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2108,7 +2108,7 @@ const countries: Operation<Country>[] = [
       numeric: '417',
       currencyCodes: ['KGS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2119,7 +2119,7 @@ const countries: Operation<Country>[] = [
       numeric: '418',
       currencyCodes: ['LAK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2130,7 +2130,7 @@ const countries: Operation<Country>[] = [
       numeric: '428',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2141,7 +2141,7 @@ const countries: Operation<Country>[] = [
       numeric: '422',
       currencyCodes: ['LBP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2152,7 +2152,7 @@ const countries: Operation<Country>[] = [
       numeric: '426',
       currencyCodes: ['LSL', 'ZAR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2163,7 +2163,7 @@ const countries: Operation<Country>[] = [
       numeric: '430',
       currencyCodes: ['LRD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2174,7 +2174,7 @@ const countries: Operation<Country>[] = [
       numeric: '434',
       currencyCodes: ['LYD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2185,7 +2185,7 @@ const countries: Operation<Country>[] = [
       numeric: '438',
       currencyCodes: ['CHF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2196,7 +2196,7 @@ const countries: Operation<Country>[] = [
       numeric: '440',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2207,7 +2207,7 @@ const countries: Operation<Country>[] = [
       numeric: '442',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2218,7 +2218,7 @@ const countries: Operation<Country>[] = [
       numeric: '450',
       currencyCodes: ['MGA'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2229,7 +2229,7 @@ const countries: Operation<Country>[] = [
       numeric: '454',
       currencyCodes: ['MWK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2240,7 +2240,7 @@ const countries: Operation<Country>[] = [
       numeric: '458',
       currencyCodes: ['MYR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2251,7 +2251,7 @@ const countries: Operation<Country>[] = [
       numeric: '462',
       currencyCodes: ['MVR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2262,7 +2262,7 @@ const countries: Operation<Country>[] = [
       numeric: '466',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2273,7 +2273,7 @@ const countries: Operation<Country>[] = [
       numeric: '470',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2284,7 +2284,7 @@ const countries: Operation<Country>[] = [
       numeric: '584',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2295,7 +2295,7 @@ const countries: Operation<Country>[] = [
       numeric: '474',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2306,7 +2306,7 @@ const countries: Operation<Country>[] = [
       numeric: '478',
       currencyCodes: ['MRU'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2317,7 +2317,7 @@ const countries: Operation<Country>[] = [
       numeric: '480',
       currencyCodes: ['MUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2328,7 +2328,7 @@ const countries: Operation<Country>[] = [
       numeric: '175',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2339,7 +2339,7 @@ const countries: Operation<Country>[] = [
       numeric: '484',
       currencyCodes: ['MXN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2350,7 +2350,7 @@ const countries: Operation<Country>[] = [
       numeric: '583',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2361,7 +2361,7 @@ const countries: Operation<Country>[] = [
       numeric: '492',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2372,7 +2372,7 @@ const countries: Operation<Country>[] = [
       numeric: '496',
       currencyCodes: ['MNT'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2383,7 +2383,7 @@ const countries: Operation<Country>[] = [
       numeric: '499',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2394,7 +2394,7 @@ const countries: Operation<Country>[] = [
       numeric: '500',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2405,7 +2405,7 @@ const countries: Operation<Country>[] = [
       numeric: '504',
       currencyCodes: ['MAD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2416,7 +2416,7 @@ const countries: Operation<Country>[] = [
       numeric: '508',
       currencyCodes: ['MZN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2427,7 +2427,7 @@ const countries: Operation<Country>[] = [
       numeric: '104',
       currencyCodes: ['MMK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2438,7 +2438,7 @@ const countries: Operation<Country>[] = [
       numeric: '516',
       currencyCodes: ['NAD', 'ZAR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2449,7 +2449,7 @@ const countries: Operation<Country>[] = [
       numeric: '520',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2460,7 +2460,7 @@ const countries: Operation<Country>[] = [
       numeric: '524',
       currencyCodes: ['NPR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2471,7 +2471,7 @@ const countries: Operation<Country>[] = [
       numeric: '528',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2482,7 +2482,7 @@ const countries: Operation<Country>[] = [
       numeric: '540',
       currencyCodes: ['XPF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2493,7 +2493,7 @@ const countries: Operation<Country>[] = [
       numeric: '554',
       currencyCodes: ['NZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2504,7 +2504,7 @@ const countries: Operation<Country>[] = [
       numeric: '558',
       currencyCodes: ['NIO'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2515,7 +2515,7 @@ const countries: Operation<Country>[] = [
       numeric: '562',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2526,7 +2526,7 @@ const countries: Operation<Country>[] = [
       numeric: '566',
       currencyCodes: ['NGN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2537,7 +2537,7 @@ const countries: Operation<Country>[] = [
       numeric: '570',
       currencyCodes: ['NZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2548,7 +2548,7 @@ const countries: Operation<Country>[] = [
       numeric: '574',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2559,7 +2559,7 @@ const countries: Operation<Country>[] = [
       numeric: '580',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2570,7 +2570,7 @@ const countries: Operation<Country>[] = [
       numeric: '578',
       currencyCodes: ['NOK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2581,7 +2581,7 @@ const countries: Operation<Country>[] = [
       numeric: '512',
       currencyCodes: ['OMR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2592,7 +2592,7 @@ const countries: Operation<Country>[] = [
       numeric: '586',
       currencyCodes: ['PKR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2603,7 +2603,7 @@ const countries: Operation<Country>[] = [
       numeric: '585',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2614,7 +2614,7 @@ const countries: Operation<Country>[] = [
       numeric: '591',
       currencyCodes: ['PAB', 'USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2625,7 +2625,7 @@ const countries: Operation<Country>[] = [
       numeric: '598',
       currencyCodes: ['PGK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2636,7 +2636,7 @@ const countries: Operation<Country>[] = [
       numeric: '600',
       currencyCodes: ['PYG'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2647,7 +2647,7 @@ const countries: Operation<Country>[] = [
       numeric: '604',
       currencyCodes: ['PEN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2658,7 +2658,7 @@ const countries: Operation<Country>[] = [
       numeric: '608',
       currencyCodes: ['PHP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2669,7 +2669,7 @@ const countries: Operation<Country>[] = [
       numeric: '612',
       currencyCodes: ['NZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2680,7 +2680,7 @@ const countries: Operation<Country>[] = [
       numeric: '616',
       currencyCodes: ['PLN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2691,7 +2691,7 @@ const countries: Operation<Country>[] = [
       numeric: '620',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2702,7 +2702,7 @@ const countries: Operation<Country>[] = [
       numeric: '630',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2713,7 +2713,7 @@ const countries: Operation<Country>[] = [
       numeric: '634',
       currencyCodes: ['QAR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2724,7 +2724,7 @@ const countries: Operation<Country>[] = [
       numeric: '410',
       currencyCodes: ['KRW'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2735,7 +2735,7 @@ const countries: Operation<Country>[] = [
       numeric: '498',
       currencyCodes: ['MDL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2746,7 +2746,7 @@ const countries: Operation<Country>[] = [
       numeric: '642',
       currencyCodes: ['RON'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2757,7 +2757,7 @@ const countries: Operation<Country>[] = [
       numeric: '643',
       currencyCodes: ['RUB'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2768,7 +2768,7 @@ const countries: Operation<Country>[] = [
       numeric: '646',
       currencyCodes: ['RWF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2779,7 +2779,7 @@ const countries: Operation<Country>[] = [
       numeric: '638',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2790,7 +2790,7 @@ const countries: Operation<Country>[] = [
       numeric: '652',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2801,7 +2801,7 @@ const countries: Operation<Country>[] = [
       numeric: '654',
       currencyCodes: ['SHP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2812,7 +2812,7 @@ const countries: Operation<Country>[] = [
       numeric: '659',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2823,7 +2823,7 @@ const countries: Operation<Country>[] = [
       numeric: '662',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2834,7 +2834,7 @@ const countries: Operation<Country>[] = [
       numeric: '663',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2845,7 +2845,7 @@ const countries: Operation<Country>[] = [
       numeric: '666',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2856,7 +2856,7 @@ const countries: Operation<Country>[] = [
       numeric: '670',
       currencyCodes: ['XCD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2867,7 +2867,7 @@ const countries: Operation<Country>[] = [
       numeric: '882',
       currencyCodes: ['WST'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2878,7 +2878,7 @@ const countries: Operation<Country>[] = [
       numeric: '674',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2889,7 +2889,7 @@ const countries: Operation<Country>[] = [
       numeric: '678',
       currencyCodes: ['STN'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2900,7 +2900,7 @@ const countries: Operation<Country>[] = [
       numeric: '682',
       currencyCodes: ['SAR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2911,7 +2911,7 @@ const countries: Operation<Country>[] = [
       numeric: '686',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2922,7 +2922,7 @@ const countries: Operation<Country>[] = [
       numeric: '688',
       currencyCodes: ['RSD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2933,7 +2933,7 @@ const countries: Operation<Country>[] = [
       numeric: '690',
       currencyCodes: ['SCR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2944,7 +2944,7 @@ const countries: Operation<Country>[] = [
       numeric: '694',
       currencyCodes: ['SLL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2955,7 +2955,7 @@ const countries: Operation<Country>[] = [
       numeric: '702',
       currencyCodes: ['SGD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2966,7 +2966,7 @@ const countries: Operation<Country>[] = [
       numeric: '534',
       currencyCodes: ['ANG'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2977,7 +2977,7 @@ const countries: Operation<Country>[] = [
       numeric: '703',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2988,7 +2988,7 @@ const countries: Operation<Country>[] = [
       numeric: '705',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -2999,7 +2999,7 @@ const countries: Operation<Country>[] = [
       numeric: '090',
       currencyCodes: ['SBD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3010,7 +3010,7 @@ const countries: Operation<Country>[] = [
       numeric: '706',
       currencyCodes: ['SOS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3021,7 +3021,7 @@ const countries: Operation<Country>[] = [
       numeric: '710',
       currencyCodes: ['ZAR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3032,7 +3032,7 @@ const countries: Operation<Country>[] = [
       numeric: '728',
       currencyCodes: ['SSP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3043,7 +3043,7 @@ const countries: Operation<Country>[] = [
       numeric: '724',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3054,7 +3054,7 @@ const countries: Operation<Country>[] = [
       numeric: '144',
       currencyCodes: ['LKR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3065,7 +3065,7 @@ const countries: Operation<Country>[] = [
       numeric: '729',
       currencyCodes: ['SDG'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3076,7 +3076,7 @@ const countries: Operation<Country>[] = [
       numeric: '740',
       currencyCodes: ['SRD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3087,7 +3087,7 @@ const countries: Operation<Country>[] = [
       numeric: '744',
       currencyCodes: ['NOK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3098,7 +3098,7 @@ const countries: Operation<Country>[] = [
       numeric: '748',
       currencyCodes: ['SZL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3109,7 +3109,7 @@ const countries: Operation<Country>[] = [
       numeric: '752',
       currencyCodes: ['SEK'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3120,7 +3120,7 @@ const countries: Operation<Country>[] = [
       numeric: '756',
       currencyCodes: ['CHF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3131,7 +3131,7 @@ const countries: Operation<Country>[] = [
       numeric: '760',
       currencyCodes: ['SYP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3142,7 +3142,7 @@ const countries: Operation<Country>[] = [
       numeric: '762',
       currencyCodes: ['TJS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3153,7 +3153,7 @@ const countries: Operation<Country>[] = [
       numeric: '764',
       currencyCodes: ['THB'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3164,7 +3164,7 @@ const countries: Operation<Country>[] = [
       numeric: '807',
       currencyCodes: ['MKD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3175,7 +3175,7 @@ const countries: Operation<Country>[] = [
       numeric: '626',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3186,7 +3186,7 @@ const countries: Operation<Country>[] = [
       numeric: '768',
       currencyCodes: ['XOF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3197,7 +3197,7 @@ const countries: Operation<Country>[] = [
       numeric: '772',
       currencyCodes: ['NZD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3208,7 +3208,7 @@ const countries: Operation<Country>[] = [
       numeric: '776',
       currencyCodes: ['TOP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3219,7 +3219,7 @@ const countries: Operation<Country>[] = [
       numeric: '780',
       currencyCodes: ['TTD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3230,7 +3230,7 @@ const countries: Operation<Country>[] = [
       numeric: '788',
       currencyCodes: ['TND'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3241,7 +3241,7 @@ const countries: Operation<Country>[] = [
       numeric: '792',
       currencyCodes: ['TRY'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3252,7 +3252,7 @@ const countries: Operation<Country>[] = [
       numeric: '795',
       currencyCodes: ['TMT'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3263,7 +3263,7 @@ const countries: Operation<Country>[] = [
       numeric: '796',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3274,7 +3274,7 @@ const countries: Operation<Country>[] = [
       numeric: '798',
       currencyCodes: ['AUD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3285,7 +3285,7 @@ const countries: Operation<Country>[] = [
       numeric: '800',
       currencyCodes: ['UGX'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3296,7 +3296,7 @@ const countries: Operation<Country>[] = [
       numeric: '804',
       currencyCodes: ['UAH'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3307,7 +3307,7 @@ const countries: Operation<Country>[] = [
       numeric: '784',
       currencyCodes: ['AED'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3318,7 +3318,7 @@ const countries: Operation<Country>[] = [
       numeric: '826',
       currencyCodes: ['GBP'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3329,7 +3329,7 @@ const countries: Operation<Country>[] = [
       numeric: '834',
       currencyCodes: ['TZS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3340,7 +3340,7 @@ const countries: Operation<Country>[] = [
       numeric: '581',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3351,7 +3351,7 @@ const countries: Operation<Country>[] = [
       numeric: '850',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3362,7 +3362,7 @@ const countries: Operation<Country>[] = [
       numeric: '840',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3373,7 +3373,7 @@ const countries: Operation<Country>[] = [
       numeric: '858',
       currencyCodes: ['UYU'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3384,7 +3384,7 @@ const countries: Operation<Country>[] = [
       numeric: '860',
       currencyCodes: ['UZS'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3395,7 +3395,7 @@ const countries: Operation<Country>[] = [
       numeric: '548',
       currencyCodes: ['VUV'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3406,7 +3406,7 @@ const countries: Operation<Country>[] = [
       numeric: '862',
       currencyCodes: ['VES'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3417,7 +3417,7 @@ const countries: Operation<Country>[] = [
       numeric: '704',
       currencyCodes: ['VND'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3428,7 +3428,7 @@ const countries: Operation<Country>[] = [
       numeric: '876',
       currencyCodes: ['XPF'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3439,7 +3439,7 @@ const countries: Operation<Country>[] = [
       numeric: '732',
       currencyCodes: ['MAD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3450,7 +3450,7 @@ const countries: Operation<Country>[] = [
       numeric: '887',
       currencyCodes: ['YER'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3461,7 +3461,7 @@ const countries: Operation<Country>[] = [
       numeric: '894',
       currencyCodes: ['ZMW'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3472,7 +3472,7 @@ const countries: Operation<Country>[] = [
       numeric: '716',
       currencyCodes: ['ZWL'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3483,7 +3483,7 @@ const countries: Operation<Country>[] = [
       numeric: '248',
       currencyCodes: ['EUR'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
     type: 'create',
@@ -3494,7 +3494,7 @@ const countries: Operation<Country>[] = [
       numeric: '275',
       currencyCodes: ['USD'],
     },
-    createdOn: '1970-01-01T00:00:00.000Z',
+    createdOn: '2018-01-01T00:00:00.000Z',
   },
 ];
 

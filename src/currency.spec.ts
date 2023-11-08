@@ -72,14 +72,14 @@ describe('currency', () => {
     assert.equal(currency(at).getSymbol('CAD', 'en-CA'), '$');
   });
 
-  it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-1970', () => {
+  it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
-      currency('1969-12-31T23:59:00.000Z').getCurrency('ISK');
+      currency('2017-12-31T23:59:00.000Z').getCurrency('ISK');
     }, /^TypeError: Currency not found for code 'ISK'$/u);
   });
 
-  it('getCurrency for a alphabeticCode or numericCode at 1970-01-01T00:00:59', () => {
-    assert.deepEqual(currency('1970-01-01T00:00:59.000Z').getCurrency('ISK'), {
+  it('getCurrency for a alphabeticCode or numericCode at 2018-01-01T00:00:59', () => {
+    assert.deepEqual(currency('2018-01-01T00:00:59.000Z').getCurrency('ISK'), {
       name: 'Iceland Krona',
       alphabeticCode: 'ISK',
       numericCode: '352',

@@ -399,9 +399,9 @@ describe('format', () => {
     );
   });
 
-  it('format will throw an error if we pass any date pre-1970', () => {
+  it('format will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
-      formatLibrary('1969-12-31T23:59:00.000Z').format(
+      formatLibrary('2017-12-31T23:59:00.000Z').format(
         { amount: BigInt('123456789'), currency: 'USD' },
         { currencyDisplay: 'code' },
         'de-DE',
