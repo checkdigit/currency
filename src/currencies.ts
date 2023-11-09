@@ -934,17 +934,6 @@ const currencies: Operation<Currency>[] = [
     createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
-    type: 'delete',
-    name: 'Iceland Krona',
-    previousCreatedOn: '2018-01-01T00:00:00.000Z',
-    createdOn: '2023-04-15T00:00:00.000Z',
-  },
-  {
-    type: 'create',
-    item: { name: 'Iceland Krona', alphabeticCode: 'ISK', numericCode: '352', minorUnits: 0 },
-    createdOn: '2023-04-15T00:00:00.000Z',
-  },
-  {
     type: 'create',
     item: { name: 'Rupiah', alphabeticCode: 'IDR', numericCode: '360', minorUnits: 2 },
     createdOn: '2018-01-01T00:00:00.000Z',
@@ -1502,6 +1491,17 @@ const currencies: Operation<Currency>[] = [
     type: 'create',
     item: { name: 'Silver', alphabeticCode: 'XAG', numericCode: '961' },
     createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Iceland Krona',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2023-04-15T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: { name: 'Iceland Krona', alphabeticCode: 'ISK', numericCode: '352', minorUnits: 0 },
+    createdOn: '2023-04-15T00:00:00.000Z',
   },
 ];
 

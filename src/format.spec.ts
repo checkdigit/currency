@@ -406,6 +406,6 @@ describe('format', () => {
         { currencyDisplay: 'code' },
         'de-DE',
       );
-    }, /^TypeError: Currency not found for code 'USD'$/u);
+    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
   });
 });

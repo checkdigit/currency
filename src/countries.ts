@@ -1390,23 +1390,6 @@ const countries: Operation<Country>[] = [
     createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
-    type: 'delete',
-    name: 'Croatia',
-    previousCreatedOn: '2018-01-01T00:00:00.000Z',
-    createdOn: '2023-01-01T00:00:00.000Z',
-  },
-  {
-    type: 'create',
-    item: {
-      name: 'Croatia',
-      alpha2: 'HR',
-      alpha3: 'HRV',
-      numeric: '191',
-      currencyCodes: ['EUR'],
-    },
-    createdOn: '2023-01-01T00:00:00.000Z',
-  },
-  {
     type: 'create',
     item: {
       name: 'Cuba',
@@ -3495,6 +3478,23 @@ const countries: Operation<Country>[] = [
       currencyCodes: ['USD'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Croatia',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2023-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Croatia',
+      alpha2: 'HR',
+      alpha3: 'HRV',
+      numeric: '191',
+      currencyCodes: ['EUR'],
+    },
+    createdOn: '2023-01-01T00:00:00.000Z',
   },
 ];
 

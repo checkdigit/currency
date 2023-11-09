@@ -75,7 +75,7 @@ describe('currency', () => {
   it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       currency('2017-12-31T23:59:00.000Z').getCurrency('ISK');
-    }, /^TypeError: Currency not found for code 'ISK'$/u);
+    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
   });
 
   it('getCurrency for a alphabeticCode or numericCode at 2018-01-01T00:00:59', () => {

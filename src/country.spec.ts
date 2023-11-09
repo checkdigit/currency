@@ -185,7 +185,7 @@ describe('country', () => {
   it('getCountry  based on alpha2, alpha3 or numeric code will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       country('2017-12-31T23:59:00.000Z').getCountry('HR');
-    }, /^TypeError: Country not found for code 'HR'$/u);
+    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code at 2018-01-01T00:00:59', () => {
