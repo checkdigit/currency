@@ -6,7 +6,7 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-const operationDate = '2018-01-01T00:00:59.000Z';
+const START_DATE = '2018-01-01T00:00:00.000Z';
 export interface CreateOperation<Item> {
   type: 'create';
   createdOn: string;
@@ -28,7 +28,7 @@ export function getItemsFromOperations<Item extends { name: string }>(
 ): Item[] {
   const itemMap = new Map<string, Item>();
 
-  if (at < operationDate) {
+  if (at < START_DATE) {
     throw new TypeError(
       `Lookup functions do not currently support the provided date '${at}'. Support is available for dates starting from 2018 onwards.`,
     );
