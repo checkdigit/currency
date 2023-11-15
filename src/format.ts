@@ -6,7 +6,7 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { type CurrencyAlphabeticCode, getMinorUnitDigits } from './currency';
+import { type CurrencyAlphabeticCode, default as currencyLibrary } from './currency';
 
 export type Amount = string | bigint | -0;
 
@@ -28,50 +28,51 @@ export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Obj
   useDecimal: true,
 });
 
-export function format(
-  { amount, currency }: Money,
-  options?: CurrencyFormatOptions,
-  locales?: string | string[],
-): string {
-  const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };
-  const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
-  const minorUnitDigits = getMinorUnitDigits(currency);
-  const minorUnit = 10n ** BigInt(minorUnitDigits);
+export interface FormatLibrary {
+  format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => string;
+}
 
-  /*
-   * Calculate the minor unit amount, while also handling locales that use different digit symbols than 0 thru 9.
-   */
-  const minorUnitAmount = Intl.NumberFormat(locales, { useGrouping: false })
-    .format(Number((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit))
-    .padStart(minorUnitDigits, Intl.NumberFormat(locales, { useGrouping: false }).format(0));
+export default function (at: string): FormatLibrary {
+  return {
+    format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => {
+      const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };
+      const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
+      const minorUnitDigits = currencyLibrary(at).getMinorUnitDigits(currency);
+      const minorUnit = 10n ** BigInt(minorUnitDigits);
 
-  // this code is required to handle the case of negative zero, since bigints do not support negative zero
-  let majorUnitAmount: number | bigint =
-    Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
+      /*
+       * Calculate the minor unit amount, while also handling locales that use different digit symbols than 0 thru 9.
+       */
+      const minorUnitAmount = Intl.NumberFormat(locales, { useGrouping: false })
+        .format(Number((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit))
+        .padStart(minorUnitDigits, Intl.NumberFormat(locales, { useGrouping: false }).format(0));
 
-  if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && !resolvedOptions.useGrouping)) {
-    throw new Error('useDecimal can only be false if useCurrency and useGrouping are also false');
-  }
+      // this code is required to handle the case of negative zero, since bigints do not support negative zero
+      let majorUnitAmount: number | bigint =
+        Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
 
-  if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
-    // since we lose the sign if the major unit amount is zero, need to switch to floating point for negative zero
-    majorUnitAmount = -0;
-  }
+      if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && !resolvedOptions.useGrouping)) {
+        throw new Error('useDecimal can only be false if useCurrency and useGrouping are also false');
+      }
 
-  return (
-    Intl.NumberFormat(locales, {
-      style: 'currency',
-      currency,
-      useGrouping: resolvedOptions.useGrouping,
-      currencyDisplay: resolvedOptions.currencyDisplay,
-    })
-      // node 12+ supports BigInt as number parameter to formatToParts, but built-in Typescript type currently does not
-      .formatToParts(majorUnitAmount as unknown as number)
-      .filter(
-        ({ type }) =>
-          (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal),
-      )
-      .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
-      .join('')
-  );
+      if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
+        // since we lose the sign if the major unit amount is zero, need to switch to floating point for negative zero
+        majorUnitAmount = -0;
+      }
+
+      return Intl.NumberFormat(locales, {
+        style: 'currency',
+        currency,
+        useGrouping: resolvedOptions.useGrouping,
+        currencyDisplay: resolvedOptions.currencyDisplay,
+      })
+        .formatToParts(majorUnitAmount)
+        .filter(
+          ({ type }) =>
+            (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal),
+        )
+        .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
+        .join('');
+    },
+  };
 }

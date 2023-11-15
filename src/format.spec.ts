@@ -8,12 +8,18 @@
 
 import { strict as assert } from 'node:assert';
 
-import { allCurrencies, type CurrencyAlphabeticCode, format, getMinorUnitDigits } from './index';
+import { default as currency, type CurrencyAlphabeticCode } from './currency';
+import { default as formatLibrary } from './index';
 
+const at = new Date().toISOString();
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
-  const minorUnitDigits = getMinorUnitDigits(code);
+  const minorUnitDigits = currency(at).getMinorUnitDigits(code);
   const minorUnit = 10 ** minorUnitDigits;
-  const internal = format({ amount: amount === 0 ? amount : BigInt(amount), currency: code }, {}, locale);
+  const internal = formatLibrary(at).format(
+    { amount: amount === 0 ? amount : BigInt(amount), currency: code },
+    {},
+    locale,
+  );
   const reference = Intl.NumberFormat(locale, { style: 'currency', currency: code }).format(amount / minorUnit);
   assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
 }
@@ -21,10 +27,13 @@ function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
 describe('format', () => {
   it('supports full ICU', () => {
     assert.equal(
-      format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
+      formatLibrary(at).format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
       '1.234.567,89 USD',
     );
-    assert.equal(format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'), '1.234.567,89 €');
+    assert.equal(
+      formatLibrary(at).format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'),
+      '1.234.567,89 €',
+    );
   });
 
   it('matches Intl implementation for all known locales', () => {
@@ -262,7 +271,8 @@ describe('format', () => {
       'SYP',
       'YER',
     ]);
-    for (const code of allCurrencies()
+    for (const code of currency(new Date().toISOString())
+      .allCurrencies()
       .filter(({ alphabeticCode }) => !unsupportedCurrencies.has(alphabeticCode))
       .map(({ alphabeticCode }) => alphabeticCode)) {
       for (let power = 0; power < 15; power++) {
@@ -278,17 +288,17 @@ describe('format', () => {
   });
 
   it('support zero-based edge cases', () => {
-    assert.equal(format({ amount: -0, currency: 'USD' }), '-$0.00');
-    assert.equal(format({ amount: '-0', currency: 'USD' }), '-$0.00');
-    assert.equal(format({ amount: 0, currency: 'USD' }), '$0.00');
-    assert.equal(format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
-    assert.equal(format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.equal(formatLibrary(at).format({ amount: -0, currency: 'USD' }), '-$0.00');
+    assert.equal(formatLibrary(at).format({ amount: '-0', currency: 'USD' }), '-$0.00');
+    assert.equal(formatLibrary(at).format({ amount: 0, currency: 'USD' }), '$0.00');
+    assert.equal(formatLibrary(at).format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
+    assert.equal(formatLibrary(at).format({ amount: '0', currency: 'USD' }), '$0.00');
   });
 
   it('support currencyDisplay', () => {
-    assert.equal(format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.equal(formatLibrary(at).format({ amount: '0', currency: 'USD' }), '$0.00');
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'symbol',
@@ -297,7 +307,7 @@ describe('format', () => {
       '$0.00',
     );
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'code',
@@ -306,7 +316,7 @@ describe('format', () => {
       'USD 0.00',
     );
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '0', currency: 'USD' },
         {
           currencyDisplay: 'name',
@@ -318,15 +328,21 @@ describe('format', () => {
 
   it('support edge cases', () => {
     assert.equal(
-      format({ amount: BigInt('123456789012345678901234567890'), currency: 'USD' }),
+      formatLibrary(at).format({
+        amount: BigInt('123456789012345678901234567890'),
+        currency: 'USD',
+      }),
       '$1,234,567,890,123,456,789,012,345,678.90',
     );
     assert.equal(
-      format({ amount: BigInt('-123456789012345678901234567890'), currency: 'USD' }),
+      formatLibrary(at).format({
+        amount: BigInt('-123456789012345678901234567890'),
+        currency: 'USD',
+      }),
       '-$1,234,567,890,123,456,789,012,345,678.90',
     );
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false,
@@ -335,7 +351,7 @@ describe('format', () => {
       '$1234.56',
     );
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
@@ -345,7 +361,7 @@ describe('format', () => {
       '1234.56',
     );
     assert.equal(
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
@@ -356,7 +372,7 @@ describe('format', () => {
       '123456',
     );
     assert.throws(() =>
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useDecimal: false,
@@ -364,7 +380,7 @@ describe('format', () => {
       ),
     );
     assert.throws(() =>
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useGrouping: false,
@@ -373,7 +389,7 @@ describe('format', () => {
       ),
     );
     assert.throws(() =>
-      format(
+      formatLibrary(at).format(
         { amount: '123456', currency: 'USD' },
         {
           useCurrency: false,
@@ -381,5 +397,15 @@ describe('format', () => {
         },
       ),
     );
+  });
+
+  it('format will throw an error if we pass any date pre-2018', () => {
+    assert.throws(() => {
+      formatLibrary('2017-12-31T23:59:00.000Z').format(
+        { amount: BigInt('123456789'), currency: 'USD' },
+        { currencyDisplay: 'code' },
+        'de-DE',
+      );
+    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
   });
 });

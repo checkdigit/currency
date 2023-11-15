@@ -8,60 +8,133 @@
 
 import * as assert from 'node:assert';
 
-import { allCurrencies, type CurrencyAlphabeticCode, getCurrency, getMinorUnitDigits, getSymbol } from './index';
+import type { CurrencyAlphabeticCode } from './currencies';
+import { default as currency } from './index';
 
 describe('currency', () => {
+  const at = new Date().toISOString();
   it('getMinorUnitDigits returns correct number for each currency', () => {
-    assert.equal(getMinorUnitDigits('USD'), 2);
-    assert.equal(getMinorUnitDigits('JPY'), 0);
+    assert.equal(currency(at).getMinorUnitDigits('USD'), 2);
+    assert.equal(currency(at).getMinorUnitDigits('JPY'), 0);
   });
 
   it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
-    assert.deepEqual(getCurrency('NZD'), {
+    assert.deepEqual(currency(at).getCurrency('NZD'), {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
       numericCode: '554',
     });
-    assert.deepEqual(getCurrency('USD'), {
+    assert.deepEqual(currency(at).getCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(getCurrency('AUD'), getCurrency('036'));
-    assert.deepEqual(getCurrency('CAD'), getCurrency('124'));
-    assert.deepEqual(getCurrency('NZD'), getCurrency('554'));
-    assert.deepEqual(getCurrency('EUR'), getCurrency('978'));
-    assert.deepEqual(getCurrency('KRW'), getCurrency('410'));
-    assert.deepEqual(getCurrency('USD'), getCurrency('840'));
+    assert.deepEqual(currency(at).getCurrency('AUD'), currency(at).getCurrency('036'));
+    assert.deepEqual(currency(at).getCurrency('CAD'), currency(at).getCurrency('124'));
+    assert.deepEqual(currency(at).getCurrency('NZD'), currency(at).getCurrency('554'));
+    assert.deepEqual(currency(at).getCurrency('EUR'), currency(at).getCurrency('978'));
+    assert.deepEqual(currency(at).getCurrency('KRW'), currency(at).getCurrency('410'));
+    assert.deepEqual(currency(at).getCurrency('USD'), currency(at).getCurrency('840'));
     assert.throws(
-      () => getCurrency(undefined as unknown as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code 'undefined'$/u,
     );
-    assert.throws(() => getCurrency('' as CurrencyAlphabeticCode), /^TypeError: Currency not found for code ''$/u);
     assert.throws(
-      () => getCurrency(840 as unknown as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency('' as CurrencyAlphabeticCode),
+      /^TypeError: Currency not found for code ''$/u,
+    );
+    assert.throws(
+      () => currency(at).getCurrency(840 as unknown as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code '840'$/u,
     );
     assert.throws(
-      () => getCurrency('INVALID' as CurrencyAlphabeticCode),
+      () => currency(at).getCurrency('INVALID' as CurrencyAlphabeticCode),
       /^TypeError: Currency not found for code 'INVALID'$/u,
     );
   });
 
   it('getSymbol', () => {
-    const currencies = allCurrencies().map(({ alphabeticCode }) => getSymbol(alphabeticCode));
-    assert.ok(currencies.every((currency) => typeof currency === 'string' && currency.length > 0));
-    assert.equal(getSymbol('USD'), '$');
-    assert.equal(getSymbol('CAD'), 'CA$');
-    assert.equal(getSymbol('NZD'), 'NZ$');
-    assert.equal(getSymbol('JPY'), '¥');
+    const currencies = currency(new Date().toISOString())
+      .allCurrencies()
+      .map(({ alphabeticCode }) => currency(at).getSymbol(alphabeticCode));
+    assert.ok(currencies.every((item) => typeof item === 'string' && item.length > 0));
+    assert.equal(currency(at).getSymbol('USD'), '$');
+    assert.equal(currency(at).getSymbol('CAD'), 'CA$');
+    assert.equal(currency(at).getSymbol('NZD'), 'NZ$');
+    assert.equal(currency(at).getSymbol('JPY'), '¥');
   });
 
   it('getSymbol for non-US locales', () => {
-    assert.equal(getSymbol('JPY', 'ja-JP'), '￥');
-    assert.equal(getSymbol('NZD', 'en-NZ'), '$');
-    assert.equal(getSymbol('CAD', 'en-CA'), '$');
+    assert.equal(currency(at).getSymbol('JPY', 'ja-JP'), '￥');
+    assert.equal(currency(at).getSymbol('NZD', 'en-NZ'), '$');
+    assert.equal(currency(at).getSymbol('CAD', 'en-CA'), '$');
+  });
+
+  it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
+    assert.throws(() => {
+      currency('2017-12-31T23:59:00.000Z').getCurrency('ISK');
+    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
+  });
+
+  it('getCurrency for a alphabeticCode or numericCode at 2018-01-01T00:00:59', () => {
+    assert.deepEqual(currency('2018-01-01T00:00:59.000Z').getCurrency('ISK'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 2,
+    });
+  });
+
+  it('getCurrency for a alphabeticCode or numericCode at specific time', () => {
+    assert.deepEqual(currency('2023-04-15T00:00:59.000Z').getCurrency('ISK'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 0,
+    });
+
+    assert.deepEqual(currency('2023-04-15T00:00:00.000Z').getCurrency('ISK'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 2,
+    });
+
+    assert.deepEqual(currency('2023-04-14T00:00:00.000Z').getCurrency('352'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 2,
+    });
+
+    assert.deepEqual(currency(at).getCurrency('191'), {
+      name: 'Kuna',
+      alphabeticCode: 'HRK',
+      numericCode: '191',
+      minorUnits: 2,
+    });
+
+    assert.deepEqual(currency('2022-03-15T00:00:00.000Z').getCurrency('HRK'), {
+      name: 'Kuna',
+      alphabeticCode: 'HRK',
+      numericCode: '191',
+      minorUnits: 2,
+    });
+
+    assert.deepEqual(currency('2023-09-15T00:00:00.000Z').getCurrency('HRK'), {
+      name: 'Kuna',
+      alphabeticCode: 'HRK',
+      numericCode: '191',
+      minorUnits: 2,
+    });
+
+    assert.deepEqual(currency(at).getCurrency('352'), {
+      name: 'Iceland Krona',
+      alphabeticCode: 'ISK',
+      numericCode: '352',
+      minorUnits: 0,
+    });
   });
 });

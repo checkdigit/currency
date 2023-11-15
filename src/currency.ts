@@ -7,35 +7,41 @@
  */
 
 import {
-  default as currencies,
   type Currency,
   type CurrencyAlphabeticCode,
   type CurrencyNumericCode,
+  default as currencyOperations,
 } from './currencies';
+import { getItemsFromOperations } from './operation';
 
 export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
 
-export function allCurrencies(): Currency[] {
-  return currencies;
+export interface CurrencyLibrary {
+  allCurrencies: () => Currency[];
+  getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
+  getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;
+  getSymbol: (currencyCode: CurrencyAlphabeticCode, locales?: string | string[]) => string | undefined;
 }
+export default function (at: string): CurrencyLibrary {
+  const currencies = getItemsFromOperations(currencyOperations, at);
+  const currencyLibrary = {
+    allCurrencies: () => currencies,
+    getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
+      const currency = currencies.find(
+        ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode,
+      );
 
-export function getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency {
-  const currency = allCurrencies().find(
-    ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode,
-  );
-  if (currency === undefined) {
-    // this should not happen unless an invalid string is coerced into the code parameter
-    throw new TypeError(`Currency not found for code '${code}'`);
-  }
-  return currency;
-}
+      if (currency === undefined) {
+        throw new TypeError(`Currency not found for code '${code}'`);
+      }
 
-export function getMinorUnitDigits(currency: CurrencyAlphabeticCode): number {
-  return getCurrency(currency).minorUnits ?? 2;
-}
-
-export function getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string | undefined {
-  return Intl.NumberFormat(locales, { style: 'currency', currency })
-    .formatToParts(0)
-    .find((part) => part.type === 'currency')?.value;
+      return currency;
+    },
+    getMinorUnitDigits: (currency: CurrencyAlphabeticCode) => currencyLibrary.getCurrency(currency).minorUnits ?? 2,
+    getSymbol: (currency: CurrencyAlphabeticCode, locales?: string | string[]) =>
+      Intl.NumberFormat(locales, { style: 'currency', currency })
+        .formatToParts(0)
+        .find((part) => part.type === 'currency')?.value,
+  };
+  return currencyLibrary;
 }
