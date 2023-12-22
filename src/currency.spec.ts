@@ -6,7 +6,7 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import * as assert from 'node:assert';
+import { strict as assert } from 'node:assert';
 
 import type { CurrencyAlphabeticCode } from './currencies';
 import { default as currency } from './index';

@@ -1,6 +1,7 @@
 // index.spec.ts
 
-import * as assert from 'node:assert';
+import { strict as assert } from 'node:assert';
+
 import type { CountryAlpha2, CountryAlpha3, CurrencyAlphabeticCode, CurrencyNumericCode, Money } from './index';
 
 describe('/api', () => {
