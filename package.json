@@ -1,6 +1,6 @@
 {
   "name": "@checkdigit/currency",
-  "version": "5.0.1",
+  "version": "6.0.0",
   "description": "Standard currency handling",
   "exports": {
     ".": {
@@ -32,7 +32,7 @@
     "url": "git+https://github.com/checkdigit/currency.git"
   },
   "engines": {
-    "node": ">=18"
+    "node": ">=20.10"
   },
   "author": "Check Digit, LLC",
   "license": "MIT",
@@ -41,10 +41,10 @@
   },
   "homepage": "https://github.com/checkdigit/currency#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "^8.3.0",
-    "@checkdigit/jest-config": "^3.1.0",
-    "@checkdigit/prettier-config": "^4.1.0",
-    "@checkdigit/typescript-config": "5.1.0"
+    "@checkdigit/eslint-config": "^9.1.0",
+    "@checkdigit/jest-config": "^5.0.0",
+    "@checkdigit/prettier-config": "^5.1.0",
+    "@checkdigit/typescript-config": "6.0.0"
   },
   "eslintConfig": {
     "extends": [
@@ -52,7 +52,11 @@
     ]
   },
   "jest": {
-    "preset": "@checkdigit/jest-config"
+    "preset": "@checkdigit/jest-config",
+    "moduleFileExtensions": [
+      "js",
+      "ts"
+    ]
   },
   "scripts": {
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-cjs && npm run build:dist-mjs",
@@ -65,8 +69,8 @@
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:lint && npm run ci:style",
     "ci:compile": "tsc --noEmit",
-    "ci:test": "jest --coverage=false",
-    "ci:coverage": "jest --coverage=true",
+    "ci:test": "NODE_OPTIONS=\"--no-warnings --experimental-vm-modules\" jest --coverage=false",
+    "ci:coverage": "NODE_OPTIONS=\"--no-warnings --experimental-vm-modules\" jest --coverage=true",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
   }

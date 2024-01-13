@@ -8,6 +8,8 @@
 
 import { strict as assert } from 'node:assert';
 
+import { describe, it } from '@jest/globals';
+
 import type { CurrencyAlphabeticCode } from './currencies';
 import { default as currency } from './index';
 
@@ -39,19 +41,19 @@ describe('currency', () => {
     assert.deepEqual(currency(at).getCurrency('USD'), currency(at).getCurrency('840'));
     assert.throws(
       () => currency(at).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'undefined'$/u,
+      /^TypeError: Currency not found for code 'undefined'$/u, // This is to check for the Currency not found code undefined error
     );
     assert.throws(
       () => currency(at).getCurrency('' as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code ''$/u,
+      /^TypeError: Currency not found for code ''$/u, // This is to check for the Country not found code error
     );
     assert.throws(
       () => currency(at).getCurrency(840 as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code '840'$/u,
+      /^TypeError: Currency not found for code '840'$/u, // This is to check for the Country not found code 840
     );
     assert.throws(
       () => currency(at).getCurrency('INVALID' as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'INVALID'$/u,
+      /^TypeError: Currency not found for code 'INVALID'$/u, // This is to check for the Country not found code INVALID
     );
   });
 
@@ -75,6 +77,7 @@ describe('currency', () => {
   it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       currency('2017-12-31T23:59:00.000Z').getCurrency('ISK');
+      // This is to check for the Currency pre-2018 error
     }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
   });
 

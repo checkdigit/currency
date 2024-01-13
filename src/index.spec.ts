@@ -1,6 +1,7 @@
 // index.spec.ts
 
 import { strict as assert } from 'node:assert';
+import { describe, it } from '@jest/globals';
 
 import type { CountryAlpha2, CountryAlpha3, CurrencyAlphabeticCode, CurrencyNumericCode, Money } from './index';
 
