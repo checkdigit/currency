@@ -33,8 +33,6 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Run Test
         run: npm run ci:test
-      - name: Prepare Beta
-        id: prepare-beta
         uses: checkdigit/github-actions/prepare-beta@main
       - name: Publish Beta
         run: npm publish --tag beta
