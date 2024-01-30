@@ -51,10 +51,7 @@ export default function (at: string): FormatLibrary {
       let majorUnitAmount: number | bigint =
         Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
 
-      if (
-        !resolvedOptions.useDecimal &&
-        !(!resolvedOptions.useCurrency && resolvedOptions.useGrouping !== undefined && !resolvedOptions.useGrouping)
-      ) {
+      if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && resolvedOptions.useGrouping === false)) {
         throw new Error('useDecimal can only be false if useCurrency and useGrouping are also false');
       }
 
