@@ -41,19 +41,19 @@ describe('currency', () => {
     assert.deepEqual(currency(at).getCurrency('USD'), currency(at).getCurrency('840'));
     assert.throws(
       () => currency(at).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'undefined'$/u, // This is to check for the Currency not found code undefined error
+      `TypeError: Currency not found for code 'undefined'`,
     );
     assert.throws(
       () => currency(at).getCurrency('' as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code ''$/u, // This is to check for the Country not found code error
+      `TypeError: Currency not found for code ''`,
     );
     assert.throws(
       () => currency(at).getCurrency(840 as unknown as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code '840'$/u, // This is to check for the Country not found code 840
+      `TypeError: Currency not found for code '840'`,
     );
     assert.throws(
       () => currency(at).getCurrency('INVALID' as CurrencyAlphabeticCode),
-      /^TypeError: Currency not found for code 'INVALID'$/u, // This is to check for the Country not found code INVALID
+      `TypeError: Currency not found for code 'INVALID'`,
     );
   });
 
@@ -77,8 +77,7 @@ describe('currency', () => {
   it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       currency('2017-12-31T23:59:00.000Z').getCurrency('ISK');
-      // This is to check for the Currency pre-2018 error
-    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
+    }, `TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.`);
   });
 
   it('getCurrency for a alphabeticCode or numericCode at 2018-01-01T00:00:59', () => {

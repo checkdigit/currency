@@ -43,7 +43,7 @@
   "devDependencies": {
     "@checkdigit/eslint-config": "^9.1.0",
     "@checkdigit/jest-config": "^5.0.0",
-    "@checkdigit/prettier-config": "^5.1.0",
+    "@checkdigit/prettier-config": "^5.2.0",
     "@checkdigit/typescript-config": "6.0.0"
   },
   "eslintConfig": {
@@ -52,11 +52,7 @@
     ]
   },
   "jest": {
-    "preset": "@checkdigit/jest-config",
-    "moduleFileExtensions": [
-      "js",
-      "ts"
-    ]
+    "preset": "@checkdigit/jest-config"
   },
   "scripts": {
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-cjs && npm run build:dist-mjs",
@@ -69,8 +65,8 @@
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:lint && npm run ci:style",
     "ci:compile": "tsc --noEmit",
-    "ci:test": "NODE_OPTIONS=\"--no-warnings --experimental-vm-modules\" jest --coverage=false",
-    "ci:coverage": "NODE_OPTIONS=\"--no-warnings --experimental-vm-modules\" jest --coverage=true",
+    "ci:test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --coverage=false",
+    "ci:coverage": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --coverage=true",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
   }

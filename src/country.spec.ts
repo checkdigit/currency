@@ -52,16 +52,16 @@ describe('country', () => {
 
     assert.throws(
       () => country(at).getCountry(undefined as unknown as CountryAlpha2),
-      /^TypeError: Country not found for code 'undefined'$/u, // This is to check for the Country not found as undefined error
+      `TypeError: Country not found for code 'undefined'`,
     );
-    assert.throws(() => country(at).getCountry('' as CountryAlpha2), /^TypeError: Country not found for code ''$/u); // This is to check for the Country not found code error
+    assert.throws(() => country(at).getCountry('' as CountryAlpha2), `TypeError: Country not found for code ''`);
     assert.throws(
       () => country(at).getCountry(840 as unknown as CountryAlpha2),
-      /^TypeError: Country not found for code '840'$/u, // This is to check for the Country not found for code 840
+      `TypeError: Country not found for code '840'`,
     );
     assert.throws(
       () => country(at).getCountry('INVALID' as CountryAlpha2),
-      /^TypeError: Country not found for code 'INVALID'$/u, // This is to check for the Country not found code INVALID
+      `TypeError: Country not found for code 'INVALID'`,
     );
   });
 
@@ -186,8 +186,7 @@ describe('country', () => {
   it('getCountry  based on alpha2, alpha3 or numeric code will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       country('2017-12-31T23:59:00.000Z').getCountry('HR');
-      // This is to check for the codes with date pre-2018
-    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
+    }, `TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards`);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code at 2018-01-01T00:00:59', () => {

@@ -407,6 +407,6 @@ describe('format', () => {
         { currencyDisplay: 'code' },
         'de-DE',
       ); // This is to check for the code with date pre-2018
-    }, /^TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.$/u);
+    }, `TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.`);
   });
 });
