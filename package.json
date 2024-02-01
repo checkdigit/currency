@@ -32,7 +32,7 @@
     "url": "git+https://github.com/checkdigit/currency.git"
   },
   "engines": {
-    "node": ">=20.10"
+    "node": ">=20.11"
   },
   "author": "Check Digit, LLC",
   "license": "MIT",
@@ -65,8 +65,8 @@
     "lint:fix": "eslint --ignore-path .gitignore . --fix",
     "test": "npm run ci:compile && npm run ci:test && npm run ci:lint && npm run ci:style",
     "ci:compile": "tsc --noEmit",
-    "ci:test": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --coverage=false",
-    "ci:coverage": "NODE_OPTIONS=\"--experimental-vm-modules\" jest --coverage=true",
+    "ci:test": "NODE_OPTIONS=\"--disable-warning ExperimentalWarning --experimental-vm-modules\" jest --coverage=false",
+    "ci:coverage": "NODE_OPTIONS=\"--disable-warning ExperimentalWarning --experimental-vm-modules\" jest --coverage=true",
     "ci:lint": "npm run lint",
     "ci:style": "npm run prettier"
   }
