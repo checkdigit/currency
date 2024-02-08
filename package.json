@@ -41,9 +41,9 @@
   },
   "homepage": "https://github.com/checkdigit/currency#readme",
   "devDependencies": {
-    "@checkdigit/eslint-config": "^9.1.0",
-    "@checkdigit/jest-config": "^5.0.0",
-    "@checkdigit/prettier-config": "^5.2.0",
+    "@checkdigit/eslint-config": "^9.1.1",
+    "@checkdigit/jest-config": "^6.0.0",
+    "@checkdigit/prettier-config": "^5.3.0",
     "@checkdigit/typescript-config": "6.0.0"
   },
   "eslintConfig": {
