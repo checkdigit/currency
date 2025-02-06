@@ -4,5 +4,3 @@ build
 dist-*
 node_modules
 .idea
-
-
