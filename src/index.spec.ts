@@ -1,9 +1,15 @@
 // index.spec.ts
 
-import { strict as assert } from 'node:assert';
-import { describe, it } from '@jest/globals';
+/*
+ * Copyright (c) 2021-2025 Check Digit, LLC
+ *
+ * This code is licensed under the MIT license (see LICENSE.txt for details).
+ */
 
-import type { CountryAlpha2, CountryAlpha3, CurrencyAlphabeticCode, CurrencyNumericCode, Money } from './index';
+import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
+
+import type { CountryAlpha2, CountryAlpha3, CurrencyAlphabeticCode, CurrencyNumericCode, Money } from './index.ts';
 
 describe('/api', () => {
   it('validate importing type CurrencyAlphabeticCode in currency', async () => {

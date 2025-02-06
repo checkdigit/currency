@@ -1,7 +1,7 @@
 // currency.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -11,10 +11,10 @@ import {
   type CurrencyAlphabeticCode,
   type CurrencyNumericCode,
   default as currencyOperations,
-} from './currencies';
-import { getItemsFromOperations } from './operation';
+} from './currencies.ts';
+import { getItemsFromOperations } from './operation.ts';
 
-export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies';
+export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies.ts';
 
 export interface CurrencyLibrary {
   allCurrencies: () => Currency[];

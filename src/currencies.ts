@@ -1,7 +1,7 @@
 // currencies.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -12,9 +12,8 @@
  */
 
 /* eslint-disable max-lines */
-/* eslint-disable sonarjs/no-duplicate-string */
 
-import type { Operation } from './operation';
+import type { Operation } from './operation.ts';
 
 export type CurrencyAlphabeticCode =
   | 'AED'
@@ -1507,5 +1506,4 @@ const currencies: Operation<Currency>[] = [
 
 export default currencies;
 
-/* eslint-enable sonarjs/no-duplicate-string */
 /* eslint-enable max-lines */
