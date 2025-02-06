@@ -1,18 +1,17 @@
 // country.spec.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
 
-import { describe, it } from '@jest/globals';
-
-import { type CountryAlpha2 } from './country';
-import { type CurrencyAlphabeticCode } from './currency';
-import { default as country } from './index';
+import type { CountryAlpha2 } from './country.ts';
+import type { CurrencyAlphabeticCode } from './currency.ts';
+import { default as country } from './index.ts';
 
 describe('country', () => {
   const at = new Date().toISOString();

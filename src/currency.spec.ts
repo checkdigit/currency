@@ -1,17 +1,16 @@
 // currency.spec.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 import { strict as assert } from 'node:assert';
+import { describe, it } from 'node:test';
 
-import { describe, it } from '@jest/globals';
-
-import type { CurrencyAlphabeticCode } from './currencies';
-import { default as currency } from './index';
+import type { CurrencyAlphabeticCode } from './currencies.ts';
+import { default as currency } from './index.ts';
 
 describe('currency', () => {
   const at = new Date().toISOString();

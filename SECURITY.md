@@ -6,8 +6,8 @@ These versions of `@checkdigit/currency` are currently being supported with secu
 
 | Version | Supported          |
 | ------- | ------------------ |
-| \>= 4.x | :white_check_mark: |
-| \< 4.0  | :x:                |
+| \>= 7.x | :white_check_mark: |
+| \< 7.0  | :x:                |
 
 ## Reporting a Vulnerability
 

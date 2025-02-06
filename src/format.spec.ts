@@ -1,16 +1,16 @@
 // format.spec.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 import { strict as assert } from 'node:assert';
-import { describe, it } from '@jest/globals';
+import { describe, it } from 'node:test';
 
-import { default as currency, type CurrencyAlphabeticCode } from './currency';
-import { default as formatLibrary } from './index';
+import { default as currency, type CurrencyAlphabeticCode } from './currency.ts';
+import { default as formatLibrary } from './index.ts';
 
 const at = new Date().toISOString();
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
@@ -372,31 +372,37 @@ describe('format', () => {
       ),
       '123456',
     );
-    assert.throws(() =>
-      formatLibrary(at).format(
-        { amount: '123456', currency: 'USD' },
-        {
-          useDecimal: false,
-        },
-      ),
+    assert.throws(
+      () =>
+        formatLibrary(at).format(
+          { amount: '123456', currency: 'USD' },
+          {
+            useDecimal: false,
+          },
+        ),
+      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
     );
-    assert.throws(() =>
-      formatLibrary(at).format(
-        { amount: '123456', currency: 'USD' },
-        {
-          useGrouping: false,
-          useDecimal: false,
-        },
-      ),
+    assert.throws(
+      () =>
+        formatLibrary(at).format(
+          { amount: '123456', currency: 'USD' },
+          {
+            useGrouping: false,
+            useDecimal: false,
+          },
+        ),
+      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
     );
-    assert.throws(() =>
-      formatLibrary(at).format(
-        { amount: '123456', currency: 'USD' },
-        {
-          useCurrency: false,
-          useDecimal: false,
-        },
-      ),
+    assert.throws(
+      () =>
+        formatLibrary(at).format(
+          { amount: '123456', currency: 'USD' },
+          {
+            useCurrency: false,
+            useDecimal: false,
+          },
+        ),
+      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
     );
   });
 

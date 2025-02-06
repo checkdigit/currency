@@ -1,12 +1,12 @@
 // format.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { type CurrencyAlphabeticCode, default as currencyLibrary } from './currency';
+import { type CurrencyAlphabeticCode, default as currencyLibrary } from './currency.ts';
 
 export type Amount = string | bigint | -0;
 
@@ -21,6 +21,7 @@ export interface CurrencyFormatOptions extends Pick<Intl.NumberFormatOptions, 'u
   useDecimal?: boolean;
 }
 
+// eslint-disable-next-line @checkdigit/no-side-effects
 export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Object.freeze({
   currencyDisplay: 'symbol',
   useCurrency: true,

@@ -1,7 +1,7 @@
 // country.ts
 
 /*
- * Copyright (c) 2021-2023 Check Digit, LLC
+ * Copyright (c) 2021-2025 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -12,11 +12,11 @@ import {
   type CountryAlpha3,
   type CountryNumeric,
   default as countryOperations,
-} from './countries';
-import type { CurrencyAlphabeticCode } from './currencies';
-import { getItemsFromOperations } from './operation';
+} from './countries.ts';
+import type { CurrencyAlphabeticCode } from './currencies.ts';
+import { getItemsFromOperations } from './operation.ts';
 
-export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries';
+export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries.ts';
 
 export interface CountryLibrary {
   allCountries: () => Country[];
@@ -42,6 +42,6 @@ export default function (at: string): CountryLibrary {
       countries
         .filter(({ currencyCodes }) => currencyCodes.includes(code))
         .map(({ alpha3 }) => alpha3)
-        .sort(),
+        .sort((countryA, countryB) => countryA.localeCompare(countryB)),
   };
 }
