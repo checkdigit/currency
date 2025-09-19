@@ -6,12 +6,11 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import {
+import countryOperations, {
   type Country,
   type CountryAlpha2,
   type CountryAlpha3,
   type CountryNumeric,
-  default as countryOperations,
 } from './countries.ts';
 import type { CurrencyAlphabeticCode } from './currencies.ts';
 import { getItemsFromOperations } from './operation.ts';

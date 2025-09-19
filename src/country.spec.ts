@@ -11,7 +11,7 @@ import { describe, it } from 'node:test';
 
 import type { CountryAlpha2 } from './country.ts';
 import type { CurrencyAlphabeticCode } from './currency.ts';
-import { default as country } from './index.ts';
+import country from './index.ts';
 
 describe('country', () => {
   const at = new Date().toISOString();

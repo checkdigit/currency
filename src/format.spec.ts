@@ -9,8 +9,8 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import { default as currency, type CurrencyAlphabeticCode } from './currency.ts';
-import { default as formatLibrary } from './index.ts';
+import currency, { type CurrencyAlphabeticCode } from './currency.ts';
+import formatLibrary from './index.ts';
 
 const at = new Date().toISOString();
 function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
