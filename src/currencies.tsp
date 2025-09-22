@@ -1,3 +1,6 @@
+/**
+ * ISO 4217 Alpha Currency Codes
+ */
 enum CurrencyAlphabeticCode {
   AED,
   AFN,
