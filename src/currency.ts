@@ -6,11 +6,10 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import {
+import currencyOperations, {
   type Currency,
   type CurrencyAlphabeticCode,
   type CurrencyNumericCode,
-  default as currencyOperations,
 } from './currencies.ts';
 import { getItemsFromOperations } from './operation.ts';
 

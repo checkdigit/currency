@@ -6,9 +6,9 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import { default as currencies, type CurrencyLibrary } from './currency.ts';
-import { default as countries, type CountryLibrary } from './country.ts';
-import { default as format, type FormatLibrary } from './format.ts';
+import currencies, { type CurrencyLibrary } from './currency.ts';
+import countries, { type CountryLibrary } from './country.ts';
+import format, { type FormatLibrary } from './format.ts';
 
 export type * from './currency.ts';
 export type * from './country.ts';

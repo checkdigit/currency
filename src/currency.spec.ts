@@ -10,7 +10,7 @@ import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
 import type { CurrencyAlphabeticCode } from './currencies.ts';
-import { default as currency } from './index.ts';
+import currency from './index.ts';
 
 describe('currency', () => {
   const at = new Date().toISOString();

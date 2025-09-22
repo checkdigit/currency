@@ -11,6 +11,7 @@ The Check Digit currency library is the officially sanctioned method for Check D
 - tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
 - multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
 - uses built-in JS engine Intl implementation, no dependencies
+- exports Typespec types for currencies and countries
 
 ## Installing
 

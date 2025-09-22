@@ -1,6 +1,6 @@
 {
   "name": "@checkdigit/currency",
-  "version": "7.0.0",
+  "version": "7.0.1",
   "description": "Standard currency handling",
   "homepage": "https://github.com/checkdigit/currency#readme",
   "bugs": {
@@ -18,7 +18,8 @@
     ".": {
       "types": "./dist-types/index.d.ts",
       "import": "./dist-mjs/index.mjs",
-      "default": "./dist-mjs/index.mjs"
+      "default": "./dist-mjs/index.mjs",
+      "typespec": "./src/index.tsp"
     }
   },
   "files": [
@@ -54,6 +55,7 @@
     "@checkdigit/eslint-config": "^11.1.0",
     "@checkdigit/prettier-config": "^6.1.0",
     "@checkdigit/typescript-config": "9.0.0",
+    "@typespec/compiler": "^1.4.0",
     "rimraf": "^6.0.1"
   },
   "engines": {
