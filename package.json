@@ -45,7 +45,7 @@
     "coverage": "node --disable-warning ExperimentalWarning --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test \"src/**/*.spec.ts\"",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint . --fix",
-    "prepare": "node --experimental-strip-types ./tsp-to-ts.test.ts ./src/index.tsp ./src/swagger.ts",
+    "prepare": "node ./tsp-to-ts.js ./src/index.tsp ./src/swagger.ts",
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-mjs",
     "prettier": "prettier --ignore-path .gitignore --list-different .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
