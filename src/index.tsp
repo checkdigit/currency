@@ -10,6 +10,7 @@ using Http;
 
 namespace Currency;
 
+// Sample model must be presented and declare properties from imported models to ensure they are included in the generated OpenAPI spec.
 model SampleModel {
   currencyAlphabeticCode: CurrencyAlphabeticCode;
   countryAlpha2: CountryAlpha2;
