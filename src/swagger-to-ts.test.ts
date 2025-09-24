@@ -18,13 +18,19 @@ function extractTypes(swaggerSchema: string): string {
     // eslint-disable-next-line sonarjs/slow-regex
     /declare\s*namespace\s*Components\s*\{\s*namespace\s*Schemas\s*\{(?<types>[\s\S]*)\s*export\s*interface\s*TypeReferenceModel/u;
   const match = swaggerSchema.match(regex);
-  assert.ok(match?.[1], 'Failed to extract types from the generated schema.');
-  return match[1].trim();
+  assert.ok(match?.groups?.['types'], 'Failed to extract types from the generated schema.');
+  return match.groups['types'].trim();
 }
 
 async function generateTypesFromSwagger() {
   const [_node, _file, inputSwaggerYamlPath, outputTypesPath] = process.argv;
-  assert.ok(inputSwaggerYamlPath !== undefined && outputTypesPath !== undefined, 'Input and output paths must be provided as command line arguments.');
+  assert.ok(
+    inputSwaggerYamlPath !== undefined && outputTypesPath !== undefined,
+    'Input and output paths must be provided as command line arguments.',
+  );
+
+  // Clear the output file if it exists
+  await fs.rm(outputTypesPath, { force: true });
 
   const swaggerContents = await fs.readFile(inputSwaggerYamlPath, 'utf8');
   const swaggerYaml = yaml.load(swaggerContents);

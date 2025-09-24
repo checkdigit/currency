@@ -4,4 +4,5 @@ build
 dist-*
 node_modules
 .idea
-src/swagger.*
+**/swagger.ts
+**/swagger.yml
