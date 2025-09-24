@@ -35,7 +35,7 @@
     "SECURITY.md"
   ],
   "scripts": {
-    "build:dist-mjs": "rimraf dist-mjs && npx builder --type=module -w-sourceMap --outDir=dist-mjs && node dist-mjs/index.mjs",
+    "build:dist-mjs": "rimraf dist-mjs && npx builder --type=module --sourceMap --outDir=dist-mjs && node dist-mjs/index.mjs",
     "build:dist-types": "rimraf dist-types && npx builder --type=types --outDir=dist-types",
     "ci:compile": "tsc --noEmit",
     "ci:coverage": "rimraf coverage && mkdir coverage && node --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage/lcov.info --test \"src/**/*.spec.ts\"",
@@ -45,7 +45,7 @@
     "coverage": "node --disable-warning ExperimentalWarning --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test \"src/**/*.spec.ts\"",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint . --fix",
-    "prepare": "tsp compile ./src/index.tsp --emit @typespec/openapi3 --option \"@typespec/openapi3.output-file=swagger.yml\" --option \"@typespec/openapi3.emitter-output-dir={cwd}/src\" && openapi generate src/swagger.yml -o src/swagger.ts",
+    "prepare": "tsp compile ./src/index.tsp --emit @typespec/openapi3 --option \"@typespec/openapi3.output-file=swagger.yml\" --option \"@typespec/openapi3.emitter-output-dir={cwd}/src\" && node --experimental-strip-types ./src/swagger-to-ts.test.ts",
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-mjs",
     "prettier": "prettier --ignore-path .gitignore --list-different .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
@@ -54,13 +54,14 @@
   "prettier": "@checkdigit/prettier-config",
   "devDependencies": {
     "@checkdigit/eslint-config": "^11.1.0",
-    "@checkdigit/openapi-cli": "6.1.0-PR.112-73b7",
     "@checkdigit/prettier-config": "^6.1.0",
-    "@checkdigit/typescript-config": "9.0.0",
+    "@checkdigit/typescript-config": "9.3.1",
+    "@types/js-yaml": "^4.0.9",
     "@typespec/compiler": "^1.4.0",
-    "@typespec/http": "^1.3.0",
-    "@typespec/openapi3": "^1.3.0",
-    "@typespec/rest": "^0.73.0",
+    "@typespec/http": "^1.4.0",
+    "@typespec/openapi3": "^1.4.0",
+    "dtsgenerator": "^3.19.2",
+    "js-yaml": "^4.1.0",
     "rimraf": "^6.0.1"
   },
   "engines": {
