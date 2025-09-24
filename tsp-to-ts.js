@@ -1,5 +1,3 @@
-// tsp-to-ts.test.ts
-
 import { promises as fs } from 'node:fs';
 import { strict as assert } from 'node:assert';
 
