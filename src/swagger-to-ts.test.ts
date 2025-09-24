@@ -23,17 +23,17 @@ function extractTypes(swaggerSchema: string): string {
 }
 
 async function generateTypesFromSwagger() {
-  const [_node, _file, inputPath, outputPath] = process.argv;
+  const [_node, _file, inputSwaggerYamlPath, outputTypesPath] = process.argv;
+  assert.ok(inputSwaggerYamlPath !== undefined && outputTypesPath !== undefined, 'Input and output paths must be provided as command line arguments.');
 
-  const swaggerContents = await fs.readFile(inputPath ?? './src/swagger.yml', 'utf8');
-
+  const swaggerContents = await fs.readFile(inputSwaggerYamlPath, 'utf8');
   const swaggerYaml = yaml.load(swaggerContents);
   const swaggerSchema = await dtsgenFunction({
     contents: [parseSchema(swaggerYaml as JsonSchema)],
   });
 
   const types = extractTypes(swaggerSchema);
-  await fs.writeFile(outputPath ?? './src/swagger.ts', types, 'utf8');
+  await fs.writeFile(outputTypesPath, types, 'utf8');
 }
 
 await generateTypesFromSwagger();

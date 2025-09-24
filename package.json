@@ -26,6 +26,7 @@
     "src",
     "dist-types",
     "dist-mjs",
+    "!src/**/swagger.*",
     "!src/**/*.test.ts",
     "!src/**/*.spec.ts",
     "!dist-types/**/*.test.d.ts",
