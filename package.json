@@ -37,13 +37,17 @@
     "build:dist-mjs": "rimraf dist-mjs && npx builder --type=module --sourceMap --outDir=dist-mjs && node dist-mjs/index.mjs",
     "build:dist-types": "rimraf dist-types && npx builder --type=types --outDir=dist-types",
     "ci:compile": "tsc --noEmit",
-    "ci:coverage": "rimraf coverage && mkdir coverage && node --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage/lcov.info --test \"src/**/*.spec.ts\"",
-    "ci:lint": "npm run lint",
+    "ci:coverage": "rimraf coverage && mkdir coverage && node --disable-warning ExperimentalWarning --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test-reporter=lcov --test-reporter-destination=coverage/lcov.info --test-reporter spec --test-reporter-destination stdout --test \"src/**/*.spec.ts\"",
+    "ci:lint": "npm run lint && npm run lint:openapi",
     "ci:style": "npm run prettier",
-    "ci:test": "node --disable-warning ExperimentalWarning --experimental-strip-types --test-timeout 600000 --test \"src/**/*.spec.ts\"",
+    "ci:test": "node --disable-warning ExperimentalWarning --experimental-strip-types --test-reporter \"./src/api-coverage/node/global-setup.ts\" --test-reporter spec --test-reporter-destination stdout --test-reporter-destination stdout --test \"src/**/*.spec.ts\"",
     "coverage": "node --disable-warning ExperimentalWarning --experimental-strip-types --test-timeout 600000 --experimental-test-coverage --test \"src/**/*.spec.ts\"",
     "lint": "eslint --max-warnings 0 .",
     "lint:fix": "eslint . --fix",
+    "prepare": " npm run schema",
+    "schema": "rimraf src/schema && mkdir src/schema && npm run schema:currency && npm run schema:country && npm run prettier:fix",
+    "schema:country": "rimraf src/schema/country.json && typescript-json-schema --ignoreErrors --noExtraProps --strictNullChecks --required src/countries.ts Country >> src/schema/country.json",
+    "schema:currency": "rimraf src/schema/currency.json && typescript-json-schema --ignoreErrors --noExtraProps --strictNullChecks --required src/currencies.ts Currency >> src/schema/currency.json",
     "prepublishOnly": "npm run build:dist-types && npm run build:dist-mjs",
     "prettier": "prettier --ignore-path .gitignore --list-different .",
     "prettier:fix": "prettier --ignore-path .gitignore --write .",
@@ -55,9 +59,10 @@
     "@checkdigit/prettier-config": "^6.1.0",
     "@checkdigit/typescript-config": "9.0.0",
     "@typespec/compiler": "^1.4.0",
-    "rimraf": "^6.0.1"
+    "rimraf": "^6.0.1",
+    "typescript-json-schema": "^0.65.1"
   },
   "engines": {
-    "node": ">=22.11"
+    "node": ">=22.18"
   }
 }
