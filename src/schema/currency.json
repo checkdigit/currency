@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://currency.checkdigit/schemas/currency.json",
+  "title": "Currency Code",
+  "description": "A three-letter currency code as per ISO 4217 standard.",
+  "type": "string",
+  "pattern": "^[A-Z]{3}$",
+  "examples": ["USD", "EUR", "JPY", "GBP", "AUD"]
+}
