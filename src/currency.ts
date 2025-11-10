@@ -13,13 +13,21 @@ import currencyOperations, {
 } from './currencies.ts';
 import { getItemsFromOperations } from './operation.ts';
 
-export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies.ts';
+export type {
+  Currency,
+  CurrencyAlphabeticCode,
+  CurrencyNumericCode,
+  CurrencyName,
+} from './currencies.ts';
 
 export interface CurrencyLibrary {
   allCurrencies: () => Currency[];
   getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
   getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;
-  getSymbol: (currencyCode: CurrencyAlphabeticCode, locales?: string | string[]) => string | undefined;
+  getSymbol: (
+    currencyCode: CurrencyAlphabeticCode,
+    locales?: string | string[],
+  ) => string | undefined;
 }
 export default function (at: string): CurrencyLibrary {
   const currencies = getItemsFromOperations(currencyOperations, at);
@@ -27,7 +35,8 @@ export default function (at: string): CurrencyLibrary {
     allCurrencies: () => currencies,
     getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
       const currency = currencies.find(
-        ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode,
+        ({ alphabeticCode, numericCode }) =>
+          code === alphabeticCode || code === numericCode,
       );
 
       if (currency === undefined) {
@@ -36,8 +45,12 @@ export default function (at: string): CurrencyLibrary {
 
       return currency;
     },
-    getMinorUnitDigits: (currency: CurrencyAlphabeticCode) => currencyLibrary.getCurrency(currency).minorUnits ?? 2,
-    getSymbol: (currency: CurrencyAlphabeticCode, locales?: string | string[]) =>
+    getMinorUnitDigits: (currency: CurrencyAlphabeticCode) =>
+      currencyLibrary.getCurrency(currency).minorUnits ?? 2,
+    getSymbol: (
+      currency: CurrencyAlphabeticCode,
+      locales?: string | string[],
+    ) =>
       Intl.NumberFormat(locales, { style: 'currency', currency })
         .formatToParts(0)
         .find((part) => part.type === 'currency')?.value,

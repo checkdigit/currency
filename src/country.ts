@@ -15,7 +15,12 @@ import countryOperations, {
 import type { CurrencyAlphabeticCode } from './currencies.ts';
 import { getItemsFromOperations } from './operation.ts';
 
-export type { Country, CountryAlpha2, CountryAlpha3, CountryNumeric } from './countries.ts';
+export type {
+  Country,
+  CountryAlpha2,
+  CountryAlpha3,
+  CountryNumeric,
+} from './countries.ts';
 
 export interface CountryLibrary {
   allCountries: () => Country[];
@@ -29,7 +34,8 @@ export default function (at: string): CountryLibrary {
     allCountries: () => countries,
     getCountry: (code: CountryAlpha2 | CountryAlpha3 | CountryNumeric) => {
       const country = countries.find(
-        ({ alpha2, alpha3, numeric }) => code === alpha2 || code === alpha3 || code === numeric,
+        ({ alpha2, alpha3, numeric }) =>
+          code === alpha2 || code === alpha3 || code === numeric,
       );
       if (country === undefined) {
         // this should not happen unless an invalid string is coerced into the code parameter

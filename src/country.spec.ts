@@ -44,16 +44,31 @@ describe('country', () => {
       numeric: '332',
     });
 
-    assert.deepEqual(country(at).getCountry('AUS'), country(at).getCountry('036'));
-    assert.deepEqual(country(at).getCountry('036'), country(at).getCountry('AU'));
-    assert.deepEqual(country(at).getCountry('USA'), country(at).getCountry('840'));
-    assert.deepEqual(country(at).getCountry('840'), country(at).getCountry('US'));
+    assert.deepEqual(
+      country(at).getCountry('AUS'),
+      country(at).getCountry('036'),
+    );
+    assert.deepEqual(
+      country(at).getCountry('036'),
+      country(at).getCountry('AU'),
+    );
+    assert.deepEqual(
+      country(at).getCountry('USA'),
+      country(at).getCountry('840'),
+    );
+    assert.deepEqual(
+      country(at).getCountry('840'),
+      country(at).getCountry('US'),
+    );
 
     assert.throws(
       () => country(at).getCountry(undefined as unknown as CountryAlpha2),
       `TypeError: Country not found for code 'undefined'`,
     );
-    assert.throws(() => country(at).getCountry('' as CountryAlpha2), `TypeError: Country not found for code ''`);
+    assert.throws(
+      () => country(at).getCountry('' as CountryAlpha2),
+      `TypeError: Country not found for code ''`,
+    );
     assert.throws(
       () => country(at).getCountry(840 as unknown as CountryAlpha2),
       `TypeError: Country not found for code '840'`,
@@ -67,7 +82,13 @@ describe('country', () => {
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency', () => {
     assert.deepEqual(country(at).getCountriesForCurrency('JPY'), ['JPN']);
     assert.deepEqual(country(at).getCountriesForCurrency('CAD'), ['CAN']);
-    assert.deepEqual(country(at).getCountriesForCurrency('NZD'), ['COK', 'NIU', 'NZL', 'PCN', 'TKL']);
+    assert.deepEqual(country(at).getCountriesForCurrency('NZD'), [
+      'COK',
+      'NIU',
+      'NZL',
+      'PCN',
+      'TKL',
+    ]);
     assert.deepEqual(country(at).getCountriesForCurrency('AUD'), [
       'AUS',
       'CCK',
@@ -139,47 +160,58 @@ describe('country', () => {
     ]);
 
     assert.deepEqual(country(at).getCountriesForCurrency('XXX'), []);
-    assert.deepEqual(country(at).getCountriesForCurrency('' as CurrencyAlphabeticCode), []);
-    assert.deepEqual(country(at).getCountriesForCurrency(undefined as unknown as CurrencyAlphabeticCode), []);
+    assert.deepEqual(
+      country(at).getCountriesForCurrency('' as CurrencyAlphabeticCode),
+      [],
+    );
+    assert.deepEqual(
+      country(at).getCountriesForCurrency(
+        undefined as unknown as CurrencyAlphabeticCode,
+      ),
+      [],
+    );
   });
 
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency at specific time', () => {
-    assert.deepEqual(country('2022-12-30T00:00:00.000Z').getCountriesForCurrency('EUR'), [
-      'ALA',
-      'AND',
-      'ATF',
-      'AUT',
-      'BEL',
-      'BLM',
-      'CYP',
-      'DEU',
-      'ESP',
-      'EST',
-      'FIN',
-      'FRA',
-      'GLP',
-      'GRC',
-      'GUF',
-      'IRL',
-      'ITA',
-      'LTU',
-      'LUX',
-      'LVA',
-      'MAF',
-      'MCO',
-      'MLT',
-      'MNE',
-      'MTQ',
-      'MYT',
-      'NLD',
-      'PRT',
-      'REU',
-      'SMR',
-      'SPM',
-      'SVK',
-      'SVN',
-      'VAT',
-    ]);
+    assert.deepEqual(
+      country('2022-12-30T00:00:00.000Z').getCountriesForCurrency('EUR'),
+      [
+        'ALA',
+        'AND',
+        'ATF',
+        'AUT',
+        'BEL',
+        'BLM',
+        'CYP',
+        'DEU',
+        'ESP',
+        'EST',
+        'FIN',
+        'FRA',
+        'GLP',
+        'GRC',
+        'GUF',
+        'IRL',
+        'ITA',
+        'LTU',
+        'LUX',
+        'LVA',
+        'MAF',
+        'MCO',
+        'MLT',
+        'MNE',
+        'MTQ',
+        'MYT',
+        'NLD',
+        'PRT',
+        'REU',
+        'SMR',
+        'SPM',
+        'SVK',
+        'SVN',
+        'VAT',
+      ],
+    );
   });
 
   it('getCountry  based on alpha2, alpha3 or numeric code will throw an error if we pass any date pre-2018', () => {

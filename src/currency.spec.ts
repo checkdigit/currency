@@ -32,14 +32,35 @@ describe('currency', () => {
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(currency(at).getCurrency('AUD'), currency(at).getCurrency('036'));
-    assert.deepEqual(currency(at).getCurrency('CAD'), currency(at).getCurrency('124'));
-    assert.deepEqual(currency(at).getCurrency('NZD'), currency(at).getCurrency('554'));
-    assert.deepEqual(currency(at).getCurrency('EUR'), currency(at).getCurrency('978'));
-    assert.deepEqual(currency(at).getCurrency('KRW'), currency(at).getCurrency('410'));
-    assert.deepEqual(currency(at).getCurrency('USD'), currency(at).getCurrency('840'));
+    assert.deepEqual(
+      currency(at).getCurrency('AUD'),
+      currency(at).getCurrency('036'),
+    );
+    assert.deepEqual(
+      currency(at).getCurrency('CAD'),
+      currency(at).getCurrency('124'),
+    );
+    assert.deepEqual(
+      currency(at).getCurrency('NZD'),
+      currency(at).getCurrency('554'),
+    );
+    assert.deepEqual(
+      currency(at).getCurrency('EUR'),
+      currency(at).getCurrency('978'),
+    );
+    assert.deepEqual(
+      currency(at).getCurrency('KRW'),
+      currency(at).getCurrency('410'),
+    );
+    assert.deepEqual(
+      currency(at).getCurrency('USD'),
+      currency(at).getCurrency('840'),
+    );
     assert.throws(
-      () => currency(at).getCurrency(undefined as unknown as CurrencyAlphabeticCode),
+      () =>
+        currency(at).getCurrency(
+          undefined as unknown as CurrencyAlphabeticCode,
+        ),
       `TypeError: Currency not found for code 'undefined'`,
     );
     assert.throws(
@@ -60,7 +81,9 @@ describe('currency', () => {
     const currencies = currency(new Date().toISOString())
       .allCurrencies()
       .map(({ alphabeticCode }) => currency(at).getSymbol(alphabeticCode));
-    assert.ok(currencies.every((item) => typeof item === 'string' && item.length > 0));
+    assert.ok(
+      currencies.every((item) => typeof item === 'string' && item.length > 0),
+    );
     assert.equal(currency(at).getSymbol('USD'), '$');
     assert.equal(currency(at).getSymbol('CAD'), 'CA$');
     assert.equal(currency(at).getSymbol('NZD'), 'NZ$');

@@ -14,6 +14,8 @@ export type * from './currency.ts';
 export type * from './country.ts';
 export type * from './format.ts';
 
-export default function (at: string): CurrencyLibrary & CountryLibrary & FormatLibrary {
+export default function (
+  at: string,
+): CurrencyLibrary & CountryLibrary & FormatLibrary {
   return { ...countries(at), ...currencies(at), ...format(at) };
 }

@@ -11,7 +11,6 @@ The Check Digit currency library is the officially sanctioned method for Check D
 - tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
 - multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
 - uses built-in JS engine Intl implementation, no dependencies
-- exports Typespec types for currencies and countries
 
 ## Installing
 
@@ -95,10 +94,16 @@ export interface Currency {
 ### `format`
 
 ```ts
-currency('2023-11-02T15:35:47.191Z').format({ amount: 123456789012345678901234567890n, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({
+  amount: 123456789012345678901234567890n,
+  currency: 'USD',
+});
 // $1,234,567,890,123,456,789,012,345,678.90
 
-currency('2023-11-02T15:35:47.191Z').format({ amount: 123456n, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({
+  amount: 123456n,
+  currency: 'USD',
+});
 // $1234.56
 
 currency('2023-11-02T15:35:47.191Z').format(

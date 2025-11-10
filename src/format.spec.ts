@@ -21,18 +21,29 @@ function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
     {},
     locale,
   );
-  const reference = Intl.NumberFormat(locale, { style: 'currency', currency: code }).format(amount / minorUnit);
+  const reference = Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: code,
+  }).format(amount / minorUnit);
   assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
 }
 
 describe('format', () => {
   it('supports full ICU', () => {
     assert.equal(
-      formatLibrary(at).format({ amount: BigInt('123456789'), currency: 'USD' }, { currencyDisplay: 'code' }, 'de-DE'),
+      formatLibrary(at).format(
+        { amount: BigInt('123456789'), currency: 'USD' },
+        { currencyDisplay: 'code' },
+        'de-DE',
+      ),
       '1.234.567,89 USD',
     );
     assert.equal(
-      formatLibrary(at).format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'),
+      formatLibrary(at).format(
+        { amount: BigInt('123456789'), currency: 'EUR' },
+        {},
+        'es-ES',
+      ),
       '1.234.567,89 €',
     );
   });
@@ -274,7 +285,9 @@ describe('format', () => {
     ]);
     for (const code of currency(new Date().toISOString())
       .allCurrencies()
-      .filter(({ alphabeticCode }) => !unsupportedCurrencies.has(alphabeticCode))
+      .filter(
+        ({ alphabeticCode }) => !unsupportedCurrencies.has(alphabeticCode),
+      )
       .map(({ alphabeticCode }) => alphabeticCode)) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
@@ -289,15 +302,33 @@ describe('format', () => {
   });
 
   it('support zero-based edge cases', () => {
-    assert.equal(formatLibrary(at).format({ amount: -0, currency: 'USD' }), '-$0.00');
-    assert.equal(formatLibrary(at).format({ amount: '-0', currency: 'USD' }), '-$0.00');
-    assert.equal(formatLibrary(at).format({ amount: 0, currency: 'USD' }), '$0.00');
-    assert.equal(formatLibrary(at).format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
-    assert.equal(formatLibrary(at).format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.equal(
+      formatLibrary(at).format({ amount: -0, currency: 'USD' }),
+      '-$0.00',
+    );
+    assert.equal(
+      formatLibrary(at).format({ amount: '-0', currency: 'USD' }),
+      '-$0.00',
+    );
+    assert.equal(
+      formatLibrary(at).format({ amount: 0, currency: 'USD' }),
+      '$0.00',
+    );
+    assert.equal(
+      formatLibrary(at).format({ amount: BigInt(0), currency: 'USD' }),
+      '$0.00',
+    );
+    assert.equal(
+      formatLibrary(at).format({ amount: '0', currency: 'USD' }),
+      '$0.00',
+    );
   });
 
   it('support currencyDisplay', () => {
-    assert.equal(formatLibrary(at).format({ amount: '0', currency: 'USD' }), '$0.00');
+    assert.equal(
+      formatLibrary(at).format({ amount: '0', currency: 'USD' }),
+      '$0.00',
+    );
     assert.equal(
       formatLibrary(at).format(
         { amount: '0', currency: 'USD' },
@@ -380,7 +411,10 @@ describe('format', () => {
             useDecimal: false,
           },
         ),
-      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
+      {
+        message:
+          'useDecimal can only be false if useCurrency and useGrouping are also false',
+      },
     );
     assert.throws(
       () =>
@@ -391,7 +425,10 @@ describe('format', () => {
             useDecimal: false,
           },
         ),
-      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
+      {
+        message:
+          'useDecimal can only be false if useCurrency and useGrouping are also false',
+      },
     );
     assert.throws(
       () =>
@@ -402,7 +439,10 @@ describe('format', () => {
             useDecimal: false,
           },
         ),
-      { message: 'useDecimal can only be false if useCurrency and useGrouping are also false' },
+      {
+        message:
+          'useDecimal can only be false if useCurrency and useGrouping are also false',
+      },
     );
   });
 
