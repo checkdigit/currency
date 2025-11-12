@@ -54,7 +54,6 @@
     "@checkdigit/eslint-config": "^11.6.0",
     "@checkdigit/prettier-config": "^7.1.2",
     "@checkdigit/typescript-config": "9.3.2",
-    "@typespec/compiler": "^1.5.0",
     "rimraf": "^6.1.0"
   },
   "engines": {
