@@ -461,7 +461,51 @@ describe('format', () => {
   });
 
   it('parse will do something', () => {
+    assert.deepEqual(formatLibrary(at).parse('0', 'USD'), {
+      amount: 0n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('-0', 'USD'), {
+      amount: 0n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('0.01', 'USD'), {
+      amount: 1n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('-0.01', 'USD'), {
+      amount: -1n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('-1.2', 'USD'), {
+      amount: -120n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('-$1.23', 'USD'), {
+      amount: -123n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('$1.23', 'USD'), {
+      amount: 123n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('-USD$1.23', 'USD'), {
+      amount: -123n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('$-1.23', 'USD'), {
+      amount: -123n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('USD$-1.23', 'USD'), {
+      amount: -123n,
+      currency: 'USD',
+    });
     assert.deepEqual(formatLibrary(at).parse('US$123456', 'USD'), {
+      amount: 12_345_600n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('US$123456.', 'USD'), {
       amount: 12_345_600n,
       currency: 'USD',
     });
@@ -473,9 +517,8 @@ describe('format', () => {
       amount: 12_345_678n,
       currency: 'USD',
     });
-    assert.deepEqual(formatLibrary(at).parse('123456.789', 'USD'), {
-      amount: 12_345_678n,
-      currency: 'USD',
+    assert.throws(() => formatLibrary(at).parse('123456.789', 'USD'), {
+      message: 'decimalPlaces > minorUnitDigits',
     });
   });
 });

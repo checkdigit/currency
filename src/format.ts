@@ -160,6 +160,10 @@ export default function (at: string): FormatLibrary {
         amount.length - (decimalPlaces - minorUnitDigits),
       );
 
+      if (decimalPlaces > minorUnitDigits) {
+        throw new Error('decimalPlaces > minorUnitDigits');
+      }
+
       if (decimalPlaces < minorUnitDigits) {
         amount += '0'.repeat(minorUnitDigits - decimalPlaces);
       }
