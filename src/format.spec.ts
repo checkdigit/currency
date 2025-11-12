@@ -12,23 +12,27 @@ import { describe, it } from 'node:test';
 import currency, { type CurrencyAlphabeticCode } from './currency.ts';
 import formatLibrary from './index.ts';
 
-const at = new Date().toISOString();
-function check(code: CurrencyAlphabeticCode, amount: number, locale?: string) {
-  const minorUnitDigits = currency(at).getMinorUnitDigits(code);
-  const minorUnit = 10 ** minorUnitDigits;
-  const internal = formatLibrary(at).format(
-    { amount: amount === 0 ? amount : BigInt(amount), currency: code },
-    {},
-    locale,
-  );
-  const reference = Intl.NumberFormat(locale, {
-    style: 'currency',
-    currency: code,
-  }).format(amount / minorUnit);
-  assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
-}
-
 describe('format', () => {
+  const at = new Date().toISOString();
+  function check(
+    code: CurrencyAlphabeticCode,
+    amount: number,
+    locale?: string,
+  ) {
+    const minorUnitDigits = currency(at).getMinorUnitDigits(code);
+    const minorUnit = 10 ** minorUnitDigits;
+    const internal = formatLibrary(at).format(
+      { amount: amount === 0 ? amount : BigInt(amount), currency: code },
+      {},
+      locale,
+    );
+    const reference = Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: code,
+    }).format(amount / minorUnit);
+    assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
+  }
+
   it('supports full ICU', () => {
     assert.equal(
       formatLibrary(at).format(
@@ -454,5 +458,24 @@ describe('format', () => {
         'de-DE',
       ); // This is to check for the code with date pre-2018
     }, `TypeError: Lookup functions do not currently support the provided date '2017-12-31T23:59:00.000Z'. Support is available for dates starting from 2018 onwards.`);
+  });
+
+  it('parse will do something', () => {
+    assert.deepEqual(formatLibrary(at).parse('US$123456', 'USD'), {
+      amount: 12_345_600n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('US$123456.7', 'USD'), {
+      amount: 12_345_670n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('US$123,456.78', 'USD'), {
+      amount: 12_345_678n,
+      currency: 'USD',
+    });
+    assert.deepEqual(formatLibrary(at).parse('123456.789', 'USD'), {
+      amount: 12_345_678n,
+      currency: 'USD',
+    });
   });
 });
