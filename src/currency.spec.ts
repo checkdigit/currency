@@ -19,6 +19,47 @@ describe('currency', () => {
     assert.equal(currency(at).getMinorUnitDigits('JPY'), 0);
   });
 
+  it('findCurrency will find currencies based on name, numeric or alphabetic codes', () => {
+    assert.deepEqual(currency(at).findCurrency('NZD'), {
+      alphabeticCode: 'NZD',
+      minorUnits: 2,
+      name: 'New Zealand Dollar',
+      numericCode: '554',
+    });
+    assert.deepEqual(currency(at).findCurrency('USD'), {
+      alphabeticCode: 'USD',
+      minorUnits: 2,
+      name: 'US Dollar',
+      numericCode: '840',
+    });
+    assert.deepEqual(currency(at).findCurrency(840), {
+      alphabeticCode: 'USD',
+      minorUnits: 2,
+      name: 'US Dollar',
+      numericCode: '840',
+    });
+    assert.deepEqual(
+      currency(at).findCurrency('nzd  '),
+      currency(at).findCurrency('  554'),
+    );
+    assert.deepEqual(
+      currency(at).findCurrency('new zealand dollar'),
+      currency(at).findCurrency('554'),
+    );
+    assert.throws(
+      () => currency(at).findCurrency(undefined as unknown as string),
+      {
+        message: `Currency not found for 'undefined'`,
+      },
+    );
+    assert.throws(() => currency(at).findCurrency(''), {
+      message: `Currency not found for ''`,
+    });
+    assert.throws(() => currency(at).findCurrency('INVALID'), {
+      message: `Currency not found for 'INVALID'`,
+    });
+  });
+
   it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
     assert.deepEqual(currency(at).getCurrency('NZD'), {
       alphabeticCode: 'NZD',

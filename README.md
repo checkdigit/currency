@@ -84,6 +84,7 @@ export interface Currency {
 ### Currencies
 
 - `allCurrencies(): Currency[]`
+- `findCurrency(search: string): Currency`
 - `getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency`
 - `getMinorUnitDigits(currency: CurrencyAlphabeticCode)`
 - `getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string`
@@ -196,6 +197,26 @@ currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('USD');
 
 currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('JPY');
 // 0
+```
+
+### `findCurrency`
+
+```ts
+currency('2023-11-02T15:35:47.191Z').findCurrency('us dollar');
+// {
+//   name: 'US Dollar',
+//   alphabeticCode: 'USD',
+//   numericCode: '840',
+//   minorUnits: 2
+// }
+
+currency('2023-11-02T15:35:47.191Z').findCurrency(554);
+// {
+//   name: 'New Zealand Dollar',
+//   alphabeticCode: 'NZD',
+//   numericCode: '554',
+//   minorUnits: 2
+// }
 ```
 
 ### `getCurrency`

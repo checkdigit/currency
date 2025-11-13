@@ -22,6 +22,7 @@ export type {
 
 export interface CurrencyLibrary {
   allCurrencies: () => Currency[];
+  findCurrency: (search: string | number) => Currency;
   getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
   getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;
   getSymbol: (
@@ -33,6 +34,20 @@ export default function (at: string): CurrencyLibrary {
   const currencies = getItemsFromOperations(currencyOperations, at);
   const currencyLibrary = {
     allCurrencies: () => currencies,
+    findCurrency(search: string | number) {
+      const currency = currencies.find(
+        ({ alphabeticCode, name, numericCode }) =>
+          String(search).trim().toUpperCase() === alphabeticCode ||
+          String(search).trim() === numericCode ||
+          String(search).trim().toUpperCase() === name.toUpperCase(),
+      );
+
+      if (currency === undefined) {
+        throw new Error(`Currency not found for '${search}'`);
+      }
+
+      return currency;
+    },
     getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
       const currency = currencies.find(
         ({ alphabeticCode, numericCode }) =>
