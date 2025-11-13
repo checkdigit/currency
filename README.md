@@ -5,12 +5,13 @@ Copyright © 2021–2025 [Check Digit, LLC](https://checkdigit.com)
 The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships at a particular date/time. Features:
 
 - various currency and country lookup functions at a particular date/time starting 2018 and beyond, anything earlier will throw an error.
-- Typescript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
+- TypeScript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
 - currency formatting of Check Digit-standard Money objects, with a variety of options
+- currency parsing of strings into Check Digit-standard Money objects
 - tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 - tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
 - multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
-- uses built-in JS engine Intl implementation, no dependencies
+- uses built-in JS engine `Intl` implementation, no dependencies
 
 ## Installing
 
@@ -75,6 +76,10 @@ export interface Currency {
 ### Formatting
 
 - `format({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]): string`
+
+### Parsing
+
+- `parse(money: string, currency: CurrencyAlphabeticCode, locales?: string | string[]) => Money;`
 
 ### Currencies
 
@@ -147,6 +152,27 @@ currency('2023-11-02T15:35:47.191Z').format(
   'as-IN',
 );
 // ১২৩৪৫৬
+```
+
+### `parse`
+```ts
+currency('2023-11-02T15:35:47.191Z').parse('.1', 'USD');
+// { amount: 10n, currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('1', 'USD');
+// { amount: 100n, currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('$1.23', 'USD');
+// { amount: 123n, currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('123.456,78', 'EUR', 'de-DE');
+// { amount: 12_345_678n, currency: 'EUR' }
+
+currency('2023-11-02T15:35:47.191Z').parse('10€', 'EUR');
+// { amount: 1000n, currency: 'EUR' }
+
+currency('2023-11-02T15:35:47.191Z').parse('10', 'JPY')
+// { amount: 10n, currency: 'JPY' }
 ```
 
 ### `getSymbol`

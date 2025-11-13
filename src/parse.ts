@@ -22,7 +22,7 @@ export default function (at: string): ParseLibrary {
   return {
     parse(money, currency, locales) {
       // eslint-disable-next-line no-magic-numbers
-      const parts = Intl.NumberFormat(locales).formatToParts(1111.11);
+      const parts = Intl.NumberFormat(locales).formatToParts(1_234_567.89);
       const groupSymbol = parts.find((part) => part.type === 'group')?.value;
       const decimalSymbol = parts.find(
         (part) => part.type === 'decimal',

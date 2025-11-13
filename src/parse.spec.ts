@@ -12,8 +12,9 @@ import { describe, it } from 'node:test';
 import parseLibrary from './index.ts';
 
 describe('parse', () => {
-  it('parse will do something', () => {
-    const at = new Date().toISOString();
+  const at = new Date().toISOString();
+
+  it('will handle standard USD amounts', () => {
     assert.deepEqual(parseLibrary(at).parse('0', 'USD'), {
       amount: 0n,
       currency: 'USD',
@@ -32,6 +33,10 @@ describe('parse', () => {
     });
     assert.deepEqual(parseLibrary(at).parse('-1.2', 'USD'), {
       amount: -120n,
+      currency: 'USD',
+    });
+    assert.deepEqual(parseLibrary(at).parse('1', 'USD'), {
+      amount: 100n,
       currency: 'USD',
     });
     assert.deepEqual(parseLibrary(at).parse('-$1.23', 'USD'), {
@@ -70,8 +75,23 @@ describe('parse', () => {
       amount: 12_345_678n,
       currency: 'USD',
     });
+  });
+
+  it('will handle non-USD amounts', () => {
     assert.throws(() => parseLibrary(at).parse('123456.789', 'USD'), {
       message: 'decimalPlaces > minorUnitDigits',
+    });
+    assert.deepEqual(parseLibrary(at).parse('€123.456,78', 'EUR', 'de-DE'), {
+      amount: 12_345_678n,
+      currency: 'EUR',
+    });
+    assert.deepEqual(parseLibrary(at).parse('10€', 'EUR'), {
+      amount: 1000n,
+      currency: 'EUR',
+    });
+    assert.deepEqual(parseLibrary(at).parse('10', 'JPY'), {
+      amount: 10n,
+      currency: 'JPY',
     });
   });
 });
