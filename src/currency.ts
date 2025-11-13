@@ -35,11 +35,12 @@ export default function (at: string): CurrencyLibrary {
   const currencyLibrary = {
     allCurrencies: () => currencies,
     findCurrency(search: string | number) {
+      const normalizedSearch = String(search).trim().toUpperCase();
       const currency = currencies.find(
         ({ alphabeticCode, name, numericCode }) =>
-          String(search).trim().toUpperCase() === alphabeticCode ||
-          String(search).trim() === numericCode ||
-          String(search).trim().toUpperCase() === name.toUpperCase(),
+          normalizedSearch === alphabeticCode ||
+          normalizedSearch === numericCode ||
+          normalizedSearch === name.toUpperCase(),
       );
 
       if (currency === undefined) {
