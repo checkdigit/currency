@@ -156,6 +156,7 @@ currency('2023-11-02T15:35:47.191Z').format(
 ```
 
 ### `parse`
+
 ```ts
 currency('2023-11-02T15:35:47.191Z').parse('.1', 'USD');
 // { amount: 10n, currency: 'USD' }
@@ -172,7 +173,7 @@ currency('2023-11-02T15:35:47.191Z').parse('123.456,78', 'EUR', 'de-DE');
 currency('2023-11-02T15:35:47.191Z').parse('10€', 'EUR');
 // { amount: 1000n, currency: 'EUR' }
 
-currency('2023-11-02T15:35:47.191Z').parse('10', 'JPY')
+currency('2023-11-02T15:35:47.191Z').parse('10', 'JPY');
 // { amount: 10n, currency: 'JPY' }
 ```
 
