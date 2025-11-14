@@ -44,11 +44,12 @@ export default function (at: string): ParseLibrary {
         .toReversed()
         .join('');
       const numeralRegex = new RegExp(`[${numerals}]`, 'gu');
-
       const currency = currencyLibraryAt.getCurrency(currencyCode);
       const countries = countryLibraryAt
         .getCountriesForCurrency(currencyCode)
         .map(countryLibraryAt.getCountry);
+      const minorUnitDigits =
+        currencyLibraryAt.getMinorUnitDigits(currencyCode);
 
       if (currencySymbol === undefined) {
         throw new Error('currencySymbol undefined');
@@ -77,9 +78,6 @@ export default function (at: string): ParseLibrary {
         amount = amount.replace(country.alpha3, '');
         amount = amount.replace(country.alpha2, '');
       }
-
-      const minorUnitDigits =
-        currencyLibraryAt.getMinorUnitDigits(currencyCode);
 
       const decimalPlaces = amount.includes('.')
         ? amount.length - amount.indexOf('.') - 1
