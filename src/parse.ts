@@ -62,11 +62,11 @@ export default function (at: string): ParseLibrary {
       let amount = money
         .trim()
         .toLocaleLowerCase(locales)
-        .replaceAll(groupSymbol, '')
-        .replace(currencySymbol, '')
+        .replaceAll(groupSymbol.toLocaleLowerCase(locales), '')
+        .replace(currencySymbol.toLocaleLowerCase(locales), '')
         .replace(currency.name.toLocaleLowerCase(locales), '')
         .replace(currency.alphabeticCode.toLocaleLowerCase(locales), '')
-        .replace(decimalSymbol, '.')
+        .replace(decimalSymbol.toLocaleLowerCase(locales), '.')
         // matches a minus sign (normal or “fancy”),
         // plus an optional space right after it.
         .replace(/[−-]\s?/u, '-')
@@ -75,9 +75,7 @@ export default function (at: string): ParseLibrary {
         );
 
       for (const country of countries) {
-        amount = amount.replace(country.alpha3.toLocaleLowerCase(locales), '');
         amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
-        amount = amount.replace(country.name.toLocaleLowerCase(locales), '');
       }
 
       const decimalPlaces = amount.includes('.')

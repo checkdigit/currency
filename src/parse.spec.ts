@@ -71,9 +71,12 @@ describe('parse', () => {
       amount: 12_345_670n,
       currency: 'USD',
     });
-    assert.deepEqual(parse('USA $123,456.78', 'USD'), {
+    assert.deepEqual(parse('USD $123,456.78', 'USD'), {
       amount: 12_345_678n,
       currency: 'USD',
+    });
+    assert.throws(() => parse('USA $123,456.78', 'USD'), {
+      message: 'Cannot parse "USA $123,456.78"',
     });
     assert.throws(() => parse('America $123,456.78', 'USD'), {
       message: 'Cannot parse "America $123,456.78"',
@@ -110,6 +113,25 @@ describe('parse', () => {
     assert.deepEqual(parse('₺1010,00', 'TRY', 'tr-TR'), {
       amount: 101_000n,
       currency: 'TRY',
+    });
+    assert.deepEqual(parse('$1.23', 'NZD', 'en-NZ'), {
+      amount: 123n,
+      currency: 'NZD',
+    });
+    assert.deepEqual(parse('NZ$1.23', 'NZD', 'en-NZ'), {
+      amount: 123n,
+      currency: 'NZD',
+    });
+    assert.deepEqual(parse('NZ$1.23', 'NZD'), {
+      amount: 123n,
+      currency: 'NZD',
+    });
+    assert.deepEqual(parse('NZD$1.23', 'NZD', 'en-NZ'), {
+      amount: 123n,
+      currency: 'NZD',
+    });
+    assert.throws(() => parse('NZL$1.23', 'NZD'), {
+      message: 'Cannot parse "NZL$1.23"',
     });
   });
 });
