@@ -103,8 +103,8 @@ export default function (at: string): ParseLibrary {
           amount: BigInt(amount),
           currency: currencyCode,
         };
-      } catch {
-        throw new SyntaxError(`Cannot parse "${money}"`);
+      } catch (error) {
+        throw new Error(`Cannot parse "${money}"`, { cause: error });
       }
     },
   };
