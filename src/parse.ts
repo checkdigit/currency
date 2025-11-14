@@ -59,13 +59,13 @@ export default function (at: string): ParseLibrary {
         throw new Error('groupSymbol undefined');
       }
 
-      let amount = money;
-
-      amount = amount
+      let amount = money
+        .trim()
+        .toLocaleLowerCase(locales)
         .replaceAll(groupSymbol, '')
         .replace(currencySymbol, '')
-        .replace(currency.name, '')
-        .replace(currency.alphabeticCode, '')
+        .replace(currency.name.toLocaleLowerCase(locales), '')
+        .replace(currency.alphabeticCode.toLocaleLowerCase(locales), '')
         .replace(decimalSymbol, '.')
         // matches a minus sign (normal or “fancy”),
         // plus an optional space right after it.
@@ -75,8 +75,8 @@ export default function (at: string): ParseLibrary {
         );
 
       for (const country of countries) {
-        amount = amount.replace(country.alpha3, '');
-        amount = amount.replace(country.alpha2, '');
+        amount = amount.replace(country.alpha3.toLocaleLowerCase(locales), '');
+        amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
       }
 
       const decimalPlaces = amount.includes('.')
