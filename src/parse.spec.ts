@@ -85,7 +85,7 @@ describe('parse', () => {
 
   it('will handle non-USD amounts', () => {
     assert.throws(() => parse('123456.789', 'USD'), {
-      message: 'decimalPlaces > minorUnitDigits',
+      message: 'Too many decimal places (3 - maximum 2), in "123456.789"',
     });
     assert.deepEqual(parse('€123.456,78', 'EUR', 'de-DE'), {
       amount: 12_345_678n,
@@ -107,14 +107,15 @@ describe('parse', () => {
       amount: 101_000n,
       currency: 'TRY',
     });
-    assert.throws(() => parse('₺1010.00', 'TRY'), {
-      message: 'Cannot parse "₺1010.00"',
+    assert.deepEqual(parse('₺1010.00', 'TRY'), {
+      amount: 101_000n,
+      currency: 'TRY',
     });
     assert.deepEqual(parse('₺1010,00', 'TRY', 'tr-TR'), {
       amount: 101_000n,
       currency: 'TRY',
     });
-    assert.deepEqual(parse('$1.23', 'NZD', 'en-NZ'), {
+    assert.deepEqual(parse('$1.23', 'NZD'), {
       amount: 123n,
       currency: 'NZD',
     });

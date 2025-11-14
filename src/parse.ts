@@ -29,13 +29,25 @@ export default function (at: string): ParseLibrary {
         currency: currencyCode,
         // eslint-disable-next-line no-magic-numbers
       }).formatToParts(1_234_567.89);
-
       const currencySymbol = parts.find(
         (part) => part.type === 'currency',
       )?.value;
+
+      const simpleParts = Intl.NumberFormat(locales, {
+        style: 'currency',
+        currency: currencyCode,
+        currencyDisplay: 'narrowSymbol',
+        // eslint-disable-next-line no-magic-numbers
+      }).formatToParts(1_234_567.89);
+      const simpleCurrencySymbol = simpleParts.find(
+        (part) => part.type === 'currency',
+      )?.value;
+
       const groupSymbol = parts.find((part) => part.type === 'group')?.value;
+
       const decimalSymbol =
         parts.find((part) => part.type === 'decimal')?.value ?? '.';
+
       const numerals = new Intl.NumberFormat(locales, { useGrouping: false })
         // eslint-disable-next-line unicorn/numeric-separators-style,no-magic-numbers
         .format(9876543210)
@@ -44,35 +56,51 @@ export default function (at: string): ParseLibrary {
         .toReversed()
         .join('');
       const numeralRegex = new RegExp(`[${numerals}]`, 'gu');
+
       const currency = currencyLibraryAt.getCurrency(currencyCode);
+
       const countries = countryLibraryAt
         .getCountriesForCurrency(currencyCode)
         .map(countryLibraryAt.getCountry);
+
       const minorUnitDigits =
         currencyLibraryAt.getMinorUnitDigits(currencyCode);
 
-      if (currencySymbol === undefined) {
-        throw new Error('currencySymbol undefined');
+      let amount = money.trim().toLocaleLowerCase(locales);
+
+      if (groupSymbol !== undefined) {
+        amount = amount.replaceAll(groupSymbol.toLocaleLowerCase(locales), '');
       }
 
-      if (groupSymbol === undefined) {
-        throw new Error('groupSymbol undefined');
-      }
-
-      let amount = money
-        .trim()
-        .toLocaleLowerCase(locales)
-        .replaceAll(groupSymbol.toLocaleLowerCase(locales), '')
-        .replace(currencySymbol.toLocaleLowerCase(locales), '')
-        .replace(currency.name.toLocaleLowerCase(locales), '')
-        .replace(currency.alphabeticCode.toLocaleLowerCase(locales), '')
-        .replace(decimalSymbol.toLocaleLowerCase(locales), '.')
-        // matches a minus sign (normal or “fancy”),
-        // plus an optional space right after it.
-        .replace(/[−-]\s?/u, '-')
-        .replace(numeralRegex, (group: string) =>
-          numerals.indexOf(group).toString(),
+      if (currencySymbol !== undefined) {
+        amount = amount.replaceAll(
+          currencySymbol.toLocaleLowerCase(locales),
+          '',
         );
+      }
+
+      if (simpleCurrencySymbol !== undefined) {
+        amount = amount.replaceAll(
+          simpleCurrencySymbol.toLocaleLowerCase(locales),
+          '',
+        );
+      }
+
+      amount = amount.replace(currency.name.toLocaleLowerCase(locales), '');
+
+      amount = amount.replace(
+        currency.alphabeticCode.toLocaleLowerCase(locales),
+        '',
+      );
+
+      amount = amount.replace(decimalSymbol.toLocaleLowerCase(locales), '.');
+
+      // matches a minus sign (normal or “fancy”), plus an optional space right after it.
+      amount = amount.replace(/[−-]\s?/u, '-');
+
+      amount = amount.replace(numeralRegex, (group: string) =>
+        numerals.indexOf(group).toString(),
+      );
 
       for (const country of countries) {
         amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
@@ -83,7 +111,9 @@ export default function (at: string): ParseLibrary {
         : 0;
 
       if (decimalPlaces > minorUnitDigits) {
-        throw new Error('decimalPlaces > minorUnitDigits');
+        throw new Error(
+          `Too many decimal places (${decimalPlaces} - maximum ${minorUnitDigits}), in "${money}"`,
+        );
       }
 
       amount = amount.replaceAll('.', '');
