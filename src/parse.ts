@@ -77,6 +77,7 @@ export default function (at: string): ParseLibrary {
       for (const country of countries) {
         amount = amount.replace(country.alpha3.toLocaleLowerCase(locales), '');
         amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
+        amount = amount.replace(country.name.toLocaleLowerCase(locales), '');
       }
 
       const decimalPlaces = amount.includes('.')
@@ -97,10 +98,14 @@ export default function (at: string): ParseLibrary {
         amount += '0'.repeat(minorUnitDigits - decimalPlaces);
       }
 
-      return {
-        amount: BigInt(amount),
-        currency: currencyCode,
-      };
+      try {
+        return {
+          amount: BigInt(amount),
+          currency: currencyCode,
+        };
+      } catch {
+        throw new SyntaxError(`Cannot parse "${money}"`);
+      }
     },
   };
 }

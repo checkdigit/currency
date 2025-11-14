@@ -55,7 +55,7 @@ describe('parse', () => {
       amount: -123n,
       currency: 'USD',
     });
-    assert.deepEqual(parseLibrary(at).parse('USD$-1.23', 'USD'), {
+    assert.deepEqual(parseLibrary(at).parse('US Dollar $-1.23', 'USD'), {
       amount: -123n,
       currency: 'USD',
     });
