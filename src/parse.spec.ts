@@ -59,11 +59,11 @@ describe('parse', () => {
       amount: -123n,
       currency: 'USD',
     });
-    assert.deepEqual(parseLibrary(at).parse('US$123456', 'USD'), {
+    assert.deepEqual(parseLibrary(at).parse('US Dollar $123456', 'USD'), {
       amount: 12_345_600n,
       currency: 'USD',
     });
-    assert.deepEqual(parseLibrary(at).parse('US$123456.', 'USD'), {
+    assert.deepEqual(parseLibrary(at).parse('USD$123456.', 'USD'), {
       amount: 12_345_600n,
       currency: 'USD',
     });
@@ -71,7 +71,7 @@ describe('parse', () => {
       amount: 12_345_670n,
       currency: 'USD',
     });
-    assert.deepEqual(parseLibrary(at).parse('US$123,456.78', 'USD'), {
+    assert.deepEqual(parseLibrary(at).parse('USA $123,456.78', 'USD'), {
       amount: 12_345_678n,
       currency: 'USD',
     });
