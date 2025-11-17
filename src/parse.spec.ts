@@ -9,10 +9,13 @@
 import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
-import parseLibrary from './index.ts';
+import currencyLibrary from './index.ts';
+import { getManyLocales } from './locales.test.ts';
+import { getFewCurrencies } from './currencies.test.ts';
 
 describe('parse', () => {
-  const { parse } = parseLibrary(new Date().toISOString());
+  const at = new Date().toISOString();
+  const { format, parse } = currencyLibrary(at);
 
   it('will handle standard USD amounts', () => {
     assert.deepEqual(parse('0', 'USD'), {
@@ -86,11 +89,13 @@ describe('parse', () => {
         currency: 'USD',
       },
     );
-    assert.throws(() => parse('USA $123,456.78', 'USD'), {
-      message: 'Cannot parse "USA $123,456.78"',
+    assert.deepEqual(parse('USA $123,456.78', 'USD'), {
+      amount: 12_345_678n,
+      currency: 'USD',
     });
-    assert.throws(() => parse('America $123,456.78', 'USD'), {
-      message: 'Cannot parse "America $123,456.78"',
+    assert.deepEqual(parse('America $123,456.78', 'USD'), {
+      amount: 12_345_678n,
+      currency: 'USD',
     });
   });
 
@@ -142,8 +147,35 @@ describe('parse', () => {
       amount: 123n,
       currency: 'NZD',
     });
-    assert.throws(() => parse('NZL$1.23', 'NZD'), {
-      message: 'Cannot parse "NZL$1.23"',
+    assert.deepEqual(parse('NZL$1.23', 'NZD', 'en-NZ'), {
+      amount: 123n,
+      currency: 'NZD',
     });
+  });
+
+  it('supports most common languages, regions and currencies', () => {
+    const locales = getManyLocales();
+    for (const locale of locales) {
+      const numericalAmount = 123_456n;
+      for (const currency of getFewCurrencies()) {
+        const amount = format(
+          {
+            amount: numericalAmount,
+            currency: currency.alphabeticCode,
+          },
+          {},
+          locale.baseName,
+        );
+        const parsedAmount = parse(
+          amount,
+          currency.alphabeticCode,
+          locale.baseName,
+        );
+        assert.deepEqual(parsedAmount, {
+          amount: numericalAmount,
+          currency: currency.alphabeticCode,
+        });
+      }
+    }
   });
 });

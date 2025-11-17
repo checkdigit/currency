@@ -14,106 +14,79 @@ import currency from './index.ts';
 
 describe('currency', () => {
   const at = new Date().toISOString();
+  const { findCurrency, getCurrency, getMinorUnitDigits, getSymbol } =
+    currency(at);
+
   it('getMinorUnitDigits returns correct number for each currency', () => {
-    assert.equal(currency(at).getMinorUnitDigits('USD'), 2);
-    assert.equal(currency(at).getMinorUnitDigits('JPY'), 0);
+    assert.equal(getMinorUnitDigits('USD'), 2);
+    assert.equal(getMinorUnitDigits('JPY'), 0);
   });
 
   it('findCurrency will find currencies based on name, numeric or alphabetic codes', () => {
-    assert.deepEqual(currency(at).findCurrency('NZD'), {
+    assert.deepEqual(findCurrency('NZD'), {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
       numericCode: '554',
     });
-    assert.deepEqual(currency(at).findCurrency('USD'), {
+    assert.deepEqual(findCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(currency(at).findCurrency(840), {
+    assert.deepEqual(findCurrency(840), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(
-      currency(at).findCurrency('nzd  '),
-      currency(at).findCurrency('  554'),
-    );
-    assert.deepEqual(
-      currency(at).findCurrency('new zealand dollar'),
-      currency(at).findCurrency('554'),
-    );
-    assert.throws(
-      () => currency(at).findCurrency(undefined as unknown as string),
-      {
-        message: `Currency not found for 'undefined'`,
-      },
-    );
-    assert.throws(() => currency(at).findCurrency(''), {
+    assert.deepEqual(findCurrency('nzd  '), findCurrency('  554'));
+    assert.deepEqual(findCurrency('new zealand dollar'), findCurrency('554'));
+    assert.throws(() => findCurrency(undefined as unknown as string), {
+      message: `Currency not found for 'undefined'`,
+    });
+    assert.throws(() => findCurrency(''), {
       message: `Currency not found for ''`,
     });
-    assert.throws(() => currency(at).findCurrency('INVALID'), {
+    assert.throws(() => findCurrency('INVALID'), {
       message: `Currency not found for 'INVALID'`,
     });
   });
 
   it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
-    assert.deepEqual(currency(at).getCurrency('NZD'), {
+    assert.deepEqual(getCurrency('NZD'), {
       alphabeticCode: 'NZD',
       minorUnits: 2,
       name: 'New Zealand Dollar',
       numericCode: '554',
     });
-    assert.deepEqual(currency(at).getCurrency('USD'), {
+    assert.deepEqual(getCurrency('USD'), {
       alphabeticCode: 'USD',
       minorUnits: 2,
       name: 'US Dollar',
       numericCode: '840',
     });
-    assert.deepEqual(
-      currency(at).getCurrency('AUD'),
-      currency(at).getCurrency('036'),
-    );
-    assert.deepEqual(
-      currency(at).getCurrency('CAD'),
-      currency(at).getCurrency('124'),
-    );
-    assert.deepEqual(
-      currency(at).getCurrency('NZD'),
-      currency(at).getCurrency('554'),
-    );
-    assert.deepEqual(
-      currency(at).getCurrency('EUR'),
-      currency(at).getCurrency('978'),
-    );
-    assert.deepEqual(
-      currency(at).getCurrency('KRW'),
-      currency(at).getCurrency('410'),
-    );
-    assert.deepEqual(
-      currency(at).getCurrency('USD'),
-      currency(at).getCurrency('840'),
-    );
+    assert.deepEqual(getCurrency('AUD'), getCurrency('036'));
+    assert.deepEqual(getCurrency('CAD'), getCurrency('124'));
+    assert.deepEqual(getCurrency('NZD'), getCurrency('554'));
+    assert.deepEqual(getCurrency('EUR'), getCurrency('978'));
+    assert.deepEqual(getCurrency('KRW'), getCurrency('410'));
+    assert.deepEqual(getCurrency('USD'), getCurrency('840'));
     assert.throws(
-      () =>
-        currency(at).getCurrency(
-          undefined as unknown as CurrencyAlphabeticCode,
-        ),
+      () => getCurrency(undefined as unknown as CurrencyAlphabeticCode),
       `TypeError: Currency not found for code 'undefined'`,
     );
     assert.throws(
-      () => currency(at).getCurrency('' as CurrencyAlphabeticCode),
+      () => getCurrency('' as CurrencyAlphabeticCode),
       `TypeError: Currency not found for code ''`,
     );
     assert.throws(
-      () => currency(at).getCurrency(840 as unknown as CurrencyAlphabeticCode),
+      () => getCurrency(840 as unknown as CurrencyAlphabeticCode),
       `TypeError: Currency not found for code '840'`,
     );
     assert.throws(
-      () => currency(at).getCurrency('INVALID' as CurrencyAlphabeticCode),
+      () => getCurrency('INVALID' as CurrencyAlphabeticCode),
       `TypeError: Currency not found for code 'INVALID'`,
     );
   });
@@ -121,20 +94,20 @@ describe('currency', () => {
   it('getSymbol', () => {
     const currencies = currency(new Date().toISOString())
       .allCurrencies()
-      .map(({ alphabeticCode }) => currency(at).getSymbol(alphabeticCode));
+      .map(({ alphabeticCode }) => getSymbol(alphabeticCode));
     assert.ok(
       currencies.every((item) => typeof item === 'string' && item.length > 0),
     );
-    assert.equal(currency(at).getSymbol('USD'), '$');
-    assert.equal(currency(at).getSymbol('CAD'), 'CA$');
-    assert.equal(currency(at).getSymbol('NZD'), 'NZ$');
-    assert.equal(currency(at).getSymbol('JPY'), '¥');
+    assert.equal(getSymbol('USD'), '$');
+    assert.equal(getSymbol('CAD'), 'CA$');
+    assert.equal(getSymbol('NZD'), 'NZ$');
+    assert.equal(getSymbol('JPY'), '¥');
   });
 
   it('getSymbol for non-US locales', () => {
-    assert.equal(currency(at).getSymbol('JPY', 'ja-JP'), '￥');
-    assert.equal(currency(at).getSymbol('NZD', 'en-NZ'), '$');
-    assert.equal(currency(at).getSymbol('CAD', 'en-CA'), '$');
+    assert.equal(getSymbol('JPY', 'ja-JP'), '￥');
+    assert.equal(getSymbol('NZD', 'en-NZ'), '$');
+    assert.equal(getSymbol('CAD', 'en-CA'), '$');
   });
 
   it('getCurrency for a alphabeticCode or numericCode will throw an error if we pass any date pre-2018', () => {
@@ -174,7 +147,7 @@ describe('currency', () => {
       minorUnits: 2,
     });
 
-    assert.deepEqual(currency(at).getCurrency('191'), {
+    assert.deepEqual(getCurrency('191'), {
       name: 'Kuna',
       alphabeticCode: 'HRK',
       numericCode: '191',
@@ -195,7 +168,7 @@ describe('currency', () => {
       minorUnits: 2,
     });
 
-    assert.deepEqual(currency(at).getCurrency('352'), {
+    assert.deepEqual(getCurrency('352'), {
       name: 'Iceland Krona',
       alphabeticCode: 'ISK',
       numericCode: '352',

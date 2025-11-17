@@ -11,6 +11,9 @@ import countryLibrary from './country.ts';
 
 import type { Money } from './money.ts';
 
+/**
+ * Parsing library for monetary amounts.
+ */
 export interface ParseLibrary {
   parse: (
     money: string,
@@ -48,6 +51,10 @@ export default function (at: string): ParseLibrary {
       const decimalSymbol =
         parts.find((part) => part.type === 'decimal')?.value ?? '.';
 
+      // console.log(decimalSymbol);
+      // console.log(currencySymbol);
+      // console.log(simpleCurrencySymbol);
+
       const numerals = new Intl.NumberFormat(locales, { useGrouping: false })
         // eslint-disable-next-line unicorn/numeric-separators-style,no-magic-numbers
         .format(9876543210)
@@ -68,9 +75,13 @@ export default function (at: string): ParseLibrary {
 
       let amount = money.trim().toLocaleLowerCase(locales);
 
+      // console.log(amount);
+
       if (groupSymbol !== undefined) {
         amount = amount.replaceAll(groupSymbol.toLocaleLowerCase(locales), '');
       }
+
+      // console.log(amount);
 
       if (currencySymbol !== undefined) {
         amount = amount.replaceAll(
@@ -78,6 +89,8 @@ export default function (at: string): ParseLibrary {
           '',
         );
       }
+      // console.log(amount);
+      amount = amount.replace(decimalSymbol.toLocaleLowerCase(locales), '.');
 
       if (simpleCurrencySymbol !== undefined) {
         amount = amount.replaceAll(
@@ -93,8 +106,6 @@ export default function (at: string): ParseLibrary {
         '',
       );
 
-      amount = amount.replace(decimalSymbol.toLocaleLowerCase(locales), '.');
-
       // matches a minus sign (normal or “fancy”), plus an optional space right after it.
       amount = amount.replace(/[−-]\s?/u, '-');
 
@@ -105,6 +116,9 @@ export default function (at: string): ParseLibrary {
       for (const country of countries) {
         amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
       }
+
+      // replace all non-numeric characters except minus sign and decimal point
+      amount = amount.replaceAll(/[^0-9.-]/gu, '');
 
       const decimalPlaces = amount.includes('.')
         ? amount.length - amount.indexOf('.') - 1
@@ -132,6 +146,11 @@ export default function (at: string): ParseLibrary {
           currency: currencyCode,
         };
       } catch (error) {
+        // console.log(amount[0].charCodeAt(0);
+        // console.log(amount[1]);
+        // console.log(amount[6]);
+        // console.log([...amount]);
+        // console.log(amount);
         throw new Error(`Cannot parse "${money}"`, { cause: error });
       }
     },

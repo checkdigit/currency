@@ -33,6 +33,7 @@ export interface FormatLibrary {
 }
 
 export default function (at: string): FormatLibrary {
+  const { getMinorUnitDigits } = currencyLibrary(at);
   return {
     format({ amount, currency }: Money, options, locales) {
       const resolvedOptions: Required<CurrencyFormatOptions> = {
@@ -41,7 +42,7 @@ export default function (at: string): FormatLibrary {
       };
       const amountInteger =
         typeof amount === 'bigint' ? amount : BigInt(amount);
-      const minorUnitDigits = currencyLibrary(at).getMinorUnitDigits(currency);
+      const minorUnitDigits = getMinorUnitDigits(currency);
       const minorUnit = 10n ** BigInt(minorUnitDigits);
 
       /*

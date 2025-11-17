@@ -32,16 +32,25 @@ export interface CurrencyLibrary {
 }
 export default function (at: string): CurrencyLibrary {
   const currencies = getItemsFromOperations(currencyOperations, at);
+
+  const currencyMap = new Map<string | number, Currency>();
+  for (const currency of currencies) {
+    currencyMap.set(currency.alphabeticCode, currency);
+    currencyMap.set(currency.numericCode, currency);
+    currencyMap.set(currency.name.toUpperCase(), currency);
+  }
+
   const currencyLibrary = {
     allCurrencies: () => currencies,
     findCurrency(search: string | number) {
       const normalizedSearch = String(search).trim().toUpperCase();
-      const currency = currencies.find(
-        ({ alphabeticCode, name, numericCode }) =>
-          normalizedSearch === alphabeticCode ||
-          normalizedSearch === numericCode ||
-          normalizedSearch === name.toUpperCase(),
-      );
+      const currency = currencyMap.get(normalizedSearch);
+      // currencies.find(
+      //   ({ alphabeticCode, name, numericCode }) =>
+      //     normalizedSearch === alphabeticCode ||
+      //     normalizedSearch === numericCode ||
+      //     normalizedSearch === name.toUpperCase(),
+      // );
 
       if (currency === undefined) {
         throw new Error(`Currency not found for '${search}'`);
@@ -50,10 +59,11 @@ export default function (at: string): CurrencyLibrary {
       return currency;
     },
     getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
-      const currency = currencies.find(
-        ({ alphabeticCode, numericCode }) =>
-          code === alphabeticCode || code === numericCode,
-      );
+      const currency = currencyMap.get(code);
+      // const currency = currencies.find(
+      //   ({ alphabeticCode, numericCode }) =>
+      //     code === alphabeticCode || code === numericCode,
+      // );
 
       if (currency === undefined) {
         throw new TypeError(`Currency not found for code '${code}'`);
