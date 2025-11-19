@@ -11,7 +11,7 @@ import { describe, it } from 'node:test';
 
 import currencyLibrary from './index.ts';
 import { getManyLocales } from './locales.test.ts';
-import { getFewCurrencies } from './currencies.test.ts';
+import { getManyCurrencies } from './currencies.test.ts';
 
 describe('parse', () => {
   const at = new Date().toISOString();
@@ -155,9 +155,10 @@ describe('parse', () => {
 
   it('supports most common languages, regions and currencies', () => {
     const locales = getManyLocales();
+    const manyCurrencies = getManyCurrencies(at);
     for (const locale of locales) {
       const numericalAmount = 123_456n;
-      for (const currency of getFewCurrencies()) {
+      for (const currency of manyCurrencies) {
         const amount = format(
           {
             amount: numericalAmount,

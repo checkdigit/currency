@@ -51,10 +51,6 @@ export default function (at: string): ParseLibrary {
       const decimalSymbol =
         parts.find((part) => part.type === 'decimal')?.value ?? '.';
 
-      // console.log(decimalSymbol);
-      // console.log(currencySymbol);
-      // console.log(simpleCurrencySymbol);
-
       const numerals = new Intl.NumberFormat(locales, { useGrouping: false })
         // eslint-disable-next-line unicorn/numeric-separators-style,no-magic-numbers
         .format(9876543210)
@@ -75,13 +71,9 @@ export default function (at: string): ParseLibrary {
 
       let amount = money.trim().toLocaleLowerCase(locales);
 
-      // console.log(amount);
-
       if (groupSymbol !== undefined) {
         amount = amount.replaceAll(groupSymbol.toLocaleLowerCase(locales), '');
       }
-
-      // console.log(amount);
 
       if (currencySymbol !== undefined) {
         amount = amount.replaceAll(
@@ -89,7 +81,6 @@ export default function (at: string): ParseLibrary {
           '',
         );
       }
-      // console.log(amount);
       amount = amount.replace(decimalSymbol.toLocaleLowerCase(locales), '.');
 
       if (simpleCurrencySymbol !== undefined) {
@@ -146,11 +137,6 @@ export default function (at: string): ParseLibrary {
           currency: currencyCode,
         };
       } catch (error) {
-        // console.log(amount[0].charCodeAt(0);
-        // console.log(amount[1]);
-        // console.log(amount[6]);
-        // console.log([...amount]);
-        // console.log(amount);
         throw new Error(`Cannot parse "${money}"`, { cause: error });
       }
     },
