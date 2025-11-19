@@ -11,7 +11,9 @@ import { describe, it } from 'node:test';
 
 import currency, { type CurrencyAlphabeticCode } from './currency.ts';
 import formatLibrary from './index.ts';
+
 import { getManyLocales } from './locales.test.ts';
+import { getUnsupportedCurrencies } from './currencies.test.ts';
 
 describe('format', () => {
   const at = new Date().toISOString();
@@ -60,26 +62,15 @@ describe('format', () => {
 
   it('matches Intl number implementation for all supported currencies', () => {
     // Intl.NumberFormat does not support the currencies below per the ISO 4217 standard.
-    const unsupportedCurrencies = new Set([
-      'AFN',
-      'ALL',
-      'IRR',
-      'IQD',
-      'KPW',
-      'LAK',
-      'LBP',
-      'MGA',
-      'MMK',
-      'RSD',
-      'SLL',
-      'SOS',
-      'SYP',
-      'YER',
-    ]);
+    const unsupportedCurrencies = getUnsupportedCurrencies(at);
     for (const code of currency(new Date().toISOString())
       .allCurrencies()
       .filter(
-        ({ alphabeticCode }) => !unsupportedCurrencies.has(alphabeticCode),
+        ({ alphabeticCode }) =>
+          !unsupportedCurrencies.some(
+            (unsupportedCurrency) =>
+              alphabeticCode === unsupportedCurrency.alphabeticCode,
+          ),
       )
       .map(({ alphabeticCode }) => alphabeticCode)) {
       for (let power = 0; power < 15; power++) {

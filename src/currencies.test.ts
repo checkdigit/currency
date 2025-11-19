@@ -55,3 +55,30 @@ export function getAllCurrencies(
   const { allCurrencies } = currencyLibrary(at);
   return allCurrencies();
 }
+
+/**
+ * Returns a list of currencies that are not supported by Intl.NumberFormat.
+ */
+export function getUnsupportedCurrencies(
+  at: string = new Date().toISOString(),
+): Currency[] {
+  const { getCurrency } = currencyLibrary(at);
+  return (
+    [
+      'AFN',
+      'ALL',
+      'IRR',
+      'IQD',
+      'KPW',
+      'LAK',
+      'LBP',
+      'MGA',
+      'MMK',
+      'RSD',
+      'SLL',
+      'SOS',
+      'SYP',
+      'YER',
+    ] satisfies CurrencyAlphabeticCode[]
+  ).map((currency) => getCurrency(currency));
+}
