@@ -10,8 +10,8 @@ import { strict as assert } from 'node:assert';
 import { describe, it } from 'node:test';
 
 import currencyLibrary from './index.ts';
-import { getManyLocales } from './locales.test.ts';
-import { getManyCurrencies } from './currencies.test.ts';
+import { getFewLocales, getManyLocales } from './locales.test.ts';
+import { getFewCurrencies, getManyCurrencies } from './currencies.test.ts';
 
 describe('parse', () => {
   const at = new Date().toISOString();
@@ -153,21 +153,76 @@ describe('parse', () => {
     });
   });
 
-  it('supports most common languages, regions and currencies', () => {
-    const locales = getManyLocales();
-    const manyCurrencies = getManyCurrencies(at);
+  it('supports a few common languages, regions and currencies with many numerical amounts (fast test)', () => {
+    const locales = getFewLocales();
+    const currencies = getFewCurrencies(at);
     for (const locale of locales) {
       for (const numericalAmount of [
         0n,
         1n,
+        -1n,
+        10n,
+        -10n,
         12n,
+        -12n,
+        100n,
+        -100n,
         123n,
+        -123n,
+        1000n,
+        -1000n,
+        1234n,
+        -1234n,
+        10_000n,
+        -10_000n,
+        12_340n,
+        -12_345n,
+        123_456n,
+        -123_456n,
+        1_234_567n,
+        -1_234_567n,
+      ]) {
+        for (const currency of currencies) {
+          const amount = format(
+            {
+              amount: numericalAmount,
+              currency: currency.alphabeticCode,
+            },
+            {},
+            locale.baseName,
+          );
+          const parsedAmount = parse(
+            amount,
+            currency.alphabeticCode,
+            locale.baseName,
+          );
+          assert.deepEqual(parsedAmount, {
+            amount: numericalAmount,
+            currency: currency.alphabeticCode,
+          });
+        }
+      }
+    }
+  });
+
+  it('supports most common languages, regions and currencies (slow test)', () => {
+    const locales = getManyLocales();
+    const currencies = getManyCurrencies(at);
+    for (const locale of locales) {
+      for (const numericalAmount of [
+        0n,
+        1n,
+        10n,
+        12n,
+        100n,
+        123n,
+        1000n,
         1234n,
         12_345n,
         123_456n,
         1_234_567n,
       ]) {
-        for (const currency of manyCurrencies) {
+        for (const currency of currencies) {
           const amount = format(
             {
               amount: numericalAmount,
