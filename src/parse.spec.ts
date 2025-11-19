@@ -157,25 +157,35 @@ describe('parse', () => {
     const locales = getManyLocales();
     const manyCurrencies = getManyCurrencies(at);
     for (const locale of locales) {
-      const numericalAmount = 123_456n;
-      for (const currency of manyCurrencies) {
-        const amount = format(
-          {
+      for (const numericalAmount of [
+        0n,
+        1n,
+        12n,
+        123n,
+        1234n,
+        12_345n,
+        123_456n,
+        1_234_567n,
+      ]) {
+        for (const currency of manyCurrencies) {
+          const amount = format(
+            {
+              amount: numericalAmount,
+              currency: currency.alphabeticCode,
+            },
+            {},
+            locale.baseName,
+          );
+          const parsedAmount = parse(
+            amount,
+            currency.alphabeticCode,
+            locale.baseName,
+          );
+          assert.deepEqual(parsedAmount, {
             amount: numericalAmount,
             currency: currency.alphabeticCode,
-          },
-          {},
-          locale.baseName,
-        );
-        const parsedAmount = parse(
-          amount,
-          currency.alphabeticCode,
-          locale.baseName,
-        );
-        assert.deepEqual(parsedAmount, {
-          amount: numericalAmount,
-          currency: currency.alphabeticCode,
-        });
+          });
+        }
       }
     }
   });
