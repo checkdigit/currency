@@ -111,6 +111,11 @@ export default function (at: string): ParseLibrary {
       // replace all non-numeric characters except minus sign and decimal point
       amount = amount.replaceAll(/[^0-9.-]/gu, '');
 
+      // ensure at least one digit is present
+      if (!/\d/u.test(amount)) {
+        throw new RangeError(`Cannot parse "${money}"`);
+      }
+
       const decimalPlaces = amount.includes('.')
         ? amount.length - amount.indexOf('.') - 1
         : 0;

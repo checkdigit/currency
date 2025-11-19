@@ -100,6 +100,21 @@ describe('parse', () => {
   });
 
   it('will handle non-USD amounts', () => {
+    assert.throws(() => parse('', 'USD'), {
+      message: 'Cannot parse ""',
+    });
+    assert.throws(() => parse(' ', 'USD'), {
+      message: 'Cannot parse " "',
+    });
+    assert.throws(() => parse('-', 'USD'), {
+      message: 'Cannot parse "-"',
+    });
+    assert.throws(() => parse('.', 'USD'), {
+      message: 'Cannot parse "."',
+    });
+    assert.throws(() => parse('-$.', 'USD'), {
+      message: 'Cannot parse "-$."',
+    });
     assert.throws(() => parse('123456.789', 'USD'), {
       message: 'Too many decimal places (3 - maximum 2), in "123456.789"',
     });
