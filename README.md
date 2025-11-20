@@ -44,10 +44,8 @@ There are defined literal types for country and currency codes:
 - CountryNumeric
 
 ```ts
-export type Amount = string | bigint | -0;
-
 export interface Money {
-  amount: Amount;
+  amount: string; // integer amount in minor units, e.g. '12345' for $123.45
   currency: CurrencyAlphabeticCode;
 }
 
@@ -101,19 +99,19 @@ export interface Currency {
 
 ```ts
 currency('2023-11-02T15:35:47.191Z').format({
-  amount: 123456789012345678901234567890n,
+  amount: '123456789012345678901234567890',
   currency: 'USD',
 });
 // $1,234,567,890,123,456,789,012,345,678.90
 
 currency('2023-11-02T15:35:47.191Z').format({
-  amount: 123456n,
+  amount: '123456',
   currency: 'USD',
 });
 // $1234.56
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useGrouping: false,
     useCurrency: false,
@@ -122,7 +120,7 @@ currency('2023-11-02T15:35:47.191Z').format(
 // 1234.56
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useGrouping: false,
     useCurrency: false,
@@ -131,11 +129,11 @@ currency('2023-11-02T15:35:47.191Z').format(
 );
 // 123456
 
-currency('2023-11-02T15:35:47.191Z').format({ amount: -0, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({ amount: '-0', currency: 'USD' });
 // -$0.00
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456789n, currency: 'USD' },
+  { amount: '123456789', currency: 'USD' },
   {
     currencyDisplay: 'code',
   },
@@ -144,7 +142,7 @@ currency('2023-11-02T15:35:47.191Z').format(
 // 1.234.567,89 USD
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useDecimal: false,
     useGrouping: false,
@@ -159,22 +157,22 @@ currency('2023-11-02T15:35:47.191Z').format(
 
 ```ts
 currency('2023-11-02T15:35:47.191Z').parse('.1', 'USD');
-// { amount: 10n, currency: 'USD' }
+// { amount: '10', currency: 'USD' }
 
 currency('2023-11-02T15:35:47.191Z').parse('1', 'USD');
-// { amount: 100n, currency: 'USD' }
+// { amount: '100', currency: 'USD' }
 
 currency('2023-11-02T15:35:47.191Z').parse('$1.23', 'USD');
-// { amount: 123n, currency: 'USD' }
+// { amount: '123', currency: 'USD' }
 
 currency('2023-11-02T15:35:47.191Z').parse('123.456,78', 'EUR', 'de-DE');
-// { amount: 12_345_678n, currency: 'EUR' }
+// { amount: '12345678', currency: 'EUR' }
 
 currency('2023-11-02T15:35:47.191Z').parse('10€', 'EUR');
-// { amount: 1000n, currency: 'EUR' }
+// { amount: '1000', currency: 'EUR' }
 
 currency('2023-11-02T15:35:47.191Z').parse('10', 'JPY');
-// { amount: 10n, currency: 'JPY' }
+// { amount: '10', currency: 'JPY' }
 ```
 
 ### `getSymbol`

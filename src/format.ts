@@ -40,8 +40,7 @@ export default function (at: string): FormatLibrary {
         ...defaultCurrencyFormatOptions,
         ...options,
       };
-      const amountInteger =
-        typeof amount === 'bigint' ? amount : BigInt(amount);
+      const amountInteger = BigInt(amount);
       const minorUnitDigits = getMinorUnitDigits(currency);
       const minorUnit = 10n ** BigInt(minorUnitDigits);
 
