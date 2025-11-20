@@ -13,22 +13,47 @@ import currencyOperations, {
 } from './currencies.ts';
 import { getItemsFromOperations } from './operation.ts';
 
-export type { Currency, CurrencyAlphabeticCode, CurrencyNumericCode, CurrencyName } from './currencies.ts';
+export type {
+  Currency,
+  CurrencyAlphabeticCode,
+  CurrencyNumericCode,
+  CurrencyName,
+} from './currencies.ts';
 
 export interface CurrencyLibrary {
   allCurrencies: () => Currency[];
+  findCurrency: (search: string | number) => Currency;
   getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => Currency;
   getMinorUnitDigits: (currencyCode: CurrencyAlphabeticCode) => number;
-  getSymbol: (currencyCode: CurrencyAlphabeticCode, locales?: string | string[]) => string | undefined;
+  getSymbol: (
+    currencyCode: CurrencyAlphabeticCode,
+    locales?: string | string[],
+  ) => string | undefined;
 }
 export default function (at: string): CurrencyLibrary {
   const currencies = getItemsFromOperations(currencyOperations, at);
+
+  const currencyMap = new Map<string | number, Currency>();
+  for (const currency of currencies) {
+    currencyMap.set(currency.alphabeticCode, currency);
+    currencyMap.set(currency.numericCode, currency);
+    currencyMap.set(currency.name.toUpperCase(), currency);
+  }
+
   const currencyLibrary = {
     allCurrencies: () => currencies,
+    findCurrency(search: string | number) {
+      const normalizedSearch = String(search).trim().toUpperCase();
+      const currency = currencyMap.get(normalizedSearch);
+
+      if (currency === undefined) {
+        throw new Error(`Currency not found for '${search}'`);
+      }
+
+      return currency;
+    },
     getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
-      const currency = currencies.find(
-        ({ alphabeticCode, numericCode }) => code === alphabeticCode || code === numericCode,
-      );
+      const currency = currencyMap.get(code);
 
       if (currency === undefined) {
         throw new TypeError(`Currency not found for code '${code}'`);
@@ -36,8 +61,12 @@ export default function (at: string): CurrencyLibrary {
 
       return currency;
     },
-    getMinorUnitDigits: (currency: CurrencyAlphabeticCode) => currencyLibrary.getCurrency(currency).minorUnits ?? 2,
-    getSymbol: (currency: CurrencyAlphabeticCode, locales?: string | string[]) =>
+    getMinorUnitDigits: (currency: CurrencyAlphabeticCode) =>
+      currencyLibrary.getCurrency(currency).minorUnits ?? 2,
+    getSymbol: (
+      currency: CurrencyAlphabeticCode,
+      locales?: string | string[],
+    ) =>
       Intl.NumberFormat(locales, { style: 'currency', currency })
         .formatToParts(0)
         .find((part) => part.type === 'currency')?.value,

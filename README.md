@@ -5,13 +5,13 @@ Copyright © 2021–2025 [Check Digit, LLC](https://checkdigit.com)
 The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships at a particular date/time. Features:
 
 - various currency and country lookup functions at a particular date/time starting 2018 and beyond, anything earlier will throw an error.
-- Typescript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
+- TypeScript types for Amount, Money, ISO 3166 country codes (numeric, alpha2, alpha3), and ISO 4217 currency codes (name, alphabetic, numeric)
 - currency formatting of Check Digit-standard Money objects, with a variety of options
+- currency parsing of strings into Check Digit-standard Money objects
 - tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 - tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
 - multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
-- uses built-in JS engine Intl implementation, no dependencies
-- exports Typespec types for currencies and countries
+- uses built-in JS engine `Intl` implementation, no dependencies
 
 ## Installing
 
@@ -44,10 +44,8 @@ There are defined literal types for country and currency codes:
 - CountryNumeric
 
 ```ts
-export type Amount = string | bigint | -0;
-
 export interface Money {
-  amount: Amount;
+  amount: string; // integer amount in minor units, e.g. '12345' for $123.45
   currency: CurrencyAlphabeticCode;
 }
 
@@ -77,9 +75,14 @@ export interface Currency {
 
 - `format({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]): string`
 
+### Parsing
+
+- `parse(money: string, currency: CurrencyAlphabeticCode, locales?: string | string[]) => Money;`
+
 ### Currencies
 
 - `allCurrencies(): Currency[]`
+- `findCurrency(search: string): Currency`
 - `getCurrency(code: CurrencyAlphabeticCode | CurrencyNumericCode): Currency`
 - `getMinorUnitDigits(currency: CurrencyAlphabeticCode)`
 - `getSymbol(currency: CurrencyAlphabeticCode, locales?: string | string[]): string`
@@ -95,14 +98,20 @@ export interface Currency {
 ### `format`
 
 ```ts
-currency('2023-11-02T15:35:47.191Z').format({ amount: 123456789012345678901234567890n, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({
+  amount: '123456789012345678901234567890',
+  currency: 'USD',
+});
 // $1,234,567,890,123,456,789,012,345,678.90
 
-currency('2023-11-02T15:35:47.191Z').format({ amount: 123456n, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({
+  amount: '123456',
+  currency: 'USD',
+});
 // $1234.56
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useGrouping: false,
     useCurrency: false,
@@ -111,7 +120,7 @@ currency('2023-11-02T15:35:47.191Z').format(
 // 1234.56
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useGrouping: false,
     useCurrency: false,
@@ -120,11 +129,11 @@ currency('2023-11-02T15:35:47.191Z').format(
 );
 // 123456
 
-currency('2023-11-02T15:35:47.191Z').format({ amount: -0, currency: 'USD' });
+currency('2023-11-02T15:35:47.191Z').format({ amount: '-0', currency: 'USD' });
 // -$0.00
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456789n, currency: 'USD' },
+  { amount: '123456789', currency: 'USD' },
   {
     currencyDisplay: 'code',
   },
@@ -133,7 +142,7 @@ currency('2023-11-02T15:35:47.191Z').format(
 // 1.234.567,89 USD
 
 currency('2023-11-02T15:35:47.191Z').format(
-  { amount: 123456n, currency: 'USD' },
+  { amount: '123456', currency: 'USD' },
   {
     useDecimal: false,
     useGrouping: false,
@@ -142,6 +151,28 @@ currency('2023-11-02T15:35:47.191Z').format(
   'as-IN',
 );
 // ১২৩৪৫৬
+```
+
+### `parse`
+
+```ts
+currency('2023-11-02T15:35:47.191Z').parse('.1', 'USD');
+// { amount: '10', currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('1', 'USD');
+// { amount: '100', currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('$1.23', 'USD');
+// { amount: '123', currency: 'USD' }
+
+currency('2023-11-02T15:35:47.191Z').parse('123.456,78', 'EUR', 'de-DE');
+// { amount: '12345678', currency: 'EUR' }
+
+currency('2023-11-02T15:35:47.191Z').parse('10€', 'EUR');
+// { amount: '1000', currency: 'EUR' }
+
+currency('2023-11-02T15:35:47.191Z').parse('10', 'JPY');
+// { amount: '10', currency: 'JPY' }
 ```
 
 ### `getSymbol`
@@ -165,6 +196,26 @@ currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('USD');
 
 currency('2023-11-02T15:35:47.191Z').getMinorUnitDigits('JPY');
 // 0
+```
+
+### `findCurrency`
+
+```ts
+currency('2023-11-02T15:35:47.191Z').findCurrency('us dollar');
+// {
+//   name: 'US Dollar',
+//   alphabeticCode: 'USD',
+//   numericCode: '840',
+//   minorUnits: 2
+// }
+
+currency('2023-11-02T15:35:47.191Z').findCurrency(554);
+// {
+//   name: 'New Zealand Dollar',
+//   alphabeticCode: 'NZD',
+//   numericCode: '554',
+//   minorUnits: 2
+// }
 ```
 
 ### `getCurrency`

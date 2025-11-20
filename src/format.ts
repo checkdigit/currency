@@ -6,53 +6,74 @@
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
-import currencyLibrary, { type CurrencyAlphabeticCode } from './currency.ts';
+import currencyLibrary from './currency.ts';
+import type { Money } from './money.ts';
 
-export type Amount = string | bigint | -0;
-
-export interface Money {
-  amount: Amount;
-  currency: CurrencyAlphabeticCode;
-}
-
-export interface CurrencyFormatOptions extends Pick<Intl.NumberFormatOptions, 'useGrouping'> {
+export interface CurrencyFormatOptions
+  extends Pick<Intl.NumberFormatOptions, 'useGrouping'> {
   currencyDisplay?: 'code' | 'symbol' | 'name';
   useCurrency?: boolean;
   useDecimal?: boolean;
 }
 
-export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> = Object.freeze({
-  currencyDisplay: 'symbol',
-  useCurrency: true,
-  useGrouping: true,
-  useDecimal: true,
-});
+export const defaultCurrencyFormatOptions: Required<CurrencyFormatOptions> =
+  Object.freeze({
+    currencyDisplay: 'symbol',
+    useCurrency: true,
+    useGrouping: true,
+    useDecimal: true,
+  });
 
 export interface FormatLibrary {
-  format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => string;
+  format: (
+    { amount, currency }: Money,
+    options?: CurrencyFormatOptions,
+    locales?: string | string[],
+  ) => string;
 }
 
 export default function (at: string): FormatLibrary {
+  const { getMinorUnitDigits } = currencyLibrary(at);
   return {
-    format: ({ amount, currency }: Money, options?: CurrencyFormatOptions, locales?: string | string[]) => {
-      const resolvedOptions: Required<CurrencyFormatOptions> = { ...defaultCurrencyFormatOptions, ...options };
-      const amountInteger = typeof amount === 'bigint' ? amount : BigInt(amount);
-      const minorUnitDigits = currencyLibrary(at).getMinorUnitDigits(currency);
+    format({ amount, currency }: Money, options, locales) {
+      const resolvedOptions: Required<CurrencyFormatOptions> = {
+        ...defaultCurrencyFormatOptions,
+        ...options,
+      };
+      const amountInteger = BigInt(amount);
+      const minorUnitDigits = getMinorUnitDigits(currency);
       const minorUnit = 10n ** BigInt(minorUnitDigits);
 
       /*
-       * Calculate the minor unit amount, while also handling locales that use different digit symbols than 0 thru 9.
+       * Calculate the minor unit amount,
+       * while also handling locales that use different digit symbols than 0 through 9.
        */
       const minorUnitAmount = Intl.NumberFormat(locales, { useGrouping: false })
-        .format(Number((amountInteger < BigInt(0) ? -amountInteger : amountInteger) % minorUnit))
-        .padStart(minorUnitDigits, Intl.NumberFormat(locales, { useGrouping: false }).format(0));
+        .format(
+          Number(
+            (amountInteger < BigInt(0) ? -amountInteger : amountInteger) %
+              minorUnit,
+          ),
+        )
+        .padStart(
+          minorUnitDigits,
+          Intl.NumberFormat(locales, { useGrouping: false }).format(0),
+        );
 
-      // this code is required to handle the case of negative zero, since bigints do not support negative zero
+      // this code is required to handle the case of negative zero,
+      // since BigInts do not support negative zero
       let majorUnitAmount: number | bigint =
-        Number(amount) === 0 ? Number(amount) / Number(minorUnit) : amountInteger / minorUnit;
+        Number(amount) === 0
+          ? Number(amount) / Number(minorUnit)
+          : amountInteger / minorUnit;
 
-      if (!resolvedOptions.useDecimal && !(!resolvedOptions.useCurrency && resolvedOptions.useGrouping !== true)) {
-        throw new Error('useDecimal can only be false if useCurrency and useGrouping are also false');
+      if (
+        !resolvedOptions.useDecimal &&
+        !(!resolvedOptions.useCurrency && resolvedOptions.useGrouping !== true)
+      ) {
+        throw new Error(
+          'useDecimal can only be false if useCurrency and useGrouping are also false',
+        );
       }
 
       if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
@@ -69,9 +90,12 @@ export default function (at: string): FormatLibrary {
         .formatToParts(majorUnitAmount)
         .filter(
           ({ type }) =>
-            (type !== 'currency' || resolvedOptions.useCurrency) && (type !== 'decimal' || resolvedOptions.useDecimal),
+            (type !== 'currency' || resolvedOptions.useCurrency) &&
+            (type !== 'decimal' || resolvedOptions.useDecimal),
         )
-        .map((part) => (part.type === 'fraction' ? minorUnitAmount : part.value))
+        .map((part) =>
+          part.type === 'fraction' ? minorUnitAmount : part.value,
+        )
         .join('');
     },
   };
