@@ -226,14 +226,18 @@ describe('parse', () => {
     for (const locale of locales) {
       for (const numericalAmount of [
         0n,
+        -0n,
         1n,
+        -1n,
         10n,
         12n,
         100n,
+        -100n,
         123n,
         1000n,
         1234n,
         12_345n,
+        -12_345n,
         123_456n,
         1_234_567n,
       ]) {
@@ -246,15 +250,22 @@ describe('parse', () => {
             {},
             locale.baseName,
           );
-          const parsedAmount = parse(
-            amount,
-            currency.alphabeticCode,
-            locale.baseName,
-          );
-          assert.deepEqual(parsedAmount, {
-            amount: numericalAmount,
-            currency: currency.alphabeticCode,
-          });
+          try {
+            const parsedAmount = parse(
+              amount,
+              currency.alphabeticCode,
+              locale.baseName,
+            );
+            assert.deepEqual(parsedAmount, {
+              amount: numericalAmount,
+              currency: currency.alphabeticCode,
+            });
+          } catch (error) {
+            throw new Error(
+              `Failed for locale ${locale.baseName} and currency ${currency.alphabeticCode} with amount ${amount}`,
+              { cause: error },
+            );
+          }
         }
       }
     }

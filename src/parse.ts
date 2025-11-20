@@ -22,6 +22,10 @@ export interface ParseLibrary {
   ) => Money;
 }
 
+/**
+ * Creates a parsing library for monetary amounts.
+ * @param at - the time at which to load the currency and country data
+ */
 export default function (at: string): ParseLibrary {
   const currencyLibraryAt = currencyLibrary(at);
   const countryLibraryAt = countryLibrary(at);
@@ -69,20 +73,26 @@ export default function (at: string): ParseLibrary {
       const minorUnitDigits =
         currencyLibraryAt.getMinorUnitDigits(currencyCode);
 
+      // normalize input
       let amount = money.trim().toLocaleLowerCase(locales);
 
+      // remove group symbol
       if (groupSymbol !== undefined) {
         amount = amount.replaceAll(groupSymbol.toLocaleLowerCase(locales), '');
       }
 
+      // remove currency symbol
       if (currencySymbol !== undefined) {
         amount = amount.replaceAll(
           currencySymbol.toLocaleLowerCase(locales),
           '',
         );
       }
+
+      // replace decimal symbol with a dot
       amount = amount.replace(decimalSymbol.toLocaleLowerCase(locales), '.');
 
+      // remove simple currency symbol
       if (simpleCurrencySymbol !== undefined) {
         amount = amount.replaceAll(
           simpleCurrencySymbol.toLocaleLowerCase(locales),
@@ -90,8 +100,10 @@ export default function (at: string): ParseLibrary {
         );
       }
 
+      // remove currency name
       amount = amount.replace(currency.name.toLocaleLowerCase(locales), '');
 
+      // remove currency code
       amount = amount.replace(
         currency.alphabeticCode.toLocaleLowerCase(locales),
         '',
@@ -100,10 +112,12 @@ export default function (at: string): ParseLibrary {
       // matches a minus sign (normal or “fancy”), plus an optional space right after it.
       amount = amount.replace(/[−-]\s?/u, '-');
 
+      // replace localized numerals with Western Arabic numerals
       amount = amount.replace(numeralRegex, (group: string) =>
         numerals.indexOf(group).toString(),
       );
 
+      // remove country codes
       for (const country of countries) {
         amount = amount.replace(country.alpha2.toLocaleLowerCase(locales), '');
       }
@@ -116,22 +130,31 @@ export default function (at: string): ParseLibrary {
         throw new RangeError(`Cannot parse "${money}"`);
       }
 
+      // move minus sign to the front if it's at the end
+      if (amount.endsWith('-')) {
+        amount = `-${amount.slice(0, -1)}`;
+      }
+
+      // validate decimal places
       const decimalPlaces = amount.includes('.')
         ? amount.length - amount.indexOf('.') - 1
         : 0;
 
+      // ensure not too many decimal places
       if (decimalPlaces > minorUnitDigits) {
         throw new Error(
           `Too many decimal places (${decimalPlaces} - maximum ${minorUnitDigits}), in "${money}"`,
         );
       }
 
+      // normalize to minor units
       amount = amount.replaceAll('.', '');
       amount = amount.slice(
         0,
         amount.length - (decimalPlaces - minorUnitDigits),
       );
 
+      // pad with zeros if needed
       if (decimalPlaces < minorUnitDigits) {
         amount += '0'.repeat(minorUnitDigits - decimalPlaces);
       }
