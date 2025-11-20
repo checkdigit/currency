@@ -19,63 +19,63 @@ describe('parse', () => {
 
   it('will handle standard USD amounts', () => {
     assert.deepEqual(parse('0', 'USD'), {
-      amount: 0n,
+      amount: '0',
       currency: 'USD',
     });
     assert.deepEqual(parse('-0', 'USD'), {
-      amount: 0n,
+      amount: '-0',
       currency: 'USD',
     });
     assert.deepEqual(parse('0.01', 'USD'), {
-      amount: 1n,
+      amount: '1',
       currency: 'USD',
     });
     assert.deepEqual(parse('-0.01', 'USD'), {
-      amount: -1n,
+      amount: '-1',
       currency: 'USD',
     });
     assert.deepEqual(parse('-1.2', 'USD'), {
-      amount: -120n,
+      amount: '-120',
       currency: 'USD',
     });
     assert.deepEqual(parse('1', 'USD'), {
-      amount: 100n,
+      amount: '100',
       currency: 'USD',
     });
     assert.deepEqual(parse('-$1.23', 'USD'), {
-      amount: -123n,
+      amount: '-123',
       currency: 'USD',
     });
     assert.deepEqual(parse('$1.23', 'USD'), {
-      amount: 123n,
+      amount: '123',
       currency: 'USD',
     });
     assert.deepEqual(parse('-USD$1.23', 'USD'), {
-      amount: -123n,
+      amount: '-123',
       currency: 'USD',
     });
     assert.deepEqual(parse('$-1.23', 'USD'), {
-      amount: -123n,
+      amount: '-123',
       currency: 'USD',
     });
     assert.deepEqual(parse('US Dollar $-1.23', 'USD'), {
-      amount: -123n,
+      amount: '-123',
       currency: 'USD',
     });
     assert.deepEqual(parse('US Dollar $123456', 'USD'), {
-      amount: 12_345_600n,
+      amount: '12345600',
       currency: 'USD',
     });
     assert.deepEqual(parse('usd$123456.', 'USD'), {
-      amount: 12_345_600n,
+      amount: '12345600',
       currency: 'USD',
     });
     assert.deepEqual(parse('US$123456.7', 'USD'), {
-      amount: 12_345_670n,
+      amount: '12345670',
       currency: 'USD',
     });
     assert.deepEqual(parse('USD $123,456.78', 'USD'), {
-      amount: 12_345_678n,
+      amount: '12345678',
       currency: 'USD',
     });
     assert.deepEqual(
@@ -85,16 +85,16 @@ describe('parse', () => {
       ),
       {
         amount:
-          31_415_926_535_897_932_384_626_433_832_795_028_841_971_693_993_751_058_209_749_445_923_078_164_062_862_089_986_280_348_253_421_170_679n,
+          '31415926535897932384626433832795028841971693993751058209749445923078164062862089986280348253421170679',
         currency: 'USD',
       },
     );
     assert.deepEqual(parse('USA $123,456.78', 'USD'), {
-      amount: 12_345_678n,
+      amount: '12345678',
       currency: 'USD',
     });
     assert.deepEqual(parse('America $123,456.78', 'USD'), {
-      amount: 12_345_678n,
+      amount: '12345678',
       currency: 'USD',
     });
   });
@@ -119,51 +119,51 @@ describe('parse', () => {
       message: 'Too many decimal places (3 - maximum 2), in "123456.789"',
     });
     assert.deepEqual(parse('€123.456,78', 'EUR', 'de-DE'), {
-      amount: 12_345_678n,
+      amount: '12345678',
       currency: 'EUR',
     });
     assert.deepEqual(parse('10€', 'EUR'), {
-      amount: 1000n,
+      amount: '1000',
       currency: 'EUR',
     });
     assert.deepEqual(parse('10', 'JPY'), {
-      amount: 10n,
+      amount: '10',
       currency: 'JPY',
     });
     assert.deepEqual(parse('10', 'TRY'), {
-      amount: 1000n,
+      amount: '1000',
       currency: 'TRY',
     });
     assert.deepEqual(parse('TRY 1,010.00', 'TRY'), {
-      amount: 101_000n,
+      amount: '101000',
       currency: 'TRY',
     });
     assert.deepEqual(parse('₺1010.00', 'TRY'), {
-      amount: 101_000n,
+      amount: '101000',
       currency: 'TRY',
     });
     assert.deepEqual(parse('₺1010,00', 'TRY', 'tr-TR'), {
-      amount: 101_000n,
+      amount: '101000',
       currency: 'TRY',
     });
     assert.deepEqual(parse('$1.23', 'NZD'), {
-      amount: 123n,
+      amount: '123',
       currency: 'NZD',
     });
     assert.deepEqual(parse('NZ$1.23', 'NZD', 'en-NZ'), {
-      amount: 123n,
+      amount: '123',
       currency: 'NZD',
     });
     assert.deepEqual(parse('NZ$1.23', 'NZD'), {
-      amount: 123n,
+      amount: '123',
       currency: 'NZD',
     });
     assert.deepEqual(parse('NZD$1.23', 'NZD', 'en-NZ'), {
-      amount: 123n,
+      amount: '123',
       currency: 'NZD',
     });
     assert.deepEqual(parse('NZL$1.23', 'NZD', 'en-NZ'), {
-      amount: 123n,
+      amount: '123',
       currency: 'NZD',
     });
   });
@@ -173,29 +173,30 @@ describe('parse', () => {
     const currencies = getFewCurrencies(at);
     for (const locale of locales) {
       for (const numericalAmount of [
-        0n,
-        1n,
-        -1n,
-        10n,
-        -10n,
-        12n,
-        -12n,
-        100n,
-        -100n,
-        123n,
-        -123n,
-        1000n,
-        -1000n,
-        1234n,
-        -1234n,
-        10_000n,
-        -10_000n,
-        12_340n,
-        -12_345n,
-        123_456n,
-        -123_456n,
-        1_234_567n,
-        -1_234_567n,
+        '0',
+        '-0',
+        '1',
+        '-1',
+        '10',
+        '-10',
+        '12',
+        '-12',
+        '100',
+        '-100',
+        '123',
+        '-123',
+        '1000',
+        '-1000',
+        '1234',
+        '-1234',
+        '10000',
+        '-10000',
+        '12340',
+        '12345',
+        '123456',
+        '-123456',
+        '1234567',
+        '-1234567',
       ]) {
         for (const currency of currencies) {
           const amount = format(
@@ -225,21 +226,21 @@ describe('parse', () => {
     const currencies = getManyCurrencies(at);
     for (const locale of locales) {
       for (const numericalAmount of [
-        0n,
-        -0n,
-        1n,
-        -1n,
-        10n,
-        12n,
-        100n,
-        -100n,
-        123n,
-        1000n,
-        1234n,
-        12_345n,
-        -12_345n,
-        123_456n,
-        1_234_567n,
+        '0',
+        '-0',
+        '1',
+        '-1',
+        '10',
+        '12',
+        '100',
+        '-100',
+        '123',
+        '1000',
+        '1234',
+        '12345',
+        '-12345',
+        '123456',
+        '1234567',
       ]) {
         for (const currency of currencies) {
           const amount = format(

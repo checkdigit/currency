@@ -159,14 +159,13 @@ export default function (at: string): ParseLibrary {
         amount += '0'.repeat(minorUnitDigits - decimalPlaces);
       }
 
-      try {
-        return {
-          amount: BigInt(amount),
-          currency: currencyCode,
-        };
-      } catch (error) {
-        throw new Error(`Cannot parse "${money}"`, { cause: error });
-      }
+      const numericAmount = BigInt(amount);
+      const isNegativeZero = numericAmount === 0n && amount.startsWith('-');
+
+      return {
+        amount: isNegativeZero ? '-0' : numericAmount.toString(),
+        currency: currencyCode,
+      };
     },
   };
 }

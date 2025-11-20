@@ -45,12 +45,6 @@ export default function (at: string): CurrencyLibrary {
     findCurrency(search: string | number) {
       const normalizedSearch = String(search).trim().toUpperCase();
       const currency = currencyMap.get(normalizedSearch);
-      // currencies.find(
-      //   ({ alphabeticCode, name, numericCode }) =>
-      //     normalizedSearch === alphabeticCode ||
-      //     normalizedSearch === numericCode ||
-      //     normalizedSearch === name.toUpperCase(),
-      // );
 
       if (currency === undefined) {
         throw new Error(`Currency not found for '${search}'`);
@@ -60,10 +54,6 @@ export default function (at: string): CurrencyLibrary {
     },
     getCurrency: (code: CurrencyAlphabeticCode | CurrencyNumericCode) => {
       const currency = currencyMap.get(code);
-      // const currency = currencies.find(
-      //   ({ alphabeticCode, numericCode }) =>
-      //     code === alphabeticCode || code === numericCode,
-      // );
 
       if (currency === undefined) {
         throw new TypeError(`Currency not found for code '${code}'`);

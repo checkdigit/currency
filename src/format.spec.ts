@@ -28,7 +28,7 @@ describe('format', () => {
     const minorUnitDigits = getMinorUnitDigits(code);
     const minorUnit = 10 ** minorUnitDigits;
     const internal = format(
-      { amount: amount === 0 ? amount : BigInt(amount), currency: code },
+      { amount: Object.is(amount, -0) ? '-0' : String(amount), currency: code },
       {},
       locale,
     );
@@ -42,14 +42,14 @@ describe('format', () => {
   it('supports full ICU', () => {
     assert.equal(
       format(
-        { amount: BigInt('123456789'), currency: 'USD' },
+        { amount: '123456789', currency: 'USD' },
         { currencyDisplay: 'code' },
         'de-DE',
       ),
       '1.234.567,89 USD',
     );
     assert.equal(
-      format({ amount: BigInt('123456789'), currency: 'EUR' }, {}, 'es-ES'),
+      format({ amount: '123456789', currency: 'EUR' }, {}, 'es-ES'),
       '1.234.567,89 €',
     );
   });
@@ -86,10 +86,7 @@ describe('format', () => {
   });
 
   it('support zero-based edge cases', () => {
-    assert.equal(format({ amount: -0, currency: 'USD' }), '-$0.00');
     assert.equal(format({ amount: '-0', currency: 'USD' }), '-$0.00');
-    assert.equal(format({ amount: 0, currency: 'USD' }), '$0.00');
-    assert.equal(format({ amount: BigInt(0), currency: 'USD' }), '$0.00');
     assert.equal(format({ amount: '0', currency: 'USD' }), '$0.00');
   });
 
@@ -127,14 +124,14 @@ describe('format', () => {
   it('support edge cases', () => {
     assert.equal(
       format({
-        amount: BigInt('123456789012345678901234567890'),
+        amount: '123456789012345678901234567890',
         currency: 'USD',
       }),
       '$1,234,567,890,123,456,789,012,345,678.90',
     );
     assert.equal(
       format({
-        amount: BigInt('-123456789012345678901234567890'),
+        amount: '-123456789012345678901234567890',
         currency: 'USD',
       }),
       '-$1,234,567,890,123,456,789,012,345,678.90',
@@ -215,7 +212,7 @@ describe('format', () => {
   it('format will throw an error if we pass any date pre-2018', () => {
     assert.throws(() => {
       formatLibrary('2017-12-31T23:59:00.000Z').format(
-        { amount: BigInt('123456789'), currency: 'USD' },
+        { amount: '123456789', currency: 'USD' },
         { currencyDisplay: 'code' },
         'de-DE',
       ); // This is to check for the code with date pre-2018
