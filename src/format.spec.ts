@@ -61,7 +61,7 @@ describe('format', () => {
   });
 
   it('matches Intl number implementation for all supported currencies', () => {
-    // Intl.NumberFormat does not support the currencies below per the ISO 4217 standard.
+    // Intl.NumberFormat uses different fraction digits than ISO 4217 for these currencies.
     const unsupportedCurrencies = getUnsupportedCurrencies(at);
     for (const code of currency(new Date().toISOString())
       .allCurrencies()

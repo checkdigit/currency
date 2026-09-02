@@ -57,7 +57,8 @@ export function getAllCurrencies(
 }
 
 /**
- * Returns a list of currencies that are not supported by Intl.NumberFormat.
+ * Returns currencies whose Intl.NumberFormat fraction digits do not match
+ * their ISO 4217 minor units.
  */
 export function getUnsupportedCurrencies(
   at: string = new Date().toISOString(),
@@ -78,7 +79,6 @@ export function getUnsupportedCurrencies(
       'MGA',
       'MMK',
       'PKR',
-      'RSD',
       'SLL',
       'SOS',
       'SYP',

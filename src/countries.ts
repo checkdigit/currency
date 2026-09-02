@@ -7,7 +7,8 @@
  */
 
 /*
- * ISO 3166 country database with links to ISO 4217 currency information.
+ * ISO 3166 country database with links to ISO 4217 currency information,
+ * updated through ISO 4217 List One published 2026-01-01.
  */
 
 /* eslint-disable max-lines */
@@ -3480,6 +3481,40 @@ const countries: Operation<Country>[] = [
   },
   {
     type: 'delete',
+    name: 'Cuba',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2021-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Cuba',
+      alpha2: 'CU',
+      alpha3: 'CUB',
+      numeric: '192',
+      currencyCodes: ['CUP'],
+    },
+    createdOn: '2021-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sierra Leone',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2022-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLE'],
+    },
+    createdOn: '2022-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
     name: 'Croatia',
     previousCreatedOn: '2018-01-01T00:00:00.000Z',
     createdOn: '2023-01-01T00:00:00.000Z',
@@ -3494,6 +3529,74 @@ const countries: Operation<Country>[] = [
       currencyCodes: ['EUR'],
     },
     createdOn: '2023-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Zimbabwe',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2024-06-25T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Zimbabwe',
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      numeric: '716',
+      currencyCodes: ['ZWG'],
+    },
+    createdOn: '2024-06-25T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Cura\u00E7ao',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Cura\u00E7ao',
+      alpha2: 'CW',
+      alpha3: 'CUW',
+      numeric: '531',
+      currencyCodes: ['XCG'],
+    },
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sint Maarten',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sint Maarten',
+      alpha2: 'SX',
+      alpha3: 'SXM',
+      numeric: '534',
+      currencyCodes: ['XCG'],
+    },
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Bulgaria',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Bulgaria',
+      alpha2: 'BG',
+      alpha3: 'BGR',
+      numeric: '100',
+      currencyCodes: ['EUR'],
+    },
+    createdOn: '2026-01-01T00:00:00.000Z',
   },
 ];
 

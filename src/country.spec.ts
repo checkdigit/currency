@@ -46,6 +46,54 @@ describe('country', () => {
       numeric: '332',
     });
 
+    assert.deepEqual(getCountry('BG'), {
+      alpha2: 'BG',
+      alpha3: 'BGR',
+      currencyCodes: ['EUR'],
+      name: 'Bulgaria',
+      numeric: '100',
+    });
+
+    assert.deepEqual(getCountry('CU'), {
+      alpha2: 'CU',
+      alpha3: 'CUB',
+      currencyCodes: ['CUP'],
+      name: 'Cuba',
+      numeric: '192',
+    });
+
+    assert.deepEqual(getCountry('CW'), {
+      alpha2: 'CW',
+      alpha3: 'CUW',
+      currencyCodes: ['XCG'],
+      name: 'Cura\u00E7ao',
+      numeric: '531',
+    });
+
+    assert.deepEqual(getCountry('SL'), {
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      currencyCodes: ['SLE'],
+      name: 'Sierra Leone',
+      numeric: '694',
+    });
+
+    assert.deepEqual(getCountry('SX'), {
+      alpha2: 'SX',
+      alpha3: 'SXM',
+      currencyCodes: ['XCG'],
+      name: 'Sint Maarten',
+      numeric: '534',
+    });
+
+    assert.deepEqual(getCountry('ZW'), {
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      currencyCodes: ['ZWG'],
+      name: 'Zimbabwe',
+      numeric: '716',
+    });
+
     assert.deepEqual(getCountry('AUS'), getCountry('036'));
     assert.deepEqual(getCountry('036'), getCountry('AU'));
     assert.deepEqual(getCountry('USA'), getCountry('840'));
@@ -72,6 +120,9 @@ describe('country', () => {
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency', () => {
     assert.deepEqual(getCountriesForCurrency('JPY'), ['JPN']);
     assert.deepEqual(getCountriesForCurrency('CAD'), ['CAN']);
+    assert.deepEqual(getCountriesForCurrency('SLE'), ['SLE']);
+    assert.deepEqual(getCountriesForCurrency('XCG'), ['CUW', 'SXM']);
+    assert.deepEqual(getCountriesForCurrency('ZWG'), ['ZWE']);
     assert.deepEqual(getCountriesForCurrency('NZD'), [
       'COK',
       'NIU',
@@ -117,6 +168,7 @@ describe('country', () => {
       'ATF',
       'AUT',
       'BEL',
+      'BGR',
       'BLM',
       'CYP',
       'DEU',
@@ -150,6 +202,11 @@ describe('country', () => {
     ]);
 
     assert.deepEqual(getCountriesForCurrency('XXX'), []);
+    assert.deepEqual(getCountriesForCurrency('ANG'), []);
+    assert.deepEqual(getCountriesForCurrency('BGN'), []);
+    assert.deepEqual(getCountriesForCurrency('CUC'), []);
+    assert.deepEqual(getCountriesForCurrency('SLL'), []);
+    assert.deepEqual(getCountriesForCurrency('ZWL'), []);
     assert.deepEqual(getCountriesForCurrency('' as CurrencyAlphabeticCode), []);
     assert.deepEqual(
       getCountriesForCurrency(undefined as unknown as CurrencyAlphabeticCode),
@@ -216,6 +273,46 @@ describe('country', () => {
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code at specific time', () => {
+    assert.deepEqual(country('2021-06-30T23:59:59.999Z').getCountry('CU'), {
+      name: 'Cuba',
+      alpha2: 'CU',
+      alpha3: 'CUB',
+      numeric: '192',
+      currencyCodes: ['CUP', 'CUC'],
+    });
+
+    assert.deepEqual(country('2022-06-30T23:59:59.999Z').getCountry('SL'), {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLL'],
+    });
+
+    assert.deepEqual(country('2024-06-24T23:59:59.999Z').getCountry('ZW'), {
+      name: 'Zimbabwe',
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      numeric: '716',
+      currencyCodes: ['ZWL'],
+    });
+
+    assert.deepEqual(country('2025-03-30T23:59:59.999Z').getCountry('CW'), {
+      name: 'Cura\u00E7ao',
+      alpha2: 'CW',
+      alpha3: 'CUW',
+      numeric: '531',
+      currencyCodes: ['ANG'],
+    });
+
+    assert.deepEqual(country('2025-12-31T23:59:59.999Z').getCountry('BG'), {
+      name: 'Bulgaria',
+      alpha2: 'BG',
+      alpha3: 'BGR',
+      numeric: '100',
+      currencyCodes: ['BGN'],
+    });
+
     assert.deepEqual(country('2023-01-16T00:00:00.000Z').getCountry('HR'), {
       name: 'Croatia',
       alpha2: 'HR',
