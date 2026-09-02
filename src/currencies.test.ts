@@ -67,6 +67,9 @@ export function getUnsupportedCurrencies(
     [
       'AFN',
       'ALL',
+      'COP',
+      'HUF',
+      'IDR',
       'IRR',
       'IQD',
       'KPW',
@@ -74,6 +77,7 @@ export function getUnsupportedCurrencies(
       'LBP',
       'MGA',
       'MMK',
+      'PKR',
       'RSD',
       'SLL',
       'SOS',
