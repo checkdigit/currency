@@ -225,6 +225,7 @@ export function getManyLocales(): Intl.Locale[] {
 
 export function getAllLocales(at: string): Intl.Locale[] {
   const { allCountries } = currencyLibrary(at);
+  const countries = allCountries();
 
   // eslint-disable-next-line no-secrets/no-secrets
   const letters = 'abcdefghijklmnopqrstuvwxyz';
@@ -235,10 +236,8 @@ export function getAllLocales(at: string): Intl.Locale[] {
     for (const secondLetter of letters) {
       const language = firstLetter + secondLetter;
       if (new Intl.Locale(language).maximize().region !== undefined) {
-        for (const countryAlpha2 of allCountries().map(
-          (country) => country.alpha2,
-        )) {
-          locales.push(new Intl.Locale(`${language}-${countryAlpha2}`));
+        for (const { alpha2 } of countries) {
+          locales.push(new Intl.Locale(`${language}-${alpha2}`));
         }
       }
     }

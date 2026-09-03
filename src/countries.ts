@@ -1,7 +1,7 @@
 // countries.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -1424,7 +1424,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'Cura\u00E7ao',
+      name: 'Cura\u{E7}ao',
       alpha2: 'CW',
       alpha3: 'CUW',
       numeric: '531',
@@ -1457,7 +1457,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'C\u00F4te d\u2019Ivoire',
+      name: 'C\u{F4}te d\u{2019}Ivoire',
       alpha2: 'CI',
       alpha3: 'CIV',
       numeric: '384',
@@ -2788,7 +2788,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'R\u00E9union',
+      name: 'R\u{E9}union',
       alpha2: 'RE',
       alpha3: 'REU',
       numeric: '638',
@@ -2799,7 +2799,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'St. Barth\u00E9lemy',
+      name: 'St. Barth\u{E9}lemy',
       alpha2: 'BL',
       alpha3: 'BLM',
       numeric: '652',
@@ -2898,7 +2898,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'S\u00E3o Tom\u00E9 & Pr\u00EDncipe',
+      name: 'S\u{E3}o Tom\u{E9} & Pr\u{ED}ncipe',
       alpha2: 'ST',
       alpha3: 'STP',
       numeric: '678',
@@ -3503,7 +3503,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: '\u00C5land Islands',
+      name: '\u{C5}land Islands',
       alpha2: 'AX',
       alpha3: 'ALA',
       numeric: '248',
@@ -3592,14 +3592,14 @@ const countries: Operation<Country>[] = [
   },
   {
     type: 'delete',
-    name: 'Cura\u00E7ao',
+    name: 'Cura\u{E7}ao',
     previousCreatedOn: '2018-01-01T00:00:00.000Z',
     createdOn: '2025-03-31T00:00:00.000Z',
   },
   {
     type: 'create',
     item: {
-      name: 'Cura\u00E7ao',
+      name: 'Cura\u{E7}ao',
       alpha2: 'CW',
       alpha3: 'CUW',
       numeric: '531',

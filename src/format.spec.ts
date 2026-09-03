@@ -1,7 +1,7 @@
 // format.spec.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -32,7 +32,7 @@ describe('format', () => {
       {},
       locale,
     );
-    const reference = Intl.NumberFormat(locale, {
+    const reference = new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: code,
     }).format(amount / minorUnit);
@@ -63,16 +63,15 @@ describe('format', () => {
   it('matches Intl number implementation for all supported currencies', () => {
     // Intl.NumberFormat uses different fraction digits than ISO 4217 for these currencies.
     const unsupportedCurrencies = getUnsupportedCurrencies(at);
-    for (const code of currency(new Date().toISOString())
+    const supportedCurrencies = currency(new Date().toISOString())
       .allCurrencies()
-      .filter(
-        ({ alphabeticCode }) =>
-          !unsupportedCurrencies.some(
-            (unsupportedCurrency) =>
-              alphabeticCode === unsupportedCurrency.alphabeticCode,
-          ),
-      )
-      .map(({ alphabeticCode }) => alphabeticCode)) {
+      .filter(({ alphabeticCode }) =>
+        unsupportedCurrencies.every(
+          (unsupportedCurrency) =>
+            alphabeticCode !== unsupportedCurrency.alphabeticCode,
+        ),
+      );
+    for (const { alphabeticCode: code } of supportedCurrencies) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
         check(code, base - 1);

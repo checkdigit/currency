@@ -1,7 +1,7 @@
 // country.spec.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -90,7 +90,7 @@ describe('country', () => {
       alpha2: 'CW',
       alpha3: 'CUW',
       currencyCodes: ['XCG'],
-      name: 'Cura\u00E7ao',
+      name: 'Cura\u{E7}ao',
       numeric: '531',
     });
 
@@ -330,7 +330,7 @@ describe('country', () => {
     });
 
     assert.deepEqual(country('2025-03-30T23:59:59.999Z').getCountry('CW'), {
-      name: 'Cura\u00E7ao',
+      name: 'Cura\u{E7}ao',
       alpha2: 'CW',
       alpha3: 'CUW',
       numeric: '531',

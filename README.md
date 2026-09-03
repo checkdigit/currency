@@ -1,6 +1,6 @@
 # Check Digit Currency Library
 
-Copyright © 2021–2025 [Check Digit, LLC](https://checkdigit.com)
+Copyright © 2021–2026 [Check Digit, LLC](https://checkdigit.com)
 
 The Check Digit currency library is the officially sanctioned method for Check Digit services to deal with currency types, formatting and country/currency relationships at a particular date/time. Features:
 
@@ -10,7 +10,7 @@ The Check Digit currency library is the officially sanctioned method for Check D
 - currency parsing of strings into Check Digit-standard Money objects
 - tests to ensure compliance with number-based Intl.NumberFormat currency implementation
 - tests to ensure correctness of underlying JS engine Intl implementation, with respect to currency
-- multi-locale (all modern browsers and Node 14+ includes full [ICU](http://icu-project.org))
+- multi-locale (all modern browsers and Node 24+ include full [ICU](http://icu-project.org))
 - uses built-in JS engine `Intl` implementation, no dependencies
 
 ## Installing

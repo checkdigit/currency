@@ -1,7 +1,7 @@
 // parse.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -31,7 +31,7 @@ export default function (at: string): ParseLibrary {
   const countryLibraryAt = countryLibrary(at);
   return {
     parse(money, currencyCode, locales) {
-      const parts = Intl.NumberFormat(locales, {
+      const parts = new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currencyCode,
         // eslint-disable-next-line no-magic-numbers
@@ -40,7 +40,7 @@ export default function (at: string): ParseLibrary {
         (part) => part.type === 'currency',
       )?.value;
 
-      const simpleParts = Intl.NumberFormat(locales, {
+      const simpleParts = new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currencyCode,
         currencyDisplay: 'narrowSymbol',
@@ -58,7 +58,6 @@ export default function (at: string): ParseLibrary {
       const numerals = new Intl.NumberFormat(locales, { useGrouping: false })
         // eslint-disable-next-line unicorn/numeric-separators-style,no-magic-numbers
         .format(9876543210)
-        // eslint-disable-next-line unicorn/prefer-spread
         .split('')
         .toReversed()
         .join('');
