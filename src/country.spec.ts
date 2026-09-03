@@ -18,7 +18,7 @@ describe('country', () => {
   const { allCountries, getCountry, getCountriesForCurrency } = country(at);
 
   it('getAll returns all countries', () => {
-    assert.equal(allCountries().length, 246);
+    assert.equal(allCountries().length, 249);
   });
 
   it('getCountry will find a country based on alpha2, alpha3 or numeric code', () => {
@@ -44,6 +44,30 @@ describe('country', () => {
       currencyCodes: ['HTG', 'USD'],
       name: 'Haiti',
       numeric: '332',
+    });
+
+    assert.deepEqual(getCountry('AQ'), {
+      alpha2: 'AQ',
+      alpha3: 'ATA',
+      currencyCodes: ['XXX'],
+      name: 'Antarctica',
+      numeric: '010',
+    });
+
+    assert.deepEqual(getCountry('FLK'), {
+      alpha2: 'FK',
+      alpha3: 'FLK',
+      currencyCodes: ['FKP'],
+      name: 'Falkland Islands (the) [Malvinas]',
+      numeric: '238',
+    });
+
+    assert.deepEqual(getCountry('239'), {
+      alpha2: 'GS',
+      alpha3: 'SGS',
+      currencyCodes: ['GBP'],
+      name: 'South Georgia and the South Sandwich Islands',
+      numeric: '239',
     });
 
     assert.deepEqual(getCountry('BG'), {
@@ -120,6 +144,14 @@ describe('country', () => {
   it('getCountriesForCurrency will return countries (in sorted order) that use a particular currency', () => {
     assert.deepEqual(getCountriesForCurrency('JPY'), ['JPN']);
     assert.deepEqual(getCountriesForCurrency('CAD'), ['CAN']);
+    assert.deepEqual(getCountriesForCurrency('FKP'), ['FLK']);
+    assert.deepEqual(getCountriesForCurrency('GBP'), [
+      'GBR',
+      'GGY',
+      'IMN',
+      'JEY',
+      'SGS',
+    ]);
     assert.deepEqual(getCountriesForCurrency('SLE'), ['SLE']);
     assert.deepEqual(getCountriesForCurrency('XCG'), ['CUW', 'SXM']);
     assert.deepEqual(getCountriesForCurrency('ZWG'), ['ZWE']);
@@ -201,7 +233,7 @@ describe('country', () => {
       'VAT',
     ]);
 
-    assert.deepEqual(getCountriesForCurrency('XXX'), []);
+    assert.deepEqual(getCountriesForCurrency('XXX'), ['ATA']);
     assert.deepEqual(getCountriesForCurrency('ANG'), []);
     assert.deepEqual(getCountriesForCurrency('BGN'), []);
     assert.deepEqual(getCountriesForCurrency('CUC'), []);

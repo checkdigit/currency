@@ -26,6 +26,7 @@ export type CountryAlpha2 =
   | 'AO'
   | 'AI'
   | 'AG'
+  | 'AQ'
   | 'AR'
   | 'AM'
   | 'AW'
@@ -91,6 +92,7 @@ export type CountryAlpha2 =
   | 'ER'
   | 'EE'
   | 'ET'
+  | 'FK'
   | 'FO'
   | 'FJ'
   | 'FI'
@@ -220,6 +222,7 @@ export type CountryAlpha2 =
   | 'SB'
   | 'SO'
   | 'ZA'
+  | 'GS'
   | 'SS'
   | 'ES'
   | 'LK'
@@ -274,6 +277,7 @@ export type CountryAlpha3 =
   | 'AGO'
   | 'AIA'
   | 'ATG'
+  | 'ATA'
   | 'ARG'
   | 'ARM'
   | 'ABW'
@@ -339,6 +343,7 @@ export type CountryAlpha3 =
   | 'ERI'
   | 'EST'
   | 'ETH'
+  | 'FLK'
   | 'FRO'
   | 'FJI'
   | 'FIN'
@@ -468,6 +473,7 @@ export type CountryAlpha3 =
   | 'SLB'
   | 'SOM'
   | 'ZAF'
+  | 'SGS'
   | 'SSD'
   | 'ESP'
   | 'LKA'
@@ -522,6 +528,7 @@ export type CountryNumeric =
   | '024'
   | '660'
   | '028'
+  | '010'
   | '032'
   | '051'
   | '533'
@@ -587,6 +594,7 @@ export type CountryNumeric =
   | '232'
   | '233'
   | '231'
+  | '238'
   | '234'
   | '242'
   | '246'
@@ -716,6 +724,7 @@ export type CountryNumeric =
   | '090'
   | '706'
   | '710'
+  | '239'
   | '728'
   | '724'
   | '144'
@@ -868,6 +877,18 @@ const countries: Operation<Country>[] = [
       alpha3: 'ATG',
       numeric: '028',
       currencyCodes: ['XCD'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Antarctica',
+      alpha2: 'AQ',
+      alpha3: 'ATA',
+      numeric: '010',
+      // CLDR represents Antarctica as having no currency.
+      currencyCodes: ['XXX'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
@@ -1584,6 +1605,17 @@ const countries: Operation<Country>[] = [
       alpha3: 'ETH',
       numeric: '231',
       currencyCodes: ['ETB'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Falkland Islands (the) [Malvinas]',
+      alpha2: 'FK',
+      alpha3: 'FLK',
+      numeric: '238',
+      currencyCodes: ['FKP'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
@@ -3003,6 +3035,17 @@ const countries: Operation<Country>[] = [
       alpha3: 'ZAF',
       numeric: '710',
       currencyCodes: ['ZAR'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'South Georgia and the South Sandwich Islands',
+      alpha2: 'GS',
+      alpha3: 'SGS',
+      numeric: '239',
+      currencyCodes: ['GBP'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
