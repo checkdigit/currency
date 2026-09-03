@@ -13,7 +13,7 @@ import currency, { type CurrencyAlphabeticCode } from './currency.ts';
 import formatLibrary from './index.ts';
 
 import { getManyLocales } from './locales.test.ts';
-import { getUnsupportedCurrencies } from './currencies.test.ts';
+import { getCurrenciesWithIntlFractionDigitDifferences } from './currencies.test.ts';
 
 describe('format', () => {
   const at = new Date().toISOString();
@@ -60,18 +60,21 @@ describe('format', () => {
     });
   });
 
-  it('matches Intl number implementation for all supported currencies', () => {
-    // Intl.NumberFormat uses different fraction digits than ISO 4217 for these currencies.
-    const unsupportedCurrencies = getUnsupportedCurrencies(at);
-    const supportedCurrencies = currency(new Date().toISOString())
+  it('matches Intl number implementation when fraction digits match ISO 4217', () => {
+    const intlFractionDigitDifferenceCodes = new Set(
+      getCurrenciesWithIntlFractionDigitDifferences(at).map(
+        ({ alphabeticCode }) => alphabeticCode,
+      ),
+    );
+    const currenciesWithMatchingFractionDigits = currency(at)
       .allCurrencies()
-      .filter(({ alphabeticCode }) =>
-        unsupportedCurrencies.every(
-          (unsupportedCurrency) =>
-            alphabeticCode !== unsupportedCurrency.alphabeticCode,
-        ),
+      .filter(
+        ({ alphabeticCode }) =>
+          !intlFractionDigitDifferenceCodes.has(alphabeticCode),
       );
-    for (const { alphabeticCode: code } of supportedCurrencies) {
+    for (const {
+      alphabeticCode: code,
+    } of currenciesWithMatchingFractionDigits) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
         check(code, base - 1);

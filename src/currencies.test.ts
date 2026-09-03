@@ -60,7 +60,7 @@ export function getAllCurrencies(
  * Returns currencies whose Intl.NumberFormat fraction digits do not match
  * their ISO 4217 minor units.
  */
-export function getUnsupportedCurrencies(
+export function getCurrenciesWithIntlFractionDigitDifferences(
   at: string = new Date().toISOString(),
 ): Currency[] {
   const { getCurrency } = currencyLibrary(at);
