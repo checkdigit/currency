@@ -377,4 +377,65 @@ describe('country', () => {
       currencyCodes: ['ISK'],
     });
   });
+
+  it('includes both currencies during redenomination transition periods', () => {
+    const sierraLeoneDuringTransition = country('2022-07-01T00:00:00.001Z');
+    assert.deepEqual(sierraLeoneDuringTransition.getCountry('SL'), {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLE', 'SLL'],
+    });
+    assert.deepEqual(
+      sierraLeoneDuringTransition.getCountriesForCurrency('SLL'),
+      ['SLE'],
+    );
+    assert.deepEqual(
+      sierraLeoneDuringTransition.getCountriesForCurrency('SLE'),
+      ['SLE'],
+    );
+    assert.deepEqual(
+      country('2022-09-30T23:59:59.999Z').getCountry('SL').currencyCodes,
+      ['SLE', 'SLL'],
+    );
+
+    const sierraLeoneAfterTransition = country('2022-10-01T00:00:00.001Z');
+    assert.deepEqual(
+      sierraLeoneAfterTransition.getCountry('SL').currencyCodes,
+      ['SLE'],
+    );
+    assert.deepEqual(
+      sierraLeoneAfterTransition.getCountriesForCurrency('SLL'),
+      [],
+    );
+
+    const zimbabweDuringTransition = country('2024-06-25T00:00:00.001Z');
+    assert.deepEqual(zimbabweDuringTransition.getCountry('ZW'), {
+      name: 'Zimbabwe',
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      numeric: '716',
+      currencyCodes: ['ZWG', 'ZWL'],
+    });
+    assert.deepEqual(zimbabweDuringTransition.getCountriesForCurrency('ZWL'), [
+      'ZWE',
+    ]);
+    assert.deepEqual(zimbabweDuringTransition.getCountriesForCurrency('ZWG'), [
+      'ZWE',
+    ]);
+    assert.deepEqual(
+      country('2024-08-31T23:59:59.999Z').getCountry('ZW').currencyCodes,
+      ['ZWG', 'ZWL'],
+    );
+
+    const zimbabweAfterTransition = country('2024-09-01T00:00:00.001Z');
+    assert.deepEqual(zimbabweAfterTransition.getCountry('ZW').currencyCodes, [
+      'ZWG',
+    ]);
+    assert.deepEqual(
+      zimbabweAfterTransition.getCountriesForCurrency('ZWL'),
+      [],
+    );
+  });
 });

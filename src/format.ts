@@ -85,11 +85,18 @@ export default function (at: string): FormatLibrary {
         majorUnitAmount = -0;
       }
 
+      /*
+       * CLDR fraction-digit defaults differ from ISO 4217 for some currencies.
+       * Force Intl to emit a fraction part so it can be replaced below with the
+       * exact minor-unit value calculated without floating-point arithmetic.
+       */
       return new Intl.NumberFormat(locales, {
         style: 'currency',
         currency,
         useGrouping: resolvedOptions.useGrouping,
         currencyDisplay: resolvedOptions.currencyDisplay,
+        minimumFractionDigits: minorUnitDigits,
+        maximumFractionDigits: minorUnitDigits,
       })
         .formatToParts(majorUnitAmount)
         .filter(

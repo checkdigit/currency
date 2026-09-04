@@ -13,7 +13,6 @@ import currency, { type CurrencyAlphabeticCode } from './currency.ts';
 import formatLibrary from './index.ts';
 
 import { getManyLocales } from './locales.test.ts';
-import { getCurrenciesWithIntlFractionDigitDifferences } from './currencies.test.ts';
 
 describe('format', () => {
   const at = new Date().toISOString();
@@ -35,6 +34,8 @@ describe('format', () => {
     const reference = new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: code,
+      minimumFractionDigits: minorUnitDigits,
+      maximumFractionDigits: minorUnitDigits,
     }).format(amount / minorUnit);
     assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
   }
@@ -60,21 +61,8 @@ describe('format', () => {
     });
   });
 
-  it('matches Intl number implementation when fraction digits match ISO 4217', () => {
-    const intlFractionDigitDifferenceCodes = new Set(
-      getCurrenciesWithIntlFractionDigitDifferences(at).map(
-        ({ alphabeticCode }) => alphabeticCode,
-      ),
-    );
-    const currenciesWithMatchingFractionDigits = currency(at)
-      .allCurrencies()
-      .filter(
-        ({ alphabeticCode }) =>
-          !intlFractionDigitDifferenceCodes.has(alphabeticCode),
-      );
-    for (const {
-      alphabeticCode: code,
-    } of currenciesWithMatchingFractionDigits) {
+  it('matches Intl number implementation using ISO 4217 fraction digits', () => {
+    for (const { alphabeticCode: code } of currency(at).allCurrencies()) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
         check(code, base - 1);
@@ -84,6 +72,25 @@ describe('format', () => {
         check(code, -base);
         check(code, -(base + 1));
       }
+    }
+  });
+
+  it('uses ISO 4217 fraction digits when Intl defaults differ', () => {
+    for (const [code, expected] of [
+      ['COP', 'COP\u{A0}1,234.56'],
+      ['HUF', 'HUF\u{A0}1,234.56'],
+      ['IDR', 'IDR\u{A0}1,234.56'],
+      ['PKR', 'PKR\u{A0}1,234.56'],
+      ['IQD', 'IQD\u{A0}123.456'],
+    ] as const) {
+      assert.equal(
+        format(
+          { amount: '123456', currency: code },
+          { currencyDisplay: 'code' },
+          'en-US',
+        ),
+        expected,
+      );
     }
   });
 

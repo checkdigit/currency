@@ -55,34 +55,3 @@ export function getAllCurrencies(
   const { allCurrencies } = currencyLibrary(at);
   return allCurrencies();
 }
-
-/**
- * Returns currencies whose Intl.NumberFormat fraction digits do not match
- * their ISO 4217 minor units.
- */
-export function getCurrenciesWithIntlFractionDigitDifferences(
-  at: string = new Date().toISOString(),
-): Currency[] {
-  const { getCurrency } = currencyLibrary(at);
-  return (
-    [
-      'AFN',
-      'ALL',
-      'COP',
-      'HUF',
-      'IDR',
-      'IRR',
-      'IQD',
-      'KPW',
-      'LAK',
-      'LBP',
-      'MGA',
-      'MMK',
-      'PKR',
-      'SLL',
-      'SOS',
-      'SYP',
-      'YER',
-    ] satisfies CurrencyAlphabeticCode[]
-  ).map((currency) => getCurrency(currency));
-}

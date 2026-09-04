@@ -70,6 +70,30 @@ describe('currency', () => {
     });
   });
 
+  it('findCurrency resolves duplicate names to their canonical currency', () => {
+    const beforeVed = currency('2021-09-30T23:59:59.999Z');
+    assert.equal(
+      beforeVed.findCurrency('Bolívar Soberano').alphabeticCode,
+      'VES',
+    );
+
+    const afterVed = currency('2021-10-01T00:00:00.001Z');
+    assert.equal(
+      afterVed.findCurrency('  bolívar soberano  ').alphabeticCode,
+      'VES',
+    );
+    assert.equal(afterVed.findCurrency('VED').alphabeticCode, 'VED');
+    assert.equal(afterVed.findCurrency(926).alphabeticCode, 'VED');
+
+    const beforeSle = currency('2022-03-31T23:59:59.999Z');
+    assert.equal(beforeSle.findCurrency('Leone').alphabeticCode, 'SLL');
+
+    const afterSle = currency('2022-04-01T00:00:00.001Z');
+    assert.equal(afterSle.findCurrency('Leone').alphabeticCode, 'SLE');
+    assert.equal(afterSle.findCurrency('SLL').alphabeticCode, 'SLL');
+    assert.equal(afterSle.findCurrency(694).alphabeticCode, 'SLL');
+  });
+
   it('getCurrency will find currencies based on numeric or alphabetic codes', () => {
     assert.deepEqual(getCurrency('NZD'), {
       alphabeticCode: 'NZD',

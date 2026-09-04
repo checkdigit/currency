@@ -168,6 +168,34 @@ describe('parse', () => {
     });
   });
 
+  it('uses ISO 4217 fraction digits when Intl defaults differ', () => {
+    for (const [currency, formatted] of [
+      ['COP', 'COP\u{A0}1.234,56'],
+      ['HUF', 'HUF\u{A0}1.234,56'],
+      ['IDR', 'IDR\u{A0}1.234,56'],
+      ['PKR', 'PKR\u{A0}1.234,56'],
+      ['IQD', 'IQD\u{A0}123,456'],
+    ] as const) {
+      assert.deepEqual(parse(formatted, currency, 'de-DE'), {
+        amount: '123456',
+        currency,
+      });
+
+      assert.deepEqual(
+        parse(
+          format(
+            { amount: '-123456', currency },
+            { currencyDisplay: 'code' },
+            'de-DE',
+          ),
+          currency,
+          'de-DE',
+        ),
+        { amount: '-123456', currency },
+      );
+    }
+  });
+
   it('supports a few common languages, regions and currencies with many numerical amounts (fast test)', () => {
     const locales = getFewLocales();
     const currencies = getFewCurrencies(at);
