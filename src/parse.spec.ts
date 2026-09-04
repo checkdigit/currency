@@ -170,11 +170,11 @@ describe('parse', () => {
 
   it('uses ISO 4217 fraction digits when Intl defaults differ', () => {
     for (const [currency, formatted] of [
-      ['COP', 'COP\u{A0}1.234,56'],
-      ['HUF', 'HUF\u{A0}1.234,56'],
-      ['IDR', 'IDR\u{A0}1.234,56'],
-      ['PKR', 'PKR\u{A0}1.234,56'],
-      ['IQD', 'IQD\u{A0}123,456'],
+      ['COP', 'COP 1.234,56'],
+      ['HUF', 'HUF 1.234,56'],
+      ['IDR', 'IDR 1.234,56'],
+      ['PKR', 'PKR 1.234,56'],
+      ['IQD', 'IQD 123,456'],
     ] as const) {
       assert.deepEqual(parse(formatted, currency, 'de-DE'), {
         amount: '123456',
