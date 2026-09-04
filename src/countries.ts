@@ -3558,23 +3558,6 @@ const countries: Operation<Country>[] = [
   },
   {
     type: 'delete',
-    name: 'Sierra Leone',
-    previousCreatedOn: '2022-07-01T00:00:00.000Z',
-    createdOn: '2022-10-01T00:00:00.000Z',
-  },
-  {
-    type: 'create',
-    item: {
-      name: 'Sierra Leone',
-      alpha2: 'SL',
-      alpha3: 'SLE',
-      numeric: '694',
-      currencyCodes: ['SLE'],
-    },
-    createdOn: '2022-10-01T00:00:00.000Z',
-  },
-  {
-    type: 'delete',
     name: 'Croatia',
     previousCreatedOn: '2018-01-01T00:00:00.000Z',
     createdOn: '2023-01-01T00:00:00.000Z',
@@ -3589,6 +3572,23 @@ const countries: Operation<Country>[] = [
       currencyCodes: ['EUR'],
     },
     createdOn: '2023-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sierra Leone',
+    previousCreatedOn: '2022-07-01T00:00:00.000Z',
+    createdOn: '2024-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLE'],
+    },
+    createdOn: '2024-01-01T00:00:00.000Z',
   },
   {
     type: 'delete',

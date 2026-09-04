@@ -395,12 +395,23 @@ describe('country', () => {
       sierraLeoneDuringTransition.getCountriesForCurrency('SLE'),
       ['SLE'],
     );
-    assert.deepEqual(
-      country('2022-09-30T23:59:59.999Z').getCountry('SL').currencyCodes,
-      ['SLE', 'SLL'],
-    );
+    for (const transitionDate of [
+      '2022-10-01T00:00:00.001Z',
+      '2023-07-01T00:00:00.000Z',
+      '2023-12-31T23:59:59.999Z',
+    ]) {
+      const sierraLeoneDuringExtendedTransition = country(transitionDate);
+      assert.deepEqual(
+        sierraLeoneDuringExtendedTransition.getCountry('SL').currencyCodes,
+        ['SLE', 'SLL'],
+      );
+      assert.deepEqual(
+        sierraLeoneDuringExtendedTransition.getCountriesForCurrency('SLL'),
+        ['SLE'],
+      );
+    }
 
-    const sierraLeoneAfterTransition = country('2022-10-01T00:00:00.001Z');
+    const sierraLeoneAfterTransition = country('2024-01-01T00:00:00.001Z');
     assert.deepEqual(
       sierraLeoneAfterTransition.getCountry('SL').currencyCodes,
       ['SLE'],
