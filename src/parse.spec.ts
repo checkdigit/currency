@@ -1,7 +1,7 @@
 // parse.spec.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -166,6 +166,34 @@ describe('parse', () => {
       amount: '123',
       currency: 'NZD',
     });
+  });
+
+  it('uses ISO 4217 fraction digits when Intl defaults differ', () => {
+    for (const [currency, formatted] of [
+      ['COP', 'COP 1.234,56'],
+      ['HUF', 'HUF 1.234,56'],
+      ['IDR', 'IDR 1.234,56'],
+      ['PKR', 'PKR 1.234,56'],
+      ['IQD', 'IQD 123,456'],
+    ] as const) {
+      assert.deepEqual(parse(formatted, currency, 'de-DE'), {
+        amount: '123456',
+        currency,
+      });
+
+      assert.deepEqual(
+        parse(
+          format(
+            { amount: '-123456', currency },
+            { currencyDisplay: 'code' },
+            'de-DE',
+          ),
+          currency,
+          'de-DE',
+        ),
+        { amount: '-123456', currency },
+      );
+    }
   });
 
   it('supports a few common languages, regions and currencies with many numerical amounts (fast test)', () => {

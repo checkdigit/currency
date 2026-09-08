@@ -1,7 +1,7 @@
 // parse.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -31,19 +31,32 @@ export default function (at: string): ParseLibrary {
   const countryLibraryAt = countryLibrary(at);
   return {
     parse(money, currencyCode, locales) {
-      const parts = Intl.NumberFormat(locales, {
+      const currency = currencyLibraryAt.getCurrency(currencyCode);
+      const minorUnitDigits =
+        currencyLibraryAt.getMinorUnitDigits(currencyCode);
+
+      /*
+       * CLDR can default a currency to zero fraction digits even when ISO 4217
+       * defines minor units. Force ISO precision while probing so Intl emits the
+       * locale's decimal separator and parsing does not scale the value wrongly.
+       */
+      const parts = new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currencyCode,
+        minimumFractionDigits: minorUnitDigits,
+        maximumFractionDigits: minorUnitDigits,
         // eslint-disable-next-line no-magic-numbers
       }).formatToParts(1_234_567.89);
       const currencySymbol = parts.find(
         (part) => part.type === 'currency',
       )?.value;
 
-      const simpleParts = Intl.NumberFormat(locales, {
+      const simpleParts = new Intl.NumberFormat(locales, {
         style: 'currency',
         currency: currencyCode,
         currencyDisplay: 'narrowSymbol',
+        minimumFractionDigits: minorUnitDigits,
+        maximumFractionDigits: minorUnitDigits,
         // eslint-disable-next-line no-magic-numbers
       }).formatToParts(1_234_567.89);
       const simpleCurrencySymbol = simpleParts.find(
@@ -58,20 +71,14 @@ export default function (at: string): ParseLibrary {
       const numerals = new Intl.NumberFormat(locales, { useGrouping: false })
         // eslint-disable-next-line unicorn/numeric-separators-style,no-magic-numbers
         .format(9876543210)
-        // eslint-disable-next-line unicorn/prefer-spread
         .split('')
         .toReversed()
         .join('');
       const numeralRegex = new RegExp(`[${numerals}]`, 'gu');
 
-      const currency = currencyLibraryAt.getCurrency(currencyCode);
-
       const countries = countryLibraryAt
         .getCountriesForCurrency(currencyCode)
         .map(countryLibraryAt.getCountry);
-
-      const minorUnitDigits =
-        currencyLibraryAt.getMinorUnitDigits(currencyCode);
 
       // normalize input
       let amount = money.trim().toLocaleLowerCase(locales);

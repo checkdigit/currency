@@ -1,13 +1,14 @@
 // countries.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 /*
- * ISO 3166 country database with links to ISO 4217 currency information.
+ * ISO 3166 country database with links to ISO 4217 currency information,
+ * updated through ISO 4217 List One published 2026-01-01.
  */
 
 /* eslint-disable max-lines */
@@ -25,6 +26,7 @@ export type CountryAlpha2 =
   | 'AO'
   | 'AI'
   | 'AG'
+  | 'AQ'
   | 'AR'
   | 'AM'
   | 'AW'
@@ -90,6 +92,7 @@ export type CountryAlpha2 =
   | 'ER'
   | 'EE'
   | 'ET'
+  | 'FK'
   | 'FO'
   | 'FJ'
   | 'FI'
@@ -219,6 +222,7 @@ export type CountryAlpha2 =
   | 'SB'
   | 'SO'
   | 'ZA'
+  | 'GS'
   | 'SS'
   | 'ES'
   | 'LK'
@@ -273,6 +277,7 @@ export type CountryAlpha3 =
   | 'AGO'
   | 'AIA'
   | 'ATG'
+  | 'ATA'
   | 'ARG'
   | 'ARM'
   | 'ABW'
@@ -338,6 +343,7 @@ export type CountryAlpha3 =
   | 'ERI'
   | 'EST'
   | 'ETH'
+  | 'FLK'
   | 'FRO'
   | 'FJI'
   | 'FIN'
@@ -467,6 +473,7 @@ export type CountryAlpha3 =
   | 'SLB'
   | 'SOM'
   | 'ZAF'
+  | 'SGS'
   | 'SSD'
   | 'ESP'
   | 'LKA'
@@ -521,6 +528,7 @@ export type CountryNumeric =
   | '024'
   | '660'
   | '028'
+  | '010'
   | '032'
   | '051'
   | '533'
@@ -586,6 +594,7 @@ export type CountryNumeric =
   | '232'
   | '233'
   | '231'
+  | '238'
   | '234'
   | '242'
   | '246'
@@ -715,6 +724,7 @@ export type CountryNumeric =
   | '090'
   | '706'
   | '710'
+  | '239'
   | '728'
   | '724'
   | '144'
@@ -867,6 +877,18 @@ const countries: Operation<Country>[] = [
       alpha3: 'ATG',
       numeric: '028',
       currencyCodes: ['XCD'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Antarctica',
+      alpha2: 'AQ',
+      alpha3: 'ATA',
+      numeric: '010',
+      // CLDR represents Antarctica as having no currency.
+      currencyCodes: ['XXX'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
@@ -1402,7 +1424,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'Cura\u00E7ao',
+      name: 'Cura\u{E7}ao',
       alpha2: 'CW',
       alpha3: 'CUW',
       numeric: '531',
@@ -1435,7 +1457,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'C\u00F4te d\u2019Ivoire',
+      name: 'C\u{F4}te d\u{2019}Ivoire',
       alpha2: 'CI',
       alpha3: 'CIV',
       numeric: '384',
@@ -1583,6 +1605,17 @@ const countries: Operation<Country>[] = [
       alpha3: 'ETH',
       numeric: '231',
       currencyCodes: ['ETB'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Falkland Islands (the) [Malvinas]',
+      alpha2: 'FK',
+      alpha3: 'FLK',
+      numeric: '238',
+      currencyCodes: ['FKP'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
@@ -2755,7 +2788,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'R\u00E9union',
+      name: 'R\u{E9}union',
       alpha2: 'RE',
       alpha3: 'REU',
       numeric: '638',
@@ -2766,7 +2799,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'St. Barth\u00E9lemy',
+      name: 'St. Barth\u{E9}lemy',
       alpha2: 'BL',
       alpha3: 'BLM',
       numeric: '652',
@@ -2865,7 +2898,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: 'S\u00E3o Tom\u00E9 & Pr\u00EDncipe',
+      name: 'S\u{E3}o Tom\u{E9} & Pr\u{ED}ncipe',
       alpha2: 'ST',
       alpha3: 'STP',
       numeric: '678',
@@ -3002,6 +3035,17 @@ const countries: Operation<Country>[] = [
       alpha3: 'ZAF',
       numeric: '710',
       currencyCodes: ['ZAR'],
+    },
+    createdOn: '2018-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'South Georgia and the South Sandwich Islands',
+      alpha2: 'GS',
+      alpha3: 'SGS',
+      numeric: '239',
+      currencyCodes: ['GBP'],
     },
     createdOn: '2018-01-01T00:00:00.000Z',
   },
@@ -3459,7 +3503,7 @@ const countries: Operation<Country>[] = [
   {
     type: 'create',
     item: {
-      name: '\u00C5land Islands',
+      name: '\u{C5}land Islands',
       alpha2: 'AX',
       alpha3: 'ALA',
       numeric: '248',
@@ -3480,6 +3524,40 @@ const countries: Operation<Country>[] = [
   },
   {
     type: 'delete',
+    name: 'Cuba',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2021-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Cuba',
+      alpha2: 'CU',
+      alpha3: 'CUB',
+      numeric: '192',
+      currencyCodes: ['CUP'],
+    },
+    createdOn: '2021-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sierra Leone',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2022-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLE', 'SLL'],
+    },
+    createdOn: '2022-07-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
     name: 'Croatia',
     previousCreatedOn: '2018-01-01T00:00:00.000Z',
     createdOn: '2023-01-01T00:00:00.000Z',
@@ -3494,6 +3572,108 @@ const countries: Operation<Country>[] = [
       currencyCodes: ['EUR'],
     },
     createdOn: '2023-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sierra Leone',
+    previousCreatedOn: '2022-07-01T00:00:00.000Z',
+    createdOn: '2024-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sierra Leone',
+      alpha2: 'SL',
+      alpha3: 'SLE',
+      numeric: '694',
+      currencyCodes: ['SLE'],
+    },
+    createdOn: '2024-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Zimbabwe',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2024-06-25T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Zimbabwe',
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      numeric: '716',
+      currencyCodes: ['ZWG', 'ZWL'],
+    },
+    createdOn: '2024-06-25T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Zimbabwe',
+    previousCreatedOn: '2024-06-25T00:00:00.000Z',
+    createdOn: '2024-09-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Zimbabwe',
+      alpha2: 'ZW',
+      alpha3: 'ZWE',
+      numeric: '716',
+      currencyCodes: ['ZWG'],
+    },
+    createdOn: '2024-09-01T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Cura\u{E7}ao',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Cura\u{E7}ao',
+      alpha2: 'CW',
+      alpha3: 'CUW',
+      numeric: '531',
+      currencyCodes: ['XCG'],
+    },
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Sint Maarten',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Sint Maarten',
+      alpha2: 'SX',
+      alpha3: 'SXM',
+      numeric: '534',
+      currencyCodes: ['XCG'],
+    },
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'delete',
+    name: 'Bulgaria',
+    previousCreatedOn: '2018-01-01T00:00:00.000Z',
+    createdOn: '2026-01-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Bulgaria',
+      alpha2: 'BG',
+      alpha3: 'BGR',
+      numeric: '100',
+      currencyCodes: ['EUR'],
+    },
+    createdOn: '2026-01-01T00:00:00.000Z',
   },
 ];
 

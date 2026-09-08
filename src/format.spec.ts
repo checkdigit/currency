@@ -1,7 +1,7 @@
 // format.spec.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -13,7 +13,6 @@ import currency, { type CurrencyAlphabeticCode } from './currency.ts';
 import formatLibrary from './index.ts';
 
 import { getManyLocales } from './locales.test.ts';
-import { getUnsupportedCurrencies } from './currencies.test.ts';
 
 describe('format', () => {
   const at = new Date().toISOString();
@@ -32,9 +31,11 @@ describe('format', () => {
       {},
       locale,
     );
-    const reference = Intl.NumberFormat(locale, {
+    const reference = new Intl.NumberFormat(locale, {
       style: 'currency',
       currency: code,
+      minimumFractionDigits: minorUnitDigits,
+      maximumFractionDigits: minorUnitDigits,
     }).format(amount / minorUnit);
     assert.equal(internal, reference, `${code} ${amount} ${locale ?? ''}`);
   }
@@ -60,19 +61,8 @@ describe('format', () => {
     });
   });
 
-  it('matches Intl number implementation for all supported currencies', () => {
-    // Intl.NumberFormat does not support the currencies below per the ISO 4217 standard.
-    const unsupportedCurrencies = getUnsupportedCurrencies(at);
-    for (const code of currency(new Date().toISOString())
-      .allCurrencies()
-      .filter(
-        ({ alphabeticCode }) =>
-          !unsupportedCurrencies.some(
-            (unsupportedCurrency) =>
-              alphabeticCode === unsupportedCurrency.alphabeticCode,
-          ),
-      )
-      .map(({ alphabeticCode }) => alphabeticCode)) {
+  it('matches Intl number implementation using ISO 4217 fraction digits', () => {
+    for (const { alphabeticCode: code } of currency(at).allCurrencies()) {
       for (let power = 0; power < 15; power++) {
         const base = 10 ** power;
         check(code, base - 1);
@@ -82,6 +72,25 @@ describe('format', () => {
         check(code, -base);
         check(code, -(base + 1));
       }
+    }
+  });
+
+  it('uses ISO 4217 fraction digits when Intl defaults differ', () => {
+    for (const [code, expected] of [
+      ['COP', 'COP\u{A0}1,234.56'],
+      ['HUF', 'HUF\u{A0}1,234.56'],
+      ['IDR', 'IDR\u{A0}1,234.56'],
+      ['PKR', 'PKR\u{A0}1,234.56'],
+      ['IQD', 'IQD\u{A0}123.456'],
+    ] as const) {
+      assert.equal(
+        format(
+          { amount: '123456', currency: code },
+          { currencyDisplay: 'code' },
+          'en-US',
+        ),
+        expected,
+      );
     }
   });
 

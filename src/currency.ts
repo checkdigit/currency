@@ -1,7 +1,7 @@
 // currency.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -19,6 +19,16 @@ export type {
   CurrencyNumericCode,
   CurrencyName,
 } from './currencies.ts';
+
+/*
+ * ISO 4217 can assign the same display name to multiple currency codes.
+ * Keep the preferred name lookup explicit so it does not depend on operation
+ * insertion order.
+ */
+const canonicalCurrencyCodesByName = {
+  'Bolívar Soberano': 'VES',
+  Leone: 'SLE',
+} as const satisfies Partial<Record<Currency['name'], CurrencyAlphabeticCode>>;
 
 export interface CurrencyLibrary {
   allCurrencies: () => Currency[];
@@ -38,6 +48,14 @@ export default function (at: string): CurrencyLibrary {
     currencyMap.set(currency.alphabeticCode, currency);
     currencyMap.set(currency.numericCode, currency);
     currencyMap.set(currency.name.toUpperCase(), currency);
+  }
+
+  // Apply a preference only when that code exists at the requested time.
+  for (const [name, code] of Object.entries(canonicalCurrencyCodesByName)) {
+    const canonicalCurrency = currencyMap.get(code);
+    if (canonicalCurrency?.name === name) {
+      currencyMap.set(name.toUpperCase(), canonicalCurrency);
+    }
   }
 
   const currencyLibrary = {
@@ -67,7 +85,7 @@ export default function (at: string): CurrencyLibrary {
       currency: CurrencyAlphabeticCode,
       locales?: string | string[],
     ) =>
-      Intl.NumberFormat(locales, { style: 'currency', currency })
+      new Intl.NumberFormat(locales, { style: 'currency', currency })
         .formatToParts(0)
         .find((part) => part.type === 'currency')?.value,
   };

@@ -1,7 +1,7 @@
 // format.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -9,8 +9,10 @@
 import currencyLibrary from './currency.ts';
 import type { Money } from './money.ts';
 
-export interface CurrencyFormatOptions
-  extends Pick<Intl.NumberFormatOptions, 'useGrouping'> {
+export interface CurrencyFormatOptions extends Pick<
+  Intl.NumberFormatOptions,
+  'useGrouping'
+> {
   currencyDisplay?: 'code' | 'symbol' | 'name';
   useCurrency?: boolean;
   useDecimal?: boolean;
@@ -40,6 +42,16 @@ export default function (at: string): FormatLibrary {
         ...defaultCurrencyFormatOptions,
         ...options,
       };
+
+      if (
+        !resolvedOptions.useDecimal &&
+        (resolvedOptions.useCurrency || resolvedOptions.useGrouping === true)
+      ) {
+        throw new Error(
+          'useDecimal can only be false if useCurrency and useGrouping are also false',
+        );
+      }
+
       const amountInteger = BigInt(amount);
       const minorUnitDigits = getMinorUnitDigits(currency);
       const minorUnit = 10n ** BigInt(minorUnitDigits);
@@ -48,16 +60,17 @@ export default function (at: string): FormatLibrary {
        * Calculate the minor unit amount,
        * while also handling locales that use different digit symbols than 0 through 9.
        */
-      const minorUnitAmount = Intl.NumberFormat(locales, { useGrouping: false })
+      const minorUnitAmount = new Intl.NumberFormat(locales, {
+        useGrouping: false,
+      })
         .format(
           Number(
-            (amountInteger < BigInt(0) ? -amountInteger : amountInteger) %
-              minorUnit,
+            (amountInteger < 0n ? -amountInteger : amountInteger) % minorUnit,
           ),
         )
         .padStart(
           minorUnitDigits,
-          Intl.NumberFormat(locales, { useGrouping: false }).format(0),
+          new Intl.NumberFormat(locales, { useGrouping: false }).format(0),
         );
 
       // this code is required to handle the case of negative zero,
@@ -67,25 +80,23 @@ export default function (at: string): FormatLibrary {
           ? Number(amount) / Number(minorUnit)
           : amountInteger / minorUnit;
 
-      if (
-        !resolvedOptions.useDecimal &&
-        !(!resolvedOptions.useCurrency && resolvedOptions.useGrouping !== true)
-      ) {
-        throw new Error(
-          'useDecimal can only be false if useCurrency and useGrouping are also false',
-        );
-      }
-
-      if (amountInteger < 0 && majorUnitAmount === BigInt(0)) {
+      if (majorUnitAmount === 0n && amountInteger < 0n) {
         // since we lose the sign if the major unit amount is zero, need to switch to floating point for negative zero
         majorUnitAmount = -0;
       }
 
-      return Intl.NumberFormat(locales, {
+      /*
+       * CLDR fraction-digit defaults differ from ISO 4217 for some currencies.
+       * Force Intl to emit a fraction part so it can be replaced below with the
+       * exact minor-unit value calculated without floating-point arithmetic.
+       */
+      return new Intl.NumberFormat(locales, {
         style: 'currency',
         currency,
         useGrouping: resolvedOptions.useGrouping,
         currencyDisplay: resolvedOptions.currencyDisplay,
+        minimumFractionDigits: minorUnitDigits,
+        maximumFractionDigits: minorUnitDigits,
       })
         .formatToParts(majorUnitAmount)
         .filter(

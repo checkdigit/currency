@@ -1,14 +1,15 @@
 // currencies.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
 
 /*
- * Table generated from ISO 4217 Currency Codes XML at https://www.iso.org/iso-4217-currency-codes.html,
- * published 2018-08-29.
+ * Baseline generated from ISO 4217 Currency Codes XML at
+ * https://www.iso.org/iso-4217-currency-codes.html, published 2018-08-29.
+ * Updates include amendments through List One published 2026-01-01.
  */
 
 /* eslint-disable max-lines */
@@ -145,6 +146,7 @@ export type CurrencyAlphabeticCode =
   | 'SEK'
   | 'SGD'
   | 'SHP'
+  | 'SLE'
   | 'SLL'
   | 'SOS'
   | 'SRD'
@@ -170,10 +172,12 @@ export type CurrencyAlphabeticCode =
   | 'UYU'
   | 'UYW'
   | 'UZS'
+  | 'VED'
   | 'VES'
   | 'VND'
   | 'VUV'
   | 'WST'
+  | 'XAD'
   | 'XAF'
   | 'XAG'
   | 'XAU'
@@ -182,6 +186,7 @@ export type CurrencyAlphabeticCode =
   | 'XBC'
   | 'XBD'
   | 'XCD'
+  | 'XCG'
   | 'XDR'
   | 'XOF'
   | 'XPD'
@@ -194,6 +199,7 @@ export type CurrencyAlphabeticCode =
   | 'YER'
   | 'ZAR'
   | 'ZMW'
+  | 'ZWG'
   | 'ZWL';
 
 export type CurrencyNumericCode =
@@ -253,6 +259,7 @@ export type CurrencyNumericCode =
   | '376'
   | '388'
   | '392'
+  | '396'
   | '398'
   | '400'
   | '404'
@@ -322,6 +329,9 @@ export type CurrencyNumericCode =
   | '882'
   | '886'
   | '901'
+  | '924'
+  | '925'
+  | '926'
   | '927'
   | '928'
   | '929'
@@ -381,6 +391,7 @@ export type CurrencyName =
   | 'ADB Unit of Account'
   | 'Afghani'
   | 'Algerian Dinar'
+  | 'Arab Accounting Dinar'
   | 'Argentine Peso'
   | 'Armenian Dram'
   | 'Aruban Florin'
@@ -409,6 +420,7 @@ export type CurrencyName =
   | 'CFP Franc'
   | 'Cabo Verde Escudo'
   | 'Canadian Dollar'
+  | 'Caribbean Guilder'
   | 'Cayman Islands Dollar'
   | 'Chilean Peso'
   | 'Codes specifically reserved for testing purposes'
@@ -556,6 +568,7 @@ export type CurrencyName =
   | 'Yuan Renminbi'
   | 'Zambian Kwacha'
   | 'Zimbabwe Dollar'
+  | 'Zimbabwe Gold'
   | 'Zloty';
 
 export interface Currency {
@@ -2343,6 +2356,26 @@ const currencies: Operation<Currency>[] = [
     createdOn: '2018-01-01T00:00:00.000Z',
   },
   {
+    type: 'create',
+    item: {
+      name: 'Bolívar Soberano',
+      alphabeticCode: 'VED',
+      numericCode: '926',
+      minorUnits: 2,
+    },
+    createdOn: '2021-10-01T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Leone',
+      alphabeticCode: 'SLE',
+      numericCode: '925',
+      minorUnits: 2,
+    },
+    createdOn: '2022-04-01T00:00:00.000Z',
+  },
+  {
     type: 'delete',
     name: 'Iceland Krona',
     previousCreatedOn: '2018-01-01T00:00:00.000Z',
@@ -2357,6 +2390,37 @@ const currencies: Operation<Currency>[] = [
       minorUnits: 0,
     },
     createdOn: '2023-04-15T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Zimbabwe Gold',
+      alphabeticCode: 'ZWG',
+      numericCode: '924',
+      minorUnits: 2,
+    },
+    createdOn: '2024-06-25T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      name: 'Caribbean Guilder',
+      alphabeticCode: 'XCG',
+      numericCode: '532',
+      minorUnits: 2,
+    },
+    createdOn: '2025-03-31T00:00:00.000Z',
+  },
+  {
+    type: 'create',
+    item: {
+      isFund: true,
+      name: 'Arab Accounting Dinar',
+      alphabeticCode: 'XAD',
+      numericCode: '396',
+      minorUnits: 2,
+    },
+    createdOn: '2025-05-12T00:00:00.000Z',
   },
 ];
 

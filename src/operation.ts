@@ -1,7 +1,7 @@
 // operation.ts
 
 /*
- * Copyright (c) 2021-2025 Check Digit, LLC
+ * Copyright (c) 2021-2026 Check Digit, LLC
  *
  * This code is licensed under the MIT license (see LICENSE.txt for details).
  */
@@ -26,13 +26,12 @@ export function getItemsFromOperations<Item extends { name: string }>(
   operations: Operation<Item>[],
   at: string,
 ): Item[] {
-  const itemMap = new Map<string, Item>();
-
   if (at < START_DATE) {
     throw new TypeError(
       `Lookup functions do not currently support the provided date '${at}'. Support is available for dates starting from 2018 onwards.`,
     );
   }
+  const itemMap = new Map<string, Item>();
   for (const operation of operations) {
     if (operation.type === 'create' && operation.createdOn < at) {
       const key = `${operation.item.name}-${operation.createdOn}`;
@@ -43,5 +42,5 @@ export function getItemsFromOperations<Item extends { name: string }>(
     }
   }
 
-  return [...itemMap.values()];
+  return itemMap.values().toArray();
 }
